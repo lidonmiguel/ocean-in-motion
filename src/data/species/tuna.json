@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "atlantic-bluefin-tuna",
+  "scientificName": "Thunnus thynnus",
+  "commonNameEs": "Atún rojo del Atlántico",
+  "summaryEs": "Una especie pelágica que recorre grandes distancias en el Atlántico y el Mediterráneo.",
+  "ecologyEs": "Su distribución está relacionada con la temperatura, las presas y las zonas de reproducción. Los puntos de esta vista son inventados para probar la interfaz.",
+  "provenance": "synthetic-demo",
+  "reviewStatus": "illustrative",
+  "scenario": "SSP2-4.5",
+  "periods": { "current": "Referencia ilustrativa", "future": "2050" },
+  "citations": [{ "id": "demo", "title": "Hand-authored synthetic interface fixture", "url": null, "role": "demonstration" }],
+  "habitat": {
+    "current": [
+      { "id": "t1", "center": [-66, 35], "widthDeg": 10, "heightDeg": 7, "suitability": 0.84, "uncertainty": 0.21 },
+      { "id": "t2", "center": [-54, 42], "widthDeg": 10, "heightDeg": 7, "suitability": 0.73, "uncertainty": 0.28 },
+      { "id": "t3", "center": [-39, 34], "widthDeg": 10, "heightDeg": 7, "suitability": 0.52, "uncertainty": 0.33 },
+      { "id": "t4", "center": [-23, 42], "widthDeg": 10, "heightDeg": 7, "suitability": 0.64, "uncertainty": 0.31 },
+      { "id": "t5", "center": [-12, 35], "widthDeg": 9, "heightDeg": 7, "suitability": 0.78, "uncertainty": 0.24 },
+      { "id": "t6", "center": [16, 36], "widthDeg": 7, "heightDeg": 5, "suitability": 0.68, "uncertainty": 0.38 }
+    ],
+    "future": [
+      { "id": "t1", "center": [-68, 43], "widthDeg": 10, "heightDeg": 7, "suitability": 0.48, "uncertainty": 0.54 },
+      { "id": "t2", "center": [-52, 51], "widthDeg": 10, "heightDeg": 7, "suitability": 0.81, "uncertainty": 0.47 },
+      { "id": "t3", "center": [-37, 46], "widthDeg": 10, "heightDeg": 7, "suitability": 0.72, "uncertainty": 0.52 },
+      { "id": "t4", "center": [-25, 53], "widthDeg": 10, "heightDeg": 7, "suitability": 0.75, "uncertainty": 0.55 },
+      { "id": "t5", "center": [-11, 45], "widthDeg": 9, "heightDeg": 7, "suitability": 0.58, "uncertainty": 0.49 },
+      { "id": "t6", "center": [17, 36], "widthDeg": 7, "heightDeg": 5, "suitability": 0.41, "uncertainty": 0.62 }
+    ]
+  },
+  "movementVectors": [{ "from": [-39, 34], "to": [-37, 46], "labelEs": "Dirección ilustrativa del cambio de distribución" }]
+}

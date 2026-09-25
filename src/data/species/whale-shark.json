@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "id": "whale-shark",
+  "scientificName": "Rhincodon typus",
+  "commonNameEs": "Tiburón ballena",
+  "summaryEs": "Un gran pez filtrador asociado a mares cálidos y regiones de alta productividad.",
+  "ecologyEs": "Su presencia depende de procesos oceánicos y del alimento disponible. La muestra dibujada aquí es completamente sintética.",
+  "provenance": "synthetic-demo",
+  "reviewStatus": "illustrative",
+  "scenario": "SSP2-4.5",
+  "periods": {
+    "current": "Referencia ilustrativa",
+    "future": "2050"
+  },
+  "citations": [
+    {
+      "id": "demo",
+      "title": "Hand-authored synthetic interface fixture",
+      "url": null,
+      "role": "demonstration"
+    }
+  ],
+  "habitat": {
+    "current": [
+      {
+        "id": "w1",
+        "center": [
+          -105,
+          12
+        ],
+        "widthDeg": 10,
+        "heightDeg": 7,
+        "suitability": 0.78,
+        "uncertainty": 0.32
+      },
+      {
+        "id": "w2",
+        "center": [
+          -39,
+          1
+        ],
+        "widthDeg": 10,
+        "heightDeg": 7,
+        "suitability": 0.44,
+        "uncertainty": 0.39
+      },
+      {
+        "id": "w3",
+        "center": [
+          58,
+          13
+        ],
+        "widthDeg": 10,
+        "heightDeg": 7,
+        "suitability": 0.69,
+        "uncertainty": 0.34
+      },
+      {
+        "id": "w4",
+        "center": [
+          73,
+          8
+        ],
+        "widthDeg": 10,
+        "heightDeg": 7,
+        "suitability": 0.81,
+        "uncertainty": 0.25
+      },
+      {
+        "id": "w5",
+        "center": [
+          112,
+          -17
+        ],
+        "widthDeg": 10,
+        "heightDeg": 7,
+        "suitability": 0.74,
+        "uncertainty": 0.31
+      },
+      {
+        "id": "w6",
+        "center": [
+          146,
+          7
+        ],
+        "widthDeg": 10,
+        "heightDeg": 7,
+        "suitability": 0.56,
+        "uncertainty": 0.4
+      }
+    ],
+    "future": [
+      {
+        "id": "w1",
+        "center": [
+          -110,
+          20
+        ],
+        "widthDeg": 10,
+        "heightDeg": 7,
+        "suitability": 0.61,
+        "uncertainty": 0.56
+      },
+      {
+        "id": "w2",
+        "center": [
+          -35,
+          10
+        ],
+        "widthDeg": 10,
+        "heightDeg": 7,
+        "suitability": 0.67,
+        "uncertainty": 0.55
+      },
+      {
+        "id": "w3",
+        "center": [
+          59,
+          20
+        ],
+        "widthDeg": 10,
+        "heightDeg": 7,
+        "suitability": 0.7,
+        "uncertainty": 0.6
+      },
+      {
+        "id": "w4",
+        "center": [
+          69,
+          14
+        ],
+        "widthDeg": 10,
+        "heightDeg": 7,
+        "suitability": 0.48,
+        "uncertainty": 0.59
+      },
+      {
+        "id": "w5",
+        "center": [
+          111,
+          -24
+        ],
+        "widthDeg": 10,
+        "heightDeg": 7,
+        "suitability": 0.82,
+        "uncertainty": 0.58
+      },
+      {
+        "id": "w6",
+        "center": [
+          148,
+          15
+        ],
+        "widthDeg": 10,
+        "heightDeg": 7,
+        "suitability": 0.76,
+        "uncertainty": 0.53
+      }
+    ]
+  },
+  "movementVectors": [
+    {
+      "from": [
+        73,
+        8
+      ],
+      "to": [
+        69,
+        14
+      ],
+      "labelEs": "Dirección ilustrativa del cambio de distribución"
+    }
+  ]
+}
