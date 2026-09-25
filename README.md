@@ -1,0 +1,115 @@
+# Océano en Movimiento
+
+An experimental global map for comparing marine habitat suitability now and
+under a 2050 **SSP2-4.5** scenario. The interface is in Spanish; this technical
+documentation and the code are in English.
+
+**Everything shown in the first release is synthetic and illustrative.** The
+three small hand-authored datasets are UI fixtures. They are not OBIS records,
+Bio-ORACLE layers, scientific forecasts, real animal positions or validated
+species distribution models. The magenta mark suggests an illustrative
+direction of distribution change; it is not a GPS route.
+
+## Run locally
+
+Requirements: Node.js 24 and npm. The basemap's land geometry is packaged with
+the app, so the map itself does not require a map-tile account or external tile
+service.
+
+```bash
+npm ci
+npm run dev
+```
+
+Open the local URL printed by Vite, normally `http://localhost:5173`.
+Choose one of three species, switch between **Actual** and **2050**, drag/zoom
+the world map, and hover a colored cell for its illustrative suitability and
+uncertainty. The layout adapts to narrower screens.
+
+```bash
+npm run lint
+npm run typecheck
+npm run test
+npm run build
+# or run all four:
+npm run check
+```
+
+The small Python staging workspace requires Python 3.11+ and no third-party
+packages for its current placeholder contracts:
+
+```bash
+python -m unittest discover -s python/tests -v
+# optional editable installation for later processing work:
+python -m pip install -e ./python
+```
+
+GitHub Actions runs the web checks and Python tests on pushes and pull requests.
+
+## What is here
+
+| Path | Purpose |
+| --- | --- |
+| `src/App.tsx`, `src/styles.css` | Spanish responsive controls, legend, species information and prominent demo warnings. |
+| `src/MapView.tsx` | MapLibre world basemap built from bundled Natural Earth land geometry (`world-atlas`), with deck.gl habitat cells and optional direction mark. |
+| `src/data/species/*.json` | Three synthetic species fixtures, each with current and 2050 cells. |
+| `src/data/schema.ts`, `src/data/mapData.ts` | Runtime validation, typed data, period selection, color bands and antimeridian cell splitting. |
+| `src/data/*.test.ts` | Focused schema and map-data tests. |
+| `docs/data-format.md` | Versioned metadata, citation, suitability, uncertainty and vector format. |
+| `python/ocean_pipeline/sources.py` | Explicit, currently unimplemented OBIS and Bio-ORACLE staging boundaries. No downloads. |
+| `.github/workflows/checks.yml` | Automated lint, type check, tests and production build. |
+
+The land silhouettes come from [Natural Earth](https://www.naturalearthdata.com/)
+via the [world-atlas](https://github.com/topojson/world-atlas) package. This is
+a coarse but geographically grounded global basemap. It is not the mood image,
+and the application does not embed that image.
+
+## Data provenance and integration points
+
+The fixture files were invented by hand for interface testing. Their values,
+uncertainties and arrows have no empirical source. Their `citations` entries
+say so explicitly; species names and short explanatory text are context, not
+evidence for the displayed cells. See [the data contract](docs/data-format.md).
+
+- **OBIS:** `python/ocean_pipeline/sources.py::stage_obis_occurrences` is the
+  future entry point for a scoped occurrence query. Resolve a taxon identifier,
+  record API query/filter parameters and provider attribution, check licenses,
+  remove invalid/duplicate positions, assess time coverage and sampling bias.
+  Consult [OBIS data access](https://obis.org/data/access/) and the
+  [OBIS manual](https://manual.obis.org/access).
+- **Bio-ORACLE:** `stage_bio_oracle_environment` is the future entry point for
+  a small, explicitly chosen set of environmental predictors. Verify layer
+  availability and compatibility for the chosen baseline, depth, resolution,
+  SSP2-4.5 and 2050 window, then record units, versions and citations. Consult
+  [Bio-ORACLE documentation](https://www.bio-oracle.org/documentation.php).
+
+Neither entry point currently fetches data. There are no large downloads,
+hidden remote services or prepared scientific model outputs.
+
+## Planned scientific workflow
+
+1. Define a reviewable study scope for each species: taxon identity, geography,
+   accessible area, baseline window and occurrence quality protocol. Obtain a
+   bounded, cited OBIS extract and inspect bias and coverage.
+2. Select biologically relevant, compatible Bio-ORACLE baseline and SSP2-4.5
+   future predictors. Align grids and units, document assumptions, and fit and
+   evaluate a species distribution model with spatial validation and sensitivity
+   checks. Estimate uncertainty across inputs and models.
+3. Review maps, metrics and interpretation with domain experts. Export a
+   versioned dataset and provenance manifest, plus meaningful uncertainty.
+   Only then set `provenance: reviewed-model` and provide linked occurrence,
+   environment and model citations. Review status in JSON alone is not proof
+   of review.
+
+**Projected range shift ≠ migration route.** A change in habitat suitability
+or predicted distribution describes where conditions may become more or less
+suitable under a scenario. It does not observe where an individual traveled,
+predict its path, or establish that a population will move there. Any future
+direction vector should summarize a documented distribution statistic, not
+draw a supposed animal track.
+
+## Next engineering steps
+
+1. Define and implement a bounded OBIS extraction and quality-control manifest.
+2. Select and harmonize Bio-ORACLE layers for baseline and SSP2-4.5 / 2050.
+3. Fit, validate and review a reproducible model before replacing fixture data.
