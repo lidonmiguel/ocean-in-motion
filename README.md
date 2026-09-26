@@ -36,7 +36,7 @@ npm run check
 ```
 
 The small Python staging workspace requires Python 3.11+ and no third-party
-packages for its current placeholder contracts:
+packages:
 
 ```bash
 python -m unittest discover -s python/tests -v
@@ -56,7 +56,7 @@ GitHub Actions runs the web checks and Python tests on pushes and pull requests.
 | `src/data/schema.ts`, `src/data/mapData.ts` | Runtime validation, typed data, period selection, color bands and antimeridian cell splitting. |
 | `src/data/*.test.ts` | Focused schema and map-data tests. |
 | `docs/data-format.md` | Versioned metadata, citation, suitability, uncertainty and vector format. |
-| `python/ocean_pipeline/sources.py` | Explicit, currently unimplemented OBIS and Bio-ORACLE staging boundaries. No downloads. |
+| `python/ocean_pipeline/sources.py` | Explicit, bounded OBIS occurrence staging; Bio-ORACLE remains unimplemented. |
 | `.github/workflows/checks.yml` | Automated lint, type check, tests and production build. |
 
 The land silhouettes come from [Natural Earth](https://www.naturalearthdata.com/)
@@ -71,20 +71,18 @@ uncertainties and arrows have no empirical source. Their `citations` entries
 say so explicitly; species names and short explanatory text are context, not
 evidence for the displayed cells. See [the data contract](docs/data-format.md).
 
-- **OBIS:** `python/ocean_pipeline/sources.py::stage_obis_occurrences` is the
-  future entry point for a scoped occurrence query. Resolve a taxon identifier,
-  record API query/filter parameters and provider attribution, check licenses,
-  remove invalid/duplicate positions, assess time coverage and sampling bias.
-  Consult [OBIS data access](https://obis.org/data/access/) and the
-  [OBIS manual](https://manual.obis.org/access).
+- **OBIS:** `python/ocean_pipeline/sources.py::stage_obis_occurrences` stages
+  a small, scoped occurrence extract and JSON manifest. See
+  [the staging protocol](docs/obis-staging.md) for required parameters,
+  quality checks, attribution and limitations.
 - **Bio-ORACLE:** `stage_bio_oracle_environment` is the future entry point for
   a small, explicitly chosen set of environmental predictors. Verify layer
   availability and compatibility for the chosen baseline, depth, resolution,
   SSP2-4.5 and 2050 window, then record units, versions and citations. Consult
   [Bio-ORACLE documentation](https://www.bio-oracle.org/documentation.php).
 
-Neither entry point currently fetches data. There are no large downloads,
-hidden remote services or prepared scientific model outputs.
+Only an explicit invocation of the OBIS staging command fetches data. It
+does not prepare a scientific model or change the illustrative web map.
 
 ## Planned scientific workflow
 
@@ -110,6 +108,6 @@ draw a supposed animal track.
 
 ## Next engineering steps
 
-1. Define and implement a bounded OBIS extraction and quality-control manifest.
+1. Review a bounded OBIS extract and its quality-control manifest for a chosen study scope.
 2. Select and harmonize Bio-ORACLE layers for baseline and SSP2-4.5 / 2050.
 3. Fit, validate and review a reproducible model before replacing fixture data.
