@@ -66,6 +66,7 @@ The deployment builds with Vite's `/ocean-in-motion/` base path so assets load
 at the project URL. Local `npm run dev` remains available at Vite's usual
 localhost URL. Publishing does not replace the synthetic habitat fixtures or
 turn them into scientific results.
+
 ## What is here
 
 | Path | Purpose |
