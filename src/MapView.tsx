@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import * as maplibregl from 'maplibre-gl';
 import { MapLibreOverlay } from '@deck.gl/maplibre';
-import { LineLayer, PolygonLayer, ScatterplotLayer } from '@deck.gl/layers';
+import { GeoJsonLayer, LineLayer, PolygonLayer, ScatterplotLayer } from '@deck.gl/layers';
 import { feature } from 'topojson-client';
 import world from 'world-atlas/land-110m.json';
 import { displayCells, suitabilityColor, type DisplayCell } from './data/mapData';
@@ -42,16 +42,8 @@ export function MapView({ selected, period }: { selected: SpeciesDataset; period
       container: container.current,
       style: {
         version: 8,
-        sources: {
-          graticule: { type: 'geojson', data: graticule },
-          land: { type: 'geojson', data: land }
-        },
-        layers: [
-          { id: 'ocean', type: 'background', paint: { 'background-color': '#082437' } },
-          { id: 'grid', type: 'line', source: 'graticule', paint: { 'line-color': '#3a7080', 'line-opacity': 0.2, 'line-width': 1 } },
-          { id: 'land-fill', type: 'fill', source: 'land', paint: { 'fill-color': '#244556' } },
-          { id: 'coast', type: 'line', source: 'land', paint: { 'line-color': '#63929b', 'line-opacity': 0.65, 'line-width': 0.8 } }
-        ]
+        sources: {},
+        layers: [{ id: 'ocean', type: 'background', paint: { 'background-color': '#082437' } }]
       },
       center: [0, 8],
       zoom: 1.22,
@@ -80,6 +72,27 @@ export function MapView({ selected, period }: { selected: SpeciesDataset; period
     const vectors = period === 'future' ? (selected.movementVectors ?? []) : [];
     overlay.current.setProps({
       layers: [
+        new GeoJsonLayer({
+          id: 'graticule',
+          data: graticule,
+          filled: false,
+          stroked: true,
+          getLineColor: [58, 112, 128, 50],
+          getLineWidth: 1,
+          lineWidthUnits: 'pixels',
+          pickable: false
+        }),
+        new GeoJsonLayer({
+          id: 'land',
+          data: land,
+          filled: true,
+          stroked: true,
+          getFillColor: [36, 69, 86, 255],
+          getLineColor: [99, 146, 155, 166],
+          getLineWidth: 0.8,
+          lineWidthUnits: 'pixels',
+          pickable: false
+        }),
         new PolygonLayer<DisplayCell>({
           id: 'habitat-cells',
           data: cells,
