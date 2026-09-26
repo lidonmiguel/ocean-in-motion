@@ -46,6 +46,26 @@ python -m pip install -e ./python
 
 GitHub Actions runs the web checks and Python tests on pushes and pull requests.
 
+## Publish the map with GitHub Pages
+
+The web app is a static, illustrative demo. GitHub Actions builds it with
+Node.js 24 and publishes `dist`; no local Node installation is needed to
+visit the published map.
+
+1. On GitHub Free, make this repository public under **Settings → General →
+   Danger Zone → Change repository visibility**. A Pages website is public
+   even when its source repository is private on eligible paid plans.
+2. Under **Settings → Pages → Build and deployment**, set **Source** to
+   **GitHub Actions**.
+3. Merge the Pages deployment change. A push to `main` deploys the app; you
+   can also run **Publish map to GitHub Pages** manually under **Actions**.
+4. Open `https://lidonmiguel.github.io/ocean-in-motion/` after the deployment
+   succeeds. GitHub's Pages settings also show the live link.
+
+The deployment builds with Vite's `/ocean-in-motion/` base path so assets load
+at the project URL. Local `npm run dev` remains available at Vite's usual
+localhost URL. Publishing does not replace the synthetic habitat fixtures or
+turn them into scientific results.
 ## What is here
 
 | Path | Purpose |
