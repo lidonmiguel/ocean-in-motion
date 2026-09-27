@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "id": "bottlenose-dolphin",
+  "scientificName": "Tursiops truncatus",
+  "commonNameEs": "Delfín mular",
+  "group": "cetacean",
+  "summaryEs": "Un delfín presente tanto en ambientes costeros como en aguas oceánicas.",
+  "ecologyEs": "Sus poblaciones ocupan hábitats variados. Los recuadros y sus valores solo sirven para probar la visualización.",
+  "provenance": "synthetic-demo",
+  "reviewStatus": "illustrative",
+  "scenario": "SSP2-4.5",
+  "periods": {
+    "current": "Referencia ilustrativa",
+    "future": "2050"
+  },
+  "citations": [
+    {
+      "id": "demo",
+      "title": "Hand-authored synthetic interface fixture",
+      "url": null,
+      "role": "demonstration"
+    }
+  ],
+  "habitat": {
+    "current": [
+      {
+        "id": "b1",
+        "center": [
+          -77,
+          32
+        ],
+        "widthDeg": 8,
+        "heightDeg": 6,
+        "suitability": 0.78,
+        "uncertainty": 0.25
+      },
+      {
+        "id": "b2",
+        "center": [
+          -67,
+          29
+        ],
+        "widthDeg": 8,
+        "heightDeg": 6,
+        "suitability": 0.67,
+        "uncertainty": 0.31
+      },
+      {
+        "id": "b3",
+        "center": [
+          -54,
+          23
+        ],
+        "widthDeg": 8,
+        "heightDeg": 6,
+        "suitability": 0.71,
+        "uncertainty": 0.29
+      },
+      {
+        "id": "b4",
+        "center": [
+          -37,
+          34
+        ],
+        "widthDeg": 8,
+        "heightDeg": 6,
+        "suitability": 0.55,
+        "uncertainty": 0.36
+      },
+      {
+        "id": "b5",
+        "center": [
+          -19,
+          29
+        ],
+        "widthDeg": 8,
+        "heightDeg": 6,
+        "suitability": 0.82,
+        "uncertainty": 0.23
+      },
+      {
+        "id": "b6",
+        "center": [
+          -11,
+          35
+        ],
+        "widthDeg": 8,
+        "heightDeg": 6,
+        "suitability": 0.62,
+        "uncertainty": 0.33
+      }
+    ],
+    "future": [
+      {
+        "id": "b1",
+        "center": [
+          -75,
+          36
+        ],
+        "widthDeg": 8,
+        "heightDeg": 6,
+        "suitability": 0.64,
+        "uncertainty": 0.47
+      },
+      {
+        "id": "b2",
+        "center": [
+          -66,
+          33
+        ],
+        "widthDeg": 8,
+        "heightDeg": 6,
+        "suitability": 0.73,
+        "uncertainty": 0.52
+      },
+      {
+        "id": "b3",
+        "center": [
+          -52,
+          27
+        ],
+        "widthDeg": 8,
+        "heightDeg": 6,
+        "suitability": 0.58,
+        "uncertainty": 0.49
+      },
+      {
+        "id": "b4",
+        "center": [
+          -35,
+          38
+        ],
+        "widthDeg": 8,
+        "heightDeg": 6,
+        "suitability": 0.77,
+        "uncertainty": 0.55
+      },
+      {
+        "id": "b5",
+        "center": [
+          -20,
+          34
+        ],
+        "widthDeg": 8,
+        "heightDeg": 6,
+        "suitability": 0.69,
+        "uncertainty": 0.44
+      },
+      {
+        "id": "b6",
+        "center": [
+          -13,
+          40
+        ],
+        "widthDeg": 8,
+        "heightDeg": 6,
+        "suitability": 0.48,
+        "uncertainty": 0.59
+      }
+    ]
+  }
+}
