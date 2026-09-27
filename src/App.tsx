@@ -54,7 +54,7 @@ export default function App() {
           <p className="lead">{selected.summaryEs}</p>
           <p className="body-copy">{selected.ecologyEs}</p>
           <div className="metric-block"><div><span>PERIODOS</span><strong>Actual → 2050</strong></div><div><span>ESCENARIO</span><strong>SSP2-4.5</strong></div></div>
-          <div className="info-note"><span className="note-icon">↗</span><div><strong>Cómo leer este flujo</strong><p>Cada trazo aparece en una celda actual turquesa, avanza hacia su pareja rosa de 2050 y desaparece. Distintas regiones pueden apuntar en direcciones diferentes. Son datos sintéticos, no rutas de animales.</p></div></div>
+          <div className="info-note"><span className="note-icon">↗</span><div><strong>Cómo leer este flujo</strong><p>Cada trazo va de su celda actual a la pareja de 2050 por agua, rodeando la tierra dibujada en el mapa. Si un extremo cae en tierra, se omite. Es un camino gráfico sobre datos sintéticos, no una ruta animal ni una predicción de navegación.</p></div></div>
           <div className="status-label">● MODO ILUSTRATIVO · SIN VALIDACIÓN CIENTÍFICA</div>
         </aside>
       </main>

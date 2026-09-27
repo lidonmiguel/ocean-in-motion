@@ -108,7 +108,10 @@ export function MapView({ selected }: { selected: SpeciesDataset }) {
     const futureCells = displayCells(selected, 'future');
     const flows = displayFlows(selected);
     const streamlines = displayStreamlines(selected);
-    const endpoints: Endpoint[] = flows.flatMap(flow => [
+    const visibleFlows = flows.filter(flow => streamlines.some(strand =>
+      selected.provenance === 'synthetic-demo' ? strand.id.startsWith(`${flow.id}-`) : strand.id === flow.id
+    ));
+    const endpoints: Endpoint[] = visibleFlows.flatMap(flow => [
       { position: flow.from, period: 'current' },
       { position: flow.to, period: 'future' }
     ]);

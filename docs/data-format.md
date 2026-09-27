@@ -37,11 +37,20 @@ its future cell with the same ID. Their endpoints stay inside the hand-authored
 cells, and each strand follows its pair's direction of displacement. Different
 pairs can have different directions. The strands grow from the current cell,
 move along the curved path, then disappear at the future cell; the map leaves
-no permanent route lines. The strands,
-their density, and their curvature are design choices, not estimated migration
+no permanent route lines. Their spacing, density, and timing are design choices,
+not estimated migration
 paths or movement model output. For reviewed outputs the interface does not
 infer connectors from cells; it only uses explicitly supplied `movementVectors`
 when their direction statistic is documented.
+
+Displayed strokes are routed over water using the same bundled 1:110m Natural
+Earth land polygons as the map. A half-degree A* search approximates the shortest
+water path, and every drawn segment is checked against the land boundaries.
+Synthetic strand endpoints on land, or pairs with no water path at this map
+resolution, are omitted. Reviewed vectors are likewise hidden when they cannot
+be drawn over water; this cartographic routing does not establish an actual
+animal route or navigable marine passage. Narrow channels and small islands may
+be absent from the coarse basemap.
 
 ## Example excerpt
 
