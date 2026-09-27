@@ -80,7 +80,7 @@ class OccurrenceTests(unittest.TestCase):
             "taxonid": ["123"],
             "geometry": ["POLYGON((-20 10,-10 10,-10 20,-20 20,-20 10))"],
             "startdate": ["2000-01-01"], "enddate": ["2010-12-31"],
-            "size": ["3"], "offset": ["0"],
+            "size": ["3"],
         })
         self.assertEqual(calls[0][1], 30)
         self.assertEqual(result["counts"]["raw_fetched"], 3)
@@ -92,13 +92,13 @@ class OccurrenceTests(unittest.TestCase):
         with self.assertRaises(FileExistsError):
             stage_obis_occurrences(plan(), extract, manifest)
 
-    def test_pagination_uses_raw_offset_and_remaining_cap(self):
+    def test_pagination_uses_last_occurrence_id_and_remaining_cap(self):
         first = [record(str(i)) for i in range(200)]
         result, _, _, calls = self.stage([
             {"total": 500, "results": first},
             {"total": 500, "results": [record("200"), record("201")]},
         ], plan(202))
-        self.assertEqual([parse_qs(urlparse(url).query)["offset"][0] for url, _ in calls], ["0", "200"])
+        self.assertEqual([parse_qs(urlparse(url).query).get("after") for url, _ in calls], [None, ["199"]])
         self.assertEqual([parse_qs(urlparse(url).query)["size"][0] for url, _ in calls], ["200", "2"])
         self.assertEqual(result["counts"]["written"], 202)
         self.assertTrue(result["truncated_by_cap"])
