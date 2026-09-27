@@ -1,0 +1,44 @@
+name: Refresh regional OBIS extracts
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths: [.github/workflows/refresh-species.yml]
+
+permissions:
+  contents: read
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch explicitly scoped occurrence datasets
+        run: |
+          PYTHONPATH=python python - <<'PY'
+          from pathlib import Path
+          from ocean_pipeline.sources import SourcePlan, stage_obis_occurrences
+
+          studies = {
+            'tuna-west-med': ('127029', 'eaea291a-1e1d-4382-b86f-ac3cc15b8d5a', (-6,35,14,44), '2014-01-01','2024-12-31'),
+            'whale-shark-gulf': ('105847', 'eaea291a-1e1d-4382-b86f-ac3cc15b8d5a', (-92,17,-84,26), '2014-01-01','2024-12-31'),
+            'swordfish-west-med': ('127094', 'da5982a8-e9a1-46af-ab1b-8293edb79c5d', (-6,35,14,44), '2014-01-01','2024-12-31'),
+            'humpback-gulf-maine': ('137092', 'c7d259da-370a-4504-9445-29de96d9223a', (-72,39,-59,48), '2022-01-01','2022-12-31'),
+            'bottlenose-west-med': ('137111', 'd5847ecb-6f9b-4599-888a-461cb26f8018', (-2,37,12,44), '2014-01-01','2018-12-31'),
+            'green-turtle-caribbean': ('137206', 'eaea291a-1e1d-4382-b86f-ac3cc15b8d5a', (-86,16,-74,27), '2014-01-01','2024-12-31'),
+          }
+          for slug,(taxon,dataset,bounds,start,end) in studies.items():
+            manifest=stage_obis_occurrences(SourcePlan(taxon,bounds,start,end,10000,dataset_id=dataset), Path(f'output/{slug}.jsonl'), Path(f'output/{slug}.manifest.json'))
+            print(slug, manifest['counts'])
+            if not manifest['counts']['written'] or manifest['truncated_by_cap']:
+              raise SystemExit(f'{slug}: incomplete extract')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: scoped-obis-extracts
+          path: output/
+          retention-days: 7
