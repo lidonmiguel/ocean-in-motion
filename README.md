@@ -24,12 +24,15 @@ npm run dev
 
 Open the local URL printed by Vite, normally `http://localhost:5173`.
 Choose one of three species to see **Actual** and **2050** habitat cells together,
-with a dense animated field connecting matching synthetic cells. Each strand
-runs from current to 2050; different regions can shift in different directions.
+with animated strokes connecting matching synthetic cells. Each stroke grows
+from current to 2050, its tail follows, and it disappears on arrival. There are
+no permanent route lines or moving point markers. Different regions can shift
+in different directions.
 The map frames
 the selected species automatically; drag/zoom to explore farther and
 hover a colored cell for its illustrative suitability and uncertainty. The
-layout adapts to narrower screens. Reduced-motion settings show static lines.
+layout adapts to narrower screens. Reduced-motion settings show the cells and
+endpoints without animated strokes.
 
 ```bash
 npm run lint
