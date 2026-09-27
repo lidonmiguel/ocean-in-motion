@@ -14,8 +14,8 @@ export type SpeciesMetadata = Pick<SpeciesDataset, 'schemaVersion' | 'id' | 'sci
 
 export type ObservationBounds = [west: number, south: number, east: number, north: number];
 
-// A square in approximate ground distance, centered on the extrema of reported
-// positions. It describes survey coverage, not habitat or coordinate precision.
+// A square in approximate ground distance enclosing reported positions. Its
+// display center can shift to water; it is not a habitat or precision estimate.
 export function enclosingObservationBox(records: ObservationSnapshot['observations'], marginKm = 20) {
   if (!records.length || !Number.isFinite(marginKm) || marginKm < 0) throw new Error('A nonempty regional extract and a valid margin are required');
   const ids = new Set<string>();
