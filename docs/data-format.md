@@ -1,7 +1,7 @@
 # Species dataset contract (v1)
 
 Each species is one JSON document in `src/data/species/`, parsed at startup by
-`src/data/schema.ts`. The three bundled examples are deliberately synthetic.
+`src/data/schema.ts`. The seven bundled examples are deliberately synthetic.
 This contract prepares the UI for reviewed model outputs; passing validation
 checks structure and provenance labels, **not** scientific validity.
 
@@ -9,6 +9,7 @@ checks structure and provenance labels, **not** scientific validity.
 | --- | --- |
 | `schemaVersion` | Literal `1`. Change it when the format changes incompatibly. |
 | `id`, `scientificName`, `commonNameEs` | Stable slug, taxonomic name and Spanish display name. |
+| `group` | Optional display category: `fish`, `cetacean` or `reptile`. Omission retains compatibility with older datasets; they appear under “Otras especies”. It does not change the biological model. |
 | `summaryEs`, `ecologyEs` | Spanish explanatory copy. |
 | `provenance` | `synthetic-demo` or `reviewed-model`. |
 | `reviewStatus` | `illustrative` for demo; `approved` for externally reviewed output. This is a declaration, not a review mechanism. |
