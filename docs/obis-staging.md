@@ -1,7 +1,7 @@
 # Bounded OBIS occurrence staging
 
-This first Python milestone writes raw OBIS occurrence rows as JSON Lines and
-a JSON manifest. It never updates the three synthetic map fixtures. Supply a
+The Python source stage writes raw OBIS occurrence rows as JSON Lines and
+a JSON manifest. It does not update the published map automatically. Supply a
 resolved **WoRMS AphiaID**, a non-wrapping WGS84 box (west south east north),
 an inclusive baseline date window, and a raw-record cap. For example, replace
 every bracketed value with a chosen study scope:
@@ -21,7 +21,7 @@ Run from the repository root, or first install
 `python -m pip install -e ./python` and omit `PYTHONPATH=python`.
 Both output paths are configurable,
 must differ, and must not exist. No taxon, area or baseline is selected by
-the generic command. The loggerhead pilot uses a documented single dataset;
+the generic command. The seven displayed layers use documented datasets;
 see the README. If the box crosses the antimeridian, choose separate bounded
 runs. The hard cap is 10,000 raw API records; pages request at most 200.
 The cap applies before quality control and the manifest says when a reported
@@ -32,7 +32,10 @@ sample.
 The request uses the OBIS [v3 occurrence API](https://api.obis.org/)
 parameters documented by the OBIS project's
 [Python client](https://iobis.github.io/pyobis/occurrences.html):
-`taxonid`, optional `datasetid`, WKT `geometry`, `startdate`, `enddate`, `size` and `offset`.
+`taxonid`, optional `datasetid`, WKT `geometry`, `startdate`, `enddate`, `size` and `after`.
+In live queries on 2026-09-27, OBIS repeated the first page when given
+`offset` for extracts larger than 200 rows. Staging now advances with the last
+occurrence `id`, validates the reported total and rejects repeated pages.
 OBIS's [data access guidance](https://portal.obis.org/data/access/) recommends
 the API for smaller subsets and points large analyses to bulk data.
 The [OBIS manual](https://manual.obis.org/access) describes its occurrence
@@ -58,6 +61,12 @@ coordinate rejects, rows after coordinates, identifier duplicates, rows
 without usable identifiers, and written rows. All pages must succeed before
 files are written; HTTP or malformed responses fail the run. Existing outputs
 are not overwritten.
+
+`python/ocean_pipeline/publish_species.py` additionally checks the exact
+species, dataset, dates, marine presence, flags and uncertainty for the six
+new snapshots. It retains `NO_DEPTH`, excludes `ON_LAND` and stated location
+uncertainty above 300 km, and reports these exclusions. Missing uncertainty
+remains unknown. Source rights are reviewed on each OBIS dataset metadata page.
 
 These checks cannot verify a taxonomic identification, event date precision,
 georeferencing uncertainty, depth, effort, independence of observations,

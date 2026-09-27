@@ -1,0 +1,58 @@
+[
+  {
+    "schemaVersion": 1,
+    "id": "atlantic-bluefin-tuna",
+    "scientificName": "Thunnus thynnus",
+    "commonNameEs": "Atún rojo del Atlántico",
+    "group": "fish",
+    "summaryEs": "Una especie pelágica que recorre grandes distancias en el Atlántico y el Mediterráneo."
+  },
+  {
+    "schemaVersion": 1,
+    "id": "whale-shark",
+    "scientificName": "Rhincodon typus",
+    "commonNameEs": "Tiburón ballena",
+    "group": "fish",
+    "summaryEs": "Un gran pez filtrador asociado a mares cálidos y regiones de alta productividad."
+  },
+  {
+    "schemaVersion": 1,
+    "id": "swordfish",
+    "scientificName": "Xiphias gladius",
+    "commonNameEs": "Pez espada",
+    "group": "fish",
+    "summaryEs": "Un pez pelágico de aguas templadas y tropicales."
+  },
+  {
+    "schemaVersion": 1,
+    "id": "humpback-whale",
+    "scientificName": "Megaptera novaeangliae",
+    "commonNameEs": "Ballena jorobada",
+    "group": "cetacean",
+    "summaryEs": "Un cetáceo que realiza desplazamientos de gran escala entre zonas de alimentación y reproducción."
+  },
+  {
+    "schemaVersion": 1,
+    "id": "bottlenose-dolphin",
+    "scientificName": "Tursiops truncatus",
+    "commonNameEs": "Delfín mular",
+    "group": "cetacean",
+    "summaryEs": "Un delfín presente tanto en ambientes costeros como en aguas oceánicas."
+  },
+  {
+    "schemaVersion": 1,
+    "id": "green-sea-turtle",
+    "scientificName": "Chelonia mydas",
+    "commonNameEs": "Tortuga verde",
+    "group": "reptile",
+    "summaryEs": "Una tortuga marina presente en aguas tropicales y subtropicales de varios océanos."
+  },
+  {
+    "schemaVersion": 1,
+    "id": "loggerhead-turtle",
+    "scientificName": "Caretta caretta",
+    "commonNameEs": "Tortuga boba",
+    "group": "reptile",
+    "summaryEs": "Una tortuga marina que utiliza zonas costeras y oceánicas a lo largo de su vida."
+  }
+]

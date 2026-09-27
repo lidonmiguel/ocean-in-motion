@@ -1,13 +1,31 @@
 import { describe, expect, it } from 'vitest';
 import pilot from './observations/loggerhead-west-med.json';
-import loggerhead from './species/loggerhead-turtle.json';
+import metadata from './speciesMetadata.json';
+import tuna from './observations/tuna-west-med.json';
+import whaleShark from './observations/whale-shark-gulf.json';
+import swordfish from './observations/swordfish-west-med.json';
+import humpback from './observations/humpback-gulf-maine.json';
+import bottlenose from './observations/bottlenose-west-med.json';
+import greenTurtle from './observations/green-turtle-caribbean.json';
 import { species } from './index';
 import { buildObservationScenario, enclosingObservationBox } from './observationScenario';
 import { displayStreamlines } from './flowData';
 import { waterSegment } from './oceanRoutes';
-import { parseSpeciesDataset } from './schema';
 
 describe('one observation box per scoped source', () => {
+  it('keeps all accepted positions inside their one displayed source square', () => {
+    const snapshots = [tuna, whaleShark, swordfish, humpback, bottlenose, greenTurtle, pilot];
+    for (const [index, scenario] of species.entries()) {
+      const snapshot = snapshots[index];
+      const box = scenario.habitat.current[0];
+      expect(scenario.habitat.current, scenario.id).toHaveLength(1);
+      expect(scenario.occurrence?.count).toBe(snapshot.observations.length);
+      for (const record of snapshot.observations) {
+        expect(Math.abs(record.longitude - box.center[0]), scenario.id).toBeLessThan(box.widthDeg / 2);
+        expect(Math.abs(record.latitude - box.center[1]), scenario.id).toBeLessThan(box.heightDeg / 2);
+      }
+    }
+  });
   it('encloses every original OBIS position in a single square near the ferry route', () => {
     const box = enclosingObservationBox(pilot.observations);
     expect(box.observedBoundsWgs84).toEqual([2.41215, 41.110438, 11.422413, 41.99854]);
@@ -39,7 +57,7 @@ describe('one observation box per scoped source', () => {
       ...pilot, source: { ...pilot.source, datasetId: 'second-region', url: 'https://obis.org/dataset/second-region' },
       observations: pilot.observations.map(row => ({ ...row, id: `other-${row.id}`, longitude: row.longitude + 1 }))
     };
-    const scenario = buildObservationScenario(parseSpeciesDataset(loggerhead), [pilot, second], [0, -2]);
+    const scenario = buildObservationScenario(metadata.find(item => item.id === 'loggerhead-turtle')! as Parameters<typeof buildObservationScenario>[0], [pilot, second], [0, -2]);
     expect(scenario.occurrence?.count).toBe(234);
     expect(scenario.habitat.current).toHaveLength(2);
     expect(scenario.habitat.future).toHaveLength(2);

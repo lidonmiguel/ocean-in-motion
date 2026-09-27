@@ -1,22 +1,19 @@
 import { describe, expect, it } from 'vitest';
-import tuna from './species/tuna.json';
-import turtle from './species/turtle.json';
 import { species } from './index';
 import { displayFlows, displayStreamlines, flowSection, pointOnFlow, visibleFlowWindow } from './flowData';
 import { waterSegment } from './oceanRoutes';
-import { parseSpeciesDataset } from './schema';
 
 describe('illustrative distribution flows', () => {
-  it('connects matching fixture cell centers from current to 2050', () => {
-    const dataset = parseSpeciesDataset(tuna);
+  it('connects the observed center to its labeled visual destination', () => {
+    const dataset = species[0];
     const flows = displayFlows(dataset);
-    expect(flows).toHaveLength(6);
+    expect(flows).toHaveLength(1);
     expect(flows[0].from).toEqual(dataset.habitat.current[0].center);
     expect(pointOnFlow(flows[0], 1)).toEqual(dataset.habitat.future[0].center);
   });
 
   it('takes the short path across the antimeridian', () => {
-    const dataset = parseSpeciesDataset(tuna);
+    const dataset = structuredClone(species[0]);
     dataset.habitat.current[0].center = [179, 20];
     dataset.habitat.future[0].center = [-179, 24];
     const path = displayFlows(dataset)[0].path;
@@ -26,10 +23,9 @@ describe('illustrative distribution flows', () => {
   });
 
   it('keeps all strands on their matching cell pair and in the same direction', () => {
-    for (const fixture of species.filter(item => item.provenance === 'synthetic-demo')) {
-      const dataset = parseSpeciesDataset(fixture);
+    for (const dataset of species) {
       const strands = displayStreamlines(dataset);
-      expect(strands.length).toBeGreaterThan(60);
+      expect(strands.length, dataset.id).toBeGreaterThan(0);
       for (const strand of strands) {
         const cellId = strand.id.split('-')[0];
         const current = dataset.habitat.current.find(cell => cell.id === cellId)!;
@@ -50,7 +46,7 @@ describe('illustrative distribution flows', () => {
   });
 
   it('uses only explicit vectors for reviewed data', () => {
-    const dataset = parseSpeciesDataset(tuna);
+    const dataset = structuredClone(species[0]);
     dataset.provenance = 'reviewed-model';
     dataset.movementVectors = [];
     expect(displayStreamlines(dataset)).toEqual([]);
@@ -60,15 +56,8 @@ describe('illustrative distribution flows', () => {
     expect(displayStreamlines(dataset)).toEqual([]);
   });
 
-  it('detours a synthetic coastal strand rather than crossing land directly', () => {
-    const strands = displayStreamlines(parseSpeciesDataset(turtle));
-    const detours = strands.filter(strand => !waterSegment(strand.from, strand.to));
-    expect(detours.length).toBeGreaterThan(0);
-    expect(detours.every(strand => strand.path.length > 2)).toBe(true);
-  });
-
   it('grows from the source and lets the tail reach the destination', () => {
-    const flow = displayFlows(parseSpeciesDataset(tuna))[0];
+    const flow = displayFlows(species[0])[0];
     expect(visibleFlowWindow(0)).toEqual([0, 0]);
     expect(visibleFlowWindow(0.5)).toEqual([0, 0.5]);
     const [start, end] = visibleFlowWindow(0.81);
