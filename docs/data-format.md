@@ -1,16 +1,16 @@
 # Species dataset contract (v1)
 
-The archived real loggerhead observations use a separate, provenance-linked snapshot
+The real loggerhead observations use a separate, provenance-linked snapshot
 (`src/data/observations/loggerhead-west-med.json`) generated from the raw OBIS
-extract and manifest in `data/obis/`. They are not drawn in the current map.
-The displayed loggerhead zones instead use the published model image and
-manifest in `src/data/model/`, generated from the versioned `data/model/`
-source. See the README for methods and limits. The archived records are presence records, not habitat
-cells, suitability scores, future projections or movement vectors. See the
-README for source attribution, license, spatial uncertainty and sampling scope.
+extract and manifest in `data/obis/`. `src/data/observationScenario.ts`
+computes one enclosing geographic box from every position in that scoped
+snapshot. Its second box is an explicit visual translation, not a scientific
+projection. The records are presences, not habitat cells or movement vectors.
+See the README for source attribution, uncertainty and sampling scope.
 
-Each species is one JSON document in `src/data/species/`, parsed at startup by
-`src/data/schema.ts`. The seven bundled examples are deliberately synthetic.
+Each species has a metadata fixture in `src/data/species/`, parsed at startup by
+`src/data/schema.ts`. Six displayed views are wholly synthetic; the loggerhead
+view derives its current box from OBIS.
 This contract prepares the UI for reviewed model outputs; passing validation
 checks structure and provenance labels, **not** scientific validity.
 
@@ -20,10 +20,11 @@ checks structure and provenance labels, **not** scientific validity.
 | `id`, `scientificName`, `commonNameEs` | Stable slug, taxonomic name and Spanish display name. |
 | `group` | Optional display category: `fish`, `cetacean` or `reptile`. Omission retains compatibility with older datasets; they appear under “Otras especies”. It does not change the biological model. |
 | `summaryEs`, `ecologyEs` | Spanish explanatory copy. |
-| `provenance` | `synthetic-demo` or `reviewed-model`. |
+| `provenance` | `synthetic-demo`, `observation-demo` or `reviewed-model`. The middle value means a real observation-derived current box with an illustrative future box. |
 | `reviewStatus` | `illustrative` for demo; `approved` for externally reviewed output. This is a declaration, not a review mechanism. |
-| `scenario` | Currently `SSP2-4.5` only. |
-| `periods` | `{ "current": "<reference period>", "future": "2050" }`. Use an exact observed/baseline period for real models. |
+| `scenario` | `SSP2-4.5` in synthetic fixtures, or `illustrative` for the observation demo. Neither tag validates a forecast. |
+| `periods` | `{ "current": "<reference period>", "future": "<future label>" }`. The observation demo labels the destination “Simulación visual”. |
+| `occurrence` | Present only for `observation-demo`: record count, source citations and exact coordinate extrema per dataset, declared uncertainty range and illustrative offset. |
 | `citations[]` | `{ id, title, url, role }`, where role is `demonstration`, `occurrence`, `environment`, `method` or `model`. URL may be null only for synthetic data. Reviewed output must link occurrence, environment and model citations. Record dataset versions, access dates and licenses in the cited documentation or a future metadata revision. |
 | `habitat.current[]`, `habitat.future[]` | Nonempty arrays of grid cells; IDs unique within a period. See below. |
 | `movementVectors[]` | Optional `{ from: [lon, lat], to: [lon, lat], labelEs }`. A summarised direction of distribution change, never an individual animal path. Omit if the analysis does not support a defensible direction. |
@@ -35,14 +36,14 @@ Grid cell fields:
 | `id` | Stable cell ID within a period. |
 | `center` | `[longitude, latitude]` in WGS84 decimal degrees; valid ranges −180–180 and −85–85. |
 | `widthDeg`, `heightDeg` | Positive angular width and height, at most 20°. Rendering splits cells that cross the antimeridian. A real grid should document actual resolution and grid geometry. |
-| `suitability` | Normalized 0–1 relative habitat suitability index. It is **not** a probability of animal presence, abundance, or a migration route. |
-| `uncertainty` | Normalized 0–1 uncertainty indicator, higher meaning more uncertain. The demo numbers are invented. Before real data, define the metric, calibration, aggregation and uncertainty decomposition; consider replacing this with intervals or ensemble summaries in a future schema version. |
+| `suitability` | Normalized 0–1 relative habitat suitability index, required in fixtures/models and absent from observation boxes. It is **not** a probability of animal presence, abundance, or a migration route. |
+| `uncertainty` | Normalized 0–1 indicator, required in fixtures/models and absent from observation boxes. The demo numbers are invented. The observation metadata records the source's coordinate uncertainty separately. |
 
-The web map paints suitability bands at `<0.35`, `0.35–<0.7`, and `≥0.7`.
-Cell selection reveals exact suitability and uncertainty values. These cutoffs
-are presentation choices for the fixture, not ecological thresholds.
+The web map paints suitability bands at `<0.35`, `0.35–<0.7`, and `≥0.7` for
+synthetic fixtures. Observation boxes use distinct turquoise and pink colors
+and report the record count instead of inventing suitability values.
 
-The synthetic demo draws multiple curved strands from each current cell to
+The synthetic and observation demo draw multiple curved strands from each current cell to
 its future cell with the same ID. Their endpoints stay inside the hand-authored
 cells, and each strand follows its pair's direction of displacement. Different
 pairs can have different directions. The strands grow from the current cell,

@@ -1,19 +1,16 @@
 # Océano en Movimiento
 
-An experimental marine map with a published loggerhead model layer and seven
-illustrative habitat views. The interface is in Spanish; this technical
+An experimental marine map with one observation-derived loggerhead view and six
+fully synthetic habitat views. The interface is in Spanish; this technical
 documentation and the code are in English.
 
-**The initial tortuga boba view restores the animated illustrative flow.**
-Its **Ver modelo científico** control opens separate modeled relative abundance
-zones across the Mediterranean from a published 2003–2018 survey-based model.
-The source model was reprojected by EMODnet Biology; the colors compare its
-values and do not establish precise habitat boundaries or predict 2050.
-All seven illustrative flow views use hand-authored synthetic fixtures. They are not OBIS records,
-Bio-ORACLE layers, scientific forecasts, real animal positions or validated
-species distribution models. The animated streamlines between matching synthetic
-habitat cells are a graphic illustration, not GPS routes, modeled corridors
-or inferred animal migrations. Their density and curvature encode no science.
+**The initial tortuga boba view calculates one geographic box from all 117
+documented OBIS sightings** on the Barcelona–Civitavecchia ferry route. The
+pink destination is an explicitly marked illustrative translation, not an
+inference from these sightings or a 2050 forecast. The animated strands only
+demonstrate how a future modeled box could be displayed. The other six species
+use wholly synthetic fixtures. None of these flows are GPS tracks, inferred
+migrations or validated predictions.
 
 ## Run locally
 
@@ -27,10 +24,8 @@ npm run dev
 ```
 
 Open the local URL printed by Vite, normally `http://localhost:5173`.
-The page opens on the loggerhead's illustrative flow. Choose **Ver modelo
-científico** to see its separate survey-based zones: subdued blue means lower
-and brighter cyan means higher relative modeled values; uncolored water has no
-model estimate. Choose another species to see **Actual** and **2050** habitat cells together,
+The page opens on the loggerhead's single observation box and a visibly labeled
+simulated destination. Choose another species to see **Actual** and **2050** habitat cells together,
 with animated strokes connecting matching synthetic cells. Each stroke grows
 from current to 2050, its tail follows, and it disappears on arrival. There are
 no permanent route lines or moving point markers. Different regions can shift
@@ -46,7 +41,7 @@ the selected species automatically; drag/zoom to explore farther and
 hover a colored cell for its illustrative suitability and uncertainty. The
 layout adapts to narrower screens. Reduced-motion settings show the cells and
 endpoints without animated strokes. Browsers without WebGL2 use a simplified
-SVG flow animation and model image.
+SVG flow animation.
 
 ```bash
 npm run lint
@@ -70,8 +65,8 @@ GitHub Actions runs the web checks and Python tests on pushes and pull requests.
 
 ## Publish the map with GitHub Pages
 
-The web app is static. Its loggerhead model image and metadata are bundled with
-the build; the remaining species are illustrative. GitHub Actions builds it with
+The web app is static. Its checked OBIS observation snapshot is bundled with
+the build; the future display is illustrative. GitHub Actions builds it with
 Node.js 24 and publishes `dist`; no local Node installation is needed to
 visit the published map.
 
@@ -95,11 +90,10 @@ scientific results.
 | Path | Purpose |
 | --- | --- |
 | `src/App.tsx`, `src/styles.css` | Spanish responsive controls, legend, species information and prominent demo warnings. |
-| `src/MapView.tsx`, `src/data/flowData.ts` | MapLibre world view with bundled Natural Earth land geometry (`world-atlas`), model overlay, synthetic cells and illustrative flow animation. |
-| `src/data/species/*.json` | Seven synthetic species fixtures, each with current and 2050 cells. |
-| `src/data/model/*` | Published loggerhead model rendered as a transparent geographic PNG, with provenance and display metadata. |
-| `data/model/*.nc.gz`, `python/ocean_pipeline/render_density.py` | Reviewed, compressed EMODnet model snapshot and reproducible overlay conversion. |
-| `src/data/observations/loggerhead-west-med.json` | Archived snapshot of 117 real sightings, no longer drawn as points. |
+| `src/MapView.tsx`, `src/data/flowData.ts` | MapLibre world view with bundled Natural Earth land geometry (`world-atlas`), boxes and illustrative water-only flow animation. |
+| `src/data/species/*.json` | Seven original synthetic species fixtures; the loggerhead fixture supplies only descriptive species metadata to the displayed view. |
+| `src/data/observationScenario.ts` | Generic one-box-per-scoped-extract computation with an explicitly illustrative destination. |
+| `src/data/observations/loggerhead-west-med.json` | Checked snapshot of 117 real sightings used to calculate the visible box. |
 | `data/obis/*` | Losslessly compressed bounded OBIS JSONL extract and QC manifest with query URLs and checksum. |
 | `python/ocean_pipeline/publish_pilot.py` | Strict, reproducible conversion of the extract to the display snapshot. |
 | `src/data/schema.ts`, `src/data/mapData.ts` | Runtime validation, typed data, period selection, color bands and antimeridian cell splitting. |
@@ -115,7 +109,7 @@ and the application does not embed that image.
 
 ## Data provenance and integration points
 
-The fixture files were invented by hand for interface testing. Their values,
+The six other fixture files were invented by hand for interface testing. Their values,
 uncertainties and arrows have no empirical source. Their `citations` entries
 say so explicitly; species names and short explanatory text are context, not
 evidence for the displayed cells. The animated lines connect matching invented
@@ -123,43 +117,9 @@ cells to illustrate a visual change; they do not describe movements of
 individual animals or establish corridors. Reviewed datasets retain only their
 explicitly supplied direction vectors. See [the data contract](docs/data-format.md).
 
-### Displayed model: loggerhead turtle
+### Displayed observation box: loggerhead turtle
 
-The default map displays the annual mean loggerhead abundance model by
-[Sparks and DiMatteo (2020)](https://seamap.env.duke.edu/models/NUWC/Med/),
-based on aerial and shipboard surveys during 2003–2018, via the
-[EMODnet Biology reprojected product](https://erddap.emodnet.eu/erddap/info/biology_8514_94a0_0784_7406/index.html).
-See also [DiMatteo et al. (2022)](https://doi.org/10.3389/fmars.2022.930412).
-The source metadata permits public distribution and warns that spatial and
-value differences introduced by reprojection have not been formally assessed.
-Its `abundance` variable declares no units, so the map deliberately uses a
-**relative color scale**, not animals per square kilometer. The source model
-extrapolates in unsurveyed areas and does not estimate all nearshore waters;
-blank water means no estimate, not absence. This is a historical modeled
-distribution, not a movement route or a 2050 forecast.
-
-The 10 km EPSG:3035 source grid is sampled into a 1200 × 560 WGS84 PNG;
-positive cells use a logarithmic blue–teal–yellow gradient with the source
-10th and 90th percentiles as display endpoints. The source SHA256, bounds,
-quantiles, method and attribution are in
-[`src/data/model/loggerhead-mediterranean.json`](src/data/model/loggerhead-mediterranean.json).
-To regenerate from the checked-in compressed source:
-
-```bash
-python -m pip install netCDF4 numpy pillow pyproj
-PYTHONPATH=python python -m ocean_pipeline.render_density \
-  --source data/model/loggerhead-emodnet-2003-2018.nc.gz \
-  --image src/data/model/loggerhead-mediterranean.png \
-  --manifest src/data/model/loggerhead-mediterranean.json
-```
-
-The manual **Refresh Mediterranean turtle density snapshot** workflow can
-fetch the original product for review. New upstream files require a checksum,
-rights and scientific interpretation review before changing this versioned map.
-
-### Archived observation pilot: loggerhead turtle
-
-The archived extract uses **Caretta caretta** (WoRMS AphiaID 137205) from one
+The displayed extract uses **Caretta caretta** (WoRMS AphiaID 137205) from one
 [OBIS dataset](https://obis.org/dataset/b9bfb219-1d5c-450e-9b26-fd377aee8561),
 surveyed on a regular ferry transect between Barcelona and Civitavecchia.
 Arcangeli, A.; Campana, I.; Paraboschi, M.; ISPRA (2018), *Presence of sea turtles
@@ -167,8 +127,7 @@ collected through Fixed-Line-Transect monitoring across the Western Mediterranea
 Sea (Civitavecchia-Barcelona route) between 2013 and 2017*,
 [doi:10.14284/532](https://doi.org/10.14284/532). The provider's OBIS dataset
 page states **CC BY 4.0**; the occurrence API rows themselves have no `license`
-field. These points are retained for audit, but are not the source of the
-displayed model zones or currently shown in the app.
+field. The app derives its one current box directly from these points.
 
 The extract was fetched on 2026-09-27 with the dataset UUID, taxon, WGS84
 box (1, 39, 14, 44), and dates 2013-01-01 to 2017-12-31. The API returned
@@ -180,6 +139,25 @@ on **every record: approximately 59–257 km**. Points are approximate reported
 locations, not precise GPS fixes. Since sampling follows one ferry route,
 unobserved waters cannot be interpreted as absent habitat. The count is a
 snapshot of this dataset, not turtle abundance or an ocean-wide trend.
+
+`src/data/observationScenario.ts` computes the extrema of all reported
+coordinates in each scoped dataset, then constructs one enclosing square in
+approximate ground distance, with a 20 km display margin. For this source the
+observed extrema are 2.41215–11.422413° E and 41.110438–41.99854° N.
+The square encloses every point but also includes places never surveyed; it
+is a visual summary of locations, **not** a habitat boundary. Its size does
+not account for each record's coordinate uncertainty.
+
+The pink box is a **demonstration only**, translated two degrees south. That
+offset is an explicit display setting, not a trend, extrapolation, Bio-ORACLE
+projection or prediction of 2050. The animated strands connect corresponding
+positions over water to exercise the existing visual renderer. A future
+validated model must supply future boxes and provenance before this view can
+be described as a forecast. To add another regional occurrence snapshot,
+register it in `src/data/index.ts`; the same calculator creates one box for
+that source regardless of its point count. For another species, add its
+descriptive species fixture and register its scoped snapshot. Broad extracts
+must be split into justified regional datasets rather than making a giant box.
 
 To refresh the source, run **Refresh OBIS pilot snapshot** in GitHub Actions,
 inspect the downloaded extract and manifest, recheck the dataset's citation
@@ -206,8 +184,8 @@ shifts, suitability scores or animated strokes.
   [Bio-ORACLE documentation](https://www.bio-oracle.org/documentation.php).
 
 The bundled OBIS snapshot is static; only an explicit staging run fetches new
-data. The model zones come from the separate published product above. Neither
-the sightings nor the synthetic views constitute a forecast.
+data. The displayed future box and all other species flows are illustrative,
+not forecasts.
 
 ## Planned scientific workflow
 

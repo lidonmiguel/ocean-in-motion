@@ -27,7 +27,7 @@ function curvedPath(from: Position, to: Position, index: number): Position[] {
 }
 
 export function displayFlows(dataset: SpeciesDataset): DisplayFlow[] {
-  const pairs = dataset.provenance === 'synthetic-demo'
+  const pairs = dataset.provenance !== 'reviewed-model'
     ? dataset.habitat.current.flatMap(cell => {
       const future = dataset.habitat.future.find(candidate => candidate.id === cell.id);
       return future ? [{ id: cell.id, from: cell.center, to: future.center }] : [];
@@ -44,7 +44,7 @@ export function displayFlows(dataset: SpeciesDataset): DisplayFlow[] {
 // connected only to the future cell with the same ID. These strands are not
 // inferred migration routes or model output.
 export function displayStreamlines(dataset: SpeciesDataset): DisplayFlow[] {
-  if (dataset.provenance !== 'synthetic-demo') {
+  if (dataset.provenance === 'reviewed-model') {
     return displayFlows(dataset).flatMap((flow, index) => {
       const path = oceanRoute(flow.from, flow.to);
       return path ? [{ ...flow, path: curveOceanRoute(path, index) }] : [];

@@ -4,13 +4,13 @@ import { species } from './index';
 import { parseSpeciesDataset } from './schema';
 
 describe('species dataset contract', () => {
-  it('accepts all seven synthetic fixtures with explicit provenance and a display group', () => {
+  it('keeps the six synthetic fixtures distinct from the observation-derived turtle', () => {
     expect(species).toHaveLength(7);
     expect(new Set(species.map(item => item.id)).size).toBe(7);
     expect(species.filter(item => item.group === 'fish')).toHaveLength(3);
     expect(species.filter(item => item.group === 'cetacean')).toHaveLength(2);
     expect(species.filter(item => item.group === 'reptile')).toHaveLength(2);
-    for (const raw of species) {
+    for (const raw of species.filter(item => item.provenance === 'synthetic-demo')) {
       const data = parseSpeciesDataset(raw);
       expect(data.provenance).toBe('synthetic-demo');
       expect(['fish', 'cetacean', 'reptile']).toContain(data.group);
@@ -20,6 +20,12 @@ describe('species dataset contract', () => {
       expect(data.habitat.future.length).toBeGreaterThan(0);
       expect(data.habitat.current.map(cell => cell.id)).toEqual(data.habitat.future.map(cell => cell.id));
     }
+    const loggerhead = species.find(item => item.id === 'loggerhead-turtle')!;
+    expect(loggerhead.provenance).toBe('observation-demo');
+    expect(loggerhead.occurrence?.count).toBe(117);
+    expect(loggerhead.habitat.current).toHaveLength(1);
+    expect(loggerhead.habitat.current[0].suitability).toBeUndefined();
+    expect(loggerhead.scenario).toBe('illustrative');
   });
 
   it('rejects invalid suitability and geographic coordinates', () => {

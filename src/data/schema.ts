@@ -7,8 +7,8 @@ const cell = z.object({
   center: position,
   widthDeg: z.number().positive().max(20),
   heightDeg: z.number().positive().max(20),
-  suitability: z.number().min(0).max(1),
-  uncertainty: z.number().min(0).max(1)
+  suitability: z.number().min(0).max(1).optional(),
+  uncertainty: z.number().min(0).max(1).optional()
 }).strict();
 
 export const speciesDatasetSchema = z.object({
@@ -19,10 +19,23 @@ export const speciesDatasetSchema = z.object({
   group: z.enum(['fish', 'cetacean', 'reptile']).optional(),
   summaryEs: z.string().min(1),
   ecologyEs: z.string().min(1),
-  provenance: z.enum(['synthetic-demo', 'reviewed-model']),
+  provenance: z.enum(['synthetic-demo', 'observation-demo', 'reviewed-model']),
   reviewStatus: z.enum(['illustrative', 'approved']),
-  scenario: z.literal('SSP2-4.5'),
-  periods: z.object({ current: z.string().min(1), future: z.literal('2050') }).strict(),
+  scenario: z.enum(['SSP2-4.5', 'illustrative']),
+  periods: z.object({ current: z.string().min(1), future: z.string().min(1) }).strict(),
+  occurrence: z.object({
+    count: z.number().int().positive(),
+    sources: z.array(z.object({
+      datasetId: z.string().min(1),
+      sourceUrl: z.url(),
+      citation: z.string().min(1),
+      license: z.string().min(1),
+      count: z.number().int().positive(),
+      coordinateUncertaintyKmRange: z.tuple([z.number().nonnegative(), z.number().nonnegative()]),
+      observedBoundsWgs84: z.tuple([z.number(), z.number(), z.number(), z.number()])
+    }).strict()).min(1),
+    simulationOffsetDeg: position
+  }).strict().optional(),
   citations: z.array(z.object({
     id: z.string().min(1),
     title: z.string().min(1),
@@ -36,11 +49,23 @@ export const speciesDatasetSchema = z.object({
     labelEs: z.string().min(1)
   }).strict()).optional()
 }).strict().superRefine((dataset, ctx) => {
-  if ((dataset.provenance === 'synthetic-demo') !== (dataset.reviewStatus === 'illustrative')) {
-    ctx.addIssue({ code: 'custom', message: 'Demo data must be illustrative; reviewed models must be approved', path: ['reviewStatus'] });
+  if ((dataset.provenance === 'reviewed-model') !== (dataset.reviewStatus === 'approved')) {
+    ctx.addIssue({ code: 'custom', message: 'Only reviewed models can be approved', path: ['reviewStatus'] });
   }
   if (dataset.provenance === 'synthetic-demo' && dataset.citations.some(c => c.role !== 'demonstration')) {
     ctx.addIssue({ code: 'custom', message: 'Synthetic data cannot cite observations as its source', path: ['citations'] });
+  }
+  if (dataset.provenance === 'observation-demo') {
+    if (!dataset.occurrence || dataset.scenario !== 'illustrative'
+        || !dataset.citations.some(c => c.role === 'occurrence' && c.url)
+        || [...dataset.habitat.current, ...dataset.habitat.future].some(c => c.suitability !== undefined || c.uncertainty !== undefined)
+        || dataset.occurrence.count !== dataset.occurrence.sources.reduce((sum, source) => sum + source.count, 0)
+        || dataset.habitat.current.length !== dataset.occurrence.sources.length
+        || dataset.habitat.future.length !== dataset.occurrence.sources.length) {
+      ctx.addIssue({ code: 'custom', message: 'Observation demos require occurrence metadata and cannot invent suitability', path: ['occurrence'] });
+    }
+  } else if (dataset.occurrence) {
+    ctx.addIssue({ code: 'custom', message: 'Occurrence metadata belongs to an observation demo', path: ['occurrence'] });
   }
   if (dataset.provenance === 'reviewed-model') {
     const roles = new Set(dataset.citations.map(c => c.role));
@@ -49,6 +74,9 @@ export const speciesDatasetSchema = z.object({
     }
   }
   for (const period of ['current', 'future'] as const) {
+    if (dataset.provenance !== 'observation-demo' && dataset.habitat[period].some(c => c.suitability === undefined || c.uncertainty === undefined)) {
+      ctx.addIssue({ code: 'custom', message: 'Habitat cells need suitability and uncertainty', path: ['habitat', period] });
+    }
     const ids = dataset.habitat[period].map(c => c.id);
     if (new Set(ids).size !== ids.length) {
       ctx.addIssue({ code: 'custom', message: `Duplicate cell IDs in ${period}`, path: ['habitat', period] });

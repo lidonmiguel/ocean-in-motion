@@ -1,7 +1,7 @@
 import type { HabitatCell, Period, SpeciesDataset } from './schema';
 
 type Position = [number, number];
-export type DisplayCell = { id: string; polygon: Position[]; suitability: number; uncertainty: number };
+export type DisplayCell = { id: string; polygon: Position[]; suitability?: number; uncertainty?: number };
 
 // Split cells at the antimeridian so a small cell never spans the whole map.
 export function cellPolygons(cell: HabitatCell): Position[][] {
