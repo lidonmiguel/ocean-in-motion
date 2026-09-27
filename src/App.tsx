@@ -32,14 +32,14 @@ export default function App() {
         </aside>
 
         <section className="map-panel" aria-label="Comparación de hábitat">
-          <div className="map-header"><div><div className="section-index">02 / VISUALIZAR</div><h2>El mapa de lo posible</h2></div><div className="coordinates">GLOBAL <span>●</span> 180° O — 180° E</div></div>
+          <div className="map-header"><div><div className="section-index">02 / VISUALIZAR</div><h2>Un océano en movimiento</h2></div><div className="coordinates">ACTUAL <span>→</span> 2050</div></div>
           <div className="map-stage">
             <MapView selected={selected} />
             <div className="flow-key" aria-label="Turquesa: hábitat actual; rosa: hábitat en 2050">
               <span><i className="flow-key-current" /> Actual</span>
               <b aria-hidden="true">→</b>
               <span><i className="flow-key-future" /> 2050</span>
-              <small>CAMBIO ILUSTRATIVO</small>
+              <small>TRAMA ILUSTRATIVA</small>
             </div>
           </div>
           <div className="map-bottom"><div className="legend"><span className="legend-title">IDONEIDAD DEL HÁBITAT · ÍNDICE ILUSTRATIVO</span><div className="legend-swatches"><i /><i /><i /></div><span className="legend-values">BAJA <b>→</b> ALTA</span></div><span className="map-hint">Arrastra para mover · desplázate para ampliar</span></div>
@@ -54,7 +54,7 @@ export default function App() {
           <p className="lead">{selected.summaryEs}</p>
           <p className="body-copy">{selected.ecologyEs}</p>
           <div className="metric-block"><div><span>PERIODOS</span><strong>Actual → 2050</strong></div><div><span>ESCENARIO</span><strong>SSP2-4.5</strong></div></div>
-          <div className="info-note"><span className="note-icon">↗</span><div><strong>Cómo leer este flujo</strong><p>Los contornos turquesa muestran las celdas actuales y los rosas las de 2050. Las líneas y luces unen centros de celdas inventadas para visualizar el cambio: no son trayectorias ni rutas GPS de animales.</p></div></div>
+          <div className="info-note"><span className="note-icon">↗</span><div><strong>Cómo leer este flujo</strong><p>Los contornos turquesa muestran el hábitat actual y los rosas el de 2050. La trama enlaza regiones cercanas de estos datos sintéticos para ilustrar el cambio. Su forma y densidad son una decisión gráfica: no son trayectorias animales ni corredores modelados.</p></div></div>
           <div className="status-label">● MODO ILUSTRATIVO · SIN VALIDACIÓN CIENTÍFICA</div>
         </aside>
       </main>
