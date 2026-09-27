@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import { MapView } from './MapView';
 import { species } from './data';
-import type { Period } from './data/schema';
 
 export default function App() {
   const [selectedId, setSelectedId] = useState(species[0].id);
-  const [period, setPeriod] = useState<Period>('current');
   const selected = species.find(item => item.id === selectedId) ?? species[0];
 
   return (
@@ -36,11 +34,12 @@ export default function App() {
         <section className="map-panel" aria-label="Comparación de hábitat">
           <div className="map-header"><div><div className="section-index">02 / VISUALIZAR</div><h2>El mapa de lo posible</h2></div><div className="coordinates">GLOBAL <span>●</span> 180° O — 180° E</div></div>
           <div className="map-stage">
-            <MapView selected={selected} period={period} />
-            <div className="period-control" role="group" aria-label="Comparar periodos">
-              <button type="button" className={period === 'current' ? 'selected' : ''} aria-pressed={period === 'current'} onClick={() => setPeriod('current')}><span>01</span> Actual</button>
-              <span className="period-divider" aria-hidden="true">→</span>
-              <button type="button" className={period === 'future' ? 'selected' : ''} aria-pressed={period === 'future'} onClick={() => setPeriod('future')}><span>02</span> 2050</button>
+            <MapView selected={selected} />
+            <div className="flow-key" aria-label="Turquesa: hábitat actual; rosa: hábitat en 2050">
+              <span><i className="flow-key-current" /> Actual</span>
+              <b aria-hidden="true">→</b>
+              <span><i className="flow-key-future" /> 2050</span>
+              <small>CAMBIO ILUSTRATIVO</small>
             </div>
           </div>
           <div className="map-bottom"><div className="legend"><span className="legend-title">IDONEIDAD DEL HÁBITAT · ÍNDICE ILUSTRATIVO</span><div className="legend-swatches"><i /><i /><i /></div><span className="legend-values">BAJA <b>→</b> ALTA</span></div><span className="map-hint">Arrastra para mover · desplázate para ampliar</span></div>
@@ -54,8 +53,8 @@ export default function App() {
           <div className="cyan-rule" />
           <p className="lead">{selected.summaryEs}</p>
           <p className="body-copy">{selected.ecologyEs}</p>
-          <div className="metric-block"><div><span>PERIODO</span><strong>{period === 'current' ? 'Actual' : '2050'}</strong></div><div><span>ESCENARIO</span><strong>SSP2-4.5</strong></div></div>
-          <div className="info-note"><span className="note-icon">↗</span><div><strong>Cómo leer este mapa</strong><p>Los recuadros muestran valores de idoneidad inventados (0–1). La línea magenta en 2050 indica solo una dirección ilustrativa de cambio en la distribución; no es una ruta GPS de animales.</p></div></div>
+          <div className="metric-block"><div><span>PERIODOS</span><strong>Actual → 2050</strong></div><div><span>ESCENARIO</span><strong>SSP2-4.5</strong></div></div>
+          <div className="info-note"><span className="note-icon">↗</span><div><strong>Cómo leer este flujo</strong><p>Los contornos turquesa muestran las celdas actuales y los rosas las de 2050. Las líneas y luces unen centros de celdas inventadas para visualizar el cambio: no son trayectorias ni rutas GPS de animales.</p></div></div>
           <div className="status-label">● MODO ILUSTRATIVO · SIN VALIDACIÓN CIENTÍFICA</div>
         </aside>
       </main>
