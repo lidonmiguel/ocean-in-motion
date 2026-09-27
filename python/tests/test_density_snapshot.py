@@ -5,8 +5,10 @@ import hashlib
 import json
 from pathlib import Path
 import struct
+import sys
 import unittest
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from ocean_pipeline.render_density import SOURCE_SHA256
 
 
