@@ -40,8 +40,9 @@ jobs:
                 print(f'{slug}: incomplete extract', flush=True)
             except Exception as error:
               print(slug, repr(error), flush=True)
-              page,_=_fetch_page(_page_url(plan,0,200))
-              print('diagnostic',slug,'total',page.get('total'),'page_size',len(page['results']),'sample_ids',[row.get('id') for row in page['results'][:3]], flush=True)
+              pages=[_fetch_page(_page_url(plan,offset,200))[0] for offset in (0,200,400,600)]
+              ids=[row.get('id') for page in pages for row in page['results']]
+              print('diagnostic',slug,'totals',[page.get('total') for page in pages],'sizes',[len(page['results']) for page in pages],'unique_ids',len(set(ids)),'rows',len(ids), flush=True)
           PY
       - uses: actions/upload-artifact@v4
         with:
