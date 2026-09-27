@@ -2,6 +2,13 @@ import { useState } from 'react';
 import { MapView } from './MapView';
 import { species } from './data';
 
+const groups = [
+  { id: 'fish', label: 'PECES' },
+  { id: 'cetacean', label: 'CETÁCEOS' },
+  { id: 'reptile', label: 'REPTILES' },
+  { id: 'other', label: 'OTRAS ESPECIES' }
+] as const;
+
 export default function App() {
   const [selectedId, setSelectedId] = useState(species[0].id);
   const selected = species.find(item => item.id === selectedId) ?? species[0];
@@ -24,9 +31,12 @@ export default function App() {
             {species.map(item => <option value={item.id} key={item.id}>{item.commonNameEs}</option>)}
           </select>
           <div className="species-list" aria-label="Especies disponibles">
-            {species.map((item, index) => <button key={item.id} type="button" className={`species-row ${selected.id === item.id ? 'active' : ''}`} aria-pressed={selected.id === item.id} onClick={() => setSelectedId(item.id)}>
-              <span className="species-number">0{index + 1}</span><span className="species-text"><strong>{item.commonNameEs}</strong><small>{item.scientificName}</small></span><span className="species-arrow" aria-hidden="true">↗</span>
-            </button>)}
+            {groups.filter(group => species.some(item => group.id === 'other' ? !item.group : item.group === group.id)).map(group => <div className="species-group" key={group.id}>
+              <div className="species-group-label">{group.label}</div>
+              {species.filter(item => group.id === 'other' ? !item.group : item.group === group.id).map(item => <button key={item.id} type="button" className={`species-row ${selected.id === item.id ? 'active' : ''}`} aria-pressed={selected.id === item.id} onClick={() => setSelectedId(item.id)}>
+                <span className="species-number">{String(species.indexOf(item) + 1).padStart(2, '0')}</span><span className="species-text"><strong>{item.commonNameEs}</strong><small>{item.scientificName}</small></span><span className="species-arrow" aria-hidden="true">↗</span>
+              </button>)}
+            </div>)}
           </div>
           <div className="sidebar-bottom"><span className="asterisk">✳</span><p><strong>Datos de demostración.</strong> Celdas inventadas. No son previsiones científicas ni trayectorias reales.</p></div>
         </aside>
@@ -58,7 +68,7 @@ export default function App() {
           <div className="status-label">● MODO ILUSTRATIVO · SIN VALIDACIÓN CIENTÍFICA</div>
         </aside>
       </main>
-      <footer className="site-footer"><span>OCÉANO EN MOVIMIENTO © PROTOTIPO</span><span>Datos sintéticos · Sin afirmaciones científicas</span><span>01 / 03</span></footer>
+      <footer className="site-footer"><span>OCÉANO EN MOVIMIENTO © PROTOTIPO</span><span>Datos sintéticos · Sin afirmaciones científicas</span><span>{String(species.findIndex(item => item.id === selected.id) + 1).padStart(2, '0')} / {String(species.length).padStart(2, '0')}</span></footer>
     </div>
   );
 }
