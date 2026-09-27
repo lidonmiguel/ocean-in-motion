@@ -5,7 +5,7 @@ import { GeoJsonLayer, PathLayer, PolygonLayer, ScatterplotLayer } from '@deck.g
 import { feature } from 'topojson-client';
 import world from 'world-atlas/land-110m.json';
 import { displayCells, suitabilityColor, type DisplayCell } from './data/mapData';
-import { displayFlows, displayStreamlines, pointOnFlow, type DisplayFlow } from './data/flowData';
+import { displayFlows, displayStreamlines, flowSection, visibleFlowWindow, type DisplayFlow } from './data/flowData';
 import type { SpeciesDataset } from './data/schema';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
@@ -30,22 +30,25 @@ const graticule = {
 
 type Hover = { x: number; y: number; cell: DisplayCell; period: 'Actual' | '2050' } | null;
 type Endpoint = { position: [number, number]; period: 'current' | 'future' };
-type Particle = { position: [number, number]; opacity: number; radius: number };
 type Segment = { path: [number, number][]; color: [number, number, number, number] };
+type Trail = { path: [number, number][] };
 
-function flowSegments(flows: DisplayFlow[]): Segment[] {
-  return flows.flatMap(flow => Array.from({ length: 6 }, (_, index) => {
+function flowSegments(flow: DisplayFlow, start: number, end: number): Segment[] {
+  return Array.from({ length: 6 }, (_, index) => {
+    const from = Math.max(start, index / 6);
+    const to = Math.min(end, (index + 1) / 6);
+    if (to <= from) return null;
     const blend = (index + 0.5) / 6;
     return {
-      path: flow.path.slice(index * 4, index * 4 + 5),
+      path: flowSection(flow, from, to),
       color: [
         Math.round(60 + 195 * blend),
         Math.round(237 - 130 * blend),
         Math.round(224 - 44 * blend),
-        176
+        230
       ] as [number, number, number, number]
     };
-  }));
+  }).filter((segment): segment is Segment => segment !== null);
 }
 
 export function MapView({ selected }: { selected: SpeciesDataset }) {
@@ -105,7 +108,6 @@ export function MapView({ selected }: { selected: SpeciesDataset }) {
     const futureCells = displayCells(selected, 'future');
     const flows = displayFlows(selected);
     const streamlines = displayStreamlines(selected);
-    const segments = flowSegments(streamlines);
     const endpoints: Endpoint[] = flows.flatMap(flow => [
       { position: flow.from, period: 'current' },
       { position: flow.to, period: 'future' }
@@ -165,26 +167,6 @@ export function MapView({ selected }: { selected: SpeciesDataset }) {
           pickable: true,
           onHover: info => setHover(info.object ? { x: info.x, y: info.y, cell: info.object, period: '2050' } : null)
         }),
-        new PathLayer({
-          id: 'flow-glow',
-          data: streamlines,
-          getPath: d => d.path,
-          getColor: [119, 222, 222, 28],
-          getWidth: 5,
-          widthUnits: 'pixels',
-          wrapLongitude: true,
-          pickable: false
-        }),
-        new PathLayer({
-          id: 'flow-lines',
-          data: segments,
-          getPath: d => d.path,
-          getColor: d => d.color,
-          getWidth: 1.25,
-          widthUnits: 'pixels',
-          wrapLongitude: true,
-          pickable: false
-        }),
         new ScatterplotLayer<Endpoint>({
           id: 'flow-endpoints',
           data: endpoints,
@@ -215,24 +197,34 @@ export function MapView({ selected }: { selected: SpeciesDataset }) {
         return;
       }
       lastFrame = time;
-      const particles: Particle[] = streamlines.flatMap((flow, index) => {
-        const progress = (time / 6200 + (index * 0.618034) % 1) % 1;
-        return Array.from({ length: 3 }, (_, trail) => {
-          const position = progress - trail * 0.028;
-          return position >= 0 ? {
-            position: pointOnFlow(flow, position), opacity: 235 - trail * 70, radius: 2.7 - trail * 0.55
-          } : null;
-        }).filter((particle): particle is Particle => particle !== null);
+      const trails: Trail[] = [];
+      const segments: Segment[] = [];
+      streamlines.forEach((flow, index) => {
+        const progress = (time / 4900 + (index * 0.618034) % 1) % 1;
+        const [start, end] = visibleFlowWindow(progress);
+        if (end - start < 0.015) return;
+        trails.push({ path: flowSection(flow, start, end) });
+        segments.push(...flowSegments(flow, start, end));
       });
       overlay.current?.setProps({ layers: [
         ...layers,
-        new ScatterplotLayer<Particle>({
-          id: 'flow-particles',
-          data: particles,
-          getPosition: d => d.position,
-          getFillColor: d => [233, 252, 250, d.opacity],
-          getRadius: d => d.radius,
-          radiusUnits: 'pixels',
+        new PathLayer<Trail>({
+          id: 'growing-trail-glow',
+          data: trails,
+          getPath: d => d.path,
+          getColor: [119, 222, 222, 34],
+          getWidth: 6,
+          widthUnits: 'pixels',
+          wrapLongitude: true,
+          pickable: false
+        }),
+        new PathLayer<Segment>({
+          id: 'growing-trail-color',
+          data: segments,
+          getPath: d => d.path,
+          getColor: d => d.color,
+          getWidth: 2.1,
+          widthUnits: 'pixels',
           wrapLongitude: true,
           pickable: false
         })
@@ -245,7 +237,7 @@ export function MapView({ selected }: { selected: SpeciesDataset }) {
 
   return (
     <div className="map-wrap">
-      <div ref={container} className="map-canvas" role="img" aria-label={`Mapa de hábitat ilustrativo actual y en 2050 para ${selected.commonNameEs}, con una trama animada entre regiones sintéticas; no son rutas de animales`} />
+      <div ref={container} className="map-canvas" role="img" aria-label={`Mapa de hábitat ilustrativo actual y en 2050 para ${selected.commonNameEs}; los trazos aparecen en las celdas actuales y avanzan hasta las de 2050, sin rutas permanentes ni trayectorias reales de animales`} />
       <div className="map-stamp"><span className="pulse" /> FLUJOS ILUSTRATIVOS · DATOS SINTÉTICOS</div>
       <div className="map-credit">Siluetas geográficas: Natural Earth / world-atlas · Sin teselas externas</div>
       {hover && <div className="map-tooltip" style={{ left: hover.x + 14, top: hover.y + 14 }}>

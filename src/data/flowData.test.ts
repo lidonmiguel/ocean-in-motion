@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import tuna from './species/tuna.json';
 import shark from './species/whale-shark.json';
-import { displayFlows, displayStreamlines, pointOnFlow } from './flowData';
+import { displayFlows, displayStreamlines, flowSection, pointOnFlow, visibleFlowWindow } from './flowData';
 import { parseSpeciesDataset } from './schema';
 
 describe('illustrative distribution flows', () => {
@@ -51,5 +51,18 @@ describe('illustrative distribution flows', () => {
     expect(displayStreamlines(dataset)).toEqual([]);
     dataset.movementVectors = [{ from: [-39, 34], to: [-37, 46], labelEs: 'Dirección' }];
     expect(displayStreamlines(dataset)).toHaveLength(1);
+  });
+
+  it('grows from the source and lets the tail reach the destination', () => {
+    const flow = displayFlows(parseSpeciesDataset(tuna))[0];
+    expect(visibleFlowWindow(0)).toEqual([0, 0]);
+    expect(visibleFlowWindow(0.5)).toEqual([0, 0.5]);
+    const [start, end] = visibleFlowWindow(0.81);
+    expect(start).toBeGreaterThan(0);
+    expect(end).toBe(0.81);
+    const section = flowSection(flow, start, end);
+    expect(section[0]).toEqual(pointOnFlow(flow, start));
+    expect(section.at(-1)).toEqual(pointOnFlow(flow, end));
+    expect(visibleFlowWindow(1)).toEqual([1, 1]);
   });
 });

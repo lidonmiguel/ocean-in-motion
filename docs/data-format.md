@@ -35,7 +35,9 @@ are presentation choices for the fixture, not ecological thresholds.
 The synthetic demo draws multiple curved strands from each current cell to
 its future cell with the same ID. Their endpoints stay inside the hand-authored
 cells, and each strand follows its pair's direction of displacement. Different
-pairs can have different directions. The strands,
+pairs can have different directions. The strands grow from the current cell,
+move along the curved path, then disappear at the future cell; the map leaves
+no permanent route lines. The strands,
 their density, and their curvature are design choices, not estimated migration
 paths or movement model output. For reviewed outputs the interface does not
 infer connectors from cells; it only uses explicitly supplied `movementVectors`
