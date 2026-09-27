@@ -1,0 +1,56 @@
+name: Inspect Mediterranean turtle density source
+
+on:
+  push:
+    branches: [feature/loggerhead-distribution-zones]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install netCDF4 numpy
+      - name: Download the published EMODnet product
+        run: |
+          mkdir -p output
+          curl --fail --location --retry 3 --max-time 180 --silent --show-error \
+            'https://erddap.emodnet.eu/erddap/files/biology_8514_94a0_0784_7406/density_loggerhead_mediterranean_8514_epsg_3035.nc' \
+            --output output/density.nc
+      - name: Inspect axes and values
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, json, netCDF4, numpy as np
+          path = Path('output/density.nc')
+          with netCDF4.Dataset(path) as data:
+              variables = {}
+              for name, var in data.variables.items():
+                  value = np.ma.filled(var[:], np.nan)
+                  valid = value[np.isfinite(value)]
+                  variables[name] = {'shape': list(var.shape), 'units': getattr(var, 'units', None),
+                                     'valid': int(valid.size), 'min': float(valid.min()) if valid.size else None,
+                                     'max': float(valid.max()) if valid.size else None,
+                                     'p50': float(np.percentile(valid, 50)) if valid.size else None,
+                                     'p90': float(np.percentile(valid, 90)) if valid.size else None}
+              summary = {'sha256': hashlib.sha256(path.read_bytes()).hexdigest(),
+                         'size_bytes': path.stat().st_size, 'variables': variables,
+                         'global_license': getattr(data, 'license', None),
+                         'global_summary': getattr(data, 'summary', None)}
+          Path('output/probe.json').write_text(json.dumps(summary, indent=2))
+          print(json.dumps(summary, indent=2)[:12000])
+          PY
+      - run: gzip -n -c output/density.nc > output/density.nc.gz
+      - uses: actions/upload-artifact@v4
+        with:
+          name: turtle-density-source
+          path: |
+            output/density.nc.gz
+            output/probe.json
+          retention-days: 7
