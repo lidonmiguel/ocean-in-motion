@@ -1,5 +1,5 @@
 import type { HabitatCell, SpeciesDataset } from './schema';
-import { oceanRoute } from './oceanRoutes';
+import { curveOceanRoute, oceanRoute } from './oceanRoutes';
 
 type Position = [number, number];
 export type DisplayFlow = { id: string; from: Position; to: Position; path: Position[] };
@@ -45,9 +45,9 @@ export function displayFlows(dataset: SpeciesDataset): DisplayFlow[] {
 // inferred migration routes or model output.
 export function displayStreamlines(dataset: SpeciesDataset): DisplayFlow[] {
   if (dataset.provenance !== 'synthetic-demo') {
-    return displayFlows(dataset).flatMap(flow => {
+    return displayFlows(dataset).flatMap((flow, index) => {
       const path = oceanRoute(flow.from, flow.to);
-      return path ? [{ ...flow, path }] : [];
+      return path ? [{ ...flow, path: curveOceanRoute(path, index) }] : [];
     });
   }
 
@@ -75,7 +75,7 @@ export function displayStreamlines(dataset: SpeciesDataset): DisplayFlow[] {
         future.center[1] + latitudeOffset
       ];
       const path = oceanRoute(from, to);
-      return path ? { id: `${current.id}-${strand}`, from, to, path } : null;
+      return path ? { id: `${current.id}-${strand}`, from, to, path: curveOceanRoute(path, pairIndex * 18 + strand) } : null;
     }).filter((flow): flow is DisplayFlow => flow !== null);
   });
 }

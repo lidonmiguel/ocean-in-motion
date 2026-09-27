@@ -28,8 +28,10 @@ with animated strokes connecting matching synthetic cells. Each stroke grows
 from current to 2050, its tail follows, and it disappears on arrival. There are
 no permanent route lines or moving point markers. Different regions can shift
 in different directions.
-The strokes use approximate shortest water-only paths over the bundled coarse
-land geometry. Endpoints on land or without a traversable water connection are
+The strokes start from approximate shortest water-only paths over the bundled
+coarse land geometry. A small visual bend is applied only when every resulting
+segment stays over water, so the displayed curve can be longer than that route.
+Endpoints on land or without a traversable water connection are
 omitted; no straight connector is substituted. This is cartographic display,
 not marine navigation or a modeled biological corridor.
 The map frames
