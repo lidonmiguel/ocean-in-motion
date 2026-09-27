@@ -32,9 +32,10 @@ The web map paints suitability bands at `<0.35`, `0.35–<0.7`, and `≥0.7`.
 Cell selection reveals exact suitability and uncertainty values. These cutoffs
 are presentation choices for the fixture, not ecological thresholds.
 
-The synthetic demo draws multiple curved strands between nearby current and
-future cells (up to three future cells within 68 approximate degrees of each
-current cell). Their endpoints stay inside the hand-authored cells. The strands,
+The synthetic demo draws multiple curved strands from each current cell to
+its future cell with the same ID. Their endpoints stay inside the hand-authored
+cells, and each strand follows its pair's direction of displacement. Different
+pairs can have different directions. The strands,
 their density, and their curvature are design choices, not estimated migration
 paths or movement model output. For reviewed outputs the interface does not
 infer connectors from cells; it only uses explicitly supplied `movementVectors`
