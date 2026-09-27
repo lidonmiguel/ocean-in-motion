@@ -25,6 +25,7 @@
   },
   "rendering": {
     "method": "Nearest native EPSG:3035 model cell reprojected to WGS84; positive valid cells shaded with a log scale between source p10 and p90; nodata transparent.",
+    "palette": "Muted blue to sea green to cyan; opacity increases from 36 to 190 by relative value.",
     "variable": "abundance",
     "units": "unspecified by source; relative values only",
     "modelCells": 23866,

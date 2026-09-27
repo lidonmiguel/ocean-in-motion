@@ -22,10 +22,10 @@ function fallbackPosition(longitude: number, latitude: number): [number, number]
     (north - latitude) / (north - south) * fallbackHeight];
 }
 
-function fallbackLandPath(): string {
+function fallbackLandPath(position: (longitude: number, latitude: number) => [number, number]): string {
   const features = land.type === 'FeatureCollection' ? land.features : [land];
   const ringPath = (ring: number[][]) => ring.map(([lon, lat], index) => {
-    const [x, y] = fallbackPosition(lon, lat);
+    const [x, y] = position(lon, lat);
     return `${index ? 'L' : 'M'}${x.toFixed(1)},${y.toFixed(1)}`;
   }).join('') + 'Z';
   return features.flatMap(item => {
@@ -35,7 +35,27 @@ function fallbackLandPath(): string {
   }).join('');
 }
 
-const fallbackCoast = fallbackLandPath();
+const fallbackCoast = fallbackLandPath(fallbackPosition);
+
+function illustrativeFallback(selected: SpeciesDataset) {
+  const cells = [...selected.habitat.current, ...selected.habitat.future];
+  const west = Math.min(...cells.map(cell => cell.center[0] - cell.widthDeg / 2)) - 6;
+  const east = Math.max(...cells.map(cell => cell.center[0] + cell.widthDeg / 2)) + 6;
+  const south = Math.min(...cells.map(cell => cell.center[1] - cell.heightDeg / 2)) - 5;
+  const north = Math.max(...cells.map(cell => cell.center[1] + cell.heightDeg / 2)) + 5;
+  const position = (lon: number, lat: number): [number, number] => [
+    (lon - west) / (east - west) * fallbackWidth,
+    (north - lat) / (north - south) * fallbackHeight
+  ];
+  const path = (points: [number, number][]) => points.map(([lon, lat], index) => {
+    const [x, y] = position(lon, lat);
+    return `${index ? 'L' : 'M'}${x.toFixed(1)},${y.toFixed(1)}`;
+  }).join('');
+  return { position, path, coast: fallbackLandPath(position),
+    current: displayCells(selected, 'current'), future: displayCells(selected, 'future'),
+    currentCenters: selected.habitat.current, futureCenters: selected.habitat.future,
+    strands: displayStreamlines(selected).filter((_, index) => index % 3 === 0) };
+}
 
 const graticule = {
   type: 'FeatureCollection' as const,
@@ -76,8 +96,8 @@ function flowSegments(flow: DisplayFlow, start: number, end: number): Segment[] 
   }).filter((segment): segment is Segment => segment !== null);
 }
 
-export function MapView({ selected }: { selected: SpeciesDataset }) {
-  const realLayer = selected.id === 'loggerhead-turtle';
+export function MapView({ selected, showModel }: { selected: SpeciesDataset; showModel: boolean }) {
+  const realLayer = showModel;
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
   const overlay = useRef<MapLibreOverlay | null>(null);
@@ -298,6 +318,8 @@ export function MapView({ selected }: { selected: SpeciesDataset }) {
     return () => cancelAnimationFrame(frame);
   }, [selected, ready, realLayer]);
 
+  const demoFallback = webglUnavailable && !realLayer ? illustrativeFallback(selected) : null;
+
   return (
     <div className="map-wrap">
       <div ref={container} className="map-canvas" style={webglUnavailable ? { display: 'none' } : undefined} role="img" aria-label={realLayer ? `Mapa de zonas de abundancia relativa modelada de tortuga boba en el Mediterráneo, promedio anual de 2003 a 2018. Las zonas sin color carecen de estimación; no hay proyección a 2050.` : `Mapa de hábitat ilustrativo actual y en 2050 para ${selected.commonNameEs}; los trazos aparecen en las celdas actuales y avanzan hasta las de 2050, sin rutas permanentes ni trayectorias reales de animales`} />
@@ -308,7 +330,18 @@ export function MapView({ selected }: { selected: SpeciesDataset }) {
           <path d={fallbackCoast} fill="#bbccc9" fillRule="evenodd" stroke="#e1eae0" strokeWidth="1.5" />
         </svg>
         <div className="fallback-note">Modelo de abundancia relativa · vista simplificada sin WebGL2</div>
-      </div> : <div className="fallback-map fallback-message">El mapa ilustrativo requiere WebGL2. Prueba otro navegador para verlo.</div>)}
+      </div> : demoFallback && <div className="fallback-map">
+        <svg viewBox={`0 0 ${fallbackWidth} ${fallbackHeight}`} role="img" aria-label={`Flujos ilustrativos para ${selected.commonNameEs}; los trazos no son rutas reales`}>
+          <rect width={fallbackWidth} height={fallbackHeight} fill="#071c29" />
+          <path d={demoFallback.coast} fill="#bbccc9" fillRule="evenodd" stroke="#e1eae0" strokeWidth="1.5" />
+          {demoFallback.current.map(cell => <path key={`now-${cell.id}`} d={`${demoFallback.path(cell.polygon)}Z`} fill="#50dcdd" fillOpacity=".13" stroke="#83e9df" strokeOpacity=".5" />)}
+          {demoFallback.future.map(cell => <path key={`then-${cell.id}`} d={`${demoFallback.path(cell.polygon)}Z`} fill="#fc9dcb" fillOpacity=".09" stroke="#f7a3cd" strokeOpacity=".5" />)}
+          {demoFallback.strands.map((strand, index) => <path key={strand.id} className="fallback-flow" d={demoFallback.path(strand.path)} pathLength="1" style={{ animationDelay: `${-(index * .618 % 1) * 5}s` }} />)}
+          {demoFallback.currentCenters.map(cell => { const [x, y] = demoFallback.position(...cell.center); return <circle key={`start-${cell.id}`} cx={x} cy={y} r="3" fill="#83f3e5" />; })}
+          {demoFallback.futureCenters.map(cell => { const [x, y] = demoFallback.position(...cell.center); return <circle key={`end-${cell.id}`} cx={x} cy={y} r="3" fill="#ffa8d0" />; })}
+        </svg>
+        <div className="fallback-note">Flujo ilustrativo · vista simplificada sin WebGL2</div>
+      </div>)}
       <div className="map-stamp"><span className="pulse" /> {realLayer ? 'MODELO CIENTÍFICO · 2003–2018' : 'FLUJOS ILUSTRATIVOS · DATOS SINTÉTICOS'}</div>
       <div className="map-credit">Siluetas geográficas: Natural Earth / world-atlas · Sin teselas externas</div>
       {hover && <div className="map-tooltip" style={{ left: hover.x + 14, top: hover.y + 14 }}>

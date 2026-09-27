@@ -12,8 +12,10 @@ const groups = [
 
 export default function App() {
   const [selectedId, setSelectedId] = useState('loggerhead-turtle');
+  const [showModel, setShowModel] = useState(false);
   const selected = species.find(item => item.id === selectedId) ?? species[0];
-  const realLayer = selected.id === 'loggerhead-turtle';
+  const realLayer = selected.id === 'loggerhead-turtle' && showModel;
+  const chooseSpecies = (id: string) => { setSelectedId(id); setShowModel(false); };
 
   return (
     <div className="app-shell">
@@ -26,16 +28,16 @@ export default function App() {
         <aside className="selector-panel" aria-label="Selección de especie">
           <div className="section-index">01 / EXPLORAR</div>
           <h2>Un océano.<br /><em>Muchas posibilidades.</em></h2>
-          <p className="intro">La tortuga boba muestra zonas estimadas a partir de muestreos científicos del Mediterráneo. Las otras especies siguen siendo ejemplos visuales.</p>
+          <p className="intro">Explora los flujos visuales de cada especie. Para la tortuga boba también puedes consultar una capa real de distribución modelada en el Mediterráneo.</p>
           <div className="fine-rule" />
           <label className="field-label" htmlFor="species-select">SELECCIONA UNA ESPECIE</label>
-          <select id="species-select" value={selectedId} onChange={event => setSelectedId(event.target.value)}>
+          <select id="species-select" value={selectedId} onChange={event => chooseSpecies(event.target.value)}>
             {species.map(item => <option value={item.id} key={item.id}>{item.commonNameEs}</option>)}
           </select>
           <div className="species-list" aria-label="Especies disponibles">
             {groups.filter(group => species.some(item => group.id === 'other' ? !item.group : item.group === group.id)).map(group => <div className="species-group" key={group.id}>
               <div className="species-group-label">{group.label}</div>
-              {species.filter(item => group.id === 'other' ? !item.group : item.group === group.id).map(item => <button key={item.id} type="button" className={`species-row ${selected.id === item.id ? 'active' : ''}`} aria-pressed={selected.id === item.id} onClick={() => setSelectedId(item.id)}>
+              {species.filter(item => group.id === 'other' ? !item.group : item.group === group.id).map(item => <button key={item.id} type="button" className={`species-row ${selected.id === item.id ? 'active' : ''}`} aria-pressed={selected.id === item.id} onClick={() => chooseSpecies(item.id)}>
                 <span className="species-number">{String(species.indexOf(item) + 1).padStart(2, '0')}</span><span className="species-text"><strong>{item.commonNameEs}</strong><small>{item.scientificName}</small></span><span className="species-arrow" aria-hidden="true">↗</span>
               </button>)}
             </div>)}
@@ -44,9 +46,9 @@ export default function App() {
         </aside>
 
         <section className="map-panel" aria-label="Comparación de hábitat">
-          <div className="map-header"><div><div className="section-index">02 / VISUALIZAR</div><h2>{realLayer ? 'Zonas estimadas en el Mediterráneo' : 'Un océano en movimiento'}</h2></div><div className="coordinates">{realLayer ? '2003–2018' : <>ACTUAL <span>→</span> 2050</>}</div></div>
+          <div className="map-header"><div><div className="section-index">02 / VISUALIZAR</div><h2>{realLayer ? 'Zonas estimadas en el Mediterráneo' : 'Un océano en movimiento'}</h2></div><div className="map-header-actions">{selected.id === 'loggerhead-turtle' && <button className="view-switch" type="button" onClick={() => setShowModel(value => !value)}>{realLayer ? '← Volver al flujo' : 'Ver modelo científico →'}</button>}<div className="coordinates">{realLayer ? '2003–2018' : <>ACTUAL <span>→</span> 2050</>}</div></div></div>
           <div className="map-stage">
-            <MapView selected={selected} />
+            <MapView selected={selected} showModel={realLayer} />
             {realLayer ? <div className="flow-key real-key" aria-label="Colores: abundancia relativa modelada de menor a mayor"><span><i className="density-key" /> Zonas modeladas · menor → mayor</span></div> : <div className="flow-key" aria-label="Turquesa: hábitat actual; rosa: hábitat en 2050">
               <span><i className="flow-key-current" /> Actual</span>
               <b aria-hidden="true">→</b>
