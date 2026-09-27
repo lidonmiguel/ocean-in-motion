@@ -1,15 +1,13 @@
-name: Inspect Mediterranean turtle density source
+name: Refresh Mediterranean turtle density snapshot
 
 on:
-  push:
-    branches: [feature/loggerhead-distribution-zones]
   workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  inspect:
+  stage:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,7 +15,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install netCDF4 numpy
-      - name: Download the published EMODnet product
+      - name: Download the published EMODnet product for review
         run: |
           mkdir -p output
           curl --fail --location --retry 3 --max-time 180 --silent --show-error \
@@ -47,7 +45,8 @@ jobs:
           print(json.dumps(summary, indent=2)[:12000])
           PY
       - run: gzip -n -c output/density.nc > output/density.nc.gz
-      - uses: actions/upload-artifact@v4
+      - name: Save source and metadata for manual review
+        uses: actions/upload-artifact@v4
         with:
           name: turtle-density-source
           path: |

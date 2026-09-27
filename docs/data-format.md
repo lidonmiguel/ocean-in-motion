@@ -1,8 +1,11 @@
 # Species dataset contract (v1)
 
-The real loggerhead observations use a separate, provenance-linked snapshot
+The archived real loggerhead observations use a separate, provenance-linked snapshot
 (`src/data/observations/loggerhead-west-med.json`) generated from the raw OBIS
-extract and manifest in `data/obis/`. They are presence records, not habitat
+extract and manifest in `data/obis/`. They are not drawn in the current map.
+The displayed loggerhead zones instead use the published model image and
+manifest in `src/data/model/`, generated from the versioned `data/model/`
+source. See the README for methods and limits. The archived records are presence records, not habitat
 cells, suitability scores, future projections or movement vectors. See the
 README for source attribution, license, spatial uncertainty and sampling scope.
 

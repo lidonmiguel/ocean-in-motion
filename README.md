@@ -1,12 +1,13 @@
 # Océano en Movimiento
 
-An experimental marine map with one documented observation layer and six
+An experimental marine map with one published model layer and six
 illustrative habitat views. The interface is in Spanish; this technical
 documentation and the code are in English.
 
-**The initial tortuga boba view contains 117 real OBIS sightings** from a
-single Barcelona–Civitavecchia ferry transect surveyed during 2013–2017.
-This is an occurrence layer, not a distribution estimate or a projection.
+**The initial tortuga boba view shows modeled relative abundance zones** across
+the Mediterranean from a published 2003–2018 survey-based model. The source
+model was reprojected by EMODnet Biology; the colors compare its values and
+do not establish precise habitat boundaries or predict 2050.
 The other six views use hand-authored synthetic fixtures. They are not OBIS records,
 Bio-ORACLE layers, scientific forecasts, real animal positions or validated
 species distribution models. The animated streamlines between matching synthetic
@@ -25,8 +26,9 @@ npm run dev
 ```
 
 Open the local URL printed by Vite, normally `http://localhost:5173`.
-The page opens on real loggerhead turtle observations. Hover the points to see
-the date, OBIS record ID and reported coordinate uncertainty. Choose another
+The page opens on loggerhead turtle model zones. Dark blue means lower and
+yellow means higher relative modeled values; uncolored water has no model
+estimate. Choose another
 species to see **Actual** and **2050** habitat cells together,
 with animated strokes connecting matching synthetic cells. Each stroke grows
 from current to 2050, its tail follows, and it disappears on arrival. There are
@@ -66,8 +68,8 @@ GitHub Actions runs the web checks and Python tests on pushes and pull requests.
 
 ## Publish the map with GitHub Pages
 
-The web app is static. Its loggerhead observation snapshot is bundled with the
-build; the remaining species are illustrative. GitHub Actions builds it with
+The web app is static. Its loggerhead model image and metadata are bundled with
+the build; the remaining species are illustrative. GitHub Actions builds it with
 Node.js 24 and publishes `dist`; no local Node installation is needed to
 visit the published map.
 
@@ -91,9 +93,11 @@ scientific results.
 | Path | Purpose |
 | --- | --- |
 | `src/App.tsx`, `src/styles.css` | Spanish responsive controls, legend, species information and prominent demo warnings. |
-| `src/MapView.tsx`, `src/data/flowData.ts` | MapLibre world view with bundled Natural Earth land geometry (`world-atlas`), deck.gl habitat cells and illustrative flow animation. |
+| `src/MapView.tsx`, `src/data/flowData.ts` | MapLibre world view with bundled Natural Earth land geometry (`world-atlas`), model overlay, synthetic cells and illustrative flow animation. |
 | `src/data/species/*.json` | Seven synthetic species fixtures, each with current and 2050 cells. |
-| `src/data/observations/loggerhead-west-med.json` | Small display snapshot of 117 real, documented loggerhead sightings. |
+| `src/data/model/*` | Published loggerhead model rendered as a transparent geographic PNG, with provenance and display metadata. |
+| `data/model/*.nc.gz`, `python/ocean_pipeline/render_density.py` | Reviewed, compressed EMODnet model snapshot and reproducible overlay conversion. |
+| `src/data/observations/loggerhead-west-med.json` | Archived snapshot of 117 real sightings, no longer drawn as points. |
 | `data/obis/*` | Losslessly compressed bounded OBIS JSONL extract and QC manifest with query URLs and checksum. |
 | `python/ocean_pipeline/publish_pilot.py` | Strict, reproducible conversion of the extract to the display snapshot. |
 | `src/data/schema.ts`, `src/data/mapData.ts` | Runtime validation, typed data, period selection, color bands and antimeridian cell splitting. |
@@ -117,9 +121,43 @@ cells to illustrate a visual change; they do not describe movements of
 individual animals or establish corridors. Reviewed datasets retain only their
 explicitly supplied direction vectors. See [the data contract](docs/data-format.md).
 
-### Real observation pilot: loggerhead turtle
+### Displayed model: loggerhead turtle
 
-The default view uses **Caretta caretta** (WoRMS AphiaID 137205) from one
+The default map displays the annual mean loggerhead abundance model by
+[Sparks and DiMatteo (2020)](https://seamap.env.duke.edu/models/NUWC/Med/),
+based on aerial and shipboard surveys during 2003–2018, via the
+[EMODnet Biology reprojected product](https://erddap.emodnet.eu/erddap/info/biology_8514_94a0_0784_7406/index.html).
+See also [DiMatteo et al. (2022)](https://doi.org/10.3389/fmars.2022.930412).
+The source metadata permits public distribution and warns that spatial and
+value differences introduced by reprojection have not been formally assessed.
+Its `abundance` variable declares no units, so the map deliberately uses a
+**relative color scale**, not animals per square kilometer. The source model
+extrapolates in unsurveyed areas and does not estimate all nearshore waters;
+blank water means no estimate, not absence. This is a historical modeled
+distribution, not a movement route or a 2050 forecast.
+
+The 10 km EPSG:3035 source grid is sampled into a 1200 × 560 WGS84 PNG;
+positive cells use a logarithmic blue–teal–yellow gradient with the source
+10th and 90th percentiles as display endpoints. The source SHA256, bounds,
+quantiles, method and attribution are in
+[`src/data/model/loggerhead-mediterranean.json`](src/data/model/loggerhead-mediterranean.json).
+To regenerate from the checked-in compressed source:
+
+```bash
+python -m pip install netCDF4 numpy pillow pyproj
+PYTHONPATH=python python -m ocean_pipeline.render_density \
+  --source data/model/loggerhead-emodnet-2003-2018.nc.gz \
+  --image src/data/model/loggerhead-mediterranean.png \
+  --manifest src/data/model/loggerhead-mediterranean.json
+```
+
+The manual **Refresh Mediterranean turtle density snapshot** workflow can
+fetch the original product for review. New upstream files require a checksum,
+rights and scientific interpretation review before changing this versioned map.
+
+### Archived observation pilot: loggerhead turtle
+
+The archived extract uses **Caretta caretta** (WoRMS AphiaID 137205) from one
 [OBIS dataset](https://obis.org/dataset/b9bfb219-1d5c-450e-9b26-fd377aee8561),
 surveyed on a regular ferry transect between Barcelona and Civitavecchia.
 Arcangeli, A.; Campana, I.; Paraboschi, M.; ISPRA (2018), *Presence of sea turtles
@@ -127,8 +165,8 @@ collected through Fixed-Line-Transect monitoring across the Western Mediterranea
 Sea (Civitavecchia-Barcelona route) between 2013 and 2017*,
 [doi:10.14284/532](https://doi.org/10.14284/532). The provider's OBIS dataset
 page states **CC BY 4.0**; the occurrence API rows themselves have no `license`
-field. The source dataset credits and [license](https://creativecommons.org/licenses/by/4.0/)
-are visible in the app.
+field. These points are retained for audit, but are not the source of the
+displayed model zones or currently shown in the app.
 
 The extract was fetched on 2026-09-27 with the dataset UUID, taxon, WGS84
 box (1, 39, 14, 44), and dates 2013-01-01 to 2017-12-31. The API returned
@@ -166,8 +204,8 @@ shifts, suitability scores or animated strokes.
   [Bio-ORACLE documentation](https://www.bio-oracle.org/documentation.php).
 
 The bundled OBIS snapshot is static; only an explicit staging run fetches new
-data. Neither the sightings nor the synthetic views constitute a validated
-model or a forecast.
+data. The model zones come from the separate published product above. Neither
+the sightings nor the synthetic views constitute a forecast.
 
 ## Planned scientific workflow
 
