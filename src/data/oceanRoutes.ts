@@ -236,3 +236,41 @@ export function oceanRoute(from: Position, to: Position): Position[] | null {
   }
   return densify(shorter);
 }
+
+function staysAtSea(path: Position[]): boolean {
+  for (let i = 1; i < path.length; i++) {
+    if (!waterSegment(path[i - 1], path[i])) return false;
+  }
+  return true;
+}
+
+// Add a modest visual arc after finding the short water route. Test the whole
+// displaced path, shrinking or reversing the bend near a coast. This is an
+// illustration, so the curved result can be longer than the shortest route.
+export function curveOceanRoute(path: Position[], variation: number): Position[] {
+  if (path.length < 3) return path;
+  const first = path[0];
+  const last = path[path.length - 1];
+  const latitude = (first[1] + last[1]) * Math.PI / 360;
+  const cosLatitude = Math.max(0.2, Math.cos(latitude));
+  const dx = longitudeDelta(first[0], last[0]) * cosLatitude;
+  const dy = last[1] - first[1];
+  const length = Math.hypot(dx, dy);
+  if (length < 0.2) return path;
+  const amplitude = Math.min(3, length * 0.22);
+  const preferred = variation % 2 === 0 ? 1 : -1;
+
+  for (const factor of [1, 0.7, 0.45, 0.25, 0.1]) {
+    for (const side of [preferred, -preferred]) {
+      const candidate = path.map(([lon, lat], index): Position => {
+        if (index === 0 || index === path.length - 1) return path[index];
+        const t = index / (path.length - 1);
+        const offset = side * amplitude * factor * Math.sin(Math.PI * t) *
+          (1 + 0.14 * Math.sin(2 * Math.PI * t + variation * 1.7));
+        return [lon - dy / length * offset / cosLatitude, lat + dx / length * offset];
+      });
+      if (staysAtSea(candidate)) return candidate;
+    }
+  }
+  return path;
+}
