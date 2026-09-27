@@ -12,6 +12,7 @@ PYTHONPATH=python python -m ocean_pipeline.sources \
   --bounds <WEST> <SOUTH> <EAST> <NORTH> \
   --start-date <YYYY-MM-DD> --end-date <YYYY-MM-DD> \
   --max-records 50 \
+  --dataset-id <OPTIONAL_DATASET_UUID> \
   --extract output/occurrences.jsonl \
   --manifest output/occurrences.manifest.json
 ```
@@ -20,7 +21,8 @@ Run from the repository root, or first install
 `python -m pip install -e ./python` and omit `PYTHONPATH=python`.
 Both output paths are configurable,
 must differ, and must not exist. No taxon, area or baseline is selected by
-this project. If the box crosses the antimeridian, choose separate bounded
+the generic command. The loggerhead pilot uses a documented single dataset;
+see the README. If the box crosses the antimeridian, choose separate bounded
 runs. The hard cap is 10,000 raw API records; pages request at most 200.
 The cap applies before quality control and the manifest says when a reported
 total exceeds it. An exact-cap response with no reported total is marked
@@ -30,7 +32,7 @@ sample.
 The request uses the OBIS [v3 occurrence API](https://api.obis.org/)
 parameters documented by the OBIS project's
 [Python client](https://iobis.github.io/pyobis/occurrences.html):
-`taxonid`, WKT `geometry`, `startdate`, `enddate`, `size` and `offset`.
+`taxonid`, optional `datasetid`, WKT `geometry`, `startdate`, `enddate`, `size` and `offset`.
 OBIS's [data access guidance](https://portal.obis.org/data/access/) recommends
 the API for smaller subsets and points large analyses to bulk data.
 The [OBIS manual](https://manual.obis.org/access) describes its occurrence

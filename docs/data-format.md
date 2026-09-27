@@ -1,5 +1,11 @@
 # Species dataset contract (v1)
 
+The real loggerhead observations use a separate, provenance-linked snapshot
+(`src/data/observations/loggerhead-west-med.json`) generated from the raw OBIS
+extract and manifest in `data/obis/`. They are presence records, not habitat
+cells, suitability scores, future projections or movement vectors. See the
+README for source attribution, license, spatial uncertainty and sampling scope.
+
 Each species is one JSON document in `src/data/species/`, parsed at startup by
 `src/data/schema.ts`. The seven bundled examples are deliberately synthetic.
 This contract prepares the UI for reviewed model outputs; passing validation

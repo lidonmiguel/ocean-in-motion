@@ -7,6 +7,7 @@ import world from 'world-atlas/land-110m.json';
 import { displayCells, suitabilityColor, type DisplayCell } from './data/mapData';
 import { displayFlows, displayStreamlines, flowSection, visibleFlowWindow, type DisplayFlow } from './data/flowData';
 import type { SpeciesDataset } from './data/schema';
+import pilot from './data/observations/loggerhead-west-med.json';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
 const topology = world as unknown as Parameters<typeof feature>[0];
@@ -29,6 +30,8 @@ const graticule = {
 };
 
 type Hover = { x: number; y: number; cell: DisplayCell; period: 'Actual' | '2050' } | null;
+type Observation = typeof pilot.observations[number];
+type ObservationHover = { x: number; y: number; observation: Observation } | null;
 type Endpoint = { position: [number, number]; period: 'current' | 'future' };
 type Segment = { path: [number, number][]; color: [number, number, number, number] };
 type Trail = { path: [number, number][] };
@@ -52,10 +55,12 @@ function flowSegments(flow: DisplayFlow, start: number, end: number): Segment[] 
 }
 
 export function MapView({ selected }: { selected: SpeciesDataset }) {
+  const realLayer = selected.id === 'loggerhead-turtle';
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
   const overlay = useRef<MapLibreOverlay | null>(null);
   const [hover, setHover] = useState<Hover>(null);
+  const [observationHover, setObservationHover] = useState<ObservationHover>(null);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
@@ -89,6 +94,14 @@ export function MapView({ selected }: { selected: SpeciesDataset }) {
 
   useEffect(() => {
     if (!ready || !map.current) return;
+    if (realLayer) {
+      const [west, south, east, north] = pilot.boundsWgs84;
+      map.current.fitBounds([[west, south], [east, north]], {
+        padding: 52, maxZoom: 5,
+        duration: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 750
+      });
+      return;
+    }
     const cells = [...selected.habitat.current, ...selected.habitat.future];
     const west = Math.min(...cells.map(cell => cell.center[0] - cell.widthDeg / 2));
     const east = Math.max(...cells.map(cell => cell.center[0] + cell.widthDeg / 2));
@@ -99,23 +112,13 @@ export function MapView({ selected }: { selected: SpeciesDataset }) {
       maxZoom: 3.4,
       duration: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 750
     });
-  }, [selected, ready]);
+  }, [selected, ready, realLayer]);
 
   useEffect(() => {
     if (!ready || !overlay.current) return;
     setHover(null);
-    const currentCells = displayCells(selected, 'current');
-    const futureCells = displayCells(selected, 'future');
-    const flows = displayFlows(selected);
-    const streamlines = displayStreamlines(selected);
-    const visibleFlows = flows.filter(flow => streamlines.some(strand =>
-      selected.provenance === 'synthetic-demo' ? strand.id.startsWith(`${flow.id}-`) : strand.id === flow.id
-    ));
-    const endpoints: Endpoint[] = visibleFlows.flatMap(flow => [
-      { position: flow.from, period: 'current' },
-      { position: flow.to, period: 'future' }
-    ]);
-    const layers = [
+    setObservationHover(null);
+    const background = [
         new GeoJsonLayer({
           id: 'graticule',
           data: graticule,
@@ -137,7 +140,42 @@ export function MapView({ selected }: { selected: SpeciesDataset }) {
           getLineWidth: 0.8,
           lineWidthUnits: 'pixels',
           pickable: false
-        }),
+        })
+      ];
+
+    if (realLayer) {
+      overlay.current.setProps({ layers: [
+        ...background,
+        new ScatterplotLayer<Observation>({
+          id: 'obis-loggerhead-observations',
+          data: pilot.observations,
+          getPosition: d => [d.longitude, d.latitude],
+          getFillColor: [39, 226, 205, 190],
+          getLineColor: [221, 255, 246, 255],
+          radiusUnits: 'pixels', getRadius: 5,
+          lineWidthUnits: 'pixels', getLineWidth: 1.4,
+          stroked: true, pickable: true,
+          onHover: info => setObservationHover(info.object ? {
+            x: info.x, y: info.y, observation: info.object
+          } : null)
+        })
+      ] });
+      return;
+    }
+
+    const currentCells = displayCells(selected, 'current');
+    const futureCells = displayCells(selected, 'future');
+    const flows = displayFlows(selected);
+    const streamlines = displayStreamlines(selected);
+    const visibleFlows = flows.filter(flow => streamlines.some(strand =>
+      selected.provenance === 'synthetic-demo' ? strand.id.startsWith(`${flow.id}-`) : strand.id === flow.id
+    ));
+    const endpoints: Endpoint[] = visibleFlows.flatMap(flow => [
+      { position: flow.from, period: 'current' },
+      { position: flow.to, period: 'future' }
+    ]);
+    const layers = [
+        ...background,
         new PolygonLayer<DisplayCell>({
           id: 'current-habitat',
           data: currentCells,
@@ -236,17 +274,23 @@ export function MapView({ selected }: { selected: SpeciesDataset }) {
     };
     frame = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(frame);
-  }, [selected, ready]);
+  }, [selected, ready, realLayer]);
 
   return (
     <div className="map-wrap">
-      <div ref={container} className="map-canvas" role="img" aria-label={`Mapa de hábitat ilustrativo actual y en 2050 para ${selected.commonNameEs}; los trazos aparecen en las celdas actuales y avanzan hasta las de 2050, sin rutas permanentes ni trayectorias reales de animales`} />
-      <div className="map-stamp"><span className="pulse" /> FLUJOS ILUSTRATIVOS · DATOS SINTÉTICOS</div>
+      <div ref={container} className="map-canvas" role="img" aria-label={realLayer ? `Mapa de ${pilot.summary.count} observaciones de tortuga boba en el transecto Barcelona–Civitavecchia durante ${pilot.period}. Los puntos tienen incertidumbre espacial de ${pilot.summary.uncertaintyKmRange[0]} a ${pilot.summary.uncertaintyKmRange[1]} kilómetros.` : `Mapa de hábitat ilustrativo actual y en 2050 para ${selected.commonNameEs}; los trazos aparecen en las celdas actuales y avanzan hasta las de 2050, sin rutas permanentes ni trayectorias reales de animales`} />
+      <div className="map-stamp"><span className="pulse" /> {realLayer ? `OBIS · ${pilot.summary.count} OBSERVACIONES REALES` : 'FLUJOS ILUSTRATIVOS · DATOS SINTÉTICOS'}</div>
       <div className="map-credit">Siluetas geográficas: Natural Earth / world-atlas · Sin teselas externas</div>
       {hover && <div className="map-tooltip" style={{ left: hover.x + 14, top: hover.y + 14 }}>
         <strong>Celda ilustrativa · {hover.period}</strong>
         <span>Idoneidad: {Math.round(hover.cell.suitability * 100)} / 100</span>
         <span>Incertidumbre: {Math.round(hover.cell.uncertainty * 100)} / 100</span>
+      </div>}
+      {observationHover && <div className="map-tooltip" style={{ left: observationHover.x + 14, top: observationHover.y + 14 }}>
+        <strong>Avistamiento registrado · OBIS</strong>
+        <span>Fecha: {observationHover.observation.eventDate.slice(0, 10)}</span>
+        <span>Incertidumbre de posición declarada: ±{Math.round(observationHover.observation.coordinateUncertaintyInMeters / 1000)} km</span>
+        <span>ID OBIS: {observationHover.observation.id}</span>
       </div>}
     </div>
   );

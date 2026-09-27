@@ -1,11 +1,13 @@
 # Océano en Movimiento
 
-An experimental global map for comparing marine habitat suitability now and
-under a 2050 **SSP2-4.5** scenario. The interface is in Spanish; this technical
+An experimental marine map with one documented observation layer and six
+illustrative habitat views. The interface is in Spanish; this technical
 documentation and the code are in English.
 
-**Everything shown in the first release is synthetic and illustrative.** The
-seven small hand-authored datasets are UI fixtures. They are not OBIS records,
+**The initial tortuga boba view contains 117 real OBIS sightings** from a
+single Barcelona–Civitavecchia ferry transect surveyed during 2013–2017.
+This is an occurrence layer, not a distribution estimate or a projection.
+The other six views use hand-authored synthetic fixtures. They are not OBIS records,
 Bio-ORACLE layers, scientific forecasts, real animal positions or validated
 species distribution models. The animated streamlines between matching synthetic
 habitat cells are a graphic illustration, not GPS routes, modeled corridors
@@ -23,8 +25,9 @@ npm run dev
 ```
 
 Open the local URL printed by Vite, normally `http://localhost:5173`.
-Choose one of seven species, grouped as fish, cetaceans and reptiles, to see
-**Actual** and **2050** habitat cells together,
+The page opens on real loggerhead turtle observations. Hover the points to see
+the date, OBIS record ID and reported coordinate uncertainty. Choose another
+species to see **Actual** and **2050** habitat cells together,
 with animated strokes connecting matching synthetic cells. Each stroke grows
 from current to 2050, its tail follows, and it disappears on arrival. There are
 no permanent route lines or moving point markers. Different regions can shift
@@ -63,7 +66,8 @@ GitHub Actions runs the web checks and Python tests on pushes and pull requests.
 
 ## Publish the map with GitHub Pages
 
-The web app is a static, illustrative demo. GitHub Actions builds it with
+The web app is static. Its loggerhead observation snapshot is bundled with the
+build; the remaining species are illustrative. GitHub Actions builds it with
 Node.js 24 and publishes `dist`; no local Node installation is needed to
 visit the published map.
 
@@ -79,8 +83,8 @@ visit the published map.
 
 The deployment builds with Vite's `/ocean-in-motion/` base path so assets load
 at the project URL. Local `npm run dev` remains available at Vite's usual
-localhost URL. Publishing does not replace the synthetic habitat fixtures or
-turn them into scientific results.
+localhost URL. Publishing does not turn the synthetic habitat fixtures into
+scientific results.
 
 ## What is here
 
@@ -89,6 +93,9 @@ turn them into scientific results.
 | `src/App.tsx`, `src/styles.css` | Spanish responsive controls, legend, species information and prominent demo warnings. |
 | `src/MapView.tsx`, `src/data/flowData.ts` | MapLibre world view with bundled Natural Earth land geometry (`world-atlas`), deck.gl habitat cells and illustrative flow animation. |
 | `src/data/species/*.json` | Seven synthetic species fixtures, each with current and 2050 cells. |
+| `src/data/observations/loggerhead-west-med.json` | Small display snapshot of 117 real, documented loggerhead sightings. |
+| `data/obis/*` | Losslessly compressed bounded OBIS JSONL extract and QC manifest with query URLs and checksum. |
+| `python/ocean_pipeline/publish_pilot.py` | Strict, reproducible conversion of the extract to the display snapshot. |
 | `src/data/schema.ts`, `src/data/mapData.ts` | Runtime validation, typed data, period selection, color bands and antimeridian cell splitting. |
 | `src/data/*.test.ts` | Focused schema and map-data tests. |
 | `docs/data-format.md` | Versioned metadata, citation, suitability, uncertainty and vector format. |
@@ -110,6 +117,35 @@ cells to illustrate a visual change; they do not describe movements of
 individual animals or establish corridors. Reviewed datasets retain only their
 explicitly supplied direction vectors. See [the data contract](docs/data-format.md).
 
+### Real observation pilot: loggerhead turtle
+
+The default view uses **Caretta caretta** (WoRMS AphiaID 137205) from one
+[OBIS dataset](https://obis.org/dataset/b9bfb219-1d5c-450e-9b26-fd377aee8561),
+surveyed on a regular ferry transect between Barcelona and Civitavecchia.
+Arcangeli, A.; Campana, I.; Paraboschi, M.; ISPRA (2018), *Presence of sea turtles
+collected through Fixed-Line-Transect monitoring across the Western Mediterranean
+Sea (Civitavecchia-Barcelona route) between 2013 and 2017*,
+[doi:10.14284/532](https://doi.org/10.14284/532). The provider's OBIS dataset
+page states **CC BY 4.0**; the occurrence API rows themselves have no `license`
+field. The source dataset credits and [license](https://creativecommons.org/licenses/by/4.0/)
+are visible in the app.
+
+The extract was fetched on 2026-09-27 with the dataset UUID, taxon, WGS84
+box (1, 39, 14, 44), and dates 2013-01-01 to 2017-12-31. The API returned
+117 of 117 records; none were removed by the staging coordinate or duplicate
+checks. The display conversion additionally checks source dataset, taxon,
+presence, marine status, OBIS flags, dates, coordinates, identifiers, and
+the extract checksum. It does not hide the large spatial uncertainty declared
+on **every record: approximately 59–257 km**. Points are approximate reported
+locations, not precise GPS fixes. Since sampling follows one ferry route,
+unobserved waters cannot be interpreted as absent habitat. The count is a
+snapshot of this dataset, not turtle abundance or an ocean-wide trend.
+
+To refresh the source, run **Refresh OBIS pilot snapshot** in GitHub Actions,
+inspect the downloaded extract and manifest, recheck the dataset's citation
+and license, then regenerate and review the versioned files. Do not silently
+replace the published snapshot with a newer mutable API response.
+
 The four added species are humpback whale, common bottlenose dolphin, swordfish
 and loggerhead turtle. General species context was checked against NOAA Fisheries
 profiles for [humpback whale](https://www.fisheries.noaa.gov/species/humpback-whale),
@@ -129,8 +165,9 @@ shifts, suitability scores or animated strokes.
   SSP2-4.5 and 2050 window, then record units, versions and citations. Consult
   [Bio-ORACLE documentation](https://www.bio-oracle.org/documentation.php).
 
-Only an explicit invocation of the OBIS staging command fetches data. It
-does not prepare a scientific model or change the illustrative web map.
+The bundled OBIS snapshot is static; only an explicit staging run fetches new
+data. Neither the sightings nor the synthetic views constitute a validated
+model or a forecast.
 
 ## Planned scientific workflow
 
@@ -156,6 +193,6 @@ draw a supposed animal track.
 
 ## Next engineering steps
 
-1. Review a bounded OBIS extract and its quality-control manifest for a chosen study scope.
+1. Review sampling effort and coordinate uncertainty for the loggerhead pilot and decide whether a different source is needed for broader inference.
 2. Select and harmonize Bio-ORACLE layers for baseline and SSP2-4.5 / 2050.
 3. Fit, validate and review a reproducible model before replacing fixture data.

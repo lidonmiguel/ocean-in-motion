@@ -1,8 +1,6 @@
-name: OBIS pilot extract
+name: Refresh OBIS pilot snapshot
 
 on:
-  push:
-    branches: [feature/real-loggerhead-observations]
   workflow_dispatch:
 
 permissions:
@@ -38,6 +36,12 @@ jobs:
           if not m['counts']['written'] or m['truncated_by_cap']:
               raise SystemExit('No records or capped extract; adjust scope before publication')
           PY
+      - name: Build reviewable map layer
+        run: |
+          PYTHONPATH=python python -m ocean_pipeline.publish_pilot \
+            --extract output/occurrences.jsonl \
+            --manifest output/occurrences.manifest.json \
+            --output output/loggerhead-west-med.json
       - uses: actions/upload-artifact@v4
         with:
           name: loggerhead-obis-pilot
