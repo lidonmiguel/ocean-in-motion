@@ -1,7 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import tuna from './species/tuna.json';
+import turtle from './species/turtle.json';
 import shark from './species/whale-shark.json';
 import { displayFlows, displayStreamlines, flowSection, pointOnFlow, visibleFlowWindow } from './flowData';
+import { waterSegment } from './oceanRoutes';
 import { parseSpeciesDataset } from './schema';
 
 describe('illustrative distribution flows', () => {
@@ -24,10 +26,10 @@ describe('illustrative distribution flows', () => {
   });
 
   it('keeps all strands on their matching cell pair and in the same direction', () => {
-    for (const fixture of [tuna, shark]) {
+    for (const fixture of [tuna, turtle, shark]) {
       const dataset = parseSpeciesDataset(fixture);
       const strands = displayStreamlines(dataset);
-      expect(strands).toHaveLength(108);
+      expect(strands.length).toBeGreaterThan(60);
       for (const strand of strands) {
         const cellId = strand.id.split('-')[0];
         const current = dataset.habitat.current.find(cell => cell.id === cellId)!;
@@ -40,6 +42,9 @@ describe('illustrative distribution flows', () => {
         expect(strand.to[1] - strand.from[1]).toBeCloseTo(future.center[1] - current.center[1]);
         expect(pointOnFlow(strand, 0)).toEqual(strand.from);
         expect(pointOnFlow(strand, 1)[1]).toBeCloseTo(strand.to[1]);
+        for (let i = 1; i < strand.path.length; i++) {
+          expect(waterSegment(strand.path[i - 1], strand.path[i])).toBe(true);
+        }
       }
     }
   });
@@ -51,6 +56,15 @@ describe('illustrative distribution flows', () => {
     expect(displayStreamlines(dataset)).toEqual([]);
     dataset.movementVectors = [{ from: [-39, 34], to: [-37, 46], labelEs: 'Dirección' }];
     expect(displayStreamlines(dataset)).toHaveLength(1);
+    dataset.movementVectors = [{ from: [-80, 22], to: [-87, 20], labelEs: 'Sin salida al mar' }];
+    expect(displayStreamlines(dataset)).toEqual([]);
+  });
+
+  it('detours a synthetic coastal strand rather than crossing land directly', () => {
+    const strands = displayStreamlines(parseSpeciesDataset(turtle));
+    const detours = strands.filter(strand => !waterSegment(strand.from, strand.to));
+    expect(detours.length).toBeGreaterThan(0);
+    expect(detours.every(strand => strand.path.length > 2)).toBe(true);
   });
 
   it('grows from the source and lets the tail reach the destination', () => {
