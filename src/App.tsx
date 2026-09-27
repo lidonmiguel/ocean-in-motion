@@ -54,7 +54,7 @@ export default function App() {
           <p className="lead">{selected.summaryEs}</p>
           <p className="body-copy">{selected.ecologyEs}</p>
           <div className="metric-block"><div><span>PERIODOS</span><strong>Actual → 2050</strong></div><div><span>ESCENARIO</span><strong>SSP2-4.5</strong></div></div>
-          <div className="info-note"><span className="note-icon">↗</span><div><strong>Cómo leer este flujo</strong><p>Los contornos turquesa muestran el hábitat actual y los rosas el de 2050. La trama enlaza regiones cercanas de estos datos sintéticos para ilustrar el cambio. Su forma y densidad son una decisión gráfica: no son trayectorias animales ni corredores modelados.</p></div></div>
+          <div className="info-note"><span className="note-icon">↗</span><div><strong>Cómo leer este flujo</strong><p>Cada trazo va de una celda actual turquesa a su pareja rosa de 2050. Distintas regiones pueden apuntar en direcciones diferentes. Son datos sintéticos: las líneas no son trayectorias animales ni corredores modelados.</p></div></div>
           <div className="status-label">● MODO ILUSTRATIVO · SIN VALIDACIÓN CIENTÍFICA</div>
         </aside>
       </main>
