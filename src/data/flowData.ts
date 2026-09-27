@@ -1,7 +1,9 @@
-import type { SpeciesDataset } from './schema';
+import type { HabitatCell, SpeciesDataset } from './schema';
 
 type Position = [number, number];
 export type DisplayFlow = { id: string; from: Position; to: Position; path: Position[] };
+
+type CellPair = { current: HabitatCell; future: HabitatCell };
 
 function curvedPath(from: Position, to: Position, index: number): Position[] {
   // Use the short side of the world when a pair straddles the antimeridian.
@@ -35,6 +37,46 @@ export function displayFlows(dataset: SpeciesDataset): DisplayFlow[] {
 
   return pairs.filter(pair => pair.from[0] !== pair.to[0] || pair.from[1] !== pair.to[1])
     .map((pair, index) => ({ ...pair, path: curvedPath(pair.from, pair.to, index) }));
+}
+
+// A decorative field for the synthetic fixture only. Nearby habitat cells are
+// connected to make the period-to-period shift legible at map scale. These
+// connections are not inferred migration routes or model output.
+export function displayStreamlines(dataset: SpeciesDataset): DisplayFlow[] {
+  if (dataset.provenance !== 'synthetic-demo') return displayFlows(dataset);
+
+  const pairs: CellPair[] = dataset.habitat.current.flatMap(current =>
+    dataset.habitat.future
+      .map(future => {
+        const longitude = ((future.center[0] - current.center[0] + 540) % 360) - 180;
+        const latitude = future.center[1] - current.center[1];
+        const distance = Math.hypot(longitude * Math.cos(current.center[1] * Math.PI / 180), latitude);
+        return { future, distance };
+      })
+      .filter(({ distance }) => distance > 0 && distance < 68)
+      .sort((a, b) => a.distance - b.distance)
+      .slice(0, 3)
+      .map(({ future }) => ({ current, future }))
+  );
+
+  return pairs.flatMap((pair, pairIndex) => {
+    const { current, future } = pair;
+
+    return Array.from({ length: 9 }, (_, strand) => {
+      // Keep both ends inside their respective invented habitat cells.
+      const lane = (strand - 4) / 4;
+      const wave = Math.sin(pairIndex * 2.7 + strand * 1.9);
+      const from: Position = [
+        current.center[0] + lane * current.widthDeg * 0.31,
+        current.center[1] + wave * current.heightDeg * 0.29
+      ];
+      const to: Position = [
+        future.center[0] + lane * future.widthDeg * 0.31,
+        future.center[1] + Math.sin(pairIndex * 2.7 + strand * 1.9 + 0.9) * future.heightDeg * 0.29
+      ];
+      return { id: `${current.id}-${future.id}-${strand}`, from, to, path: curvedPath(from, to, pairIndex + strand) };
+    });
+  });
 }
 
 export function pointOnFlow(flow: DisplayFlow, progress: number): Position {
