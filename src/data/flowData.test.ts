@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import tuna from './species/tuna.json';
+import shark from './species/whale-shark.json';
 import { displayFlows, displayStreamlines, pointOnFlow } from './flowData';
 import { parseSpeciesDataset } from './schema';
 
@@ -22,23 +23,24 @@ describe('illustrative distribution flows', () => {
     expect(path.every(([longitude]) => longitude >= 179 && longitude <= 181)).toBe(true);
   });
 
-  it('keeps the decorative strands inside source and target cells', () => {
-    const dataset = parseSpeciesDataset(tuna);
-    const strands = displayStreamlines(dataset);
-    expect(strands.length).toBeGreaterThan(100);
-    for (const strand of strands) {
-      const fromCell = dataset.habitat.current.find(cell =>
-        Math.abs(strand.from[0] - cell.center[0]) <= cell.widthDeg / 2 &&
-        Math.abs(strand.from[1] - cell.center[1]) <= cell.heightDeg / 2
-      );
-      const toCell = dataset.habitat.future.find(cell =>
-        Math.abs(strand.to[0] - cell.center[0]) <= cell.widthDeg / 2 &&
-        Math.abs(strand.to[1] - cell.center[1]) <= cell.heightDeg / 2
-      );
-      expect(fromCell).toBeDefined();
-      expect(toCell).toBeDefined();
-      expect(pointOnFlow(strand, 0)).toEqual(strand.from);
-      expect(pointOnFlow(strand, 1)[1]).toBeCloseTo(strand.to[1]);
+  it('keeps all strands on their matching cell pair and in the same direction', () => {
+    for (const fixture of [tuna, shark]) {
+      const dataset = parseSpeciesDataset(fixture);
+      const strands = displayStreamlines(dataset);
+      expect(strands).toHaveLength(108);
+      for (const strand of strands) {
+        const cellId = strand.id.split('-')[0];
+        const current = dataset.habitat.current.find(cell => cell.id === cellId)!;
+        const future = dataset.habitat.future.find(cell => cell.id === cellId)!;
+        expect(Math.abs(strand.from[0] - current.center[0])).toBeLessThan(current.widthDeg / 2);
+        expect(Math.abs(strand.from[1] - current.center[1])).toBeLessThan(current.heightDeg / 2);
+        expect(Math.abs(strand.to[0] - future.center[0])).toBeLessThan(future.widthDeg / 2);
+        expect(Math.abs(strand.to[1] - future.center[1])).toBeLessThan(future.heightDeg / 2);
+        expect(strand.to[0] - strand.from[0]).toBeCloseTo(future.center[0] - current.center[0]);
+        expect(strand.to[1] - strand.from[1]).toBeCloseTo(future.center[1] - current.center[1]);
+        expect(pointOnFlow(strand, 0)).toEqual(strand.from);
+        expect(pointOnFlow(strand, 1)[1]).toBeCloseTo(strand.to[1]);
+      }
     }
   });
 

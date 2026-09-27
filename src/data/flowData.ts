@@ -39,42 +39,36 @@ export function displayFlows(dataset: SpeciesDataset): DisplayFlow[] {
     .map((pair, index) => ({ ...pair, path: curvedPath(pair.from, pair.to, index) }));
 }
 
-// A decorative field for the synthetic fixture only. Nearby habitat cells are
-// connected to make the period-to-period shift legible at map scale. These
-// connections are not inferred migration routes or model output.
+// A decorative field for the synthetic fixture only. Each current cell is
+// connected only to the future cell with the same ID. These strands are not
+// inferred migration routes or model output.
 export function displayStreamlines(dataset: SpeciesDataset): DisplayFlow[] {
   if (dataset.provenance !== 'synthetic-demo') return displayFlows(dataset);
 
-  const pairs: CellPair[] = dataset.habitat.current.flatMap(current =>
-    dataset.habitat.future
-      .map(future => {
-        const longitude = ((future.center[0] - current.center[0] + 540) % 360) - 180;
-        const latitude = future.center[1] - current.center[1];
-        const distance = Math.hypot(longitude * Math.cos(current.center[1] * Math.PI / 180), latitude);
-        return { future, distance };
-      })
-      .filter(({ distance }) => distance > 0 && distance < 68)
-      .sort((a, b) => a.distance - b.distance)
-      .slice(0, 3)
-      .map(({ future }) => ({ current, future }))
-  );
+  const pairs: CellPair[] = dataset.habitat.current.flatMap(current => {
+    const future = dataset.habitat.future.find(cell => cell.id === current.id);
+    return future && (current.center[0] !== future.center[0] || current.center[1] !== future.center[1])
+      ? [{ current, future }] : [];
+  });
 
   return pairs.flatMap((pair, pairIndex) => {
     const { current, future } = pair;
 
-    return Array.from({ length: 9 }, (_, strand) => {
-      // Keep both ends inside their respective invented habitat cells.
-      const lane = (strand - 4) / 4;
+    return Array.from({ length: 18 }, (_, strand) => {
+      // Equal offsets at both ends preserve the direction of the paired centers.
+      const lane = (strand - 8.5) / 8.5;
       const wave = Math.sin(pairIndex * 2.7 + strand * 1.9);
+      const longitudeOffset = lane * Math.min(current.widthDeg, future.widthDeg) * 0.31;
+      const latitudeOffset = wave * Math.min(current.heightDeg, future.heightDeg) * 0.29;
       const from: Position = [
-        current.center[0] + lane * current.widthDeg * 0.31,
-        current.center[1] + wave * current.heightDeg * 0.29
+        current.center[0] + longitudeOffset,
+        current.center[1] + latitudeOffset
       ];
       const to: Position = [
-        future.center[0] + lane * future.widthDeg * 0.31,
-        future.center[1] + Math.sin(pairIndex * 2.7 + strand * 1.9 + 0.9) * future.heightDeg * 0.29
+        future.center[0] + longitudeOffset,
+        future.center[1] + latitudeOffset
       ];
-      return { id: `${current.id}-${future.id}-${strand}`, from, to, path: curvedPath(from, to, pairIndex + strand) };
+      return { id: `${current.id}-${strand}`, from, to, path: curvedPath(from, to, pairIndex + strand) };
     });
   });
 }
