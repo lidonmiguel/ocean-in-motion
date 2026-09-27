@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "id": "humpback-whale",
+  "scientificName": "Megaptera novaeangliae",
+  "commonNameEs": "Ballena jorobada",
+  "group": "cetacean",
+  "summaryEs": "Un cetáceo que realiza desplazamientos de gran escala entre zonas de alimentación y reproducción.",
+  "ecologyEs": "Se alimenta de kril y peces pequeños. Estas celdas son inventadas y no muestran sus recorridos estacionales.",
+  "provenance": "synthetic-demo",
+  "reviewStatus": "illustrative",
+  "scenario": "SSP2-4.5",
+  "periods": {
+    "current": "Referencia ilustrativa",
+    "future": "2050"
+  },
+  "citations": [
+    {
+      "id": "demo",
+      "title": "Hand-authored synthetic interface fixture",
+      "url": null,
+      "role": "demonstration"
+    }
+  ],
+  "habitat": {
+    "current": [
+      {
+        "id": "h1",
+        "center": [
+          -61,
+          39
+        ],
+        "widthDeg": 9,
+        "heightDeg": 6,
+        "suitability": 0.78,
+        "uncertainty": 0.25
+      },
+      {
+        "id": "h2",
+        "center": [
+          -49,
+          44
+        ],
+        "widthDeg": 9,
+        "heightDeg": 6,
+        "suitability": 0.67,
+        "uncertainty": 0.31
+      },
+      {
+        "id": "h3",
+        "center": [
+          -37,
+          48
+        ],
+        "widthDeg": 9,
+        "heightDeg": 6,
+        "suitability": 0.71,
+        "uncertainty": 0.29
+      },
+      {
+        "id": "h4",
+        "center": [
+          -25,
+          42
+        ],
+        "widthDeg": 9,
+        "heightDeg": 6,
+        "suitability": 0.55,
+        "uncertainty": 0.36
+      },
+      {
+        "id": "h5",
+        "center": [
+          -17,
+          54
+        ],
+        "widthDeg": 9,
+        "heightDeg": 6,
+        "suitability": 0.82,
+        "uncertainty": 0.23
+      },
+      {
+        "id": "h6",
+        "center": [
+          -9,
+          47
+        ],
+        "widthDeg": 9,
+        "heightDeg": 6,
+        "suitability": 0.62,
+        "uncertainty": 0.33
+      }
+    ],
+    "future": [
+      {
+        "id": "h1",
+        "center": [
+          -62,
+          45
+        ],
+        "widthDeg": 9,
+        "heightDeg": 6,
+        "suitability": 0.64,
+        "uncertainty": 0.47
+      },
+      {
+        "id": "h2",
+        "center": [
+          -50,
+          51
+        ],
+        "widthDeg": 9,
+        "heightDeg": 6,
+        "suitability": 0.73,
+        "uncertainty": 0.52
+      },
+      {
+        "id": "h3",
+        "center": [
+          -39,
+          55
+        ],
+        "widthDeg": 9,
+        "heightDeg": 6,
+        "suitability": 0.58,
+        "uncertainty": 0.49
+      },
+      {
+        "id": "h4",
+        "center": [
+          -27,
+          49
+        ],
+        "widthDeg": 9,
+        "heightDeg": 6,
+        "suitability": 0.77,
+        "uncertainty": 0.55
+      },
+      {
+        "id": "h5",
+        "center": [
+          -18,
+          60
+        ],
+        "widthDeg": 9,
+        "heightDeg": 6,
+        "suitability": 0.69,
+        "uncertainty": 0.44
+      },
+      {
+        "id": "h6",
+        "center": [
+          -12,
+          53
+        ],
+        "widthDeg": 9,
+        "heightDeg": 6,
+        "suitability": 0.48,
+        "uncertainty": 0.59
+      }
+    ]
+  }
+}

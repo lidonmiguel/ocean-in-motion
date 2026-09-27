@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import tuna from './species/tuna.json';
 import turtle from './species/turtle.json';
-import shark from './species/whale-shark.json';
+import { species } from './index';
 import { displayFlows, displayStreamlines, flowSection, pointOnFlow, visibleFlowWindow } from './flowData';
 import { waterSegment } from './oceanRoutes';
 import { parseSpeciesDataset } from './schema';
@@ -26,7 +26,7 @@ describe('illustrative distribution flows', () => {
   });
 
   it('keeps all strands on their matching cell pair and in the same direction', () => {
-    for (const fixture of [tuna, turtle, shark]) {
+    for (const fixture of species) {
       const dataset = parseSpeciesDataset(fixture);
       const strands = displayStreamlines(dataset);
       expect(strands.length).toBeGreaterThan(60);

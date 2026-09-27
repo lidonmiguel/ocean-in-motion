@@ -5,7 +5,7 @@ under a 2050 **SSP2-4.5** scenario. The interface is in Spanish; this technical
 documentation and the code are in English.
 
 **Everything shown in the first release is synthetic and illustrative.** The
-three small hand-authored datasets are UI fixtures. They are not OBIS records,
+seven small hand-authored datasets are UI fixtures. They are not OBIS records,
 Bio-ORACLE layers, scientific forecasts, real animal positions or validated
 species distribution models. The animated streamlines between matching synthetic
 habitat cells are a graphic illustration, not GPS routes, modeled corridors
@@ -23,7 +23,8 @@ npm run dev
 ```
 
 Open the local URL printed by Vite, normally `http://localhost:5173`.
-Choose one of three species to see **Actual** and **2050** habitat cells together,
+Choose one of seven species, grouped as fish, cetaceans and reptiles, to see
+**Actual** and **2050** habitat cells together,
 with animated strokes connecting matching synthetic cells. Each stroke grows
 from current to 2050, its tail follows, and it disappears on arrival. There are
 no permanent route lines or moving point markers. Different regions can shift
@@ -87,7 +88,7 @@ turn them into scientific results.
 | --- | --- |
 | `src/App.tsx`, `src/styles.css` | Spanish responsive controls, legend, species information and prominent demo warnings. |
 | `src/MapView.tsx`, `src/data/flowData.ts` | MapLibre world view with bundled Natural Earth land geometry (`world-atlas`), deck.gl habitat cells and illustrative flow animation. |
-| `src/data/species/*.json` | Three synthetic species fixtures, each with current and 2050 cells. |
+| `src/data/species/*.json` | Seven synthetic species fixtures, each with current and 2050 cells. |
 | `src/data/schema.ts`, `src/data/mapData.ts` | Runtime validation, typed data, period selection, color bands and antimeridian cell splitting. |
 | `src/data/*.test.ts` | Focused schema and map-data tests. |
 | `docs/data-format.md` | Versioned metadata, citation, suitability, uncertainty and vector format. |
@@ -108,6 +109,15 @@ evidence for the displayed cells. The animated lines connect matching invented
 cells to illustrate a visual change; they do not describe movements of
 individual animals or establish corridors. Reviewed datasets retain only their
 explicitly supplied direction vectors. See [the data contract](docs/data-format.md).
+
+The four added species are humpback whale, common bottlenose dolphin, swordfish
+and loggerhead turtle. General species context was checked against NOAA Fisheries
+profiles for [humpback whale](https://www.fisheries.noaa.gov/species/humpback-whale),
+[bottlenose dolphin](https://www.fisheries.noaa.gov/species/common-bottlenose-dolphin),
+[swordfish](https://www.fisheries.noaa.gov/species/north-atlantic-swordfish) and
+[loggerhead turtle](https://www.fisheries.noaa.gov/species/loggerhead-turtle).
+Those profiles do not provide or validate the invented habitat cells, period
+shifts, suitability scores or animated strokes.
 
 - **OBIS:** `python/ocean_pipeline/sources.py::stage_obis_occurrences` stages
   a small, scoped occurrence extract and JSON manifest. See

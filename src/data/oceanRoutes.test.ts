@@ -1,8 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { curveOceanRoute, isOcean, oceanRoute, waterSegment } from './oceanRoutes';
-import tuna from './species/tuna.json';
-import turtle from './species/turtle.json';
-import shark from './species/whale-shark.json';
+import { species } from './index';
 
 describe('water-only display routes', () => {
   it('recognizes the coastline used by the map', () => {
@@ -54,7 +52,7 @@ describe('water-only display routes', () => {
   });
 
   it('keeps the fixture cell centers at sea', () => {
-    for (const fixture of [tuna, turtle, shark]) {
+    for (const fixture of species) {
       for (const cell of [...fixture.habitat.current, ...fixture.habitat.future]) {
         expect(isOcean(cell.center as [number, number]), `${fixture.id}: ${cell.id}`).toBe(true);
       }

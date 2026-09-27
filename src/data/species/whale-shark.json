@@ -3,6 +3,7 @@
   "id": "whale-shark",
   "scientificName": "Rhincodon typus",
   "commonNameEs": "Tiburón ballena",
+  "group": "fish",
   "summaryEs": "Un gran pez filtrador asociado a mares cálidos y regiones de alta productividad.",
   "ecologyEs": "Su presencia depende de procesos oceánicos y del alimento disponible. La muestra dibujada aquí es completamente sintética.",
   "provenance": "synthetic-demo",
