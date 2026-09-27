@@ -7,8 +7,8 @@ documentation and the code are in English.
 **Everything shown in the first release is synthetic and illustrative.** The
 three small hand-authored datasets are UI fixtures. They are not OBIS records,
 Bio-ORACLE layers, scientific forecasts, real animal positions or validated
-species distribution models. The animated streamlines between nearby synthetic
-habitat regions are a graphic illustration, not GPS routes, modeled corridors
+species distribution models. The animated streamlines between matching synthetic
+habitat cells are a graphic illustration, not GPS routes, modeled corridors
 or inferred animal migrations. Their density and curvature encode no science.
 
 ## Run locally
@@ -24,7 +24,9 @@ npm run dev
 
 Open the local URL printed by Vite, normally `http://localhost:5173`.
 Choose one of three species to see **Actual** and **2050** habitat cells together,
-with a dense animated field connecting nearby synthetic regions. The map frames
+with a dense animated field connecting matching synthetic cells. Each strand
+runs from current to 2050; different regions can shift in different directions.
+The map frames
 the selected species automatically; drag/zoom to explore farther and
 hover a colored cell for its illustrative suitability and uncertainty. The
 layout adapts to narrower screens. Reduced-motion settings show static lines.
@@ -93,8 +95,8 @@ and the application does not embed that image.
 The fixture files were invented by hand for interface testing. Their values,
 uncertainties and arrows have no empirical source. Their `citations` entries
 say so explicitly; species names and short explanatory text are context, not
-evidence for the displayed cells. The animated lines connect nearby invented
-regions to illustrate a visual change; they do not describe movements of
+evidence for the displayed cells. The animated lines connect matching invented
+cells to illustrate a visual change; they do not describe movements of
 individual animals or establish corridors. Reviewed datasets retain only their
 explicitly supplied direction vectors. See [the data contract](docs/data-format.md).
 
