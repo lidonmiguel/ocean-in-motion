@@ -85,6 +85,7 @@ export function MapView({ selected, period }: { selected: SpeciesDataset; period
         new GeoJsonLayer({
           id: 'land',
           data: land,
+          wrapLongitude: true,
           filled: true,
           stroked: true,
           getFillColor: [36, 69, 86, 255],
