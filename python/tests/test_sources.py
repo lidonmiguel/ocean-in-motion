@@ -38,6 +38,7 @@ class SourcePlanTests(unittest.TestCase):
             {"start_date": "2000-02-30"}, {"end_date": "1999-01-01"},
             {"max_records": 0}, {"max_records": 10001}, {"max_records": True},
             {"scenario": "SSP5-8.5"},
+            {"dataset_id": "not-a-uuid"},
         ):
             values = dict(taxon_id="123", bounds=(-20, 10, -10, 20),
                           start_date="2000-01-01", end_date="2010-12-31", max_records=2)
@@ -101,6 +102,13 @@ class OccurrenceTests(unittest.TestCase):
         self.assertEqual([parse_qs(urlparse(url).query)["size"][0] for url, _ in calls], ["200", "2"])
         self.assertEqual(result["counts"]["written"], 202)
         self.assertTrue(result["truncated_by_cap"])
+
+    def test_dataset_filter_is_recorded(self):
+        scoped = SourcePlan("123", (-20, 10, -10, 20), "2000-01-01", "2010-12-31", 1,
+                            dataset_id="b9bfb219-1d5c-450e-9b26-fd377aee8561")
+        result, _, _, calls = self.stage([{"total": 1, "results": [record("a")]}], scoped)
+        self.assertEqual(parse_qs(urlparse(calls[0][0]).query)["datasetid"], [scoped.dataset_id])
+        self.assertEqual(result["query"]["datasetid"], scoped.dataset_id)
 
     def test_coordinate_qc_and_duplicate_ids(self):
         rows = [

@@ -28,6 +28,7 @@ class SourcePlan:
     max_records: int
     scenario: str = "SSP2-4.5"
     target_year: int = 2050
+    dataset_id: str | None = None  # optional OBIS source dataset UUID
 
     def __post_init__(self) -> None:
         if not isinstance(self.taxon_id, str) or not re.fullmatch(r"[1-9][0-9]*", self.taxon_id):
@@ -52,6 +53,8 @@ class SourcePlan:
             raise ValueError(f"max_records must be between 1 and {MAX_RECORDS}")
         if self.scenario != "SSP2-4.5" or self.target_year != 2050:
             raise ValueError("The initial pipeline supports only SSP2-4.5 for 2050")
+        if self.dataset_id is not None and not re.fullmatch(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}", self.dataset_id):
+            raise ValueError("dataset_id must be a lowercase UUID")
 
 
 def _geometry(bounds: tuple[float, float, float, float]) -> str:
@@ -60,11 +63,14 @@ def _geometry(bounds: tuple[float, float, float, float]) -> str:
 
 
 def _page_url(plan: SourcePlan, offset: int, size: int) -> str:
-    return OBIS_URL + "?" + urlencode({
+    params = {
         "taxonid": plan.taxon_id, "geometry": _geometry(plan.bounds),
         "startdate": plan.start_date, "enddate": plan.end_date,
         "size": size, "offset": offset,
-    })
+    }
+    if plan.dataset_id:
+        params["datasetid"] = plan.dataset_id
+    return OBIS_URL + "?" + urlencode(params)
 
 
 def _fetch_page(url: str) -> tuple[dict, dict[str, str]]:
@@ -170,6 +176,7 @@ def stage_obis_occurrences(plan: SourcePlan, extract_path: Path, manifest_path: 
                    "record_modified_values": sorted({str(row["modified"]) for row in kept if row.get("modified")})},
         "accessed_at_utc": accessed,
         "query": {"taxonid": plan.taxon_id, "bounds_wgs84": list(plan.bounds), "geometry": _geometry(plan.bounds),
+                  "datasetid": plan.dataset_id,
                   "startdate": plan.start_date, "enddate": plan.end_date, "max_records": plan.max_records,
                   "page_size": PAGE_SIZE, "pages": pages},
         "counts": {"api_total_reported": total, "raw_fetched": len(rows),
@@ -219,10 +226,11 @@ def main() -> None:
     parser.add_argument("--start-date", required=True)
     parser.add_argument("--end-date", required=True)
     parser.add_argument("--max-records", required=True, type=int)
+    parser.add_argument("--dataset-id", help="optional OBIS source dataset UUID")
     parser.add_argument("--extract", required=True, type=Path)
     parser.add_argument("--manifest", required=True, type=Path)
     args = parser.parse_args()
-    plan = SourcePlan(args.taxon_id, tuple(args.bounds), args.start_date, args.end_date, args.max_records)
+    plan = SourcePlan(args.taxon_id, tuple(args.bounds), args.start_date, args.end_date, args.max_records, dataset_id=args.dataset_id)
     stage_obis_occurrences(plan, args.extract, args.manifest)
 
 

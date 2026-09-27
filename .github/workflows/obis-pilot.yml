@@ -1,0 +1,49 @@
+name: Refresh OBIS pilot snapshot
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch bounded source observations
+        run: |
+          PYTHONPATH=python python -m ocean_pipeline.sources \
+            --taxon-id 137205 \
+            --dataset-id b9bfb219-1d5c-450e-9b26-fd377aee8561 \
+            --bounds 1 39 14 44 \
+            --start-date 2013-01-01 --end-date 2017-12-31 \
+            --max-records 10000 \
+            --extract output/occurrences.jsonl \
+            --manifest output/occurrences.manifest.json
+      - name: Inspect extract size
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          m = json.loads(Path('output/occurrences.manifest.json').read_text())
+          print('Counts:', m['counts'])
+          print('Truncated:', m['truncated_by_cap'])
+          print('Datasets:', m['attribution']['datasets'])
+          if not m['counts']['written'] or m['truncated_by_cap']:
+              raise SystemExit('No records or capped extract; adjust scope before publication')
+          PY
+      - name: Build reviewable map layer
+        run: |
+          PYTHONPATH=python python -m ocean_pipeline.publish_pilot \
+            --extract output/occurrences.jsonl \
+            --manifest output/occurrences.manifest.json \
+            --output output/loggerhead-west-med.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: loggerhead-obis-pilot
+          path: output/
+          retention-days: 7
