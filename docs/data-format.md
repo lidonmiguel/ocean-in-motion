@@ -32,6 +32,12 @@ The web map paints suitability bands at `<0.35`, `0.35–<0.7`, and `≥0.7`.
 Cell selection reveals exact suitability and uncertainty values. These cutoffs
 are presentation choices for the fixture, not ecological thresholds.
 
+The synthetic demo pairs current and future cells with matching IDs to draw
+animated, curved connectors between their centers. This is a UI illustration,
+not an estimated migration path or movement model. For reviewed outputs the
+interface does not infer connectors from cell IDs; it only uses explicitly
+supplied `movementVectors` when their direction statistic is documented.
+
 ## Example excerpt
 
 ```json

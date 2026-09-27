@@ -7,8 +7,8 @@ documentation and the code are in English.
 **Everything shown in the first release is synthetic and illustrative.** The
 three small hand-authored datasets are UI fixtures. They are not OBIS records,
 Bio-ORACLE layers, scientific forecasts, real animal positions or validated
-species distribution models. The magenta mark suggests an illustrative
-direction of distribution change; it is not a GPS route.
+species distribution models. Animated connectors between paired cells are an
+illustrative transition, not GPS routes or inferred animal migrations.
 
 ## Run locally
 
@@ -22,9 +22,10 @@ npm run dev
 ```
 
 Open the local URL printed by Vite, normally `http://localhost:5173`.
-Choose one of three species, switch between **Actual** and **2050**, drag/zoom
-the world map, and hover a colored cell for its illustrative suitability and
-uncertainty. The layout adapts to narrower screens.
+Choose one of three species to see **Actual** and **2050** habitat cells together,
+with animated connectors between their centers. Drag/zoom the world map and
+hover a colored cell for its illustrative suitability and uncertainty. The
+layout adapts to narrower screens. Reduced-motion settings show static lines.
 
 ```bash
 npm run lint
@@ -72,7 +73,7 @@ turn them into scientific results.
 | Path | Purpose |
 | --- | --- |
 | `src/App.tsx`, `src/styles.css` | Spanish responsive controls, legend, species information and prominent demo warnings. |
-| `src/MapView.tsx` | MapLibre world basemap built from bundled Natural Earth land geometry (`world-atlas`), with deck.gl habitat cells and optional direction mark. |
+| `src/MapView.tsx`, `src/data/flowData.ts` | MapLibre world view with bundled Natural Earth land geometry (`world-atlas`), deck.gl habitat cells and illustrative flow animation. |
 | `src/data/species/*.json` | Three synthetic species fixtures, each with current and 2050 cells. |
 | `src/data/schema.ts`, `src/data/mapData.ts` | Runtime validation, typed data, period selection, color bands and antimeridian cell splitting. |
 | `src/data/*.test.ts` | Focused schema and map-data tests. |
@@ -90,7 +91,9 @@ and the application does not embed that image.
 The fixture files were invented by hand for interface testing. Their values,
 uncertainties and arrows have no empirical source. Their `citations` entries
 say so explicitly; species names and short explanatory text are context, not
-evidence for the displayed cells. See [the data contract](docs/data-format.md).
+evidence for the displayed cells. The animated lines pair fixture cell IDs to
+illustrate a visual change; they do not describe movements of individual
+animals. See [the data contract](docs/data-format.md).
 
 - **OBIS:** `python/ocean_pipeline/sources.py::stage_obis_occurrences` stages
   a small, scoped occurrence extract and JSON manifest. See

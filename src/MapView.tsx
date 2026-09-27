@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import * as maplibregl from 'maplibre-gl';
 import { MapLibreOverlay } from '@deck.gl/maplibre';
-import { GeoJsonLayer, LineLayer, PolygonLayer, ScatterplotLayer } from '@deck.gl/layers';
+import { GeoJsonLayer, PathLayer, PolygonLayer, ScatterplotLayer } from '@deck.gl/layers';
 import { feature } from 'topojson-client';
 import world from 'world-atlas/land-110m.json';
 import { displayCells, suitabilityColor, type DisplayCell } from './data/mapData';
-import type { Period, SpeciesDataset } from './data/schema';
+import { displayFlows, pointOnFlow } from './data/flowData';
+import type { SpeciesDataset } from './data/schema';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
 const topology = world as unknown as Parameters<typeof feature>[0];
@@ -27,9 +28,11 @@ const graticule = {
   ]
 };
 
-type Hover = { x: number; y: number; cell: DisplayCell } | null;
+type Hover = { x: number; y: number; cell: DisplayCell; period: 'Actual' | '2050' } | null;
+type Endpoint = { position: [number, number]; period: 'current' | 'future' };
+type Particle = { position: [number, number]; opacity: number; radius: number };
 
-export function MapView({ selected, period }: { selected: SpeciesDataset; period: Period }) {
+export function MapView({ selected }: { selected: SpeciesDataset }) {
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
   const overlay = useRef<MapLibreOverlay | null>(null);
@@ -68,10 +71,14 @@ export function MapView({ selected, period }: { selected: SpeciesDataset; period
   useEffect(() => {
     if (!ready || !overlay.current) return;
     setHover(null);
-    const cells = displayCells(selected, period);
-    const vectors = period === 'future' ? (selected.movementVectors ?? []) : [];
-    overlay.current.setProps({
-      layers: [
+    const currentCells = displayCells(selected, 'current');
+    const futureCells = displayCells(selected, 'future');
+    const flows = displayFlows(selected);
+    const endpoints: Endpoint[] = flows.flatMap(flow => [
+      { position: flow.from, period: 'current' },
+      { position: flow.to, period: 'future' }
+    ]);
+    const layers = [
         new GeoJsonLayer({
           id: 'graticule',
           data: graticule,
@@ -95,53 +102,112 @@ export function MapView({ selected, period }: { selected: SpeciesDataset; period
           pickable: false
         }),
         new PolygonLayer<DisplayCell>({
-          id: 'habitat-cells',
-          data: cells,
+          id: 'current-habitat',
+          data: currentCells,
           getPolygon: d => d.polygon,
           getFillColor: d => suitabilityColor(d.suitability),
-          getLineColor: period === 'future' ? [239, 127, 194, 210] : [144, 240, 233, 195],
+          getLineColor: [144, 240, 233, 220],
           getLineWidth: 1.5,
           lineWidthUnits: 'pixels',
           filled: true,
           stroked: true,
           pickable: true,
-          onHover: info => {
-            setHover(info.object ? { x: info.x, y: info.y, cell: info.object } : null);
+          onHover: info => setHover(info.object ? { x: info.x, y: info.y, cell: info.object, period: 'Actual' } : null)
+        }),
+        new PolygonLayer<DisplayCell>({
+          id: 'future-habitat',
+          data: futureCells,
+          getPolygon: d => d.polygon,
+          getFillColor: d => {
+            const [red, green, blue] = suitabilityColor(d.suitability);
+            return [red, green, blue, 100];
           },
-          updateTriggers: { getLineColor: period }
+          getLineColor: [255, 139, 205, 240],
+          getLineWidth: 2,
+          lineWidthUnits: 'pixels',
+          filled: true,
+          stroked: true,
+          pickable: true,
+          onHover: info => setHover(info.object ? { x: info.x, y: info.y, cell: info.object, period: '2050' } : null)
         }),
-        new LineLayer({
-          id: 'illustrative-directions',
-          data: vectors,
-          getSourcePosition: d => d.from,
-          getTargetPosition: d => d.to,
-          getColor: [244, 104, 180, 235],
-          getWidth: 3,
-          widthUnits: 'pixels'
+        new PathLayer({
+          id: 'flow-glow',
+          data: flows,
+          getPath: d => d.path,
+          getColor: [245, 88, 181, 50],
+          getWidth: 8,
+          widthUnits: 'pixels',
+          wrapLongitude: true,
+          pickable: false
         }),
-        new ScatterplotLayer({
-          id: 'direction-endpoints',
-          data: vectors,
-          getPosition: d => d.to,
-          getFillColor: [255, 159, 211, 255],
+        new PathLayer({
+          id: 'flow-lines',
+          data: flows,
+          getPath: d => d.path,
+          getColor: [255, 155, 215, 210],
+          getWidth: 1.7,
+          widthUnits: 'pixels',
+          wrapLongitude: true,
+          pickable: false
+        }),
+        new ScatterplotLayer<Endpoint>({
+          id: 'flow-endpoints',
+          data: endpoints,
+          getPosition: d => d.position,
+          getFillColor: d => d.period === 'current' ? [125, 245, 230, 255] : [255, 140, 205, 255],
           getLineColor: [9, 33, 48, 255],
           lineWidthUnits: 'pixels',
-          getLineWidth: 2,
+          getLineWidth: 1.5,
           radiusUnits: 'pixels',
-          getRadius: 6,
-          stroked: true
+          getRadius: 4,
+          stroked: true,
+          pickable: false
         })
-      ]
-    });
-  }, [selected, period, ready]);
+      ];
+
+    const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (motionPreference.matches || flows.length === 0) {
+      overlay.current.setProps({ layers });
+      return;
+    }
+
+    let frame = 0;
+    const animate = (time: number) => {
+      const particles: Particle[] = flows.flatMap((flow, index) => {
+        const progress = (time / 4400 + index / flows.length) % 1;
+        return Array.from({ length: 4 }, (_, trail) => {
+          const position = progress - trail * 0.035;
+          return position >= 0 ? {
+            position: pointOnFlow(flow, position), opacity: 255 - trail * 58, radius: 4.5 - trail * 0.7
+          } : null;
+        }).filter((particle): particle is Particle => particle !== null);
+      });
+      overlay.current?.setProps({ layers: [
+        ...layers,
+        new ScatterplotLayer<Particle>({
+          id: 'flow-particles',
+          data: particles,
+          getPosition: d => d.position,
+          getFillColor: d => [255, 202, 232, d.opacity],
+          getRadius: d => d.radius,
+          radiusUnits: 'pixels',
+          wrapLongitude: true,
+          pickable: false
+        })
+      ] });
+      frame = requestAnimationFrame(animate);
+    };
+    frame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frame);
+  }, [selected, ready]);
 
   return (
     <div className="map-wrap">
-      <div ref={container} className="map-canvas" role="img" aria-label={`Mapa mundial de hábitat ilustrativo para ${selected.commonNameEs}, ${period === 'current' ? 'actual' : '2050'}`} />
+      <div ref={container} className="map-canvas" role="img" aria-label={`Mapa mundial de hábitat ilustrativo actual y en 2050 para ${selected.commonNameEs}, con conexiones visuales entre celdas; no son rutas de animales`} />
       <div className="map-stamp"><span className="pulse" /> MAPA GLOBAL · DEMOSTRACIÓN</div>
       <div className="map-credit">Siluetas geográficas: Natural Earth / world-atlas · Sin teselas externas</div>
       {hover && <div className="map-tooltip" style={{ left: hover.x + 14, top: hover.y + 14 }}>
-        <strong>Celda ilustrativa</strong>
+        <strong>Celda ilustrativa · {hover.period}</strong>
         <span>Idoneidad: {Math.round(hover.cell.suitability * 100)} / 100</span>
         <span>Incertidumbre: {Math.round(hover.cell.uncertainty * 100)} / 100</span>
       </div>}
