@@ -1,14 +1,15 @@
 # Océano en Movimiento
 
-An experimental marine map with one published model layer and six
+An experimental marine map with a published loggerhead model layer and seven
 illustrative habitat views. The interface is in Spanish; this technical
 documentation and the code are in English.
 
-**The initial tortuga boba view shows modeled relative abundance zones** across
-the Mediterranean from a published 2003–2018 survey-based model. The source
-model was reprojected by EMODnet Biology; the colors compare its values and
-do not establish precise habitat boundaries or predict 2050.
-The other six views use hand-authored synthetic fixtures. They are not OBIS records,
+**The initial tortuga boba view restores the animated illustrative flow.**
+Its **Ver modelo científico** control opens separate modeled relative abundance
+zones across the Mediterranean from a published 2003–2018 survey-based model.
+The source model was reprojected by EMODnet Biology; the colors compare its
+values and do not establish precise habitat boundaries or predict 2050.
+All seven illustrative flow views use hand-authored synthetic fixtures. They are not OBIS records,
 Bio-ORACLE layers, scientific forecasts, real animal positions or validated
 species distribution models. The animated streamlines between matching synthetic
 habitat cells are a graphic illustration, not GPS routes, modeled corridors
@@ -26,10 +27,10 @@ npm run dev
 ```
 
 Open the local URL printed by Vite, normally `http://localhost:5173`.
-The page opens on loggerhead turtle model zones. Dark blue means lower and
-yellow means higher relative modeled values; uncolored water has no model
-estimate. Choose another
-species to see **Actual** and **2050** habitat cells together,
+The page opens on the loggerhead's illustrative flow. Choose **Ver modelo
+científico** to see its separate survey-based zones: subdued blue means lower
+and brighter cyan means higher relative modeled values; uncolored water has no
+model estimate. Choose another species to see **Actual** and **2050** habitat cells together,
 with animated strokes connecting matching synthetic cells. Each stroke grows
 from current to 2050, its tail follows, and it disappears on arrival. There are
 no permanent route lines or moving point markers. Different regions can shift
@@ -44,7 +45,8 @@ The map frames
 the selected species automatically; drag/zoom to explore farther and
 hover a colored cell for its illustrative suitability and uncertainty. The
 layout adapts to narrower screens. Reduced-motion settings show the cells and
-endpoints without animated strokes.
+endpoints without animated strokes. Browsers without WebGL2 use a simplified
+SVG flow animation and model image.
 
 ```bash
 npm run lint

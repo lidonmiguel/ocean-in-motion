@@ -76,14 +76,17 @@ def render(source: Path, image_path: Path, manifest_path: Path) -> dict:
     intensity = np.zeros((HEIGHT, WIDTH))
     intensity[shown] = np.clip((np.log(sample[shown]) - np.log(p10)) /
                                (np.log(p90) - np.log(p10)), 0, 1)
-    stops = np.array([[19, 86, 132], [37, 184, 180], [246, 214, 124]])
+    # Keep the surveyed basin readable as water: muted blue for lower model
+    # values, sea green for the middle and a soft cyan glow for higher values.
+    # Opacity rises with the relative value, so the map is not a solid block.
+    stops = np.array([[31, 105, 126], [47, 175, 177], [147, 237, 218]])
     color = np.empty((HEIGHT, WIDTH, 4), dtype=np.uint8)
     midpoint = intensity < .5
     for channel in range(3):
         color[:, :, channel] = np.where(midpoint,
             stops[0, channel] + intensity * 2 * (stops[1, channel] - stops[0, channel]),
             stops[1, channel] + (intensity - .5) * 2 * (stops[2, channel] - stops[1, channel]))
-    color[:, :, 3] = np.where(shown, 172 + 47 * intensity, 0).astype(np.uint8)
+    color[:, :, 3] = np.where(shown, 36 + 154 * intensity ** 1.6, 0).astype(np.uint8)
     image_path.parent.mkdir(parents=True, exist_ok=True)
     Image.fromarray(color, "RGBA").save(image_path, optimize=True)
 
@@ -105,6 +108,7 @@ def render(source: Path, image_path: Path, manifest_path: Path) -> dict:
         },
         "rendering": {
             "method": "Nearest native EPSG:3035 model cell reprojected to WGS84; positive valid cells shaded with a log scale between source p10 and p90; nodata transparent.",
+            "palette": "Muted blue to sea green to cyan; opacity increases from 36 to 190 by relative value.",
             "variable": "abundance", "units": "unspecified by source; relative values only",
             "modelCells": int(valid_source.size), "shownPixels": int(shown.sum()),
             "sourceQuantiles": {"p10": p10, "p50": p50, "p90": p90},
