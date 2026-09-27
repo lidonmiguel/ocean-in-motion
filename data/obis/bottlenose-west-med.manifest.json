@@ -1,0 +1,71 @@
+{
+  "accessed_at_utc": "2026-09-27T22:24:06.748595+00:00",
+  "attribution": {
+    "datasets": [
+      {
+        "datasetName": [
+          "Presence of cetacean species collected through Fixed-Line-Transect monitoring across the Western Mediterranean Sea (Civitavecchia-Barcelona route) between 2014 and 2018"
+        ],
+        "dataset_id": "d5847ecb-6f9b-4599-888a-461cb26f8018",
+        "modified": [
+          "2021-10-15 10:05:31"
+        ],
+        "records": 84
+      }
+    ],
+    "note": "Review each contributing dataset's citation and license before reuse; missing fields are not a grant of rights.",
+    "obis": "OBIS (2026) Ocean Biodiversity Information System. Intergovernmental Oceanographic Commission of UNESCO. https://obis.org. Accessed: 2026-09-27"
+  },
+  "counts": {
+    "after_coordinate_qc": 84,
+    "api_total_reported": 84,
+    "duplicate_identifiers": 0,
+    "invalid_coordinates_or_outside_bounds": 0,
+    "raw_fetched": 84,
+    "without_duplicate_identifier": 0,
+    "written": 84
+  },
+  "extract": "output/bottlenose-west-med.jsonl",
+  "extract_sha256": "11d0ecf305f157a121c9eb351b66627a0cca8a0b4c6ec6a6bd377daec31decd0",
+  "qc_rule": "Reject missing, non-finite, out-of-range or outside-box coordinates; de-duplicate on repeated OBIS id or dataset_id + occurrenceID. Do not collapse equal positions.",
+  "query": {
+    "bounds_wgs84": [
+      -2,
+      37,
+      12,
+      44
+    ],
+    "datasetid": "d5847ecb-6f9b-4599-888a-461cb26f8018",
+    "enddate": "2018-12-31",
+    "geometry": "POLYGON((-2 37,12 37,12 44,-2 44,-2 37))",
+    "max_records": 10000,
+    "page_size": 200,
+    "pages": [
+      {
+        "after": null,
+        "offset": 0,
+        "received": 84,
+        "size": 200,
+        "url": "https://api.obis.org/v3/occurrence?taxonid=137111&geometry=POLYGON%28%28-2+37%2C12+37%2C12+44%2C-2+44%2C-2+37%29%29&startdate=2014-01-01&enddate=2018-12-31&size=200&datasetid=d5847ecb-6f9b-4599-888a-461cb26f8018"
+      }
+    ],
+    "pagination": "after occurrence id",
+    "startdate": "2014-01-01",
+    "taxonid": "137111"
+  },
+  "schema_version": 1,
+  "source": {
+    "api": "https://api.obis.org/v3/occurrence",
+    "api_version": "v3",
+    "name": "Ocean Biodiversity Information System (OBIS)",
+    "record_modified_values": [
+      "2021-10-15 10:05:31"
+    ],
+    "response_headers": [
+      {
+        "ETag": "W/\"2c397-c0+sBl2cr9C4AmaIwiktLF4kUMI\""
+      }
+    ]
+  },
+  "truncated_by_cap": false
+}

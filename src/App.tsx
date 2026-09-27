@@ -19,14 +19,14 @@ export default function App() {
     <div className="app-shell">
       <header className="site-header">
         <div className="identity"><div className="mark" aria-hidden="true"><span>≈</span></div><div><div className="eyebrow">ATLAS EXPERIMENTAL / 01</div><h1>Océano <em>en Movimiento</em></h1></div></div>
-        <div className="header-right"><span className="header-line" /><span>{observationLayer ? 'AVISTAMIENTOS DOCUMENTADOS' : 'EXPLORAR EL CAMBIO POSIBLE'}</span><span className="scenario-pill">{observationLayer ? 'OBIS · 2013–2017' : 'ESCENARIO  SSP2-4.5'}</span></div>
+        <div className="header-right"><span className="header-line" /><span>{observationLayer ? 'AVISTAMIENTOS DOCUMENTADOS' : 'EXPLORAR EL CAMBIO POSIBLE'}</span><span className="scenario-pill">{observationLayer ? `OBIS · ${selected.periods.current}` : 'ESCENARIO  SSP2-4.5'}</span></div>
       </header>
 
       <main className="workspace">
         <aside className="selector-panel" aria-label="Selección de especie">
           <div className="section-index">01 / EXPLORAR</div>
           <h2>Un océano.<br /><em>Muchas posibilidades.</em></h2>
-          <p className="intro">La caja de la tortuga boba engloba sus 117 avistamientos documentados. La caja rosa y el flujo muestran solo una simulación visual; las otras especies siguen siendo ejemplos.</p>
+          <p className="intro">Cada especie tiene una caja calculada con sus registros reales en una región concreta. La caja rosa y el flujo son una simulación visual: todavía no predicen el futuro.</p>
           <div className="fine-rule" />
           <label className="field-label" htmlFor="species-select">SELECCIONA UNA ESPECIE</label>
           <select id="species-select" value={selectedId} onChange={event => setSelectedId(event.target.value)}>
@@ -66,12 +66,12 @@ export default function App() {
           <p className="lead">{selected.summaryEs}</p>
           <p className="body-copy">{selected.ecologyEs}</p>
           <div className="metric-block"><div><span>{observationLayer ? 'REGISTROS' : 'PERIODOS'}</span><strong>{observationLayer ? observations?.count : 'Actual → 2050'}</strong></div><div><span>{observationLayer ? 'PERIODO' : 'ESCENARIO'}</span><strong>{observationLayer ? selected.periods.current : 'SSP2-4.5'}</strong></div></div>
-          {observationLayer ? <div className="info-note"><span className="note-icon">◎</span><div><strong>Cómo leer esta caja</strong><p>Una sola caja contiene todos los puntos del transecto. Las posiciones declaradas tienen {observations?.sources[0].coordinateUncertaintyKmRange[0]}–{observations?.sources[0].coordinateUncertaintyKmRange[1]} km de incertidumbre. La caja no delimita todo el hábitat; la rosa se desplaza solo para mostrar cómo funcionaría un resultado futuro.</p></div></div> : <div className="info-note"><span className="note-icon">↗</span><div><strong>Cómo leer este flujo</strong><p>Cada trazo va de su celda actual a la pareja de 2050 por agua. La curvatura es visual y se reduce junto a la costa para no tocar tierra. Son datos sintéticos: el dibujo no es una ruta animal ni una predicción de navegación.</p></div></div>}
+          {observationLayer ? <div className="info-note"><span className="note-icon">◎</span><div><strong>Cómo leer esta caja</strong><p>Una caja engloba {observations?.count} registros en {observations?.sources[0].region}. {observations?.sources[0].coordinateUncertaintyKmRange ? `La incertidumbre declarada es de ${observations.sources[0].coordinateUncertaintyKmRange[0]}–${observations.sources[0].coordinateUncertaintyKmRange[1]} km.` : 'La fuente no declara la incertidumbre de las coordenadas.'} No delimita todo el hábitat; la rosa se desplaza solo para ilustrar un resultado futuro.</p></div></div> : <div className="info-note"><span className="note-icon">↗</span><div><strong>Cómo leer este flujo</strong><p>Cada trazo conecta dos celdas por agua. No es la ruta de un animal.</p></div></div>}
           {observationLayer && observations && <div className="source-note"><strong>Fuente de los avistamientos</strong>{observations.sources.map(source => <p key={source.datasetId}><a href={source.sourceUrl} target="_blank" rel="noreferrer">{source.citation}</a> · {source.license}. La caja se calcula de {source.count} registros; el destino no procede de OBIS.</p>)}</div>}
           <div className="status-label">● {observationLayer ? 'CAJA DE AVISTAMIENTOS REALES · FUTURO SIMULADO' : 'MODO ILUSTRATIVO · SIN VALIDACIÓN CIENTÍFICA'}</div>
         </aside>
       </main>
-      <footer className="site-footer"><span>OCÉANO EN MOVIMIENTO © PROTOTIPO</span><span>{observationLayer ? 'Avistamientos: OBIS / ISPRA · Futuro ilustrativo' : 'Datos sintéticos · Sin afirmaciones científicas'}</span><span>{String(species.findIndex(item => item.id === selected.id) + 1).padStart(2, '0')} / {String(species.length).padStart(2, '0')}</span></footer>
+      <footer className="site-footer"><span>OCÉANO EN MOVIMIENTO © PROTOTIPO</span><span>{observationLayer ? 'Avistamientos: OBIS · Futuro ilustrativo' : 'Sin afirmaciones científicas'}</span><span>{String(species.findIndex(item => item.id === selected.id) + 1).padStart(2, '0')} / {String(species.length).padStart(2, '0')}</span></footer>
     </div>
   );
 }

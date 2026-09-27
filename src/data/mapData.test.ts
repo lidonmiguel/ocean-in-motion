@@ -1,15 +1,14 @@
 import { describe, expect, it } from 'vitest';
-import tuna from './species/tuna.json';
+import { species } from './index';
 import { cellPolygons, displayCells, suitabilityColor } from './mapData';
-import { parseSpeciesDataset } from './schema';
 
 describe('map data handling', () => {
   it('selects each period without mixing the current and future values', () => {
-    const dataset = parseSpeciesDataset(tuna);
+    const dataset = species[0];
     const current = displayCells(dataset, 'current');
     const future = displayCells(dataset, 'future');
-    expect(current[0].suitability).toBe(0.84);
-    expect(future[0].suitability).toBe(0.48);
+    expect(current[0].suitability).toBeUndefined();
+    expect(future[0].suitability).toBeUndefined();
     expect(current[0].polygon[0]).not.toEqual(future[0].polygon[0]);
   });
 

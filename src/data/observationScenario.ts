@@ -1,18 +1,21 @@
 import { parseSpeciesDataset, type SpeciesDataset } from './schema';
+import { isOcean } from './oceanRoutes';
 
 export type ObservationSnapshot = {
   species: string;
   region: string;
   period: string;
   source: { datasetId: string; url: string; citation: string; license: string };
-  summary: { count: number; uncertaintyKmRange: number[] };
-  observations: { id: string; longitude: number; latitude: number; coordinateUncertaintyInMeters: number }[];
+  summary: { count: number; uncertaintyKmRange: number[] | null; unknownCoordinateUncertainty?: number };
+  observations: { id: string; longitude: number; latitude: number; coordinateUncertaintyInMeters: number | null }[];
 };
+
+export type SpeciesMetadata = Pick<SpeciesDataset, 'schemaVersion' | 'id' | 'scientificName' | 'commonNameEs' | 'group' | 'summaryEs'>;
 
 export type ObservationBounds = [west: number, south: number, east: number, north: number];
 
-// A square in approximate ground distance, centered on the extrema of reported
-// positions. It describes survey coverage, not habitat or coordinate precision.
+// A square in approximate ground distance enclosing reported positions. Its
+// display center can shift to water; it is not a habitat or precision estimate.
 export function enclosingObservationBox(records: ObservationSnapshot['observations'], marginKm = 20) {
   if (!records.length || !Number.isFinite(marginKm) || marginKm < 0) throw new Error('A nonempty regional extract and a valid margin are required');
   const ids = new Set<string>();
@@ -20,18 +23,34 @@ export function enclosingObservationBox(records: ObservationSnapshot['observatio
   for (const record of records) {
     if (!record.id || ids.has(record.id) || !Number.isFinite(record.longitude)
         || !Number.isFinite(record.latitude) || Math.abs(record.longitude) > 180
-        || Math.abs(record.latitude) > 85 || !Number.isFinite(record.coordinateUncertaintyInMeters)
-        || record.coordinateUncertaintyInMeters < 0) throw new Error('Invalid or duplicate observation');
+        || Math.abs(record.latitude) > 85 || (record.coordinateUncertaintyInMeters !== null
+        && (!Number.isFinite(record.coordinateUncertaintyInMeters)
+        || record.coordinateUncertaintyInMeters < 0))) throw new Error('Invalid or duplicate observation');
     ids.add(record.id);
     west = Math.min(west, record.longitude);
     east = Math.max(east, record.longitude);
     south = Math.min(south, record.latitude);
     north = Math.max(north, record.latitude);
   }
-  const latitude = (south + north) / 2;
-  const longitude = (west + east) / 2;
+  let latitude = (south + north) / 2;
+  let longitude = (west + east) / 2;
+  // A bounding box across a bay or island may have a midpoint on land even
+  // when every sighting is marine. Move only its visual center to nearby water;
+  // increase the side as necessary so all original positions remain enclosed.
+  if (!isOcean([longitude, latitude])) {
+    let nearest: [number, number] | null = null;
+    let best = Infinity;
+    for (let y = -25; y <= 25; y++) for (let x = -25; x <= 25; x++) {
+      const candidate: [number, number] = [longitude + x * 0.2, latitude + y * 0.2];
+      const distance = Math.hypot(x * Math.cos(latitude * Math.PI / 180), y);
+      if (distance < best && isOcean(candidate)) { nearest = candidate; best = distance; }
+    }
+    if (!nearest) throw new Error('No ocean center near the scoped observations');
+    [longitude, latitude] = nearest;
+  }
   const kmPerLon = 111.32 * Math.cos(latitude * Math.PI / 180);
-  const sideKm = Math.max((east - west) * kmPerLon, (north - south) * 111.32) + marginKm * 2;
+  const sideKm = Math.max(2 * Math.max(east - longitude, longitude - west) * kmPerLon,
+    2 * Math.max(north - latitude, latitude - south) * 111.32) + marginKm * 2;
   const widthDeg = sideKm / kmPerLon;
   const heightDeg = sideKm / 111.32;
   if (widthDeg > 20 || heightDeg > 20 || west < -180 + widthDeg / 2
@@ -46,7 +65,7 @@ export function enclosingObservationBox(records: ObservationSnapshot['observatio
 // A caller can later replace the illustrative future with a reviewed model;
 // this function never claims to infer a future distribution from sightings.
 export function buildObservationScenario(
-  template: SpeciesDataset,
+  template: SpeciesMetadata,
   snapshots: ObservationSnapshot[],
   simulationOffsetDeg: [number, number]
 ): SpeciesDataset {
@@ -55,7 +74,7 @@ export function buildObservationScenario(
   const ids = new Set<string>();
   const boxes = snapshots.map(snapshot => {
     if (snapshot.species !== template.scientificName || snapshot.summary.count !== snapshot.observations.length
-        || snapshot.summary.uncertaintyKmRange.length !== 2
+        || (snapshot.summary.uncertaintyKmRange !== null && snapshot.summary.uncertaintyKmRange.length !== 2)
         || ids.has(snapshot.source.datasetId)) throw new Error('Source species, count or dataset ID is inconsistent');
     ids.add(snapshot.source.datasetId);
     const box = enclosingObservationBox(snapshot.observations);
@@ -70,7 +89,7 @@ export function buildObservationScenario(
     ...template,
     provenance: 'observation-demo', reviewStatus: 'illustrative', scenario: 'illustrative',
     periods: { current: snapshots.map(s => s.period).join(' / '), future: 'Simulación visual' },
-    ecologyEs: 'La caja turquesa se calcula con los avistamientos documentados; la rosa es una traslación visual, no una predicción.',
+    ecologyEs: 'La caja turquesa engloba los registros documentados de una región. La rosa y sus trazos muestran una traslación visual sin modelo predictivo.',
     citations: [
       ...snapshots.map(({ source }) => ({ id: source.datasetId, title: source.citation, url: source.url, role: 'occurrence' })),
       { id: 'visual-only', title: 'Traslación ilustrativa sin modelo predictivo', url: null, role: 'demonstration' }
@@ -80,7 +99,7 @@ export function buildObservationScenario(
     occurrence: {
       count: snapshots.reduce((sum, s) => sum + s.summary.count, 0),
       sources: boxes.map(({ snapshot, box }) => ({
-        datasetId: snapshot.source.datasetId, sourceUrl: snapshot.source.url,
+        datasetId: snapshot.source.datasetId, sourceUrl: snapshot.source.url, region: snapshot.region,
         citation: snapshot.source.citation, license: snapshot.source.license,
         count: snapshot.summary.count, coordinateUncertaintyKmRange: snapshot.summary.uncertaintyKmRange,
         observedBoundsWgs84: box.observedBoundsWgs84

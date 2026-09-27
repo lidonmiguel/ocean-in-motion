@@ -62,12 +62,15 @@ def _geometry(bounds: tuple[float, float, float, float]) -> str:
     return f"POLYGON(({west:g} {south:g},{east:g} {south:g},{east:g} {north:g},{west:g} {north:g},{west:g} {south:g}))"
 
 
-def _page_url(plan: SourcePlan, offset: int, size: int) -> str:
+def _page_url(plan: SourcePlan, offset: int, size: int, after: str | None = None) -> str:
     params = {
         "taxonid": plan.taxon_id, "geometry": _geometry(plan.bounds),
         "startdate": plan.start_date, "enddate": plan.end_date,
-        "size": size, "offset": offset,
+        "size": size,
     }
+    # OBIS currently ignores offset for occurrence queries; use its stable id cursor.
+    if after is not None:
+        params["after"] = after
     if plan.dataset_id:
         params["datasetid"] = plan.dataset_id
     return OBIS_URL + "?" + urlencode(params)
@@ -114,9 +117,10 @@ def stage_obis_occurrences(plan: SourcePlan, extract_path: Path, manifest_path: 
     pages: list[dict] = []
     headers: list[dict[str, str]] = []
     total: int | None = None
+    after: str | None = None
     while len(rows) < plan.max_records:
         offset, size = len(rows), min(PAGE_SIZE, plan.max_records - len(rows))
-        url = _page_url(plan, offset, size)
+        url = _page_url(plan, offset, size, after)
         payload, response_headers = _fetch_page(url)
         page = payload["results"]
         if len(page) > size or any(not isinstance(row, dict) for row in page):
@@ -129,7 +133,7 @@ def stage_obis_occurrences(plan: SourcePlan, extract_path: Path, manifest_path: 
                 raise RuntimeError("OBIS total changed during pagination")
             total = reported
         rows.extend(page)
-        pages.append({"offset": offset, "size": size, "received": len(page), "url": url})
+        pages.append({"offset": offset, "after": after, "size": size, "received": len(page), "url": url})
         headers.append(response_headers)
         if total is not None and len(rows) > total:
             raise RuntimeError("OBIS returned more than its reported total")
@@ -137,6 +141,10 @@ def stage_obis_occurrences(plan: SourcePlan, extract_path: Path, manifest_path: 
             if total is not None and len(rows) != total:
                 raise RuntimeError("OBIS page ended before its reported total")
             break
+        cursor = page[-1].get("id")
+        if not isinstance(cursor, str) or not cursor or cursor == after:
+            raise RuntimeError("OBIS pagination requires a progressing occurrence id cursor")
+        after = cursor
 
     kept: list[dict] = []
     seen: set[tuple[str, ...]] = set()
@@ -178,7 +186,7 @@ def stage_obis_occurrences(plan: SourcePlan, extract_path: Path, manifest_path: 
         "query": {"taxonid": plan.taxon_id, "bounds_wgs84": list(plan.bounds), "geometry": _geometry(plan.bounds),
                   "datasetid": plan.dataset_id,
                   "startdate": plan.start_date, "enddate": plan.end_date, "max_records": plan.max_records,
-                  "page_size": PAGE_SIZE, "pages": pages},
+                  "page_size": PAGE_SIZE, "pagination": "after occurrence id", "pages": pages},
         "counts": {"api_total_reported": total, "raw_fetched": len(rows),
                    "invalid_coordinates_or_outside_bounds": invalid, "after_coordinate_qc": len(rows) - invalid,
                    "duplicate_identifiers": duplicates, "without_duplicate_identifier": unkeyed, "written": len(kept)},

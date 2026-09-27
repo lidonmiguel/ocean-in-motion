@@ -51,10 +51,10 @@ describe('water-only display routes', () => {
     for (let i = 1; i < route!.length; i++) expect(waterSegment(route![i - 1], route![i])).toBe(true);
   });
 
-  it('keeps the fixture cell centers at sea', () => {
-    for (const fixture of species) {
-      for (const cell of [...fixture.habitat.current, ...fixture.habitat.future]) {
-        expect(isOcean(cell.center as [number, number]), `${fixture.id}: ${cell.id}`).toBe(true);
+  it('keeps every observed box center and illustrated destination at sea', () => {
+    for (const dataset of species) {
+      for (const cell of [...dataset.habitat.current, ...dataset.habitat.future]) {
+        expect(isOcean(cell.center as [number, number]), `${dataset.id}: ${cell.id}: ${cell.center}`).toBe(true);
       }
     }
   });

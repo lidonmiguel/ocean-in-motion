@@ -28,10 +28,11 @@ export const speciesDatasetSchema = z.object({
     sources: z.array(z.object({
       datasetId: z.string().min(1),
       sourceUrl: z.url(),
+      region: z.string().min(1),
       citation: z.string().min(1),
       license: z.string().min(1),
       count: z.number().int().positive(),
-      coordinateUncertaintyKmRange: z.tuple([z.number().nonnegative(), z.number().nonnegative()]),
+      coordinateUncertaintyKmRange: z.tuple([z.number().nonnegative(), z.number().nonnegative()]).nullable(),
       observedBoundsWgs84: z.tuple([z.number(), z.number(), z.number(), z.number()])
     }).strict()).min(1),
     simulationOffsetDeg: position

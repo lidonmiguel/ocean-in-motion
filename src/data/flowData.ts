@@ -40,9 +40,8 @@ export function displayFlows(dataset: SpeciesDataset): DisplayFlow[] {
     .map((pair, index) => ({ ...pair, path: curvedPath(pair.from, pair.to, index) }));
 }
 
-// A decorative field for the synthetic fixture only. Each current cell is
-// connected only to the future cell with the same ID. These strands are not
-// inferred migration routes or model output.
+// A decorative field for illustrative scenarios. Each observed square is
+// connected to its translated visual pair, never an inferred migration route.
 export function displayStreamlines(dataset: SpeciesDataset): DisplayFlow[] {
   if (dataset.provenance === 'reviewed-model') {
     return displayFlows(dataset).flatMap((flow, index) => {

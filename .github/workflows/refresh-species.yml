@@ -1,0 +1,41 @@
+name: Refresh regional OBIS extracts
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths: [.github/workflows/refresh-species.yml]
+
+permissions:
+  contents: read
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch explicitly scoped occurrence datasets
+        run: |
+          PYTHONPATH=python python - <<'PY'
+          from pathlib import Path
+          from ocean_pipeline.sources import SourcePlan, stage_obis_occurrences
+          from ocean_pipeline.publish_species import STUDIES, build_snapshot
+
+          for slug, study in STUDIES.items():
+            extract, manifest_path = Path(f'output/{slug}.jsonl'), Path(f'output/{slug}.manifest.json')
+            plan=SourcePlan(str(study['taxon']),tuple(study['bounds']),study['start'],study['end'],10000,dataset_id=study['dataset'])
+            manifest=stage_obis_occurrences(plan,extract,manifest_path)
+            if not manifest['counts']['written'] or manifest['truncated_by_cap']:
+              raise SystemExit(f'{slug}: incomplete extract')
+            snapshot=build_snapshot(slug,extract,manifest_path)
+            Path(f'output/{slug}.snapshot.json').write_text(__import__('json').dumps(snapshot,ensure_ascii=False,indent=2)+'\n')
+            print(slug,manifest['counts']['written'],'raw;',snapshot['summary']['count'],'published',flush=True)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: scoped-obis-extracts
+          path: output/
+          retention-days: 7
