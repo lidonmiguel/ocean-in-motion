@@ -1,26 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
 import * as maplibregl from 'maplibre-gl';
 import { MapLibreOverlay } from '@deck.gl/maplibre';
-import { BitmapLayer, GeoJsonLayer, PathLayer, PolygonLayer, ScatterplotLayer } from '@deck.gl/layers';
+import { GeoJsonLayer, PathLayer, PolygonLayer, ScatterplotLayer } from '@deck.gl/layers';
 import { feature } from 'topojson-client';
 import world from 'world-atlas/land-110m.json';
 import { displayCells, suitabilityColor, type DisplayCell } from './data/mapData';
 import { displayFlows, displayStreamlines, flowSection, visibleFlowWindow, type DisplayFlow } from './data/flowData';
 import type { SpeciesDataset } from './data/schema';
-import model from './data/model/loggerhead-mediterranean.json';
-import densityImage from './data/model/loggerhead-mediterranean.png';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
 const topology = world as unknown as Parameters<typeof feature>[0];
 const land = feature(topology, topology.objects.land);
 const fallbackWidth = 1200;
 const fallbackHeight = 560;
-
-function fallbackPosition(longitude: number, latitude: number): [number, number] {
-  const [west, south, east, north] = model.boundsWgs84;
-  return [(longitude - west) / (east - west) * fallbackWidth,
-    (north - latitude) / (north - south) * fallbackHeight];
-}
 
 function fallbackLandPath(position: (longitude: number, latitude: number) => [number, number]): string {
   const features = land.type === 'FeatureCollection' ? land.features : [land];
@@ -34,8 +26,6 @@ function fallbackLandPath(position: (longitude: number, latitude: number) => [nu
     return [];
   }).join('');
 }
-
-const fallbackCoast = fallbackLandPath(fallbackPosition);
 
 function illustrativeFallback(selected: SpeciesDataset) {
   const cells = [...selected.habitat.current, ...selected.habitat.future];
@@ -96,8 +86,8 @@ function flowSegments(flow: DisplayFlow, start: number, end: number): Segment[] 
   }).filter((segment): segment is Segment => segment !== null);
 }
 
-export function MapView({ selected, showModel }: { selected: SpeciesDataset; showModel: boolean }) {
-  const realLayer = showModel;
+export function MapView({ selected }: { selected: SpeciesDataset }) {
+  const observed = selected.provenance === 'observation-demo';
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
   const overlay = useRef<MapLibreOverlay | null>(null);
@@ -143,14 +133,6 @@ export function MapView({ selected, showModel }: { selected: SpeciesDataset; sho
 
   useEffect(() => {
     if (!ready || !map.current) return;
-    if (realLayer) {
-      const [west, south, east, north] = model.boundsWgs84;
-      map.current.fitBounds([[west, south], [east, north]], {
-        padding: 35, maxZoom: 4,
-        duration: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 750
-      });
-      return;
-    }
     const cells = [...selected.habitat.current, ...selected.habitat.future];
     const west = Math.min(...cells.map(cell => cell.center[0] - cell.widthDeg / 2));
     const east = Math.max(...cells.map(cell => cell.center[0] + cell.widthDeg / 2));
@@ -161,7 +143,7 @@ export function MapView({ selected, showModel }: { selected: SpeciesDataset; sho
       maxZoom: 3.4,
       duration: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 750
     });
-  }, [selected, ready, realLayer]);
+  }, [selected, ready]);
 
   useEffect(() => {
     if (!ready || !overlay.current) return;
@@ -191,26 +173,12 @@ export function MapView({ selected, showModel }: { selected: SpeciesDataset; sho
         })
       ];
 
-    if (realLayer) {
-      overlay.current.setProps({ layers: [
-        background[0],
-        new BitmapLayer({
-          id: 'loggerhead-density-model',
-          image: densityImage,
-          bounds: model.boundsWgs84 as [number, number, number, number],
-          pickable: false
-        }),
-        background[1]
-      ] });
-      return;
-    }
-
     const currentCells = displayCells(selected, 'current');
     const futureCells = displayCells(selected, 'future');
     const flows = displayFlows(selected);
     const streamlines = displayStreamlines(selected);
     const visibleFlows = flows.filter(flow => streamlines.some(strand =>
-      selected.provenance === 'synthetic-demo' ? strand.id.startsWith(`${flow.id}-`) : strand.id === flow.id
+      selected.provenance !== 'reviewed-model' ? strand.id.startsWith(`${flow.id}-`) : strand.id === flow.id
     ));
     const endpoints: Endpoint[] = visibleFlows.flatMap(flow => [
       { position: flow.from, period: 'current' },
@@ -223,7 +191,8 @@ export function MapView({ selected, showModel }: { selected: SpeciesDataset; sho
           data: currentCells,
           getPolygon: d => d.polygon,
           getFillColor: d => {
-            const [red, green, blue] = suitabilityColor(d.suitability);
+            if (observed) return [58, 227, 212, 46];
+            const [red, green, blue] = suitabilityColor(d.suitability ?? 0.5);
             return [red, green, blue, 38];
           },
           getLineColor: [114, 231, 222, 108],
@@ -239,7 +208,8 @@ export function MapView({ selected, showModel }: { selected: SpeciesDataset; sho
           data: futureCells,
           getPolygon: d => d.polygon,
           getFillColor: d => {
-            const [red, green, blue] = suitabilityColor(d.suitability);
+            if (observed) return [255, 143, 204, 30];
+            const [red, green, blue] = suitabilityColor(d.suitability ?? 0.5);
             return [red, green, blue, 28];
           },
           getLineColor: [255, 139, 205, 112],
@@ -316,22 +286,15 @@ export function MapView({ selected, showModel }: { selected: SpeciesDataset; sho
     };
     frame = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(frame);
-  }, [selected, ready, realLayer]);
+  }, [selected, ready, observed]);
 
-  const demoFallback = webglUnavailable && !realLayer ? illustrativeFallback(selected) : null;
+  const demoFallback = webglUnavailable ? illustrativeFallback(selected) : null;
 
   return (
     <div className="map-wrap">
-      <div ref={container} className="map-canvas" style={webglUnavailable ? { display: 'none' } : undefined} role="img" aria-label={realLayer ? `Mapa de zonas de abundancia relativa modelada de tortuga boba en el Mediterráneo, promedio anual de 2003 a 2018. Las zonas sin color carecen de estimación; no hay proyección a 2050.` : `Mapa de hábitat ilustrativo actual y en 2050 para ${selected.commonNameEs}; los trazos aparecen en las celdas actuales y avanzan hasta las de 2050, sin rutas permanentes ni trayectorias reales de animales`} />
-      {webglUnavailable && (realLayer ? <div className="fallback-map">
-        <svg viewBox={`0 0 ${fallbackWidth} ${fallbackHeight}`} role="img" aria-label="Mapa de zonas de abundancia relativa modelada de tortuga boba en el Mediterráneo">
-          <rect width={fallbackWidth} height={fallbackHeight} fill="#0b3245" />
-          <image href={densityImage} width={fallbackWidth} height={fallbackHeight} />
-          <path d={fallbackCoast} fill="#bbccc9" fillRule="evenodd" stroke="#e1eae0" strokeWidth="1.5" />
-        </svg>
-        <div className="fallback-note">Modelo de abundancia relativa · vista simplificada sin WebGL2</div>
-      </div> : demoFallback && <div className="fallback-map">
-        <svg viewBox={`0 0 ${fallbackWidth} ${fallbackHeight}`} role="img" aria-label={`Flujos ilustrativos para ${selected.commonNameEs}; los trazos no son rutas reales`}>
+      <div ref={container} className="map-canvas" style={webglUnavailable ? { display: 'none' } : undefined} role="img" aria-label={observed ? `Una caja calculada con ${selected.occurrence?.count} avistamientos de ${selected.commonNameEs}; la segunda caja y los trazos son una simulación sin predicción científica` : `Mapa de hábitat ilustrativo actual y en 2050 para ${selected.commonNameEs}; los trazos aparecen en las celdas actuales y avanzan hasta las de 2050, sin rutas permanentes ni trayectorias reales de animales`} />
+      {demoFallback && <div className="fallback-map">
+        <svg viewBox={`0 0 ${fallbackWidth} ${fallbackHeight}`} role="img" aria-label={observed ? `Caja de ${selected.occurrence?.count} avistamientos y destino simulado de ${selected.commonNameEs}` : `Flujos ilustrativos para ${selected.commonNameEs}; los trazos no son rutas reales`}>
           <rect width={fallbackWidth} height={fallbackHeight} fill="#071c29" />
           <path d={demoFallback.coast} fill="#bbccc9" fillRule="evenodd" stroke="#e1eae0" strokeWidth="1.5" />
           {demoFallback.current.map(cell => <path key={`now-${cell.id}`} d={`${demoFallback.path(cell.polygon)}Z`} fill="#50dcdd" fillOpacity=".13" stroke="#83e9df" strokeOpacity=".5" />)}
@@ -340,14 +303,13 @@ export function MapView({ selected, showModel }: { selected: SpeciesDataset; sho
           {demoFallback.currentCenters.map(cell => { const [x, y] = demoFallback.position(...cell.center); return <circle key={`start-${cell.id}`} cx={x} cy={y} r="3" fill="#83f3e5" />; })}
           {demoFallback.futureCenters.map(cell => { const [x, y] = demoFallback.position(...cell.center); return <circle key={`end-${cell.id}`} cx={x} cy={y} r="3" fill="#ffa8d0" />; })}
         </svg>
-        <div className="fallback-note">Flujo ilustrativo · vista simplificada sin WebGL2</div>
-      </div>)}
-      <div className="map-stamp"><span className="pulse" /> {realLayer ? 'MODELO CIENTÍFICO · 2003–2018' : 'FLUJOS ILUSTRATIVOS · DATOS SINTÉTICOS'}</div>
+        <div className="fallback-note">{observed ? 'Caja calculada con OBIS · destino ilustrativo' : 'Flujo ilustrativo'} · vista simplificada sin WebGL2</div>
+      </div>}
+      <div className="map-stamp"><span className="pulse" /> {observed ? `${selected.occurrence?.count} AVISTAMIENTOS REALES · FUTURO ILUSTRATIVO` : 'FLUJOS ILUSTRATIVOS · DATOS SINTÉTICOS'}</div>
       <div className="map-credit">Siluetas geográficas: Natural Earth / world-atlas · Sin teselas externas</div>
       {hover && <div className="map-tooltip" style={{ left: hover.x + 14, top: hover.y + 14 }}>
-        <strong>Celda ilustrativa · {hover.period}</strong>
-        <span>Idoneidad: {Math.round(hover.cell.suitability * 100)} / 100</span>
-        <span>Incertidumbre: {Math.round(hover.cell.uncertainty * 100)} / 100</span>
+        <strong>{observed ? (hover.period === 'Actual' ? 'Caja de avistamientos' : 'Caja simulada') : `Celda ilustrativa · ${hover.period}`}</strong>
+        {observed ? <span>{hover.period === 'Actual' ? `${selected.occurrence?.count} registros documentados; no implica presencia en toda la caja` : 'Desplazamiento visual, sin predicción de 2050'}</span> : <><span>Idoneidad: {Math.round((hover.cell.suitability ?? 0) * 100)} / 100</span><span>Incertidumbre: {Math.round((hover.cell.uncertainty ?? 0) * 100)} / 100</span></>}
       </div>}
     </div>
   );

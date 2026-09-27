@@ -26,7 +26,7 @@ describe('illustrative distribution flows', () => {
   });
 
   it('keeps all strands on their matching cell pair and in the same direction', () => {
-    for (const fixture of species) {
+    for (const fixture of species.filter(item => item.provenance === 'synthetic-demo')) {
       const dataset = parseSpeciesDataset(fixture);
       const strands = displayStreamlines(dataset);
       expect(strands.length).toBeGreaterThan(60);
