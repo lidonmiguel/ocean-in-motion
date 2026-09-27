@@ -12,6 +12,29 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 
 const topology = world as unknown as Parameters<typeof feature>[0];
 const land = feature(topology, topology.objects.land);
+const fallbackWidth = 1000;
+const fallbackHeight = 560;
+
+function fallbackPosition(longitude: number, latitude: number): [number, number] {
+  const [west, south, east, north] = pilot.boundsWgs84;
+  return [(longitude - west) / (east - west) * fallbackWidth,
+    (north - latitude) / (north - south) * fallbackHeight];
+}
+
+function fallbackLandPath(): string {
+  const features = land.type === 'FeatureCollection' ? land.features : [land];
+  const ringPath = (ring: number[][]) => ring.map(([lon, lat], index) => {
+    const [x, y] = fallbackPosition(lon, lat);
+    return `${index ? 'L' : 'M'}${x.toFixed(1)},${y.toFixed(1)}`;
+  }).join('') + 'Z';
+  return features.flatMap(item => {
+    if (item.geometry?.type === 'Polygon') return item.geometry.coordinates.map(ringPath);
+    if (item.geometry?.type === 'MultiPolygon') return item.geometry.coordinates.flatMap(polygon => polygon.map(ringPath));
+    return [];
+  }).join('');
+}
+
+const fallbackCoast = fallbackLandPath();
 
 const graticule = {
   type: 'FeatureCollection' as const,
@@ -62,10 +85,13 @@ export function MapView({ selected }: { selected: SpeciesDataset }) {
   const [hover, setHover] = useState<Hover>(null);
   const [observationHover, setObservationHover] = useState<ObservationHover>(null);
   const [ready, setReady] = useState(false);
+  const [webglUnavailable, setWebglUnavailable] = useState(false);
 
   useEffect(() => {
-    if (!container.current) return;
-    const instance = new maplibregl.Map({
+    if (!container.current || webglUnavailable) return;
+    let instance: maplibregl.Map;
+    try {
+      instance = new maplibregl.Map({
       container: container.current,
       style: {
         version: 8,
@@ -78,19 +104,24 @@ export function MapView({ selected }: { selected: SpeciesDataset }) {
       maxZoom: 9,
       renderWorldCopies: false,
       attributionControl: false
-    });
+      });
+    } catch {
+      const fallbackFrame = requestAnimationFrame(() => setWebglUnavailable(true));
+      return () => cancelAnimationFrame(fallbackFrame);
+    }
     const deckOverlay = new MapLibreOverlay({ interleaved: false, layers: [] });
     instance.addControl(deckOverlay);
     instance.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
     map.current = instance;
     overlay.current = deckOverlay;
-    setReady(true);
+    const readyFrame = requestAnimationFrame(() => setReady(true));
     return () => {
+      cancelAnimationFrame(readyFrame);
       instance.remove();
       map.current = null;
       overlay.current = null;
     };
-  }, []);
+  }, [webglUnavailable]);
 
   useEffect(() => {
     if (!ready || !map.current) return;
@@ -278,7 +309,20 @@ export function MapView({ selected }: { selected: SpeciesDataset }) {
 
   return (
     <div className="map-wrap">
-      <div ref={container} className="map-canvas" role="img" aria-label={realLayer ? `Mapa de ${pilot.summary.count} observaciones de tortuga boba en el transecto Barcelona–Civitavecchia durante ${pilot.period}. Los puntos tienen incertidumbre espacial de ${pilot.summary.uncertaintyKmRange[0]} a ${pilot.summary.uncertaintyKmRange[1]} kilómetros.` : `Mapa de hábitat ilustrativo actual y en 2050 para ${selected.commonNameEs}; los trazos aparecen en las celdas actuales y avanzan hasta las de 2050, sin rutas permanentes ni trayectorias reales de animales`} />
+      <div ref={container} className="map-canvas" style={webglUnavailable ? { display: 'none' } : undefined} role="img" aria-label={realLayer ? `Mapa de ${pilot.summary.count} observaciones de tortuga boba en el transecto Barcelona–Civitavecchia durante ${pilot.period}. Los puntos tienen incertidumbre espacial de ${pilot.summary.uncertaintyKmRange[0]} a ${pilot.summary.uncertaintyKmRange[1]} kilómetros.` : `Mapa de hábitat ilustrativo actual y en 2050 para ${selected.commonNameEs}; los trazos aparecen en las celdas actuales y avanzan hasta las de 2050, sin rutas permanentes ni trayectorias reales de animales`} />
+      {webglUnavailable && (realLayer ? <div className="fallback-map">
+        <svg viewBox={`0 0 ${fallbackWidth} ${fallbackHeight}`} role="img" aria-label={`Mapa simplificado del Mediterráneo occidental con ${pilot.summary.count} avistamientos de tortuga boba`}>
+          <rect width={fallbackWidth} height={fallbackHeight} fill="#0b3245" />
+          <path d={fallbackCoast} fill="#bbccc9" fillRule="evenodd" stroke="#e1eae0" strokeWidth="1.5" />
+          {pilot.observations.map(observation => {
+            const [x, y] = fallbackPosition(observation.longitude, observation.latitude);
+            return <circle key={observation.id} cx={x} cy={y} r="4" fill="#27e2cd" stroke="#e7fff9" strokeWidth="1">
+              <title>{`${observation.eventDate.slice(0, 10)} · OBIS ${observation.id} · incertidumbre ±${Math.round(observation.coordinateUncertaintyInMeters / 1000)} km`}</title>
+            </circle>;
+          })}
+        </svg>
+        <div className="fallback-note">Mapa simplificado · acerca los puntos con un navegador compatible con WebGL2</div>
+      </div> : <div className="fallback-map fallback-message">El mapa ilustrativo requiere WebGL2. Prueba otro navegador para verlo.</div>)}
       <div className="map-stamp"><span className="pulse" /> {realLayer ? `OBIS · ${pilot.summary.count} OBSERVACIONES REALES` : 'FLUJOS ILUSTRATIVOS · DATOS SINTÉTICOS'}</div>
       <div className="map-credit">Siluetas geográficas: Natural Earth / world-atlas · Sin teselas externas</div>
       {hover && <div className="map-tooltip" style={{ left: hover.x + 14, top: hover.y + 14 }}>
