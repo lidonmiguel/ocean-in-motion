@@ -45,7 +45,8 @@ when their direction statistic is documented.
 
 Displayed strokes are routed over water using the same bundled 1:110m Natural
 Earth land polygons as the map. A half-degree A* search approximates the shortest
-water path, and every drawn segment is checked against the land boundaries.
+water path. A small decorative arc can lengthen that route; it is reduced or
+discarded near land, and every drawn segment is checked against the boundaries.
 Synthetic strand endpoints on land, or pairs with no water path at this map
 resolution, are omitted. Reviewed vectors are likewise hidden when they cannot
 be drawn over water; this cartographic routing does not establish an actual
