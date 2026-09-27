@@ -83,3 +83,19 @@ export function pointOnFlow(flow: DisplayFlow, progress: number): Position {
     flow.path[before][1] + (flow.path[after][1] - flow.path[before][1]) * fraction
   ];
 }
+
+// The growing line starts at the source, then its tail follows the tip until
+// both reach the destination. No part of the route remains on screen afterward.
+export function visibleFlowWindow(progress: number): [number, number] {
+  const end = Math.max(0, Math.min(1, progress));
+  const start = end <= 0.62 ? 0 : (end - 0.62) / 0.38;
+  return [Math.min(start, end), end];
+}
+
+export function flowSection(flow: DisplayFlow, from: number, to: number): Position[] {
+  const start = Math.max(0, Math.min(1, from));
+  const end = Math.max(start, Math.min(1, to));
+  const lastIndex = flow.path.length - 1;
+  const interior = flow.path.filter((_, index) => index / lastIndex > start && index / lastIndex < end);
+  return [pointOnFlow(flow, start), ...interior, pointOnFlow(flow, end)];
+}
