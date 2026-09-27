@@ -3,6 +3,7 @@
   "id": "atlantic-bluefin-tuna",
   "scientificName": "Thunnus thynnus",
   "commonNameEs": "Atún rojo del Atlántico",
+  "group": "fish",
   "summaryEs": "Una especie pelágica que recorre grandes distancias en el Atlántico y el Mediterráneo.",
   "ecologyEs": "Su distribución está relacionada con la temperatura, las presas y las zonas de reproducción. Los puntos de esta vista son inventados para probar la interfaz.",
   "provenance": "synthetic-demo",
