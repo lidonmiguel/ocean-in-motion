@@ -16,6 +16,7 @@ export const speciesDatasetSchema = z.object({
   id: z.string().regex(/^[a-z0-9-]+$/),
   scientificName: z.string().min(1),
   commonNameEs: z.string().min(1),
+  group: z.enum(['fish', 'cetacean', 'reptile']).optional(),
   summaryEs: z.string().min(1),
   ecologyEs: z.string().min(1),
   provenance: z.enum(['synthetic-demo', 'reviewed-model']),
