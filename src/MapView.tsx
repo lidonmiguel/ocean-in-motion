@@ -1,22 +1,23 @@
 import { useEffect, useRef, useState } from 'react';
 import * as maplibregl from 'maplibre-gl';
 import { MapLibreOverlay } from '@deck.gl/maplibre';
-import { GeoJsonLayer, PathLayer, PolygonLayer, ScatterplotLayer } from '@deck.gl/layers';
+import { BitmapLayer, GeoJsonLayer, PathLayer, PolygonLayer, ScatterplotLayer } from '@deck.gl/layers';
 import { feature } from 'topojson-client';
 import world from 'world-atlas/land-110m.json';
 import { displayCells, suitabilityColor, type DisplayCell } from './data/mapData';
 import { displayFlows, displayStreamlines, flowSection, visibleFlowWindow, type DisplayFlow } from './data/flowData';
 import type { SpeciesDataset } from './data/schema';
-import pilot from './data/observations/loggerhead-west-med.json';
+import model from './data/model/loggerhead-mediterranean.json';
+import densityImage from './data/model/loggerhead-mediterranean.png';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
 const topology = world as unknown as Parameters<typeof feature>[0];
 const land = feature(topology, topology.objects.land);
-const fallbackWidth = 1000;
+const fallbackWidth = 1200;
 const fallbackHeight = 560;
 
 function fallbackPosition(longitude: number, latitude: number): [number, number] {
-  const [west, south, east, north] = pilot.boundsWgs84;
+  const [west, south, east, north] = model.boundsWgs84;
   return [(longitude - west) / (east - west) * fallbackWidth,
     (north - latitude) / (north - south) * fallbackHeight];
 }
@@ -53,8 +54,6 @@ const graticule = {
 };
 
 type Hover = { x: number; y: number; cell: DisplayCell; period: 'Actual' | '2050' } | null;
-type Observation = typeof pilot.observations[number];
-type ObservationHover = { x: number; y: number; observation: Observation } | null;
 type Endpoint = { position: [number, number]; period: 'current' | 'future' };
 type Segment = { path: [number, number][]; color: [number, number, number, number] };
 type Trail = { path: [number, number][] };
@@ -83,7 +82,6 @@ export function MapView({ selected }: { selected: SpeciesDataset }) {
   const map = useRef<maplibregl.Map | null>(null);
   const overlay = useRef<MapLibreOverlay | null>(null);
   const [hover, setHover] = useState<Hover>(null);
-  const [observationHover, setObservationHover] = useState<ObservationHover>(null);
   const [ready, setReady] = useState(false);
   const [webglUnavailable, setWebglUnavailable] = useState(false);
 
@@ -126,9 +124,9 @@ export function MapView({ selected }: { selected: SpeciesDataset }) {
   useEffect(() => {
     if (!ready || !map.current) return;
     if (realLayer) {
-      const [west, south, east, north] = pilot.boundsWgs84;
+      const [west, south, east, north] = model.boundsWgs84;
       map.current.fitBounds([[west, south], [east, north]], {
-        padding: 52, maxZoom: 5,
+        padding: 35, maxZoom: 4,
         duration: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 750
       });
       return;
@@ -148,7 +146,6 @@ export function MapView({ selected }: { selected: SpeciesDataset }) {
   useEffect(() => {
     if (!ready || !overlay.current) return;
     setHover(null);
-    setObservationHover(null);
     const background = [
         new GeoJsonLayer({
           id: 'graticule',
@@ -176,20 +173,14 @@ export function MapView({ selected }: { selected: SpeciesDataset }) {
 
     if (realLayer) {
       overlay.current.setProps({ layers: [
-        ...background,
-        new ScatterplotLayer<Observation>({
-          id: 'obis-loggerhead-observations',
-          data: pilot.observations,
-          getPosition: d => [d.longitude, d.latitude],
-          getFillColor: [39, 226, 205, 190],
-          getLineColor: [221, 255, 246, 255],
-          radiusUnits: 'pixels', getRadius: 5,
-          lineWidthUnits: 'pixels', getLineWidth: 1.4,
-          stroked: true, pickable: true,
-          onHover: info => setObservationHover(info.object ? {
-            x: info.x, y: info.y, observation: info.object
-          } : null)
-        })
+        background[0],
+        new BitmapLayer({
+          id: 'loggerhead-density-model',
+          image: densityImage,
+          bounds: model.boundsWgs84 as [number, number, number, number],
+          pickable: false
+        }),
+        background[1]
       ] });
       return;
     }
@@ -309,32 +300,21 @@ export function MapView({ selected }: { selected: SpeciesDataset }) {
 
   return (
     <div className="map-wrap">
-      <div ref={container} className="map-canvas" style={webglUnavailable ? { display: 'none' } : undefined} role="img" aria-label={realLayer ? `Mapa de ${pilot.summary.count} observaciones de tortuga boba en el transecto Barcelona–Civitavecchia durante ${pilot.period}. Los puntos tienen incertidumbre espacial de ${pilot.summary.uncertaintyKmRange[0]} a ${pilot.summary.uncertaintyKmRange[1]} kilómetros.` : `Mapa de hábitat ilustrativo actual y en 2050 para ${selected.commonNameEs}; los trazos aparecen en las celdas actuales y avanzan hasta las de 2050, sin rutas permanentes ni trayectorias reales de animales`} />
+      <div ref={container} className="map-canvas" style={webglUnavailable ? { display: 'none' } : undefined} role="img" aria-label={realLayer ? `Mapa de zonas de abundancia relativa modelada de tortuga boba en el Mediterráneo, promedio anual de 2003 a 2018. Las zonas sin color carecen de estimación; no hay proyección a 2050.` : `Mapa de hábitat ilustrativo actual y en 2050 para ${selected.commonNameEs}; los trazos aparecen en las celdas actuales y avanzan hasta las de 2050, sin rutas permanentes ni trayectorias reales de animales`} />
       {webglUnavailable && (realLayer ? <div className="fallback-map">
-        <svg viewBox={`0 0 ${fallbackWidth} ${fallbackHeight}`} role="img" aria-label={`Mapa simplificado del Mediterráneo occidental con ${pilot.summary.count} avistamientos de tortuga boba`}>
+        <svg viewBox={`0 0 ${fallbackWidth} ${fallbackHeight}`} role="img" aria-label="Mapa de zonas de abundancia relativa modelada de tortuga boba en el Mediterráneo">
           <rect width={fallbackWidth} height={fallbackHeight} fill="#0b3245" />
+          <image href={densityImage} width={fallbackWidth} height={fallbackHeight} />
           <path d={fallbackCoast} fill="#bbccc9" fillRule="evenodd" stroke="#e1eae0" strokeWidth="1.5" />
-          {pilot.observations.map(observation => {
-            const [x, y] = fallbackPosition(observation.longitude, observation.latitude);
-            return <circle key={observation.id} cx={x} cy={y} r="4" fill="#27e2cd" stroke="#e7fff9" strokeWidth="1">
-              <title>{`${observation.eventDate.slice(0, 10)} · OBIS ${observation.id} · incertidumbre ±${Math.round(observation.coordinateUncertaintyInMeters / 1000)} km`}</title>
-            </circle>;
-          })}
         </svg>
-        <div className="fallback-note">Mapa simplificado · acerca los puntos con un navegador compatible con WebGL2</div>
+        <div className="fallback-note">Modelo de abundancia relativa · vista simplificada sin WebGL2</div>
       </div> : <div className="fallback-map fallback-message">El mapa ilustrativo requiere WebGL2. Prueba otro navegador para verlo.</div>)}
-      <div className="map-stamp"><span className="pulse" /> {realLayer ? `OBIS · ${pilot.summary.count} OBSERVACIONES REALES` : 'FLUJOS ILUSTRATIVOS · DATOS SINTÉTICOS'}</div>
+      <div className="map-stamp"><span className="pulse" /> {realLayer ? 'MODELO CIENTÍFICO · 2003–2018' : 'FLUJOS ILUSTRATIVOS · DATOS SINTÉTICOS'}</div>
       <div className="map-credit">Siluetas geográficas: Natural Earth / world-atlas · Sin teselas externas</div>
       {hover && <div className="map-tooltip" style={{ left: hover.x + 14, top: hover.y + 14 }}>
         <strong>Celda ilustrativa · {hover.period}</strong>
         <span>Idoneidad: {Math.round(hover.cell.suitability * 100)} / 100</span>
         <span>Incertidumbre: {Math.round(hover.cell.uncertainty * 100)} / 100</span>
-      </div>}
-      {observationHover && <div className="map-tooltip" style={{ left: observationHover.x + 14, top: observationHover.y + 14 }}>
-        <strong>Avistamiento registrado · OBIS</strong>
-        <span>Fecha: {observationHover.observation.eventDate.slice(0, 10)}</span>
-        <span>Incertidumbre de posición declarada: ±{Math.round(observationHover.observation.coordinateUncertaintyInMeters / 1000)} km</span>
-        <span>ID OBIS: {observationHover.observation.id}</span>
       </div>}
     </div>
   );
