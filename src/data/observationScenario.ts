@@ -92,7 +92,7 @@ export function enclosingObservationBox(records: ObservationSnapshot['observatio
     observedBoundsWgs84: [west, south, east, north] as ObservationBounds };
 }
 
-// One box per scoped dataset, regardless of how many records it contains.
+// One box per scoped geographic group, regardless of how many records it contains.
 // A caller can later replace the illustrative future with a reviewed model;
 // this function never claims to infer a future distribution from sightings.
 export function buildObservationScenario(
@@ -123,7 +123,13 @@ export function buildObservationScenario(
       ids.add(boxId);
       const box = enclosingObservationBox(records);
       const base = { id: boxId, center: box.center, widthDeg: box.widthDeg, heightDeg: box.heightDeg };
-      const offsets: [number, number][] = [simulationOffsetDeg, [-simulationOffsetDeg[0], -simulationOffsetDeg[1]], [2, 0], [-2, 0], [0, 2], [0, -2]];
+      // A single fixed translation can end on land for coastal and island
+      // groups. Try nearby directions and lengths deterministically.
+      const directions: [number, number][] = [simulationOffsetDeg,
+        [-simulationOffsetDeg[0], -simulationOffsetDeg[1]], [2, 0], [-2, 0], [0, 2], [0, -2],
+        [1, 1], [-1, 1], [1, -1], [-1, -1]];
+      const offsets: [number, number][] = [1, 0.5, 0.25, 1.5, 2, 3].flatMap(scale =>
+        directions.map(([dx, dy]) => [dx * scale, dy * scale] as [number, number]));
       const marine = ([dx, dy]: [number, number]) => {
         const target: [number, number] = [box.center[0] + dx, box.center[1] + dy];
         return (dx !== 0 || dy !== 0) && isOcean(target);

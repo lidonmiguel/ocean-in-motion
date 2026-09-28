@@ -1,0 +1,134 @@
+{
+  "accessed_at_utc": "2026-09-28T08:58:15.641865+00:00",
+  "attribution": {
+    "datasets": [
+      {
+        "bibliographicCitation": [
+          "[{\"crossref\":{\"citeinfo\":{\"title\":\"Happywhale encounters\",\"title_html\":\"Happywhale encounters\",\"origin\":\"Cheeseman, T. and K. Southerland\",\"pubdate\":\"2026\",\"onlink\":\"https:\\/\\/happywhale.com\\/\"}}}]Halpin, P.N., A.J. Read, E. Fujioka, B.D. Best, B. Donnelly, L.J. Hazen, C. Kot, K. Urian, E. LaBrecque, A. Dimatteo, J. Cleary, C. Good, L.B. Crowder, and K.D. Hyrenbach. 2009. OBIS-SEAMAP: The world data center for marine mammal, sea bird, and sea turtle distributions. Oceanography 22(2):104-115"
+        ],
+        "datasetName": [
+          "Happywhale - Common bottlenose dolphin in North Pacific Ocean"
+        ],
+        "dataset_id": "86ffd903-47fc-435e-a42e-f3aec79c2d03",
+        "license": [
+          "https://creativecommons.org/publicdomain/zero/1.0",
+          "https://creativecommons.org/licenses/by/4.0",
+          "https://creativecommons.org/licenses/by-sa/4.0"
+        ],
+        "modified": [
+          "2026-07-15 06:02:11"
+        ],
+        "records": 226,
+        "rightsHolder": [
+          "Sebastian Shaw",
+          "Andy Price",
+          "Dale Frink",
+          "Mark Girardeau",
+          "Sydney Minges",
+          "Molly Batts",
+          "Robin Lowe",
+          "Tracy Desiderio",
+          "Dane McDermott",
+          "Joshua Meza-Fidalgo",
+          "Peter Chen 2.0",
+          "Joe Meuleman",
+          "Ryan Lawler",
+          "Patricia VanOver Indictor",
+          "Peter Bedrossian",
+          "Eric Austin Yee",
+          "Katlyn Taylor",
+          "Era Horton",
+          "Carla Mitroff",
+          "Holger van Dorp",
+          "christy bode",
+          "Lory Barra",
+          "M White",
+          "Swish",
+          "Marilia Olio",
+          "Dan Robinson",
+          "Allie Smith",
+          "Nico Heyning",
+          "Daniel Cayton",
+          "Jessica Roame",
+          "Gail Koza",
+          "Riley",
+          "Capt. Alexander Legaspi",
+          "Erik Combs",
+          "Ron Charbonneau",
+          "Kate Spencer",
+          "Julene Jackman Lennon",
+          "Slater T Moore",
+          "Gordon Gates",
+          "Amanda Colbert",
+          "Laura",
+          "Capt Nicholas Robbins",
+          "Captain Kevin"
+        ]
+      }
+    ],
+    "note": "Review each contributing dataset's citation and license before reuse; missing fields are not a grant of rights.",
+    "obis": "OBIS (2026) Ocean Biodiversity Information System. Intergovernmental Oceanographic Commission of UNESCO. https://obis.org. Accessed: 2026-09-28"
+  },
+  "counts": {
+    "after_coordinate_qc": 226,
+    "api_total_reported": 226,
+    "duplicate_identifiers": 0,
+    "invalid_coordinates_or_outside_bounds": 0,
+    "raw_fetched": 226,
+    "without_duplicate_identifier": 0,
+    "written": 226
+  },
+  "extract": "output/bottlenose-california.jsonl",
+  "extract_sha256": "47bee2b30b6de092093e055d631e8f96923d3fba5fe5c7f790a05f7b72951c2c",
+  "qc_rule": "Reject missing, non-finite, out-of-range or outside-box coordinates; de-duplicate on repeated OBIS id or dataset_id + occurrenceID. Do not collapse equal positions.",
+  "query": {
+    "bounds_wgs84": [
+      -127,
+      29,
+      -115,
+      44
+    ],
+    "datasetid": "86ffd903-47fc-435e-a42e-f3aec79c2d03",
+    "enddate": "2024-12-31",
+    "geometry": "POLYGON((-127 29,-115 29,-115 44,-127 44,-127 29))",
+    "max_records": 10000,
+    "page_size": 200,
+    "pages": [
+      {
+        "after": null,
+        "offset": 0,
+        "received": 200,
+        "size": 200,
+        "url": "https://api.obis.org/v3/occurrence?taxonid=137111&geometry=POLYGON%28%28-127+29%2C-115+29%2C-115+44%2C-127+44%2C-127+29%29%29&startdate=2014-01-01&enddate=2024-12-31&size=200&datasetid=86ffd903-47fc-435e-a42e-f3aec79c2d03"
+      },
+      {
+        "after": "e1e03fd6-c71f-44ad-af6c-e53a951f787e",
+        "offset": 200,
+        "received": 26,
+        "size": 200,
+        "url": "https://api.obis.org/v3/occurrence?taxonid=137111&geometry=POLYGON%28%28-127+29%2C-115+29%2C-115+44%2C-127+44%2C-127+29%29%29&startdate=2014-01-01&enddate=2024-12-31&size=200&after=e1e03fd6-c71f-44ad-af6c-e53a951f787e&datasetid=86ffd903-47fc-435e-a42e-f3aec79c2d03"
+      }
+    ],
+    "pagination": "after occurrence id",
+    "startdate": "2014-01-01",
+    "taxonid": "137111"
+  },
+  "schema_version": 1,
+  "source": {
+    "api": "https://api.obis.org/v3/occurrence",
+    "api_version": "v3",
+    "name": "Ocean Biodiversity Information System (OBIS)",
+    "record_modified_values": [
+      "2026-07-15 06:02:11"
+    ],
+    "response_headers": [
+      {
+        "ETag": "W/\"ca5ba-5nvt3HsZv0Z22rbC9/FC7aA2wtM\""
+      },
+      {
+        "ETag": "W/\"1a219-faDIl/ThVvTKyfC8QV/bZxw81BY\""
+      }
+    ]
+  },
+  "truncated_by_cap": false
+}

@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "species": "Xiphias gladius",
+  "aphiaID": 127094,
+  "region": "Atlántico occidental · costa de EE. UU.",
+  "period": "2017–2024",
+  "clusterDiameterKm": 500,
+  "boundsWgs84": [
+    -82,
+    25,
+    -66,
+    44
+  ],
+  "source": {
+    "name": "Ocean Biodiversity Information System (OBIS)",
+    "datasetId": "eaea291a-1e1d-4382-b86f-ac3cc15b8d5a",
+    "url": "https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a",
+    "citation": "iNaturalist contributors, iNaturalist (2026). iNaturalist Research-grade Observations Marine Subset. Version 2.0. Marine Biological Association. https://doi.org/10.17031/0bbcjx",
+    "license": "CC BY-NC 4.0",
+    "accessedAtUtc": "2026-09-28T08:57:47.037976+00:00",
+    "extractSha256": "d594af32e0d737e6cd3e1e31d4e8d37ae38e2c31280211a952bee4530c259e16"
+  },
+  "summary": {
+    "count": 13,
+    "byYear": {
+      "2017": 1,
+      "2019": 1,
+      "2020": 1,
+      "2021": 1,
+      "2022": 2,
+      "2023": 3,
+      "2024": 4
+    },
+    "excluded": {
+      "obis_on_land": 2
+    },
+    "unknownCoordinateUncertainty": 3,
+    "uncertaintyKmRange": [
+      0.0,
+      77.0
+    ]
+  },
+  "observations": [
+    {
+      "id": "0dac269a-fd95-4a28-a374-0d7a65fdbd63",
+      "longitude": -80.1581714574,
+      "latitude": 25.7269287898,
+      "eventDate": "2017-05-10T15:56:58-04:00",
+      "coordinateUncertaintyInMeters": 21
+    },
+    {
+      "id": "118625f6-158c-4749-b23a-d2292f82b206",
+      "longitude": -71.9923866667,
+      "latitude": 41.3238116667,
+      "eventDate": "2023-07-28T15:05:55-04:00",
+      "coordinateUncertaintyInMeters": 14
+    },
+    {
+      "id": "42424b6c-796d-4e5c-952b-3d7d3dceedd8",
+      "longitude": -79.845362,
+      "latitude": 25.674672,
+      "eventDate": "2020-02-08T18:29:39-05:00",
+      "coordinateUncertaintyInMeters": 7647
+    },
+    {
+      "id": "548cd048-5527-4b62-b1b6-5ab5b151a8e6",
+      "longitude": -74.302215,
+      "latitude": 37.116045,
+      "eventDate": "2024-08-03T08:36:16-05:00",
+      "coordinateUncertaintyInMeters": null
+    },
+    {
+      "id": "91fb3bc2-feaa-49b3-b427-22e4e7e2a67b",
+      "longitude": -73.8055883333,
+      "latitude": 37.9846416667,
+      "eventDate": "2024-08-11T12:54:00-05:00",
+      "coordinateUncertaintyInMeters": null
+    },
+    {
+      "id": "a16f94a5-064e-46be-9078-07233325c90d",
+      "longitude": -73.7244227706,
+      "latitude": 38.1391824958,
+      "eventDate": "2024-08-11T12:47:00-05:00",
+      "coordinateUncertaintyInMeters": 977
+    },
+    {
+      "id": "a669ef86-aeb5-456d-8d47-81cd0017aca6",
+      "longitude": -79.8059986605,
+      "latitude": 26.6531186535,
+      "eventDate": "2023-10-07T07:20:41-05:00",
+      "coordinateUncertaintyInMeters": 11339
+    },
+    {
+      "id": "b6db39ac-97c6-4ec9-9e2b-5a4b126382b6",
+      "longitude": -69.566044,
+      "latitude": 39.9706339722,
+      "eventDate": "2022-08-29T22:41:14-05:00",
+      "coordinateUncertaintyInMeters": null
+    },
+    {
+      "id": "b9fab59a-cd82-44ec-902d-a634018ca6d7",
+      "longitude": -69.1189913345,
+      "latitude": 40.335781668,
+      "eventDate": "2021-08-08T04:19:00-04:00",
+      "coordinateUncertaintyInMeters": 59217
+    },
+    {
+      "id": "bb2d35e0-59c0-4ee5-8e27-a5047c6a264c",
+      "longitude": -72.6616305883,
+      "latitude": 39.8345851349,
+      "eventDate": "2024-07-27T13:21:00-05:00",
+      "coordinateUncertaintyInMeters": 73098
+    },
+    {
+      "id": "cc4d38bb-499e-4f0b-9164-39540d7eeef0",
+      "longitude": -69.192473417,
+      "latitude": 40.1211101143,
+      "eventDate": "2019-09-21T21:44:43-05:00",
+      "coordinateUncertaintyInMeters": 28000
+    },
+    {
+      "id": "d0439b8b-64cc-44d8-9b6e-d653aa7a22a7",
+      "longitude": -69.566044,
+      "latitude": 39.970634,
+      "eventDate": "2022-08-29T22:58:00-05:00",
+      "coordinateUncertaintyInMeters": 1000
+    },
+    {
+      "id": "ddaec393-97d9-4bec-9a9f-4383af86a4da",
+      "longitude": -79.0684610064,
+      "latitude": 31.3266670634,
+      "eventDate": "2023-05-11T12:35:37-05:00",
+      "coordinateUncertaintyInMeters": 77100
+    }
+  ]
+}

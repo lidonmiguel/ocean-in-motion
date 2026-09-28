@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "species": "Xiphias gladius",
+  "aphiaID": 127094,
+  "region": "Pacífico oriental · California",
+  "period": "2017–2024",
+  "clusterDiameterKm": 500,
+  "boundsWgs84": [
+    -126,
+    28,
+    -114,
+    44
+  ],
+  "source": {
+    "name": "Ocean Biodiversity Information System (OBIS)",
+    "datasetId": "eaea291a-1e1d-4382-b86f-ac3cc15b8d5a",
+    "url": "https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a",
+    "citation": "iNaturalist contributors, iNaturalist (2026). iNaturalist Research-grade Observations Marine Subset. Version 2.0. Marine Biological Association. https://doi.org/10.17031/0bbcjx",
+    "license": "CC BY-NC 4.0",
+    "accessedAtUtc": "2026-09-28T08:57:48.012927+00:00",
+    "extractSha256": "e994b3e3b955a52d81bc835e4218a2bc116f2663849f3b39f3a40bdd997ca4c4"
+  },
+  "summary": {
+    "count": 20,
+    "byYear": {
+      "2017": 2,
+      "2018": 3,
+      "2019": 2,
+      "2021": 1,
+      "2022": 2,
+      "2023": 5,
+      "2024": 5
+    },
+    "excluded": {
+      "obis_on_land": 1
+    },
+    "unknownCoordinateUncertainty": 4,
+    "uncertaintyKmRange": [
+      0.0,
+      29.0
+    ]
+  },
+  "observations": [
+    {
+      "id": "02bb3acd-4305-4e34-95c1-fc971f070540",
+      "longitude": -118.4959810843,
+      "latitude": 33.7316127164,
+      "eventDate": "2021-07-11T09:48:00-07:00",
+      "coordinateUncertaintyInMeters": 488
+    },
+    {
+      "id": "35a393fc-5ac2-4059-b508-5d046787ebb5",
+      "longitude": -117.8611115366,
+      "latitude": 33.1727966732,
+      "eventDate": "2022-08-13T11:02:00-08:00",
+      "coordinateUncertaintyInMeters": 4
+    },
+    {
+      "id": "368eb24e-015d-47b3-b416-11948df63e66",
+      "longitude": -119.1321808846,
+      "latitude": 33.5579623841,
+      "eventDate": "2018-10-06T14:09:18-07:00",
+      "coordinateUncertaintyInMeters": 5
+    },
+    {
+      "id": "36f25450-38ad-4d30-8848-f2a40b21f50f",
+      "longitude": -117.5873266256,
+      "latitude": 32.6438248006,
+      "eventDate": "2023-08-26T13:29:00-08:00",
+      "coordinateUncertaintyInMeters": 488
+    },
+    {
+      "id": "3e443665-441a-4375-84b3-ffc82922896f",
+      "longitude": -119.077498,
+      "latitude": 32.616836,
+      "eventDate": "2018-08-25T11:10:39-07:00",
+      "coordinateUncertaintyInMeters": null
+    },
+    {
+      "id": "40f63fc4-3856-4198-9891-d4f0f7a709eb",
+      "longitude": -119.2493295133,
+      "latitude": 33.315415238,
+      "eventDate": "2018-08-25T11:09:00-07:00",
+      "coordinateUncertaintyInMeters": 15625
+    },
+    {
+      "id": "49d5e97c-d482-43f5-9901-c646d08e9459",
+      "longitude": -117.6131534757,
+      "latitude": 32.6564237736,
+      "eventDate": "2024-08-25T09:48:00-08:00",
+      "coordinateUncertaintyInMeters": 122
+    },
+    {
+      "id": "4ae992eb-99f6-418d-9a71-6e3171ee6da8",
+      "longitude": -117.9041469275,
+      "latitude": 33.1889330131,
+      "eventDate": "2022-08-13T11:01:00-08:00",
+      "coordinateUncertaintyInMeters": 1953
+    },
+    {
+      "id": "5538f076-e186-41eb-a9cb-7d5f6f025a0f",
+      "longitude": -122.9349702865,
+      "latitude": 37.2673791231,
+      "eventDate": "2024-09-07T11:38:00-08:00",
+      "coordinateUncertaintyInMeters": 2129
+    },
+    {
+      "id": "578e634b-a88b-4bcd-b262-89dc0555581e",
+      "longitude": -117.89965,
+      "latitude": 33.4032216667,
+      "eventDate": "2024-05-04T14:50:00-07:00",
+      "coordinateUncertaintyInMeters": null
+    },
+    {
+      "id": "64dee64a-141d-4b24-a7e4-56abb5ecc809",
+      "longitude": -119.765313,
+      "latitude": 33.43784933,
+      "eventDate": "2017-07-16T13:09:00-07:00",
+      "coordinateUncertaintyInMeters": null
+    },
+    {
+      "id": "8c9cb70c-abd0-4c8a-987c-b9e1aedf3f37",
+      "longitude": -118,
+      "latitude": 33.4,
+      "eventDate": "2024-07-20T19:29:00-08:00",
+      "coordinateUncertaintyInMeters": 195
+    },
+    {
+      "id": "92ed2bc3-19cf-46d2-a465-38a53b152c5d",
+      "longitude": -117.6625061863,
+      "latitude": 32.7457981741,
+      "eventDate": "2023-08-26T12:34:00-08:00",
+      "coordinateUncertaintyInMeters": 29066
+    },
+    {
+      "id": "96f90ed6-ee66-4bf7-aad6-41481bba8ab7",
+      "longitude": -124.1303863525,
+      "latitude": 40.9473648071,
+      "eventDate": "2019-10-10T12:32:05-07:00",
+      "coordinateUncertaintyInMeters": null
+    },
+    {
+      "id": "ace06100-d3b3-435a-a79a-a30596a56ecf",
+      "longitude": -117.4598243512,
+      "latitude": 32.7529712863,
+      "eventDate": "2024-10-25T12:22:00-07:00",
+      "coordinateUncertaintyInMeters": 977
+    },
+    {
+      "id": "c45fd42e-8f07-4389-a9db-51d0addb2d14",
+      "longitude": -119.7206690257,
+      "latitude": 33.6164442217,
+      "eventDate": "2017-07-16T13:12:43-07:00",
+      "coordinateUncertaintyInMeters": 5
+    },
+    {
+      "id": "c90a1010-7c7b-4ae2-a273-6a93f1c598fd",
+      "longitude": -117.6023410981,
+      "latitude": 32.6196460734,
+      "eventDate": "2023-08-26T13:47:00-08:00",
+      "coordinateUncertaintyInMeters": 7512
+    },
+    {
+      "id": "c96fa71f-d05e-42f3-8e6c-063c488c56af",
+      "longitude": -117.4272739027,
+      "latitude": 32.5820092085,
+      "eventDate": "2023-08-26T14:29:00-07:00",
+      "coordinateUncertaintyInMeters": 3617
+    },
+    {
+      "id": "e7abd7ec-3253-4c8f-a198-d700358f8b62",
+      "longitude": -119.704493,
+      "latitude": 34.351869,
+      "eventDate": "2023-08-19T13:51:00-07:00",
+      "coordinateUncertaintyInMeters": 20274
+    },
+    {
+      "id": "ea540430-d261-4507-9d65-c97199394c30",
+      "longitude": -119.1999759806,
+      "latitude": 33.6746091396,
+      "eventDate": "2019-09-03T10:12:24-07:00",
+      "coordinateUncertaintyInMeters": 5
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 # Océano en Movimiento
 
-An experimental marine map in Spanish with seven species and nineteen
-**observation-derived** regional boxes. The older hand-authored habitat
-fixtures have been removed.
+An experimental marine map in Spanish with seven species and 106
+**observation-derived** regional boxes. The 43 bounded extracts include multiple documented locations for every species.
+The older hand-authored habitat fixtures have been removed.
 Each turquoise square encloses the positions in one geographically close
 group from a checked, bounded OBIS extract, with a 20 km display margin. The underlying observations, original
 extract, query manifest and source citation are versioned in this repository.
@@ -40,6 +40,7 @@ All taxa are exact WoRMS AphiaIDs; all extracts use OBIS v3 occurrence queries
 with a specific dataset UUID, WGS84 bounds and inclusive dates. Counts below
 are accepted records after documented quality checks. The links lead to the
 individual source dataset, with its citation and license displayed in the app.
+A repeated dataset link refers to a separate geographic query, not a new source.
 
 | Species | Regional source, period | Accepted / queried | Rights |
 | --- | --- | ---: | --- |
@@ -57,6 +58,35 @@ individual source dataset, with its citation and license displayed in the app.
 | *Tursiops truncatus* | [ISPRA ferry transect, western Mediterranean](https://obis.org/dataset/d5847ecb-6f9b-4599-888a-461cb26f8018), 2014–2018 | 84 / 84 | CC BY 4.0 |
 | *Chelonia mydas* | [iNaturalist Marine, northwestern Caribbean](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2024 | 384 / 519 | CC BY-NC 4.0 |
 | *Caretta caretta* | [ISPRA ferry transect, western Mediterranean](https://obis.org/dataset/b9bfb219-1d5c-450e-9b26-fd377aee8561), 2013–2017 | 117 / 117 | CC BY 4.0 |
+| *Rhincodon typus* | [iNaturalist Marine, Golfo de California](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2024 | 220 / 253 | CC BY-NC 4.0 |
+| *Rhincodon typus* | [iNaturalist Marine, Filipinas y mar de Célebes](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2024 | 117 / 161 | CC BY-NC 4.0 |
+| *Rhincodon typus* | [iNaturalist Marine, Ningaloo · Australia occidental](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2024 | 65 / 75 | CC BY-NC 4.0 |
+| *Rhincodon typus* | [iNaturalist Marine, Costa de Mozambique](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2016–2024 | 6 / 12 | CC BY-NC 4.0 |
+| *Rhincodon typus* | [iNaturalist Marine, Maldivas](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2024 | 58 / 65 | CC BY-NC 4.0 |
+| *Xiphias gladius* | [iNaturalist Marine, Mediterráneo oriental](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2024 | 15 / 19 | CC BY-NC 4.0 |
+| *Xiphias gladius* | [iNaturalist Marine, Atlántico occidental · costa de EE. UU.](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2017–2024 | 13 / 15 | CC BY-NC 4.0 |
+| *Xiphias gladius* | [iNaturalist Marine, Pacífico oriental · California](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2017–2024 | 20 / 21 | CC BY-NC 4.0 |
+| *Xiphias gladius* | [iNaturalist Marine, Atlántico ibérico](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2021–2022 | 2 / 4 | CC BY-NC 4.0 |
+| *Megaptera novaeangliae* | [CRC HRC small-vessel survey, Hawái · prospección en embarcación](https://obis.org/dataset/9fc29d00-9998-4059-b0bd-f28cfa63a793), 2015 | 15 / 15 | CC BY 4.0 |
+| *Megaptera novaeangliae* | [SWFSC CLAWS survey, Alaska · campaña CLAWS](https://obis.org/dataset/1dc828ac-d522-4ebf-97c3-e5a521b4509c), 2015 | 369 / 369 | CC0 1.0 |
+| *Megaptera novaeangliae* | [RV Investigator sightings, Mar de Tasmania · campaña RV Investigator](https://obis.org/dataset/3f424661-13b8-4008-8600-091bf43037ad), 2017 | 59 / 59 | CC BY-NC 4.0 |
+| *Megaptera novaeangliae* | [iNaturalist Marine, Sudáfrica y Mozambique](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2024 | 184 / 381 | CC BY-NC 4.0 |
+| *Megaptera novaeangliae* | [iNaturalist Marine, Islandia](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2024 | 275 / 529 | CC BY-NC 4.0 |
+| *Tursiops truncatus* | [GoMMAPPS aerial survey, Golfo de México · prospección aérea](https://obis.org/dataset/717041c4-dd72-4457-8963-4e63e8e35710), 2018 | 169 / 172 | CC0 1.0 |
+| *Tursiops truncatus* | [Happywhale, California · Happywhale](https://obis.org/dataset/86ffd903-47fc-435e-a42e-f3aec79c2d03), 2014–2024 | 222 / 226 | CC BY-NC 4.0 |
+| *Tursiops truncatus* | [iNaturalist Marine, Australia oriental](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2024 | 94 / 128 | CC BY-NC 4.0 |
+| *Tursiops truncatus* | [iNaturalist Marine, Caribe oriental](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2024 | 51 / 56 | CC BY-NC 4.0 |
+| *Tursiops truncatus* | [iNaturalist Marine, Costa sudafricana del Índico](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2024 | 11 / 13 | CC BY-NC 4.0 |
+| *Chelonia mydas* | [CRC HRC shore survey, Hawái · observación desde la costa](https://obis.org/dataset/57fc04f0-c9f9-4d2f-9030-bf7281afda92), 2014–2015 | 114 / 135 | CC BY 4.0 |
+| *Chelonia mydas* | [BioNet NSW sightings, Nueva Gales del Sur · BioNet](https://obis.org/dataset/0ae49e4e-ad4c-4b89-be2e-b6003c0038ec), 2014 | 63 / 72 | CC BY 4.0 |
+| *Chelonia mydas* | [iNaturalist Marine, Mar Rojo](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2024 | 200 / 421 | CC BY-NC 4.0 |
+| *Chelonia mydas* | [iNaturalist Marine, Seychelles](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2024 | 23 / 25 | CC BY-NC 4.0 |
+| *Chelonia mydas* | [iNaturalist Marine, Galápagos](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2024 | 908 / 1351 | CC BY-NC 4.0 |
+| *Caretta caretta* | [AMAPPS aerial survey, Florida · prospección aérea](https://obis.org/dataset/eeb7f0c5-dfe8-4a07-b273-6dc4a634cc14), 2019 | 215 / 215 | CC0 1.0 |
+| *Caretta caretta* | [Tethys aerial survey, Mediterráneo oriental · prospección aérea](https://obis.org/dataset/7225dc7b-dd9a-4bec-b689-f084a49d13eb), 2021 | 358 / 360 | CC BY-NC 4.0 |
+| *Caretta caretta* | [iNaturalist Marine, Japón](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2024 | 13 / 18 | CC BY-NC 4.0 |
+| *Caretta caretta* | [iNaturalist Marine, Australia oriental](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2024 | 129 / 194 | CC BY-NC 4.0 |
+| *Caretta caretta* | [iNaturalist Marine, Sudáfrica](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2024 | 48 / 80 | CC BY-NC 4.0 |
 
 The iNaturalist Marine source is credited to iNaturalist contributors / Marine
 Biological Association (2026), [doi:10.17031/0bbcjx](https://doi.org/10.17031/0bbcjx).
@@ -77,9 +107,7 @@ the loggerhead transect to the same authors, [doi:10.14284/532](https://doi.org/
 The recorded dataset rights come from OBIS dataset metadata `intellectualrights`
 checked on 2026-09-27 and 2026-09-28. **CC BY-NC sources carry a noncommercial restriction.**
 
-The iNaturalist Marine queries exclude OBIS `ON_LAND` flags (19 tuna, 11 whale
-sharks, 131 green turtles). Four whale shark and four green turtle records with
-declared position uncertainty greater than 300 km are also excluded. `NO_DEPTH`
+All published extracts exclude OBIS `ON_LAND` flags and declared position uncertainty greater than 300 km. The new scopes also exclude subordinate names returned with `NO_ACCEPTED_NAME` and a different AphiaID (367 rows), keeping only the exact reviewed taxon. Each snapshot records its own exclusion counts. `NO_DEPTH`
 is retained because this map does not analyze depth. The swordfish dataset
 provides no coordinate uncertainty for its 190 observations; the interface
 reports that as unknown. The Bay of Biscay tuna survey also omits that field.
@@ -93,15 +121,18 @@ spatially biased. The OBIS source may change after these versioned extracts.
 The eight scoped bluefin extracts total **957** accepted records from five
 distinct contributing datasets, displayed in **thirteen** geographically
 separated boxes. The year labels in the table describe accepted observation
-dates; query dates for the five new areas are 2014-01-01 to 2024-12-31.
-The five new WGS84 search bounds are in `publish_species.py` and the manifests.
-For those areas only, a deterministic complete-link grouping keeps all pairs
-of positions in a box within 500 km; close records share a box and distant
-ones form separate boxes. The earlier three extracts keep their reviewed
-regional boxes. A separate box around one reported position still does not
+dates; query dates for the 29 newly staged regions, and the five recently added
+bluefin regions, are 2014-01-01 to 2024-12-31. The exact WGS84 search bounds
+are in `publish_species.py` and the manifests. For these grouped extracts, a
+deterministic complete-link grouping keeps all pairs of positions in a box
+within 500 km; close records share a box and distant ones form separate boxes.
+The earlier regional extracts keep their reviewed one-box grouping. A separate box around one reported position still does not
 establish a habitat area. Search coverage is uneven; gaps on the map are
 unknown, not confirmed absences. Survey density cannot be compared directly
-with citizen reports. The map's region list zooms to each documented group.
+with citizen reports. The map's scrollable region list zooms to each documented group. The new
+regions add 4,036 accepted records; across all 43 extracts the map displays
+6,404 records in 106 boxes (13 bluefin, 14 whale shark, 12 swordfish,
+18 humpback, 19 bottlenose, 9 green turtle, 21 loggerhead).
 
 ## How the files fit
 
@@ -109,10 +140,10 @@ with citizen reports. The map's region list zooms to each documented group.
 | --- | --- |
 | `data/obis/*.jsonl.gz`, `*.manifest.json` | Lossless raw bounded extracts, query URLs, QC counts, access time and SHA-256. |
 | `python/ocean_pipeline/sources.py` | Bounded OBIS staging using the occurrence ID cursor; refuses incomplete or repeated pages. |
-| `python/ocean_pipeline/publish_species.py` | Source-specific taxon, date, license and quality checks; generates thirteen non-loggerhead snapshots. |
+| `python/ocean_pipeline/publish_species.py` | Source-specific taxon, date, license and quality checks; generates 42 regional snapshots, including five new loggerhead regions. |
 | `python/ocean_pipeline/publish_pilot.py` | Rebuilds the original loggerhead snapshot. |
 | `src/data/observations/*.json` | Compact, checked positions and citations bundled in the map. |
-| `src/data/speciesMetadata.json`, `src/data/index.ts` | Descriptive names and fourteen explicitly scoped extracts across seven species. |
+| `src/data/speciesMetadata.json`, `src/data/index.ts` | Descriptive names and 43 explicitly scoped extracts across seven species. |
 | `src/data/observationScenario.ts` | Computes an ocean-centered square per reviewed region or geographic group, enclosing its retained points. |
 | `src/MapView.tsx`, `src/data/flowData.ts` | Interactive map and illustrative curved animation over water. |
 
