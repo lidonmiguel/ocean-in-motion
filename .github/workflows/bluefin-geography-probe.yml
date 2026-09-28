@@ -1,0 +1,69 @@
+name: Probe geographic bluefin occurrence coverage
+
+on:
+  pull_request:
+    branches: [main]
+    paths: [.github/workflows/bluefin-geography-probe.yml]
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Inspect regional OBIS sources
+        run: |
+          python - <<'PY'
+          import collections, json, time, urllib.parse, urllib.request
+          from pathlib import Path
+
+          regions = {
+            'northwest-shelf-south': (-82,30,-74,39),
+            'nova-scotia-newfoundland': (-63,42,-42,55),
+            'north-sea': (-5,50,14,63),
+            'iberian-atlantic': (-15,34,-4,45),
+            'azores': (-35,32,-15,43),
+            'canaries': (-22,25,-10,33),
+            'northwest-africa': (-20,18,-5,35),
+            'central-mediterranean': (8,32,23,43),
+            'eastern-mediterranean': (23,30,37,42),
+            'black-sea': (27,40,42,47),
+            'gulf-of-mexico': (-98,18,-80,32),
+            'northeast-atlantic': (-30,43,-7,57),
+          }
+          def get(url):
+            for attempt in range(3):
+              try:
+                with urllib.request.urlopen(urllib.request.Request(url,headers={'Accept':'application/json','User-Agent':'ocean-in-motion/0.1'}),timeout=45) as response:
+                  return json.load(response)
+              except Exception:
+                if attempt == 2: raise
+                time.sleep(2*(attempt+1))
+          result = {}
+          for slug,(w,s,e,n) in regions.items():
+            geometry=f'POLYGON(({w} {s},{e} {s},{e} {n},{w} {n},{w} {s}))'
+            params={'taxonid':127029,'geometry':geometry,'startdate':'2014-01-01','enddate':'2024-12-31','size':200}
+            payload=get('https://api.obis.org/v3/occurrence?'+urllib.parse.urlencode(params))
+            rows=payload['results']
+            summary=[]
+            for dataset,count in collections.Counter(row.get('dataset_id') for row in rows).most_common(8):
+              if not dataset: continue
+              scoped=get('https://api.obis.org/v3/occurrence?'+urllib.parse.urlencode({**params,'size':1,'datasetid':dataset}))
+              metadata=get('https://api.obis.org/v3/dataset/'+dataset)
+              m=metadata['results'][0] if metadata.get('results') else metadata
+              sample=next(row for row in rows if row.get('dataset_id')==dataset)
+              summary.append({'dataset_id':dataset,'sample_count':count,'regional_total':scoped.get('total'),
+                'title':m.get('title'),'citation':m.get('citation'),'intellectualrights':m.get('intellectualrights'),
+                'abstract':(m.get('abstract') or '')[:900],
+                'example':{key:sample.get(key) for key in ('scientificName','eventDate','decimalLongitude','decimalLatitude','occurrenceStatus','coordinateUncertaintyInMeters','flags','marine','absence','dropped')}})
+            result[slug]={'bounds':[w,s,e,n],'total':payload.get('total'),'sample_size':len(rows),'datasets':summary}
+            print(slug,payload.get('total'),[(d['regional_total'],d['title']) for d in summary],flush=True)
+          Path('output').mkdir(exist_ok=True)
+          Path('output/bluefin-geography-probe.json').write_text(json.dumps(result,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bluefin-geography-probe
+          path: output/bluefin-geography-probe.json
+          retention-days: 3
