@@ -85,18 +85,19 @@ function speciesColor(boxId: string): [number, number, number] {
 
 function flowSegments(flow: DisplayFlow, start: number, end: number, grouped: boolean): Segment[] {
   const sourceColor = grouped ? speciesColor(flow.id) : [60, 237, 224];
-  return Array.from({ length: 6 }, (_, index) => {
-    const from = Math.max(start, index / 6);
-    const to = Math.min(end, (index + 1) / 6);
+  const colorSteps = 3;
+  return Array.from({ length: colorSteps }, (_, index) => {
+    const from = Math.max(start, index / colorSteps);
+    const to = Math.min(end, (index + 1) / colorSteps);
     if (to <= from) return null;
-    const blend = (index + 0.5) / 6;
+    const blend = (index + 0.5) / colorSteps;
     return {
       path: flowSection(flow, from, to),
       color: [
         Math.round(sourceColor[0] * (1 - blend) + 255 * blend),
         Math.round(sourceColor[1] * (1 - blend) + 107 * blend),
         Math.round(sourceColor[2] * (1 - blend) + 180 * blend),
-        230
+        245
       ] as [number, number, number, number]
     };
   }).filter((segment): segment is Segment => segment !== null);
@@ -108,7 +109,7 @@ export function MapView({ selected, focusBoxId = null, showBoxes = true }: {
   const observed = selected.provenance === 'observation-demo';
   const grouped = selected.id.startsWith('all-');
   const flows = useMemo(() => displayFlows(selected), [selected]);
-  const streamlines = useMemo(() => displayStreamlines(selected, grouped ? 6 : 18), [selected, grouped]);
+  const streamlines = useMemo(() => displayStreamlines(selected, grouped ? 2 : 4), [selected, grouped]);
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
   const overlay = useRef<MapLibreOverlay | null>(null);
@@ -278,7 +279,7 @@ export function MapView({ selected, focusBoxId = null, showBoxes = true }: {
       const trails: Trail[] = [];
       const segments: Segment[] = [];
       streamlines.forEach((flow, index) => {
-        const progress = (time / 4900 + (index * 0.618034) % 1) % 1;
+        const progress = (time / 5600 + (index * 0.618034) % 1) % 1;
         const [start, end] = visibleFlowWindow(progress);
         if (end - start < 0.015) return;
         trails.push({ path: flowSection(flow, start, end) });
@@ -291,7 +292,7 @@ export function MapView({ selected, focusBoxId = null, showBoxes = true }: {
           data: trails,
           getPath: d => d.path,
           getColor: [119, 222, 222, 34],
-          getWidth: 6,
+          getWidth: 8,
           widthUnits: 'pixels',
           wrapLongitude: true,
           pickable: false
@@ -301,7 +302,7 @@ export function MapView({ selected, focusBoxId = null, showBoxes = true }: {
           data: segments,
           getPath: d => d.path,
           getColor: d => d.color,
-          getWidth: 2.1,
+          getWidth: 3,
           widthUnits: 'pixels',
           wrapLongitude: true,
           pickable: false

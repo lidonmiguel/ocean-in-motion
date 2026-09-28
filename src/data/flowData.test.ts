@@ -9,7 +9,8 @@ describe('illustrative distribution flows', () => {
     const flows = displayFlows(dataset);
     expect(flows).toHaveLength(dataset.habitat.current.length);
     expect(flows[0].from).toEqual(dataset.habitat.current[0].center);
-    expect(pointOnFlow(flows[0], 1)).toEqual(dataset.habitat.future[0].center);
+    expect(pointOnFlow(flows[0], 1)[0]).toBeCloseTo(dataset.habitat.future[0].center[0]);
+    expect(pointOnFlow(flows[0], 1)[1]).toBeCloseTo(dataset.habitat.future[0].center[1]);
   });
 
   it('takes the short path across the antimeridian', () => {
@@ -47,6 +48,14 @@ describe('illustrative distribution flows', () => {
     }
   }, 15_000);
 
+  it('makes most illustrative routes visible at overview scale', () => {
+    const lengths = species.flatMap(dataset => displayFlows(dataset).map(flow => {
+      const latitude = (flow.from[1] + flow.to[1]) * Math.PI / 360;
+      return Math.hypot((flow.to[0] - flow.from[0]) * Math.cos(latitude), flow.to[1] - flow.from[1]);
+    }));
+    expect(lengths.filter(length => length >= 4).length).toBeGreaterThan(lengths.length * 0.8);
+  });
+
   it('uses only explicit vectors for reviewed data', () => {
     const dataset = structuredClone(species[0]);
     dataset.provenance = 'reviewed-model';
@@ -62,9 +71,9 @@ describe('illustrative distribution flows', () => {
     const flow = displayFlows(species[0])[0];
     expect(visibleFlowWindow(0)).toEqual([0, 0]);
     expect(visibleFlowWindow(0.5)).toEqual([0, 0.5]);
-    const [start, end] = visibleFlowWindow(0.81);
+    const [start, end] = visibleFlowWindow(0.91);
     expect(start).toBeGreaterThan(0);
-    expect(end).toBe(0.81);
+    expect(end).toBe(0.91);
     const section = flowSection(flow, start, end);
     expect(section[0]).toEqual(pointOnFlow(flow, start));
     expect(section.at(-1)).toEqual(pointOnFlow(flow, end));

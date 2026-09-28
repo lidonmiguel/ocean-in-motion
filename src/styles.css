@@ -19,7 +19,7 @@
 @media(max-width:850px){.source-note{margin-top:15px}}
 
 .fallback-map{position:absolute;inset:0;display:grid;place-items:center;background:#0b3245}.fallback-map svg{display:block;width:100%;height:100%}.fallback-note{position:absolute;left:14px;bottom:18px;max-width:calc(100% - 28px);background:#071f2deb;color:#bde6e2;padding:8px;font-size:10px;line-height:1.4}.fallback-message{padding:45px;color:#bde6e2;text-align:center;font-size:14px}
-.fallback-flow{fill:none;stroke:#70e9e2;stroke-width:2.3;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;filter:drop-shadow(0 0 4px #64eee9);animation:fallback-flow-draw 5s linear infinite}
+.fallback-flow{fill:none;stroke:#70e9e2;stroke-width:3;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;filter:drop-shadow(0 0 4px #64eee9);animation:fallback-flow-draw 5s linear infinite}
 @keyframes fallback-flow-draw{0%{stroke-dashoffset:1;opacity:0}8%{opacity:.85}65%{stroke-dashoffset:0;opacity:.9}78%{stroke-dashoffset:0;opacity:.9}100%{stroke-dashoffset:-1;opacity:0}}
 @media(prefers-reduced-motion:reduce){.fallback-flow{display:none}}
 @media(max-width:1200px){.coordinates{display:none}}
