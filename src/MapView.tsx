@@ -43,18 +43,14 @@ function illustrativeFallback(selected: SpeciesDataset, focusBoxId: string | nul
     const [x, y] = position(lon, lat);
     return `${index ? 'L' : 'M'}${x.toFixed(1)},${y.toFixed(1)}`;
   }).join('');
-  const seen = new Set<string>();
   return { position, path, coast: fallbackLandPath(position),
     current: displayCells(selected, 'current').filter(cell => !focusBoxId || cell.id.startsWith(`${focusBoxId}-`)),
     future: displayCells(selected, 'future').filter(cell => !focusBoxId || cell.id.startsWith(`${focusBoxId}-`)),
     currentCenters: selected.habitat.current.filter(cell => !focusBoxId || cell.id === focusBoxId),
     futureCenters: selected.habitat.future.filter(cell => !focusBoxId || cell.id === focusBoxId),
-    strands: streamlines.filter((strand, index) => {
+    strands: streamlines.filter(strand => {
       const boxId = strand.id.slice(0, strand.id.lastIndexOf('-'));
-      if (focusBoxId && boxId !== focusBoxId) return false;
-      const first = !seen.has(boxId);
-      seen.add(boxId);
-      return first || index % 3 === 0;
+      return !focusBoxId || boxId === focusBoxId;
     }) };
 }
 
@@ -109,7 +105,7 @@ export function MapView({ selected, focusBoxId = null, showBoxes = true }: {
   const observed = selected.provenance === 'observation-demo';
   const grouped = selected.id.startsWith('all-');
   const flows = useMemo(() => displayFlows(selected), [selected]);
-  const streamlines = useMemo(() => displayStreamlines(selected, grouped ? 2 : 4), [selected, grouped]);
+  const streamlines = useMemo(() => displayStreamlines(selected, grouped ? 6 : 12), [selected, grouped]);
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
   const overlay = useRef<MapLibreOverlay | null>(null);
@@ -291,8 +287,8 @@ export function MapView({ selected, focusBoxId = null, showBoxes = true }: {
           id: 'growing-trail-glow',
           data: trails,
           getPath: d => d.path,
-          getColor: [119, 222, 222, 34],
-          getWidth: 8,
+          getColor: [119, 222, 222, 24],
+          getWidth: 5,
           widthUnits: 'pixels',
           wrapLongitude: true,
           pickable: false
@@ -302,7 +298,7 @@ export function MapView({ selected, focusBoxId = null, showBoxes = true }: {
           data: segments,
           getPath: d => d.path,
           getColor: d => d.color,
-          getWidth: 3,
+          getWidth: 1.8,
           widthUnits: 'pixels',
           wrapLongitude: true,
           pickable: false

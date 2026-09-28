@@ -13,13 +13,13 @@ import { buildObservationScenario, type ObservationSnapshot, type SpeciesMetadat
 // the accepted records and scoped source metadata needed to rebuild boxes.
 // Offsets belong solely to the labeled visual demonstration, not the sources.
 export const sourceLayers: [string, ObservationSnapshot[], [number, number]][] = [
-  ['atlantic-bluefin-tuna', snapshotsFromCurated(tuna, 'atlantic-bluefin-tuna'), [0, -7]],
-  ['whale-shark', snapshotsFromCurated(whaleShark, 'whale-shark'), [0, 7]],
-  ['swordfish', snapshotsFromCurated(swordfish, 'swordfish'), [7, 0]],
-  ['humpback-whale', snapshotsFromCurated(humpback, 'humpback-whale'), [0, -7]],
-  ['bottlenose-dolphin', snapshotsFromCurated(bottlenose, 'bottlenose-dolphin'), [0, -7]],
-  ['green-sea-turtle', snapshotsFromCurated(greenTurtle, 'green-sea-turtle'), [0, -7]],
-  ['loggerhead-turtle', snapshotsFromCurated(loggerhead, 'loggerhead-turtle'), [0, -7]]
+  ['atlantic-bluefin-tuna', snapshotsFromCurated(tuna, 'atlantic-bluefin-tuna'), [0, -12]],
+  ['whale-shark', snapshotsFromCurated(whaleShark, 'whale-shark'), [0, 12]],
+  ['swordfish', snapshotsFromCurated(swordfish, 'swordfish'), [12, 0]],
+  ['humpback-whale', snapshotsFromCurated(humpback, 'humpback-whale'), [0, -12]],
+  ['bottlenose-dolphin', snapshotsFromCurated(bottlenose, 'bottlenose-dolphin'), [0, -12]],
+  ['green-sea-turtle', snapshotsFromCurated(greenTurtle, 'green-sea-turtle'), [0, -12]],
+  ['loggerhead-turtle', snapshotsFromCurated(loggerhead, 'loggerhead-turtle'), [0, -12]]
 ];
 
 export const species = sourceLayers.map(([id, snapshots, offset]) => {

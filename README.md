@@ -4,8 +4,11 @@ An experimental marine map in Spanish with seven species and 106
 **observation-derived** regional boxes. The 43 bounded extracts include multiple documented locations for every species.
 The older hand-authored habitat fixtures have been removed.
 Each turquoise square encloses the positions in one geographically close
-group from a checked, bounded OBIS extract, with a 20 km display margin. The underlying observations, original
+group from a checked, bounded OBIS extract, with up to a 100 km display margin per side. The underlying observations, original
 extract, query manifest and source citation are versioned in this repository.
+The animated strands spread across each display square and reach the paired
+illustrative square; their width and destination spacing are visual choices,
+not measured movement or estimated habitat.
 
 **The pink destinations and animated water-only strands are still a visual
 simulation.** They are explicit translations of the observed squares, not

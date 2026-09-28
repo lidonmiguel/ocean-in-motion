@@ -41,6 +41,16 @@ describe('one observation box per scoped source', () => {
     expect(kmAcross).toBeCloseTo(box.heightDeg * 111.32, 6);
   });
 
+  it('enlarges the display square while retaining the exact observed extrema', () => {
+    const two = [
+      { id: 'a', longitude: -30, latitude: 0, eventDate: '2020-01-01', coordinateUncertaintyInMeters: null },
+      { id: 'b', longitude: -29.9, latitude: 0, eventDate: '2020-01-02', coordinateUncertaintyInMeters: null }
+    ];
+    const box = enclosingObservationBox(two);
+    expect(box.widthDeg).toBeGreaterThan(1.8);
+    expect(box.observedBoundsWgs84).toEqual([-30, 0, -29.9, 0]);
+  });
+
   it('routes the illustrative future over water without claiming a forecast', () => {
     const scenario = species.find(item => item.id === 'loggerhead-turtle')!;
     expect(scenario.habitat.current.length).toBeGreaterThan(1);

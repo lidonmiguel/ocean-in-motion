@@ -6,7 +6,8 @@ descriptive metadata and seven species-level clean OBIS files in
 source scopes, quality totals and provenance; see `docs/curated-pipeline.md`.
 `src/data/observationScenario.ts` calculates one square for each scoped
 source, or one per separated group when that source declares a maximum group
-diameter. It surrounds every position in the group with a 20 km visual margin.
+diameter. It surrounds every position in the group with up to a 100 km visual
+margin per side, limited by the map's 20° maximum box size.
 When the geometric midpoint lies on land, the square's center moves to
 nearby ocean and its side grows enough to keep every point enclosed.
 The observed coordinate extrema remain unchanged in provenance metadata.
@@ -38,10 +39,12 @@ unreported. `src/data/schema.ts` validates shape and prevents observation
 layers from masquerading as reviewed model output, but cannot certify
 identifications, sampling design or ecological inference.
 
-The animated strands connect each current square to its illustrative future
-pair, following approximate shortest paths over a coarse bundled Natural
-Earth land layer. A small bend is kept only where all drawn segments stay
-over water. No strand is drawn when its endpoints or connecting path fail
+The animated strands start at multiple positions inside each current square
+and arrive across its illustrative future pair. Their area spread is a visual
+choice and does not represent observed tracks or dispersal probability. They
+follow approximate shortest paths over a coarse bundled Natural Earth land
+layer. A small bend is kept only where all drawn segments stay over water.
+No strand is drawn when its endpoints or connecting path fail
 these water checks. The animation is a cartographic preview, not a migration
 route or prediction; narrow channels and small islands may be absent from
 the basemap. The app omits inferred connectors for reviewed model outputs

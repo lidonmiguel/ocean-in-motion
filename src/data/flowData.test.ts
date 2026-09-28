@@ -56,6 +56,25 @@ describe('illustrative distribution flows', () => {
     expect(lengths.filter(length => length >= 4).length).toBeGreaterThan(lengths.length * 0.8);
   });
 
+  it('fans out from one whole source area to a matching destination area', () => {
+    const original = species[0].habitat.current[0];
+    const dataset = {
+      ...species[0],
+      habitat: {
+        current: [{ ...original, center: [-30, -10] as [number, number], widthDeg: 6, heightDeg: 6 }],
+        future: [{ ...original, center: [-30, -22] as [number, number], widthDeg: 6, heightDeg: 6 }]
+      }
+    };
+    const strands = displayStreamlines(dataset, 12);
+    expect(strands).toHaveLength(12);
+    const originLongitudes = strands.map(strand => strand.from[0]);
+    const destinationLongitudes = strands.map(strand => strand.to[0]);
+    expect(Math.max(...originLongitudes) - Math.min(...originLongitudes)).toBeGreaterThan(4);
+    expect(Math.max(...destinationLongitudes) - Math.min(...destinationLongitudes)).toBeGreaterThan(4);
+    expect(strands.every(strand => strand.path.slice(1).every((point, index) =>
+      waterSegment(strand.path[index], point)))).toBe(true);
+  });
+
   it('uses only explicit vectors for reviewed data', () => {
     const dataset = structuredClone(species[0]);
     dataset.provenance = 'reviewed-model';
