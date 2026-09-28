@@ -47,7 +47,7 @@ export function observationGroups(records: ObservationSnapshot['observations'], 
 
 // A square in approximate ground distance enclosing reported positions. Its
 // display center can shift to water; it is not a habitat or precision estimate.
-export function enclosingObservationBox(records: ObservationSnapshot['observations'], marginKm = 20) {
+export function enclosingObservationBox(records: ObservationSnapshot['observations'], marginKm = 100) {
   if (!records.length || !Number.isFinite(marginKm) || marginKm < 0) throw new Error('A nonempty regional extract and a valid margin are required');
   const ids = new Set<string>();
   let west = Infinity, east = -Infinity, south = Infinity, north = -Infinity;
@@ -80,11 +80,17 @@ export function enclosingObservationBox(records: ObservationSnapshot['observatio
     [longitude, latitude] = nearest;
   }
   const kmPerLon = 111.32 * Math.cos(latitude * Math.PI / 180);
-  const sideKm = Math.max(2 * Math.max(east - longitude, longitude - west) * kmPerLon,
-    2 * Math.max(north - latitude, latitude - south) * 111.32) + marginKm * 2;
+  const observedSideKm = Math.max(2 * Math.max(east - longitude, longitude - west) * kmPerLon,
+    2 * Math.max(north - latitude, latitude - south) * 111.32);
+  // Keep the larger display padding within the established 20° and world
+  // limits. Large observed groups retain as much margin as fits.
+  const maximumSideKm = Math.min(20 * kmPerLon, 20 * 111.32,
+    2 * (west + 180) * kmPerLon, 2 * (180 - east) * kmPerLon,
+    2 * (85 - Math.abs(latitude)) * 111.32);
+  const sideKm = Math.min(observedSideKm + marginKm * 2, maximumSideKm - 0.001);
   const widthDeg = sideKm / kmPerLon;
   const heightDeg = sideKm / 111.32;
-  if (widthDeg > 20 || heightDeg > 20 || west < -180 + widthDeg / 2
+  if (sideKm <= observedSideKm || widthDeg > 20 || heightDeg > 20 || west < -180 + widthDeg / 2
       || east > 180 - widthDeg / 2 || Math.abs(latitude) + heightDeg / 2 > 85) {
     throw new Error('Observations span too large an area; stage separate regional extracts');
   }
@@ -137,7 +143,7 @@ export function buildObservationScenario(
         directions.map(([dx, dy]) => [dx * scale, dy * scale] as [number, number]));
       const marine = ([dx, dy]: [number, number]) => {
         const target: [number, number] = [box.center[0] + dx, box.center[1] + dy];
-        return (dx !== 0 || dy !== 0) && isOcean(target);
+        return (dx !== 0 || dy !== 0) && Math.abs(target[1]) < 78 && isOcean(target);
       };
       const chosenOffset = offsets.find(offset => marine(offset) && waterSegment(box.center, [box.center[0] + offset[0], box.center[1] + offset[1]]))
         ?? offsets.find(marine);

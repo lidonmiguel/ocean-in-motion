@@ -1,5 +1,5 @@
 import type { HabitatCell, SpeciesDataset } from './schema';
-import { curveOceanRoute, oceanRoute } from './oceanRoutes';
+import { curveOceanRoute, isOcean, oceanRoute, waterSegment } from './oceanRoutes';
 
 type Position = [number, number];
 export type DisplayFlow = { id: string; from: Position; to: Position; path: Position[] };
@@ -42,7 +42,7 @@ export function displayFlows(dataset: SpeciesDataset): DisplayFlow[] {
 
 // A decorative field for illustrative scenarios. Each observed square is
 // connected to its translated visual pair, never an inferred migration route.
-export function displayStreamlines(dataset: SpeciesDataset, strandsPerBox = 18): DisplayFlow[] {
+export function displayStreamlines(dataset: SpeciesDataset, strandsPerBox = 12): DisplayFlow[] {
   if (!Number.isInteger(strandsPerBox) || strandsPerBox < 2) throw new Error('Invalid display strand count');
   if (dataset.provenance === 'reviewed-model') {
     return displayFlows(dataset).flatMap((flow, index) => {
@@ -59,24 +59,46 @@ export function displayStreamlines(dataset: SpeciesDataset, strandsPerBox = 18):
 
   return pairs.flatMap((pair, pairIndex) => {
     const { current, future } = pair;
+    const centerPath = oceanRoute(current.center, future.center);
+    if (!centerPath) return [];
+    const cosine = Math.max(0.2, Math.cos(current.center[1] * Math.PI / 180));
+    const deltaX = (future.center[0] - current.center[0]) * cosine;
+    const deltaY = future.center[1] - current.center[1];
+    const length = Math.hypot(deltaX, deltaY);
+    const along: Position = [deltaX / length, deltaY / length];
+    const across: Position = [-along[1], along[0]];
+    const side = Math.min(current.widthDeg * cosine, current.heightDeg,
+      future.widthDeg * cosine, future.heightDeg);
+    const columns = Math.ceil(strandsPerBox / 2);
 
     return Array.from({ length: strandsPerBox }, (_, strand) => {
-      // Equal offsets at both ends preserve the direction of the paired centers.
-      const midpoint = (strandsPerBox - 1) / 2;
-      const lane = (strand - midpoint) / Math.max(midpoint, 8.5);
-      const wave = Math.sin(pairIndex * 2.7 + strand * 1.9);
-      const longitudeOffset = lane * Math.min(current.widthDeg, future.widthDeg) * 0.31;
-      const latitudeOffset = wave * Math.min(current.heightDeg, future.heightDeg) * 0.29;
-      const from: Position = [
-        current.center[0] + longitudeOffset,
-        current.center[1] + latitudeOffset
-      ];
-      const to: Position = [
-        future.center[0] + longitudeOffset,
-        future.center[1] + latitudeOffset
-      ];
-      const path = oceanRoute(from, to);
-      return path ? { id: `${current.id}-${strand}`, from, to, path: curveOceanRoute(path, pairIndex * strandsPerBox + strand) } : null;
+      // Two rows span each observed square. Matching offsets at the other end
+      // make this a field from area to area, without inventing movement records.
+      const lane = columns === 1 ? 0 : 2 * (strand % columns) / (columns - 1) - 1;
+      const row = strand < columns ? -1 : 1;
+      for (const scale of [1, 0.8, 0.6, 0.4, 0.2]) {
+        const acrossDistance = lane * side * 0.38 * scale;
+        const alongDistance = row * side * 0.1 * scale;
+        const longitudeOffset = (across[0] * acrossDistance + along[0] * alongDistance) / cosine;
+        const latitudeOffset = across[1] * acrossDistance + along[1] * alongDistance;
+        const from: Position = [current.center[0] + longitudeOffset, current.center[1] + latitudeOffset];
+        const to: Position = [future.center[0] + longitudeOffset, future.center[1] + latitudeOffset];
+        if (!isOcean(from) || !isOcean(to)) continue;
+        // Reuse the reviewed water geometry for the fan. Open-water strands
+        // take their direct route; coastal ones follow a translated center
+        // route only when every segment remains at sea.
+        if (waterSegment(from, to)) {
+          const path = oceanRoute(from, to)!;
+          return { id: `${current.id}-${strand}`, from, to,
+            path: curveOceanRoute(path, pairIndex * strandsPerBox + strand) };
+        }
+        const path = centerPath.map(([lon, lat]) => [lon + longitudeOffset, lat + latitudeOffset] as Position);
+        if (path.every((point, index) => index === 0 || waterSegment(path[index - 1], point))) {
+          return { id: `${current.id}-${strand}`, from, to,
+            path: curveOceanRoute(path, pairIndex * strandsPerBox + strand) };
+        }
+      }
+      return null;
     }).filter((flow): flow is DisplayFlow => flow !== null);
   });
 }
