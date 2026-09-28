@@ -1,0 +1,70 @@
+# Pipeline de datos OBIS para el mapa
+
+La web lee **un archivo limpio por especie** en `src/data/curated/*.json`.
+Estos siete archivos proceden de 43 extractos OBIS acotados y versionados en
+`data/obis/`. La pipeline no calcula destinos ni convierte las simulaciones
+visuales actuales en predicciones.
+
+## Flujo y reproducción
+
+1. `sources.py` consulta OBIS con AphiaID, UUID del dataset, límites WGS84,
+   fechas y tope explícitos. Guarda JSONL de filas que superan el control de
+   coordenadas e identificadores, más un manifiesto con consulta, fecha de
+   acceso, huella SHA-256 y contadores de todos los registros consultados.
+2. `publish_species.py` y `publish_pilot.py` verifican por ámbito la especie,
+   dataset, fechas, posición, estado, banderas y derechos documentados. Se
+   excluyen `ON_LAND`, incertidumbre declarada mayor de 300 km y, donde
+   corresponda, `NO_ACCEPTED_NAME` con otro AphiaID.
+3. `curate.py` reúne los 43 ámbitos en siete archivos con observaciones
+   aceptadas, procedencia y contadores. Deja las exclusiones posteriores al
+   staging en `data/curated/rejected-records.jsonl` (ámbito, ID OBIS, motivo).
+4. `src/data/curated.ts` comprueba la estructura, límites y contadores antes
+   de dar los registros a la lógica existente de cajas. El desplazamiento
+   ilustrativo se aplica después y no entra en los archivos limpios.
+
+Desde la raíz del repositorio:
+
+```bash
+PYTHONPATH=python python -m ocean_pipeline.curate
+PYTHONPATH=python python -m ocean_pipeline.curate --check
+python -m unittest discover -s python/tests -v
+npm run check
+```
+
+`--check` falla si falta un archivo limpio o difiere de los extractos
+versionados. CI ejecuta esta comprobación. La acción **Refresh regional OBIS
+extracts** obtiene de nuevo los 43 ámbitos, construye los siete archivos y
+publica todo como artefacto para revisión. No modifica `main`: para actualizar
+la web hay que revisar y versionar juntos extractos, manifiestos y archivos
+limpios. Una nueva fecha de consulta puede cambiar los registros de OBIS.
+
+## Contrato del archivo limpio (versión 1)
+
+| Campo | Contenido |
+| --- | --- |
+| `schemaVersion`, `pipelineVersion` | Versiones del contrato y de la transformación. |
+| `species` | ID estable, nombre científico latino, nombre común, grupo (`fish`, `cetacean`, `reptile`) y AphiaID. |
+| `sourceScopes[]` | ID de ámbito, región, periodo, límites y fechas de consulta; si aplica, diámetro de agrupación. Cada dataset conserva UUID, URL, cita, licencia, fecha de acceso y SHA-256 del extracto. |
+| `observations[]` | ID de OBIS, ámbito, fecha, longitud y latitud WGS84, incertidumbre declarada en metros o `null`, `basisOfRecord`, protocolo y `occurrenceID` de origen cuando existen. |
+| `quality` y `sourceScopes[].quality` | `rawFetched`, `staged`, `accepted`, descartes previos al staging, descartes posteriores por motivo, incertidumbre desconocida y rango por ámbito. |
+
+Las igualdades `rawFetched = staged + upstreamRejected` y
+`staged = accepted + rejectedByReason` deben cumplirse por ámbito y en el
+agregado. Un ID repetido, ámbito desconocido, metadato no revisado, posición
+fuera de límites, consulta truncada o extracto cuya huella no coincide detiene
+la generación. No se fabrican valores para fechas o incertidumbre ausentes.
+
+El archivo de rechazados enumera solo las filas **que llegaron al staging y
+fueron excluidas después**. Las filas inválidas o duplicadas retiradas antes
+están contabilizadas en `*.manifest.json`, sin registro individual en el
+JSONL conservado. No llamamos «raw completo» a ese extracto. Conservar
+eventualmente las respuestas íntegras de la API exigiría ampliar la etapa
+de extracción y revisar almacenamiento y derechos.
+
+Para incorporar otra fuente de una especie existente o una nueva especie:
+definir su consulta y criterios revisados en `publish_species.py`, agregar
+la especie a `speciesMetadata.json` si es nueva, versionar extracto y
+manifiesto, regenerar los archivos limpios y revisar los contadores y la
+visualización en una PR. Los movimientos actuales siguen siendo una
+simulación separada; cualquier predicción futura necesita su propio modelo,
+validación y procedencia.

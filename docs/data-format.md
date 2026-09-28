@@ -1,7 +1,9 @@
 # Species map contract (v1)
 
 The displayed species are registered in `src/data/index.ts` from concise
-descriptive metadata and one or more checked OBIS snapshots per species.
+descriptive metadata and seven species-level clean OBIS files in
+`src/data/curated/*.json`. Each clean file contains its checked observations,
+source scopes, quality totals and provenance; see `docs/curated-pipeline.md`.
 `src/data/observationScenario.ts` calculates one square for each scoped
 source, or one per separated group when that source declares a maximum group
 diameter. It surrounds every position in the group with a 20 km visual margin.
@@ -51,7 +53,7 @@ when every point in that group remains within this diameter. Distant points
 make a separate box. The older regional extracts keep their original
 one-box-per-extract grouping. This spatial rule is a
 display choice, not a biological clustering model. Its exact source bounds,
-group diameter and uncertainty are retained with the published snapshots.
+group diameter and uncertainty are retained with the published clean files.
 
 For a real forecast, retain a processing manifest for occurrence selection,
 environmental predictor versions, spatial reference, baseline and target

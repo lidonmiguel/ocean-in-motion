@@ -1,10 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import pilot from './observations/loggerhead-west-med.json';
 import metadata from './speciesMetadata.json';
 import { sourceLayers, species } from './index';
 import { buildObservationScenario, enclosingObservationBox, observationGroups, type ObservationSnapshot } from './observationScenario';
 import { displayStreamlines } from './flowData';
 import { waterSegment } from './oceanRoutes';
+
+const pilot = sourceLayers.find(([id]) => id === 'loggerhead-turtle')![1][0];
 
 describe('one observation box per scoped source', () => {
   it('keeps all accepted positions inside their matching regional source square', () => {

@@ -6,7 +6,11 @@ on:
     branches: [main]
     paths:
       - .github/workflows/refresh-species.yml
+      - python/ocean_pipeline/sources.py
       - python/ocean_pipeline/publish_species.py
+      - python/ocean_pipeline/publish_pilot.py
+      - python/ocean_pipeline/curate.py
+      - src/data/speciesMetadata.json
 
 permissions:
   contents: read
@@ -24,18 +28,27 @@ jobs:
           PYTHONPATH=python python - <<'PY'
           from pathlib import Path
           from ocean_pipeline.sources import SourcePlan, stage_obis_occurrences
-          from ocean_pipeline.publish_species import STUDIES, build_snapshot
+          from ocean_pipeline.publish_species import STUDIES
+          from ocean_pipeline.publish_pilot import TAXON_ID, DATASET_ID, BOUNDS, START_DATE, END_DATE
 
+          Path('output/obis').mkdir(parents=True, exist_ok=True)
           for slug, study in STUDIES.items():
-            extract, manifest_path = Path(f'output/{slug}.jsonl'), Path(f'output/{slug}.manifest.json')
+            extract, manifest_path = Path(f'output/obis/{slug}.jsonl'), Path(f'output/obis/{slug}.manifest.json')
             plan=SourcePlan(str(study['taxon']),tuple(study['bounds']),study['start'],study['end'],10000,dataset_id=study['dataset'])
             manifest=stage_obis_occurrences(plan,extract,manifest_path)
             if not manifest['counts']['written'] or manifest['truncated_by_cap']:
               raise SystemExit(f'{slug}: incomplete extract')
-            snapshot=build_snapshot(slug,extract,manifest_path)
-            Path(f'output/{slug}.snapshot.json').write_text(__import__('json').dumps(snapshot,ensure_ascii=False,indent=2)+'\n')
-            print(slug,manifest['counts']['written'],'raw;',snapshot['summary']['count'],'published',flush=True)
+            print(slug,manifest['counts']['written'],'staged',flush=True)
+          slug = 'loggerhead-west-med-2013-2017'
+          manifest = stage_obis_occurrences(
+            SourcePlan(TAXON_ID,tuple(BOUNDS),START_DATE,END_DATE,10000,dataset_id=DATASET_ID),
+            Path(f'output/obis/{slug}.jsonl'),Path(f'output/obis/{slug}.manifest.json'))
+          if not manifest['counts']['written'] or manifest['truncated_by_cap']:
+            raise SystemExit(f'{slug}: incomplete extract')
+          print(slug,manifest['counts']['written'],'staged',flush=True)
           PY
+      - name: Curate all seven species and audit rejected records
+        run: PYTHONPATH=python python -m ocean_pipeline.curate --input-dir output/obis --output-root output
       - uses: actions/upload-artifact@v4
         with:
           name: scoped-obis-extracts
