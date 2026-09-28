@@ -17,6 +17,8 @@ distribution model. The no-overlap rule only prevents a simulated destination
 from covering known observation areas; it does not establish where animals will move.
 The square describes the extent of *reported positions in
 the scoped dataset*, not all habitat, animal abundance, or absence elsewhere.
+Land is drawn over the squares, hiding their portions on land without changing
+the underlying observation bounds or counts.
 
 ## Explore and publish
 

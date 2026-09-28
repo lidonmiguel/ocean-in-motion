@@ -168,30 +168,32 @@ export function MapView({ selected, focusBoxId = null, showBoxes = true }: {
   useEffect(() => {
     if (!ready || !overlay.current) return;
     setHover(null);
-    const background = [
-        new GeoJsonLayer({
-          id: 'graticule',
-          data: graticule,
-          filled: false,
-          stroked: true,
-          getLineColor: [127, 158, 164, 24],
-          getLineWidth: 1,
-          lineWidthUnits: 'pixels',
-          pickable: false
-        }),
-        new GeoJsonLayer({
-          id: 'land',
-          data: land,
-          wrapLongitude: true,
-          filled: true,
-          stroked: true,
-          getFillColor: [187, 204, 201, 255],
-          getLineColor: [222, 234, 224, 210],
-          getLineWidth: 0.8,
-          lineWidthUnits: 'pixels',
-          pickable: false
-        })
-      ];
+    const graticuleLayer = new GeoJsonLayer({
+      id: 'graticule',
+      data: graticule,
+      filled: false,
+      stroked: true,
+      getLineColor: [127, 158, 164, 24],
+      getLineWidth: 1,
+      lineWidthUnits: 'pixels',
+      pickable: false
+    });
+    // Draw the opaque land geometry last in this deck.gl overlay. The overlay
+    // sits above MapLibre, so a basemap land layer would not mask its boxes.
+    const landCover = new GeoJsonLayer({
+      id: 'land',
+      data: land,
+      wrapLongitude: true,
+      filled: true,
+      stroked: true,
+      getFillColor: [187, 204, 201, 255],
+      getLineColor: [222, 234, 224, 210],
+      getLineWidth: 0.8,
+      lineWidthUnits: 'pixels',
+      parameters: { depthTest: false },
+      pickable: true,
+      onHover: () => setHover(null)
+    });
 
     const currentCells = displayCells(selected, 'current');
     const futureCells = displayCells(selected, 'future');
@@ -203,7 +205,7 @@ export function MapView({ selected, focusBoxId = null, showBoxes = true }: {
       { position: flow.to, period: 'future', boxId: flow.id }
     ]);
     const layers = [
-        ...background,
+        graticuleLayer,
         ...(showBoxes ? [
         new PolygonLayer<DisplayCell>({
           id: 'current-habitat',
@@ -259,7 +261,7 @@ export function MapView({ selected, focusBoxId = null, showBoxes = true }: {
 
     const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
     if (motionPreference.matches || streamlines.length === 0) {
-      overlay.current.setProps({ layers });
+      overlay.current.setProps({ layers: [...layers, landCover] });
       return;
     }
 
@@ -302,7 +304,8 @@ export function MapView({ selected, focusBoxId = null, showBoxes = true }: {
           widthUnits: 'pixels',
           wrapLongitude: true,
           pickable: false
-        })
+        }),
+        landCover
       ] });
       frame = requestAnimationFrame(animate);
     };
@@ -319,12 +322,12 @@ export function MapView({ selected, focusBoxId = null, showBoxes = true }: {
       {demoFallback && <div className="fallback-map">
         <svg viewBox={`0 0 ${fallbackWidth} ${fallbackHeight}`} role="img" aria-label={observed ? `${selected.occurrence?.sources.length} zonas de ${selected.occurrence?.count} avistamientos y destinos simulados de ${selected.commonNameEs}; cajas ${showBoxes ? 'visibles' : 'ocultas'}` : `Flujos ilustrativos para ${selected.commonNameEs}; los trazos no son rutas reales`}>
           <rect width={fallbackWidth} height={fallbackHeight} fill="#071c29" />
-          <path d={demoFallback.coast} fill="#bbccc9" fillRule="evenodd" stroke="#e1eae0" strokeWidth="1.5" />
           {showBoxes && demoFallback.current.map(cell => <path key={`now-${cell.id}`} d={`${demoFallback.path(cell.polygon)}Z`} fill={grouped ? `rgb(${speciesColor(cell.id).join(',')})` : '#50dcdd'} fillOpacity=".13" stroke={grouped ? `rgb(${speciesColor(cell.id).join(',')})` : '#83e9df'} strokeOpacity=".5" />)}
           {showBoxes && demoFallback.future.map(cell => <path key={`then-${cell.id}`} d={`${demoFallback.path(cell.polygon)}Z`} fill="#fc9dcb" fillOpacity=".09" stroke="#f7a3cd" strokeOpacity=".5" />)}
           {demoFallback.strands.map((strand, index) => <path key={strand.id} className="fallback-flow" d={demoFallback.path(strand.path)} pathLength="1" style={{ animationDelay: `${-(index * .618 % 1) * 5}s`, stroke: grouped ? `rgb(${speciesColor(strand.id).join(',')})` : undefined }} />)}
           {demoFallback.currentCenters.map(cell => { const [x, y] = demoFallback.position(...cell.center); return <circle key={`start-${cell.id}`} cx={x} cy={y} r="3" fill={grouped ? `rgb(${speciesColor(cell.id).join(',')})` : '#83f3e5'} />; })}
           {demoFallback.futureCenters.map(cell => { const [x, y] = demoFallback.position(...cell.center); return <circle key={`end-${cell.id}`} cx={x} cy={y} r="3" fill="#ffa8d0" />; })}
+          <path d={demoFallback.coast} fill="#bbccc9" fillRule="evenodd" stroke="#e1eae0" strokeWidth="1.5" />
         </svg>
         <div className="fallback-note">{observed ? `${showBoxes ? 'Cajas calculadas con OBIS' : 'Cajas ocultas'} · destinos ilustrativos` : 'Flujo ilustrativo'} · vista simplificada sin WebGL2</div>
       </div>}
