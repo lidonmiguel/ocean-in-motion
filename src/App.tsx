@@ -9,11 +9,22 @@ const groups = [
   { id: 'other', label: 'OTRAS ESPECIES' }
 ] as const;
 
+function coordinateUncertainty(range: [number, number] | null): string {
+  if (!range) return 'Incertidumbre espacial no declarada.';
+  if (range[1] < 1) {
+    const [low, high] = range.map(value => Math.round(value * 1000));
+    return `Incertidumbre declarada: ${low === high ? low : `${low}–${high}`} m.`;
+  }
+  return `Incertidumbre declarada: ${range[0] === range[1] ? range[0] : `${range[0]}–${range[1]}`} km.`;
+}
+
 export default function App() {
   const [selectedId, setSelectedId] = useState('loggerhead-turtle');
   const selected = species.find(item => item.id === selectedId) ?? species[0];
   const observationLayer = selected.provenance === 'observation-demo';
   const observations = selected.occurrence;
+  const sourceCount = observations?.sources.length ?? 0;
+  const boxLabel = sourceCount === 1 ? 'Una caja engloba' : `${sourceCount} cajas engloban`;
 
   return (
     <div className="app-shell">
@@ -26,7 +37,7 @@ export default function App() {
         <aside className="selector-panel" aria-label="Selección de especie">
           <div className="section-index">01 / EXPLORAR</div>
           <h2>Un océano.<br /><em>Muchas posibilidades.</em></h2>
-          <p className="intro">Cada especie tiene una caja calculada con sus registros reales en una región concreta. La caja rosa y el flujo son una simulación visual: todavía no predicen el futuro.</p>
+          <p className="intro">Cada caja turquesa se calcula con registros reales de una fuente y región concretas. Las cajas rosas y los flujos son una simulación visual: todavía no predicen el futuro.</p>
           <div className="fine-rule" />
           <label className="field-label" htmlFor="species-select">SELECCIONA UNA ESPECIE</label>
           <select id="species-select" value={selectedId} onChange={event => setSelectedId(event.target.value)}>
@@ -40,7 +51,7 @@ export default function App() {
               </button>)}
             </div>)}
           </div>
-          <div className="sidebar-bottom"><span className="asterisk">✳</span><p>{observationLayer ? <><strong>Origen real, destino ilustrativo.</strong> La caja actual se calcula con OBIS. El desplazamiento no se ha predicho con un modelo.</> : <><strong>Datos de demostración.</strong> Celdas inventadas. No son previsiones científicas ni trayectorias reales.</>}</p></div>
+          <div className="sidebar-bottom"><span className="asterisk">✳</span><p>{observationLayer ? <><strong>Origen real, destino ilustrativo.</strong> {sourceCount === 1 ? 'La caja actual se calcula' : 'Las cajas actuales se calculan'} con OBIS. El desplazamiento no se ha predicho con un modelo.</> : <><strong>Datos de demostración.</strong> Celdas inventadas. No son previsiones científicas ni trayectorias reales.</>}</p></div>
         </aside>
 
         <section className="map-panel" aria-label="Comparación de hábitat">
@@ -54,7 +65,7 @@ export default function App() {
               <small>{observationLayer ? 'FUTURO NO PREDICHO' : 'TRAMA ILUSTRATIVA'}</small>
             </div>
           </div>
-          <div className="map-bottom"><div className="legend">{observationLayer ? <span className="legend-title">UNA CAJA CALCULADA CON {observations?.count} REGISTROS · DESTINO ILUSTRATIVO</span> : <><span className="legend-title">IDONEIDAD DEL HÁBITAT · ÍNDICE ILUSTRATIVO</span><div className="legend-swatches"><i /><i /><i /></div><span className="legend-values">BAJA <b>→</b> ALTA</span></>}</div><span className="map-hint">Arrastra para mover · desplázate para ampliar</span></div>
+          <div className="map-bottom"><div className="legend">{observationLayer ? <span className="legend-title">{sourceCount} {sourceCount === 1 ? 'CAJA' : 'CAJAS'} · {observations?.count} REGISTROS · DESTINO ILUSTRATIVO</span> : <><span className="legend-title">IDONEIDAD DEL HÁBITAT · ÍNDICE ILUSTRATIVO</span><div className="legend-swatches"><i /><i /><i /></div><span className="legend-values">BAJA <b>→</b> ALTA</span></>}</div><span className="map-hint">Arrastra para mover · desplázate para ampliar</span></div>
         </section>
 
         <aside className="info-panel" aria-label="Información de la especie">
@@ -66,9 +77,9 @@ export default function App() {
           <p className="lead">{selected.summaryEs}</p>
           <p className="body-copy">{selected.ecologyEs}</p>
           <div className="metric-block"><div><span>{observationLayer ? 'REGISTROS' : 'PERIODOS'}</span><strong>{observationLayer ? observations?.count : 'Actual → 2050'}</strong></div><div><span>{observationLayer ? 'PERIODO' : 'ESCENARIO'}</span><strong>{observationLayer ? selected.periods.current : 'SSP2-4.5'}</strong></div></div>
-          {observationLayer ? <div className="info-note"><span className="note-icon">◎</span><div><strong>Cómo leer esta caja</strong><p>Una caja engloba {observations?.count} registros en {observations?.sources[0].region}. {observations?.sources[0].coordinateUncertaintyKmRange ? `La incertidumbre declarada es de ${observations.sources[0].coordinateUncertaintyKmRange[0]}–${observations.sources[0].coordinateUncertaintyKmRange[1]} km.` : 'La fuente no declara la incertidumbre de las coordenadas.'} No delimita todo el hábitat; la rosa se desplaza solo para ilustrar un resultado futuro.</p></div></div> : <div className="info-note"><span className="note-icon">↗</span><div><strong>Cómo leer este flujo</strong><p>Cada trazo conecta dos celdas por agua. No es la ruta de un animal.</p></div></div>}
-          {observationLayer && observations && <div className="source-note"><strong>Fuente de los avistamientos</strong>{observations.sources.map(source => <p key={source.datasetId}><a href={source.sourceUrl} target="_blank" rel="noreferrer">{source.citation}</a> · {source.license}. La caja se calcula de {source.count} registros; el destino no procede de OBIS.</p>)}</div>}
-          <div className="status-label">● {observationLayer ? 'CAJA DE AVISTAMIENTOS REALES · FUTURO SIMULADO' : 'MODO ILUSTRATIVO · SIN VALIDACIÓN CIENTÍFICA'}</div>
+          {observationLayer ? <div className="info-note"><span className="note-icon">◎</span><div><strong>Cómo leer {sourceCount === 1 ? 'esta caja' : 'estas cajas'}</strong><p>{boxLabel} {observations?.count} registros de {sourceCount} {sourceCount === 1 ? 'fuente regional' : 'fuentes regionales'}. Cada caja resume posiciones notificadas, no todo el hábitat. Las rosas ilustran destinos que no proceden de OBIS ni de una predicción.</p></div></div> : <div className="info-note"><span className="note-icon">↗</span><div><strong>Cómo leer este flujo</strong><p>Cada trazo conecta dos celdas por agua. No es la ruta de un animal.</p></div></div>}
+          {observationLayer && observations && <div className="source-note"><strong>Fuentes de los avistamientos</strong>{observations.sources.map(source => <p key={source.datasetId}><b>{source.region}</b> · {source.count} registros. <a href={source.sourceUrl} target="_blank" rel="noreferrer">{source.citation}</a> · {source.license}. {coordinateUncertainty(source.coordinateUncertaintyKmRange)}</p>)}</div>}
+          <div className="status-label">● {observationLayer ? `${sourceCount === 1 ? 'CAJA' : 'CAJAS'} DE AVISTAMIENTOS REALES · FUTURO SIMULADO` : 'MODO ILUSTRATIVO · SIN VALIDACIÓN CIENTÍFICA'}</div>
         </aside>
       </main>
       <footer className="site-footer"><span>OCÉANO EN MOVIMIENTO © PROTOTIPO</span><span>{observationLayer ? 'Avistamientos: OBIS · Futuro ilustrativo' : 'Sin afirmaciones científicas'}</span><span>{String(species.findIndex(item => item.id === selected.id) + 1).padStart(2, '0')} / {String(species.length).padStart(2, '0')}</span></footer>

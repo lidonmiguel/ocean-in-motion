@@ -2,6 +2,8 @@ import { describe, expect, it } from 'vitest';
 import pilot from './observations/loggerhead-west-med.json';
 import metadata from './speciesMetadata.json';
 import tuna from './observations/tuna-west-med.json';
+import tunaNybight from './observations/tuna-ny-bight.json';
+import tunaBiscay from './observations/tuna-biscay.json';
 import whaleShark from './observations/whale-shark-gulf.json';
 import swordfish from './observations/swordfish-west-med.json';
 import humpback from './observations/humpback-gulf-maine.json';
@@ -13,16 +15,18 @@ import { displayStreamlines } from './flowData';
 import { waterSegment } from './oceanRoutes';
 
 describe('one observation box per scoped source', () => {
-  it('keeps all accepted positions inside their one displayed source square', () => {
-    const snapshots = [tuna, whaleShark, swordfish, humpback, bottlenose, greenTurtle, pilot];
+  it('keeps all accepted positions inside their matching regional source square', () => {
+    const snapshots = [[tuna, tunaNybight, tunaBiscay], [whaleShark], [swordfish], [humpback], [bottlenose], [greenTurtle], [pilot]];
     for (const [index, scenario] of species.entries()) {
-      const snapshot = snapshots[index];
-      const box = scenario.habitat.current[0];
-      expect(scenario.habitat.current, scenario.id).toHaveLength(1);
-      expect(scenario.occurrence?.count).toBe(snapshot.observations.length);
-      for (const record of snapshot.observations) {
-        expect(Math.abs(record.longitude - box.center[0]), scenario.id).toBeLessThan(box.widthDeg / 2);
-        expect(Math.abs(record.latitude - box.center[1]), scenario.id).toBeLessThan(box.heightDeg / 2);
+      expect(scenario.habitat.current, scenario.id).toHaveLength(snapshots[index].length);
+      expect(scenario.occurrence?.count).toBe(snapshots[index].reduce((sum, snapshot) => sum + snapshot.observations.length, 0));
+      for (const [sourceIndex, snapshot] of snapshots[index].entries()) {
+        const box = scenario.habitat.current[sourceIndex];
+        expect(box.id).toBe(snapshot.source.datasetId.replaceAll('-', ''));
+        for (const record of snapshot.observations) {
+          expect(Math.abs(record.longitude - box.center[0]), scenario.id).toBeLessThan(box.widthDeg / 2);
+          expect(Math.abs(record.latitude - box.center[1]), scenario.id).toBeLessThan(box.heightDeg / 2);
+        }
       }
     }
   });

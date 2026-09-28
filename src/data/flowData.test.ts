@@ -7,7 +7,7 @@ describe('illustrative distribution flows', () => {
   it('connects the observed center to its labeled visual destination', () => {
     const dataset = species[0];
     const flows = displayFlows(dataset);
-    expect(flows).toHaveLength(1);
+    expect(flows).toHaveLength(dataset.habitat.current.length);
     expect(flows[0].from).toEqual(dataset.habitat.current[0].center);
     expect(pointOnFlow(flows[0], 1)).toEqual(dataset.habitat.future[0].center);
   });

@@ -289,12 +289,14 @@ export function MapView({ selected }: { selected: SpeciesDataset }) {
   }, [selected, ready, observed]);
 
   const demoFallback = webglUnavailable ? illustrativeFallback(selected) : null;
+  const hoveredSource = hover && selected.occurrence?.sources.find(source =>
+    hover.cell.id.startsWith(source.datasetId.replaceAll('-', '') + '-'));
 
   return (
     <div className="map-wrap">
-      <div ref={container} className="map-canvas" style={webglUnavailable ? { display: 'none' } : undefined} role="img" aria-label={observed ? `Una caja calculada con ${selected.occurrence?.count} avistamientos de ${selected.commonNameEs}; la segunda caja y los trazos son una simulación sin predicción científica` : `Mapa de hábitat ilustrativo actual y en 2050 para ${selected.commonNameEs}; los trazos aparecen en las celdas actuales y avanzan hasta las de 2050, sin rutas permanentes ni trayectorias reales de animales`} />
+      <div ref={container} className="map-canvas" style={webglUnavailable ? { display: 'none' } : undefined} role="img" aria-label={observed ? `${selected.occurrence?.sources.length} cajas calculadas con ${selected.occurrence?.count} avistamientos de ${selected.commonNameEs}; las cajas rosas y los trazos son una simulación sin predicción científica` : `Mapa de hábitat ilustrativo actual y en 2050 para ${selected.commonNameEs}; los trazos aparecen en las celdas actuales y avanzan hasta las de 2050, sin rutas permanentes ni trayectorias reales de animales`} />
       {demoFallback && <div className="fallback-map">
-        <svg viewBox={`0 0 ${fallbackWidth} ${fallbackHeight}`} role="img" aria-label={observed ? `Caja de ${selected.occurrence?.count} avistamientos y destino simulado de ${selected.commonNameEs}` : `Flujos ilustrativos para ${selected.commonNameEs}; los trazos no son rutas reales`}>
+        <svg viewBox={`0 0 ${fallbackWidth} ${fallbackHeight}`} role="img" aria-label={observed ? `${selected.occurrence?.sources.length} cajas de ${selected.occurrence?.count} avistamientos y destinos simulados de ${selected.commonNameEs}` : `Flujos ilustrativos para ${selected.commonNameEs}; los trazos no son rutas reales`}>
           <rect width={fallbackWidth} height={fallbackHeight} fill="#071c29" />
           <path d={demoFallback.coast} fill="#bbccc9" fillRule="evenodd" stroke="#e1eae0" strokeWidth="1.5" />
           {demoFallback.current.map(cell => <path key={`now-${cell.id}`} d={`${demoFallback.path(cell.polygon)}Z`} fill="#50dcdd" fillOpacity=".13" stroke="#83e9df" strokeOpacity=".5" />)}
@@ -303,13 +305,13 @@ export function MapView({ selected }: { selected: SpeciesDataset }) {
           {demoFallback.currentCenters.map(cell => { const [x, y] = demoFallback.position(...cell.center); return <circle key={`start-${cell.id}`} cx={x} cy={y} r="3" fill="#83f3e5" />; })}
           {demoFallback.futureCenters.map(cell => { const [x, y] = demoFallback.position(...cell.center); return <circle key={`end-${cell.id}`} cx={x} cy={y} r="3" fill="#ffa8d0" />; })}
         </svg>
-        <div className="fallback-note">{observed ? 'Caja calculada con OBIS · destino ilustrativo' : 'Flujo ilustrativo'} · vista simplificada sin WebGL2</div>
+        <div className="fallback-note">{observed ? 'Cajas calculadas con OBIS · destinos ilustrativos' : 'Flujo ilustrativo'} · vista simplificada sin WebGL2</div>
       </div>}
       <div className="map-stamp"><span className="pulse" /> {observed ? `${selected.occurrence?.count} AVISTAMIENTOS REALES · FUTURO ILUSTRATIVO` : 'FLUJOS ILUSTRATIVOS · DATOS SINTÉTICOS'}</div>
       <div className="map-credit">Siluetas geográficas: Natural Earth / world-atlas · Sin teselas externas</div>
       {hover && <div className="map-tooltip" style={{ left: hover.x + 14, top: hover.y + 14 }}>
         <strong>{observed ? (hover.period === 'Actual' ? 'Caja de avistamientos' : 'Caja simulada') : `Celda ilustrativa · ${hover.period}`}</strong>
-        {observed ? <span>{hover.period === 'Actual' ? `${selected.occurrence?.count} registros documentados; no implica presencia en toda la caja` : 'Desplazamiento visual, sin predicción de 2050'}</span> : <><span>Idoneidad: {Math.round((hover.cell.suitability ?? 0) * 100)} / 100</span><span>Incertidumbre: {Math.round((hover.cell.uncertainty ?? 0) * 100)} / 100</span></>}
+        {observed ? <span>{hover.period === 'Actual' ? `${hoveredSource?.region ?? 'Región documentada'} · ${hoveredSource?.count ?? 0} registros; no implica presencia en toda la caja` : 'Desplazamiento visual, sin predicción de 2050'}</span> : <><span>Idoneidad: {Math.round((hover.cell.suitability ?? 0) * 100)} / 100</span><span>Incertidumbre: {Math.round((hover.cell.uncertainty ?? 0) * 100)} / 100</span></>}
       </div>}
     </div>
   );

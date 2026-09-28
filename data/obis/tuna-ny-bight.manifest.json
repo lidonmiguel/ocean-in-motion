@@ -1,0 +1,110 @@
+{
+  "accessed_at_utc": "2026-09-28T07:20:03.928539+00:00",
+  "attribution": {
+    "datasets": [
+      {
+        "bibliographicCitation": [
+          "[{\"crossref\":{\"citeinfo\":{\"origin\":\"APEM and Normandeau Associates prepared for New York State Energy Research and Development Authority\",\"pubdate\":\"2019\",\"title_html\":\"Digital Aerial Baseline Survey of Marine Wildlife in Support of Offshore Wind Energy - OPA 2017\",\"title\":\"Digital Aerial Baseline Survey of Marine Wildlife in Support of Offshore Wind Energy - OPA 2017\",\"serinfo\":{\"sername\":\"Data downloaded from OBIS-SEAMAP (http:\\/\\/seamap.env.duke.edu\\/dataset\\/1817) on yyyy-mm-dd\"},\"onlink\":\"https:\\/\\/remote.normandeau.com\"}}},{\"crossref\":{\"citeinfo\":{\"title\":\"Digital Aerial Baseline Survey of Marine Wildlife in Support of Offshore Wind Energy - OPA 2017\",\"onlink\":\"https:\\/\\/doi.org\\/10.82144\\/2972b82d\",\"origin\":\"Vukovich, M\",\"edition\":\"Version 1.3.0\",\"geoform\":\"vector digital data\",\"pubdate\":\"2022\",\"pubinfo\":{\"publish\":\"OBIS-SEAMAP\",\"pubplace\":\"https:\\/\\/seamap.env.duke.edu\\/dataset\\/1994\"},\"serinfo\":{\"issue\":\"1994\",\"sername\":\"OBIS-SEAMAP\"},\"othercit\":\"\"}}},{\"crossref\":{\"citeinfo\":{\"origin\":\"Halpin, P.N., A.J. Read, E. Fujioka, B.D. Best, B. Donnelly, L.J. Hazen, C. Kot, K. Urian, E. LaBrecque, A. Dimatteo, J. Cleary, C. Good, L.B. Crowder, and K.D. Hyrenbach\",\"pubdate\":\"2009\",\"title\":\"OBIS-SEAMAP: The world data center for marine mammal, sea bird, and sea turtle distributions\",\"onlink\":\"http:\\/\\/www.tos.org\\/oceanography\\/article\\/obis-seamap-the-world-data-center-for-marine-mammal-sea-bird-and-sea-turtle\",\"serinfo\":{\"sername\":\"Oceanography\",\"issue\":\"22(2):104-115\"}}}}]Halpin, P.N., A.J. Read, E. Fujioka, B.D. Best, B. Donnelly, L.J. Hazen, C. Kot, K. Urian, E. LaBrecque, A. Dimatteo, J. Cleary, C. Good, L.B. Crowder, and K.D. Hyrenbach. 2009. OBIS-SEAMAP: The world data center for marine mammal, sea bird, and sea turtle distributions. Oceanography 22(2):104-115"
+        ],
+        "datasetName": [
+          "Digital Aerial Baseline Survey of Marine Wildlife in Support of Offshore Wind Energy - OPA 2017"
+        ],
+        "dataset_id": "ca78b5b9-d4e4-4ab0-bbe1-9f75659769e2",
+        "license": [
+          "http://creativecommons.org/licenses/by/4.0/"
+        ],
+        "modified": [
+          "2020-08-06 16:39:20"
+        ],
+        "records": 653,
+        "rightsHolder": [
+          "NORMANDEAU"
+        ]
+      }
+    ],
+    "note": "Review each contributing dataset's citation and license before reuse; missing fields are not a grant of rights.",
+    "obis": "OBIS (2026) Ocean Biodiversity Information System. Intergovernmental Oceanographic Commission of UNESCO. https://obis.org. Accessed: 2026-09-28"
+  },
+  "counts": {
+    "after_coordinate_qc": 653,
+    "api_total_reported": 653,
+    "duplicate_identifiers": 0,
+    "invalid_coordinates_or_outside_bounds": 0,
+    "raw_fetched": 653,
+    "without_duplicate_identifier": 0,
+    "written": 653
+  },
+  "extract": "output/tuna-ny-bight.jsonl",
+  "extract_sha256": "7dfd0247a5d23748d6b56baeef425a45cb0c6bd8848ca71372dc1b5f13f0a9ac",
+  "qc_rule": "Reject missing, non-finite, out-of-range or outside-box coordinates; de-duplicate on repeated OBIS id or dataset_id + occurrenceID. Do not collapse equal positions.",
+  "query": {
+    "bounds_wgs84": [
+      -75,
+      38,
+      -69,
+      43
+    ],
+    "datasetid": "ca78b5b9-d4e4-4ab0-bbe1-9f75659769e2",
+    "enddate": "2024-12-31",
+    "geometry": "POLYGON((-75 38,-69 38,-69 43,-75 43,-75 38))",
+    "max_records": 10000,
+    "page_size": 200,
+    "pages": [
+      {
+        "after": null,
+        "offset": 0,
+        "received": 200,
+        "size": 200,
+        "url": "https://api.obis.org/v3/occurrence?taxonid=127029&geometry=POLYGON%28%28-75+38%2C-69+38%2C-69+43%2C-75+43%2C-75+38%29%29&startdate=2014-01-01&enddate=2024-12-31&size=200&datasetid=ca78b5b9-d4e4-4ab0-bbe1-9f75659769e2"
+      },
+      {
+        "after": "4c9bcc90-fa9c-4327-a9fa-1630e8077de9",
+        "offset": 200,
+        "received": 200,
+        "size": 200,
+        "url": "https://api.obis.org/v3/occurrence?taxonid=127029&geometry=POLYGON%28%28-75+38%2C-69+38%2C-69+43%2C-75+43%2C-75+38%29%29&startdate=2014-01-01&enddate=2024-12-31&size=200&after=4c9bcc90-fa9c-4327-a9fa-1630e8077de9&datasetid=ca78b5b9-d4e4-4ab0-bbe1-9f75659769e2"
+      },
+      {
+        "after": "9b50c270-9203-4aaf-a34f-8b471ee8dc08",
+        "offset": 400,
+        "received": 200,
+        "size": 200,
+        "url": "https://api.obis.org/v3/occurrence?taxonid=127029&geometry=POLYGON%28%28-75+38%2C-69+38%2C-69+43%2C-75+43%2C-75+38%29%29&startdate=2014-01-01&enddate=2024-12-31&size=200&after=9b50c270-9203-4aaf-a34f-8b471ee8dc08&datasetid=ca78b5b9-d4e4-4ab0-bbe1-9f75659769e2"
+      },
+      {
+        "after": "e969bc9e-5e1d-4798-aa6c-2321b2da48ca",
+        "offset": 600,
+        "received": 53,
+        "size": 200,
+        "url": "https://api.obis.org/v3/occurrence?taxonid=127029&geometry=POLYGON%28%28-75+38%2C-69+38%2C-69+43%2C-75+43%2C-75+38%29%29&startdate=2014-01-01&enddate=2024-12-31&size=200&after=e969bc9e-5e1d-4798-aa6c-2321b2da48ca&datasetid=ca78b5b9-d4e4-4ab0-bbe1-9f75659769e2"
+      }
+    ],
+    "pagination": "after occurrence id",
+    "startdate": "2014-01-01",
+    "taxonid": "127029"
+  },
+  "schema_version": 1,
+  "source": {
+    "api": "https://api.obis.org/v3/occurrence",
+    "api_version": "v3",
+    "name": "Ocean Biodiversity Information System (OBIS)",
+    "record_modified_values": [
+      "2020-08-06 16:39:20"
+    ],
+    "response_headers": [
+      {
+        "ETag": "W/\"1285aa-Efeqjz5AsBJ8BA09KvZlzI70qnQ\""
+      },
+      {
+        "ETag": "W/\"128552-/3nnyQYtiL9BlNDmamu9eOKOLZY\""
+      },
+      {
+        "ETag": "W/\"128579-lCii1WcrLhv3U5ZHXH3WbQ8z3co\""
+      },
+      {
+        "ETag": "W/\"4e89a-TR8dQ6OUQwe2AesBrSDCmr+eHTo\""
+      }
+    ]
+  },
+  "truncated_by_cap": false
+}

@@ -3,7 +3,7 @@ import { species } from './index';
 import { parseSpeciesDataset } from './schema';
 
 describe('species dataset contract', () => {
-  it('registers seven distinct occurrence-derived regional squares', () => {
+  it('registers seven species and a separate square for each scoped source', () => {
     expect(species).toHaveLength(7);
     expect(new Set(species.map(item => item.id)).size).toBe(7);
     expect(species.filter(item => item.group === 'fish')).toHaveLength(3);
@@ -15,7 +15,7 @@ describe('species dataset contract', () => {
       expect(data.reviewStatus).toBe('illustrative');
       expect(data.scenario).toBe('illustrative');
       expect(data.occurrence!.count).toBeGreaterThan(0);
-      expect(data.habitat.current).toHaveLength(1);
+      expect(data.habitat.current).toHaveLength(data.id === 'atlantic-bluefin-tuna' ? 3 : 1);
       expect(data.habitat.current[0].suitability).toBeUndefined();
       expect(data.citations.some(c => c.role === 'occurrence' && c.url)).toBe(true);
     }
