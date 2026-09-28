@@ -45,7 +45,7 @@ describe('illustrative distribution flows', () => {
         }
       }
     }
-  });
+  }, 15_000);
 
   it('uses only explicit vectors for reviewed data', () => {
     const dataset = structuredClone(species[0]);

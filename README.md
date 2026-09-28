@@ -148,20 +148,26 @@ regions add 4,036 accepted records; across all 43 extracts the map displays
 
 | Path | Purpose |
 | --- | --- |
-| `data/obis/*.jsonl.gz`, `*.manifest.json` | Lossless raw bounded extracts, query URLs, QC counts, access time and SHA-256. |
+| `data/obis/*.jsonl.gz`, `*.manifest.json` | Bounded coordinate-checked staging extracts, query URLs, upstream QC counts, access time and SHA-256. The original API response is not retained in full. |
 | `python/ocean_pipeline/sources.py` | Bounded OBIS staging using the occurrence ID cursor; refuses incomplete or repeated pages. |
 | `python/ocean_pipeline/publish_species.py` | Source-specific taxon, date, license and quality checks; generates 42 regional snapshots, including five new loggerhead regions. |
 | `python/ocean_pipeline/publish_pilot.py` | Rebuilds the original loggerhead snapshot. |
-| `src/data/observations/*.json` | Compact, checked positions and citations bundled in the map. |
+| `python/ocean_pipeline/curate.py` | Rebuilds the seven species-level clean files and a rejected-record audit ledger; `--check` detects drift. |
+| `src/data/curated/*.json` | Seven clean species files read by the website: checked positions, taxon and group, source scope, provenance and quality totals. |
+| `data/curated/rejected-records.jsonl` | Record-level reasons for rows excluded after staging. Upstream coordinate/duplicate rejects are counted in manifests. |
 | `src/data/speciesMetadata.json`, `src/data/index.ts` | Descriptive names and 43 explicitly scoped extracts across seven species. |
 | `src/data/observationScenario.ts` | Computes an ocean-centered square per reviewed region or geographic group, enclosing its retained points. |
 | `src/MapView.tsx`, `src/data/flowData.ts` | Interactive map and illustrative curved animation over water. |
 
-Run **Refresh regional OBIS extracts** in GitHub Actions for a reviewable new
-artifact, then inspect counts, flags, source rights and positions before
-replacing the committed snapshot and manifest. The workflow does not silently
-update the website. `docs/obis-staging.md` details the generic source command;
-`docs/data-format.md` defines the map contract.
+Run `PYTHONPATH=python python -m ocean_pipeline.curate` to regenerate the clean
+files from the committed extracts. The Python CI checks reproducibility with
+`--check`. **Refresh regional OBIS extracts** in GitHub Actions produces a
+reviewable artifact containing all staged extracts, manifests, seven clean
+files and the rejection ledger. Inspect counts, flags, source rights and
+positions before replacing the committed inputs and outputs. The workflow
+does not silently update the website. See `docs/curated-pipeline.md` for the
+contract, `docs/obis-staging.md` for staging, and `docs/data-format.md` for
+the map display.
 
 To produce a genuine destination prediction, select suitable environmental
 predictors and study areas, fit and spatially validate a species distribution

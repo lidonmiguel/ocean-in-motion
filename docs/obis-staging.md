@@ -1,7 +1,10 @@
 # Bounded OBIS occurrence staging
 
-The Python source stage writes raw OBIS occurrence rows as JSON Lines and
-a JSON manifest. It does not update the published map automatically. Supply a
+The Python source stage writes coordinate-checked OBIS occurrence rows as JSON
+Lines and a JSON manifest. Rows rejected for invalid/out-of-bounds coordinates
+or repeated identifiers are counted in the manifest, but their full source
+records are not kept in this staging extract. It does not update the published
+map automatically. Supply a
 resolved **WoRMS AphiaID**, a non-wrapping WGS84 box (west south east north),
 an inclusive baseline date window, and a raw-record cap. For example, replace
 every bracketed value with a chosen study scope:
@@ -71,6 +74,10 @@ regions it also counts and excludes `NO_ACCEPTED_NAME` records whose AphiaID
 differs from the reviewed species, even if the species-level query returned
 them. Missing uncertainty remains unknown. Source rights were checked on
 each OBIS dataset metadata page on 2026-09-28.
+
+`python/ocean_pipeline/curate.py` validates all 43 scopes and builds seven
+species-level clean files for the website plus a row-level ledger of later
+publication exclusions. See `docs/curated-pipeline.md`.
 
 These checks cannot verify a taxonomic identification, event date precision,
 georeferencing uncertainty, depth, effort, independence of observations,
