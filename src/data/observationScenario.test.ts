@@ -4,26 +4,35 @@ import metadata from './speciesMetadata.json';
 import tuna from './observations/tuna-west-med.json';
 import tunaNybight from './observations/tuna-ny-bight.json';
 import tunaBiscay from './observations/tuna-biscay.json';
+import tunaHatteras from './observations/tuna-hatteras.json';
+import tunaIonian from './observations/tuna-ionian.json';
+import tunaEastMed from './observations/tuna-east-med.json';
+import tunaNorthSea from './observations/tuna-north-sea.json';
+import tunaNovaScotia from './observations/tuna-nova-scotia.json';
 import whaleShark from './observations/whale-shark-gulf.json';
 import swordfish from './observations/swordfish-west-med.json';
 import humpback from './observations/humpback-gulf-maine.json';
 import bottlenose from './observations/bottlenose-west-med.json';
 import greenTurtle from './observations/green-turtle-caribbean.json';
 import { species } from './index';
-import { buildObservationScenario, enclosingObservationBox } from './observationScenario';
+import { buildObservationScenario, enclosingObservationBox, observationGroups, type ObservationSnapshot } from './observationScenario';
 import { displayStreamlines } from './flowData';
 import { waterSegment } from './oceanRoutes';
 
 describe('one observation box per scoped source', () => {
   it('keeps all accepted positions inside their matching regional source square', () => {
-    const snapshots = [[tuna, tunaNybight, tunaBiscay], [whaleShark], [swordfish], [humpback], [bottlenose], [greenTurtle], [pilot]];
+    const snapshots: ObservationSnapshot[][] = [[tuna, tunaNybight, tunaBiscay, tunaHatteras, tunaIonian, tunaEastMed, tunaNorthSea, tunaNovaScotia], [whaleShark], [swordfish], [humpback], [bottlenose], [greenTurtle], [pilot]];
     for (const [index, scenario] of species.entries()) {
-      expect(scenario.habitat.current, scenario.id).toHaveLength(snapshots[index].length);
+      const groups = snapshots[index].flatMap(snapshot => observationGroups(snapshot.observations, snapshot.clusterDiameterKm).map(records => ({ snapshot, records })));
+      expect(scenario.habitat.current, scenario.id).toHaveLength(groups.length);
       expect(scenario.occurrence?.count).toBe(snapshots[index].reduce((sum, snapshot) => sum + snapshot.observations.length, 0));
-      for (const [sourceIndex, snapshot] of snapshots[index].entries()) {
+      expect(new Set(scenario.habitat.current.map(cell => cell.id)).size).toBe(groups.length);
+      for (const [sourceIndex, { snapshot, records }] of groups.entries()) {
         const box = scenario.habitat.current[sourceIndex];
-        expect(box.id).toBe(snapshot.source.datasetId.replaceAll('-', ''));
-        for (const record of snapshot.observations) {
+        expect(box.id).toBe(scenario.occurrence?.sources[sourceIndex].boxId);
+        expect(scenario.occurrence?.sources[sourceIndex].datasetId).toBe(snapshot.source.datasetId);
+        expect(scenario.occurrence?.sources[sourceIndex].count).toBe(records.length);
+        for (const record of records) {
           expect(Math.abs(record.longitude - box.center[0]), scenario.id).toBeLessThan(box.widthDeg / 2);
           expect(Math.abs(record.latitude - box.center[1]), scenario.id).toBeLessThan(box.heightDeg / 2);
         }
@@ -65,5 +74,14 @@ describe('one observation box per scoped source', () => {
     expect(scenario.occurrence?.count).toBe(234);
     expect(scenario.habitat.current).toHaveLength(2);
     expect(scenario.habitat.future).toHaveLength(2);
+  });
+
+  it('separates distant sightings within one dataset without one box per nearby record', () => {
+    const groups = observationGroups([
+      { id: 'a', longitude: 0, latitude: 0, eventDate: '2020-01-01', coordinateUncertaintyInMeters: null },
+      { id: 'b', longitude: 4, latitude: 0, eventDate: '2020-01-02', coordinateUncertaintyInMeters: null },
+      { id: 'c', longitude: 8, latitude: 0, eventDate: '2020-01-03', coordinateUncertaintyInMeters: null }
+    ], 500);
+    expect(groups.map(group => group.map(record => record.id))).toEqual([['a', 'b'], ['c']]);
   });
 });

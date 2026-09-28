@@ -27,12 +27,13 @@ function fallbackLandPath(position: (longitude: number, latitude: number) => [nu
   }).join('');
 }
 
-function illustrativeFallback(selected: SpeciesDataset) {
-  const cells = [...selected.habitat.current, ...selected.habitat.future];
-  const west = Math.min(...cells.map(cell => cell.center[0] - cell.widthDeg / 2)) - 6;
-  const east = Math.max(...cells.map(cell => cell.center[0] + cell.widthDeg / 2)) + 6;
-  const south = Math.min(...cells.map(cell => cell.center[1] - cell.heightDeg / 2)) - 5;
-  const north = Math.max(...cells.map(cell => cell.center[1] + cell.heightDeg / 2)) + 5;
+function illustrativeFallback(selected: SpeciesDataset, focusBoxId: string | null) {
+  const cells = [...selected.habitat.current, ...selected.habitat.future].filter(cell => !focusBoxId || cell.id === focusBoxId);
+  const margin = focusBoxId ? 1 : 6;
+  const west = Math.min(...cells.map(cell => cell.center[0] - cell.widthDeg / 2)) - margin;
+  const east = Math.max(...cells.map(cell => cell.center[0] + cell.widthDeg / 2)) + margin;
+  const south = Math.min(...cells.map(cell => cell.center[1] - cell.heightDeg / 2)) - (focusBoxId ? 1 : 5);
+  const north = Math.max(...cells.map(cell => cell.center[1] + cell.heightDeg / 2)) + (focusBoxId ? 1 : 5);
   const position = (lon: number, lat: number): [number, number] => [
     (lon - west) / (east - west) * fallbackWidth,
     (north - lat) / (north - south) * fallbackHeight
@@ -42,9 +43,11 @@ function illustrativeFallback(selected: SpeciesDataset) {
     return `${index ? 'L' : 'M'}${x.toFixed(1)},${y.toFixed(1)}`;
   }).join('');
   return { position, path, coast: fallbackLandPath(position),
-    current: displayCells(selected, 'current'), future: displayCells(selected, 'future'),
-    currentCenters: selected.habitat.current, futureCenters: selected.habitat.future,
-    strands: displayStreamlines(selected).filter((_, index) => index % 3 === 0) };
+    current: displayCells(selected, 'current').filter(cell => !focusBoxId || cell.id === focusBoxId),
+    future: displayCells(selected, 'future').filter(cell => !focusBoxId || cell.id === focusBoxId),
+    currentCenters: selected.habitat.current.filter(cell => !focusBoxId || cell.id === focusBoxId),
+    futureCenters: selected.habitat.future.filter(cell => !focusBoxId || cell.id === focusBoxId),
+    strands: displayStreamlines(selected).filter((strand, index) => index % 3 === 0 && (!focusBoxId || strand.id.startsWith(`${focusBoxId}-`))) };
 }
 
 const graticule = {
@@ -86,7 +89,7 @@ function flowSegments(flow: DisplayFlow, start: number, end: number): Segment[] 
   }).filter((segment): segment is Segment => segment !== null);
 }
 
-export function MapView({ selected }: { selected: SpeciesDataset }) {
+export function MapView({ selected, focusBoxId = null }: { selected: SpeciesDataset; focusBoxId?: string | null }) {
   const observed = selected.provenance === 'observation-demo';
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
@@ -133,17 +136,19 @@ export function MapView({ selected }: { selected: SpeciesDataset }) {
 
   useEffect(() => {
     if (!ready || !map.current) return;
-    const cells = [...selected.habitat.current, ...selected.habitat.future];
+    const cells = [...selected.habitat.current, ...selected.habitat.future].filter(cell => !focusBoxId || cell.id === focusBoxId);
+    const lonMargin = focusBoxId ? 1 : 6;
+    const latMargin = focusBoxId ? 1 : 5;
     const west = Math.min(...cells.map(cell => cell.center[0] - cell.widthDeg / 2));
     const east = Math.max(...cells.map(cell => cell.center[0] + cell.widthDeg / 2));
     const south = Math.min(...cells.map(cell => cell.center[1] - cell.heightDeg / 2));
     const north = Math.max(...cells.map(cell => cell.center[1] + cell.heightDeg / 2));
-    map.current.fitBounds([[west - 6, south - 5], [east + 6, north + 5]], {
+    map.current.fitBounds([[west - lonMargin, south - latMargin], [east + lonMargin, north + latMargin]], {
       padding: 46,
-      maxZoom: 3.4,
+      maxZoom: focusBoxId ? 5.4 : 3.4,
       duration: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 750
     });
-  }, [selected, ready]);
+  }, [selected, ready, focusBoxId]);
 
   useEffect(() => {
     if (!ready || !overlay.current) return;
@@ -288,9 +293,8 @@ export function MapView({ selected }: { selected: SpeciesDataset }) {
     return () => cancelAnimationFrame(frame);
   }, [selected, ready, observed]);
 
-  const demoFallback = webglUnavailable ? illustrativeFallback(selected) : null;
-  const hoveredSource = hover && selected.occurrence?.sources.find(source =>
-    hover.cell.id.startsWith(source.datasetId.replaceAll('-', '') + '-'));
+  const demoFallback = webglUnavailable ? illustrativeFallback(selected, focusBoxId) : null;
+  const hoveredSource = hover && selected.occurrence?.sources.find(source => hover.cell.id === source.boxId);
 
   return (
     <div className="map-wrap">

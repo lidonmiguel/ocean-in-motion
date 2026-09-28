@@ -26,16 +26,17 @@ export const speciesDatasetSchema = z.object({
   occurrence: z.object({
     count: z.number().int().positive(),
     sources: z.array(z.object({
+      boxId: z.string().min(1),
       datasetId: z.string().min(1),
       sourceUrl: z.url(),
       region: z.string().min(1),
       citation: z.string().min(1),
       license: z.string().min(1),
       count: z.number().int().positive(),
+      simulationOffsetDeg: position,
       coordinateUncertaintyKmRange: z.tuple([z.number().nonnegative(), z.number().nonnegative()]).nullable(),
       observedBoundsWgs84: z.tuple([z.number(), z.number(), z.number(), z.number()])
-    }).strict()).min(1),
-    simulationOffsetDeg: position
+    }).strict()).min(1)
   }).strict().optional(),
   citations: z.array(z.object({
     id: z.string().min(1),

@@ -11,7 +11,7 @@ import math
 from pathlib import Path
 
 # Dataset citations and licenses were checked against OBIS /v3/dataset/{id}
-# intellectualrights on 2026-09-27. A refresh needs a renewed rights review.
+# intellectualrights on 2026-09-27 and 2026-09-28. A refresh needs a renewed rights review.
 STUDIES = {
     "tuna-west-med": dict(species="Thunnus thynnus", taxon=127029,
         dataset="eaea291a-1e1d-4382-b86f-ac3cc15b8d5a", bounds=[-6,35,14,44],
@@ -28,6 +28,36 @@ STUDIES = {
         dataset="924c4d25-6358-44a3-8f4d-24086256ad3e", bounds=[-12,42,-1,50],
         start="2014-01-01", end="2024-12-31", period="2015–2021", region="Golfo de Vizcaya · campañas PELAGIS",
         citation="Doremus, G. and H. Peltier (2025). Observatoire Pelagis boat surveys 2003-2021. Version 2.1.0. OBIS-SEAMAP. https://doi.org/10.82144/c7d01c61",
+        license="CC BY-NC 4.0"),
+    "tuna-hatteras": dict(species="Thunnus thynnus", taxon=127029,
+        dataset="5055f146-1a0a-41be-a747-24968c2cf584", bounds=[-82,30,-74,39],
+        start="2014-01-01", end="2024-12-31", period="2018", cluster_diameter_km=500,
+        region="Atlántico noroccidental · costa de Carolina del Norte",
+        citation="Vukovich, M. (2022). Ecological Baseline Studies of the U.S. Outer Continental Shelf Option Year 1. Version 1.4.0. OBIS-SEAMAP. https://doi.org/10.82144/47a6c4f3",
+        license="CC BY 4.0"),
+    "tuna-ionian": dict(species="Thunnus thynnus", taxon=127029,
+        dataset="b14abb47-b481-4272-a8d6-d4e2b612dce9", bounds=[12,34,20,40],
+        start="2014-01-01", end="2024-12-31", period="2015–2019", cluster_diameter_km=500,
+        region="Mar Jónico · costa de Sicilia",
+        citation="Monaco, C., Garofalo, D., Raffa, A., MareCamp Association, Cavallè, M. and LIFE platform (2020). Observation of marine vulnerable mobile species in Sicilian waters, Ionian Sea (surveys 2015-2019). https://obis.org/dataset/b14abb47-b481-4272-a8d6-d4e2b612dce9",
+        license="CC BY 4.0"),
+    "tuna-east-med": dict(species="Thunnus thynnus", taxon=127029,
+        dataset="eaea291a-1e1d-4382-b86f-ac3cc15b8d5a", bounds=[23,30,37,42],
+        start="2014-01-01", end="2024-12-31", period="2014–2020", cluster_diameter_km=500,
+        region="Mediterráneo oriental · Egeo y costa de Anatolia",
+        citation="iNaturalist contributors, iNaturalist (2026). iNaturalist Research-grade Observations Marine Subset. Version 2.0. Marine Biological Association. https://doi.org/10.17031/0bbcjx",
+        license="CC BY-NC 4.0"),
+    "tuna-north-sea": dict(species="Thunnus thynnus", taxon=127029,
+        dataset="eaea291a-1e1d-4382-b86f-ac3cc15b8d5a", bounds=[-5,50,14,63],
+        start="2014-01-01", end="2024-12-31", period="2019–2024", cluster_diameter_km=500,
+        region="Mar del Norte y aguas adyacentes",
+        citation="iNaturalist contributors, iNaturalist (2026). iNaturalist Research-grade Observations Marine Subset. Version 2.0. Marine Biological Association. https://doi.org/10.17031/0bbcjx",
+        license="CC BY-NC 4.0"),
+    "tuna-nova-scotia": dict(species="Thunnus thynnus", taxon=127029,
+        dataset="eaea291a-1e1d-4382-b86f-ac3cc15b8d5a", bounds=[-63,42,-42,55],
+        start="2014-01-01", end="2024-12-31", period="2020–2024", cluster_diameter_km=500,
+        region="Atlántico canadiense · Nueva Escocia y Terranova",
+        citation="iNaturalist contributors, iNaturalist (2026). iNaturalist Research-grade Observations Marine Subset. Version 2.0. Marine Biological Association. https://doi.org/10.17031/0bbcjx",
         license="CC BY-NC 4.0"),
     "whale-shark-gulf": dict(species="Rhincodon typus", taxon=105847,
         dataset="eaea291a-1e1d-4382-b86f-ac3cc15b8d5a", bounds=[-92,17,-84,26],
@@ -113,6 +143,7 @@ def build_snapshot(slug: str, extract_path: Path, manifest_path: Path) -> dict:
     return {
         "schemaVersion": 1, "species": study["species"], "aphiaID": study["taxon"],
         "region": study["region"], "period": study.get("period", f'{study["start"][:4]}–{study["end"][:4]}'),
+        **({"clusterDiameterKm": study["cluster_diameter_km"]} if "cluster_diameter_km" in study else {}),
         "boundsWgs84": study["bounds"],
         "source": {"name": "Ocean Biodiversity Information System (OBIS)",
                    "datasetId": study["dataset"], "url": f'https://obis.org/dataset/{study["dataset"]}',

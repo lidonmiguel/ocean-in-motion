@@ -1,0 +1,92 @@
+{
+  "accessed_at_utc": "2026-09-28T08:20:48.423558+00:00",
+  "attribution": {
+    "datasets": [
+      {
+        "datasetName": [
+          "iNaturalist research-grade observations"
+        ],
+        "dataset_id": "eaea291a-1e1d-4382-b86f-ac3cc15b8d5a",
+        "license": [
+          "https://creativecommons.org/licenses/by-nc/4.0/"
+        ],
+        "modified": [
+          "2023-11-05T10:25:16Z",
+          "2025-07-08T09:00:23Z",
+          "2022-11-16T20:05:40Z",
+          "2025-07-08T08:42:38Z",
+          "2021-09-23T16:38:56Z",
+          "2021-01-14T23:14:30Z"
+        ],
+        "records": 6,
+        "rightsHolder": [
+          "Eduard I. Vatutin",
+          "Amalia Mailli",
+          "Jonathan M",
+          "brexitsucks",
+          "Athina Papadopoulou",
+          "athina27"
+        ]
+      }
+    ],
+    "note": "Review each contributing dataset's citation and license before reuse; missing fields are not a grant of rights.",
+    "obis": "OBIS (2026) Ocean Biodiversity Information System. Intergovernmental Oceanographic Commission of UNESCO. https://obis.org. Accessed: 2026-09-28"
+  },
+  "counts": {
+    "after_coordinate_qc": 6,
+    "api_total_reported": 6,
+    "duplicate_identifiers": 0,
+    "invalid_coordinates_or_outside_bounds": 0,
+    "raw_fetched": 6,
+    "without_duplicate_identifier": 0,
+    "written": 6
+  },
+  "extract": "output/tuna-east-med.jsonl",
+  "extract_sha256": "01fa59c4e7a37c0f6b158fbe50e20c8305dcb25b87cc164843db11e5d83b1af4",
+  "qc_rule": "Reject missing, non-finite, out-of-range or outside-box coordinates; de-duplicate on repeated OBIS id or dataset_id + occurrenceID. Do not collapse equal positions.",
+  "query": {
+    "bounds_wgs84": [
+      23,
+      30,
+      37,
+      42
+    ],
+    "datasetid": "eaea291a-1e1d-4382-b86f-ac3cc15b8d5a",
+    "enddate": "2024-12-31",
+    "geometry": "POLYGON((23 30,37 30,37 42,23 42,23 30))",
+    "max_records": 10000,
+    "page_size": 200,
+    "pages": [
+      {
+        "after": null,
+        "offset": 0,
+        "received": 6,
+        "size": 200,
+        "url": "https://api.obis.org/v3/occurrence?taxonid=127029&geometry=POLYGON%28%2823+30%2C37+30%2C37+42%2C23+42%2C23+30%29%29&startdate=2014-01-01&enddate=2024-12-31&size=200&datasetid=eaea291a-1e1d-4382-b86f-ac3cc15b8d5a"
+      }
+    ],
+    "pagination": "after occurrence id",
+    "startdate": "2014-01-01",
+    "taxonid": "127029"
+  },
+  "schema_version": 1,
+  "source": {
+    "api": "https://api.obis.org/v3/occurrence",
+    "api_version": "v3",
+    "name": "Ocean Biodiversity Information System (OBIS)",
+    "record_modified_values": [
+      "2021-01-14T23:14:30Z",
+      "2021-09-23T16:38:56Z",
+      "2022-11-16T20:05:40Z",
+      "2023-11-05T10:25:16Z",
+      "2025-07-08T08:42:38Z",
+      "2025-07-08T09:00:23Z"
+    ],
+    "response_headers": [
+      {
+        "ETag": "W/\"34ba-Ae6zpWJ7CJuw6H22ItdIAQ0Fvqg\""
+      }
+    ]
+  },
+  "truncated_by_cap": false
+}

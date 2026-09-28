@@ -14,6 +14,7 @@
 @media(max-width:540px){.flow-key{bottom:26px;gap:9px;padding:10px 12px;font-size:11px}.flow-key small{display:none}}
 
 .source-note{margin-top:18px;font-size:11px;line-height:1.65;color:#a7c9c8}.source-note strong{color:#a1e7d9}.source-note p{margin:6px 0 0}.source-note a{color:#a5e6dc;text-decoration:underline;text-underline-offset:3px}.source-note a:hover{color:#fff}.real-key{max-width:calc(100% - 24px);white-space:normal;text-align:center;line-height:1.4}
+.source-region{border-bottom:1px solid #33515b;padding:6px 0}.source-region-button,.all-regions{border:0;background:transparent;color:#a5e6dc;padding:3px 0;text-align:left;font:inherit;cursor:pointer}.source-region-button{display:block;font-weight:700}.source-region-button:hover,.source-region-button[aria-pressed="true"]{color:#fff;text-decoration:underline}.source-region span{display:block;color:#a7c9c8}.all-regions{display:block;margin:5px 0}.all-regions:disabled{opacity:.48;cursor:default}.source-note details{margin-top:12px}.source-note summary{color:#a5e6dc;cursor:pointer}
 @media(max-width:1200px){.source-note{grid-column:3;grid-row:7/8}.status-label{grid-row:8/9}}
 @media(max-width:850px){.source-note{margin-top:15px}}
 

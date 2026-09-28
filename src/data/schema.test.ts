@@ -15,7 +15,7 @@ describe('species dataset contract', () => {
       expect(data.reviewStatus).toBe('illustrative');
       expect(data.scenario).toBe('illustrative');
       expect(data.occurrence!.count).toBeGreaterThan(0);
-      expect(data.habitat.current).toHaveLength(data.id === 'atlantic-bluefin-tuna' ? 3 : 1);
+      expect(data.habitat.current).toHaveLength(data.id === 'atlantic-bluefin-tuna' ? 13 : 1);
       expect(data.habitat.current[0].suitability).toBeUndefined();
       expect(data.citations.some(c => c.role === 'occurrence' && c.url)).toBe(true);
     }
