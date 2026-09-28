@@ -44,9 +44,8 @@ describe('one observation box per scoped source', () => {
   it('routes the illustrative future over water without claiming a forecast', () => {
     const scenario = species.find(item => item.id === 'loggerhead-turtle')!;
     expect(scenario.habitat.current.length).toBeGreaterThan(1);
-    expect(scenario.habitat.future[0].center).toEqual([
-      scenario.habitat.current[0].center[0], scenario.habitat.current[0].center[1] - 2
-    ]);
+    const [start, finish] = [scenario.habitat.current[0].center, scenario.habitat.future[0].center];
+    expect(Math.hypot(finish[0] - start[0], finish[1] - start[1])).toBeGreaterThan(4);
     expect(scenario.citations.map(c => c.role)).toContain('occurrence');
     const routes = displayStreamlines(scenario);
     expect(routes.length).toBeGreaterThan(0);

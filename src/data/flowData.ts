@@ -96,7 +96,7 @@ export function pointOnFlow(flow: DisplayFlow, progress: number): Position {
 // both reach the destination. No part of the route remains on screen afterward.
 export function visibleFlowWindow(progress: number): [number, number] {
   const end = Math.max(0, Math.min(1, progress));
-  const start = end <= 0.62 ? 0 : (end - 0.62) / 0.38;
+  const start = end <= 0.82 ? 0 : (end - 0.82) / 0.18;
   return [Math.min(start, end), end];
 }
 

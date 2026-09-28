@@ -125,10 +125,15 @@ export function buildObservationScenario(
       const base = { id: boxId, center: box.center, widthDeg: box.widthDeg, heightDeg: box.heightDeg };
       // A single fixed translation can end on land for coastal and island
       // groups. Try nearby directions and lengths deterministically.
+      const distance = Math.hypot(...simulationOffsetDeg);
+      const diagonal = distance / Math.SQRT2;
       const directions: [number, number][] = [simulationOffsetDeg,
-        [-simulationOffsetDeg[0], -simulationOffsetDeg[1]], [2, 0], [-2, 0], [0, 2], [0, -2],
-        [1, 1], [-1, 1], [1, -1], [-1, -1]];
-      const offsets: [number, number][] = [1, 0.5, 0.25, 1.5, 2, 3].flatMap(scale =>
+        [-simulationOffsetDeg[0], -simulationOffsetDeg[1]],
+        [distance, 0], [-distance, 0], [0, distance], [0, -distance],
+        [diagonal, diagonal], [-diagonal, diagonal],
+        [diagonal, -diagonal], [-diagonal, -diagonal]];
+      // Try a visible translation first; shrink only for restricted coasts.
+      const offsets: [number, number][] = [1, 0.75, 0.5, 0.25].flatMap(scale =>
         directions.map(([dx, dy]) => [dx * scale, dy * scale] as [number, number]));
       const marine = ([dx, dy]: [number, number]) => {
         const target: [number, number] = [box.center[0] + dx, box.center[1] + dy];
