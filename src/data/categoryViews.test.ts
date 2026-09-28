@@ -26,7 +26,7 @@ describe('combined category views', () => {
     for (const category of categories) {
       const strands = displayStreamlines(category.view, 6);
       const boxesWithStrands = new Set(strands.map(strand => strand.id.slice(0, strand.id.lastIndexOf('-'))));
-      expect(boxesWithStrands.size, category.group).toBe(category.view.habitat.current.length);
+      expect(boxesWithStrands.size, category.group).toBe(category.view.habitat.future.length);
     }
   }, 25_000);
 

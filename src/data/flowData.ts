@@ -88,7 +88,7 @@ export function displayStreamlines(dataset: SpeciesDataset, strandsPerBox = 12):
         // take their direct route; coastal ones follow a translated center
         // route only when every segment remains at sea.
         if (waterSegment(from, to)) {
-          const path = oceanRoute(from, to)!;
+          const path = oceanRoute(from, to) ?? [from, to];
           return { id: `${current.id}-${strand}`, from, to,
             path: curveOceanRoute(path, pairIndex * strandsPerBox + strand) };
         }
@@ -98,7 +98,11 @@ export function displayStreamlines(dataset: SpeciesDataset, strandsPerBox = 12):
             path: curveOceanRoute(path, pairIndex * strandsPerBox + strand) };
         }
       }
-      return null;
+      // A very narrow coastal passage may not admit a parallel lane. Keep
+      // one center strand when its reviewed water route is available.
+      return strand === 0 ? { id: `${current.id}-${strand}`,
+        from: current.center, to: future.center,
+        path: curveOceanRoute(centerPath, pairIndex * strandsPerBox + strand) } : null;
     }).filter((flow): flow is DisplayFlow => flow !== null);
   });
 }

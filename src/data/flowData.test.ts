@@ -7,15 +7,15 @@ describe('illustrative distribution flows', () => {
   it('connects the observed center to its labeled visual destination', () => {
     const dataset = species[0];
     const flows = displayFlows(dataset);
-    expect(flows).toHaveLength(dataset.habitat.current.length);
-    expect(flows[0].from).toEqual(dataset.habitat.current[0].center);
+    expect(flows).toHaveLength(dataset.habitat.future.length);
+    expect(flows[0].from).toEqual(dataset.habitat.current.find(cell => cell.id === flows[0].id)!.center);
     expect(pointOnFlow(flows[0], 1)[0]).toBeCloseTo(dataset.habitat.future[0].center[0]);
     expect(pointOnFlow(flows[0], 1)[1]).toBeCloseTo(dataset.habitat.future[0].center[1]);
   });
 
   it('takes the short path across the antimeridian', () => {
     const dataset = structuredClone(species[0]);
-    dataset.habitat.current[0].center = [179, 20];
+    dataset.habitat.current.find(cell => cell.id === dataset.habitat.future[0].id)!.center = [179, 20];
     dataset.habitat.future[0].center = [-179, 24];
     const path = displayFlows(dataset)[0].path;
     expect(path[0]).toEqual([179, 20]);
@@ -28,7 +28,7 @@ describe('illustrative distribution flows', () => {
       const strands = displayStreamlines(dataset);
       expect(strands.length, dataset.id).toBeGreaterThan(0);
       expect(new Set(strands.map(strand => strand.id.split('-')[0])).size, dataset.id)
-        .toBe(dataset.habitat.current.length);
+        .toBe(dataset.habitat.future.length);
       for (const strand of strands) {
         const cellId = strand.id.split('-')[0];
         const current = dataset.habitat.current.find(cell => cell.id === cellId)!;
