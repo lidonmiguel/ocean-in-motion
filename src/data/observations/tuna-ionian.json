@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "species": "Thunnus thynnus",
+  "aphiaID": 127029,
+  "region": "Mar Jónico · costa de Sicilia",
+  "period": "2015–2019",
+  "clusterDiameterKm": 500,
+  "boundsWgs84": [
+    12,
+    34,
+    20,
+    40
+  ],
+  "source": {
+    "name": "Ocean Biodiversity Information System (OBIS)",
+    "datasetId": "b14abb47-b481-4272-a8d6-d4e2b612dce9",
+    "url": "https://obis.org/dataset/b14abb47-b481-4272-a8d6-d4e2b612dce9",
+    "citation": "Monaco, C., Garofalo, D., Raffa, A., MareCamp Association, Cavallè, M. and LIFE platform (2020). Observation of marine vulnerable mobile species in Sicilian waters, Ionian Sea (surveys 2015-2019). https://obis.org/dataset/b14abb47-b481-4272-a8d6-d4e2b612dce9",
+    "license": "CC BY 4.0",
+    "accessedAtUtc": "2026-09-28T08:20:47.747262+00:00",
+    "extractSha256": "7777c761d5537715b0d4dc6ab695e16dd518881671a125ffc966414b9a8e7aa7"
+  },
+  "summary": {
+    "count": 5,
+    "byYear": {
+      "2015": 1,
+      "2019": 4
+    },
+    "excluded": {},
+    "unknownCoordinateUncertainty": 0,
+    "uncertaintyKmRange": [
+      0.0,
+      0.0
+    ]
+  },
+  "observations": [
+    {
+      "id": "2361f617-bcf3-4d90-b926-84701db65d0b",
+      "longitude": 15.1919,
+      "latitude": 37.2997,
+      "eventDate": "2019-09-19",
+      "coordinateUncertaintyInMeters": 50
+    },
+    {
+      "id": "5413378f-16de-4578-9e06-6c7b45493400",
+      "longitude": 15.21598,
+      "latitude": 37.323725,
+      "eventDate": "2015-06-25",
+      "coordinateUncertaintyInMeters": 50
+    },
+    {
+      "id": "5f9445b4-6a03-45fb-b205-19fbff6289e6",
+      "longitude": 15.1944,
+      "latitude": 37.3067,
+      "eventDate": "2019-08-29",
+      "coordinateUncertaintyInMeters": 50
+    },
+    {
+      "id": "e3685efa-2992-40f4-896e-bf43a9c0e895",
+      "longitude": 15.194,
+      "latitude": 37.3066,
+      "eventDate": "2019-08-31",
+      "coordinateUncertaintyInMeters": 50
+    },
+    {
+      "id": "e3900a87-0300-41fc-a72c-3f9a14ef29d8",
+      "longitude": 15.194483,
+      "latitude": 37.307983,
+      "eventDate": "2019-08-30",
+      "coordinateUncertaintyInMeters": 50
+    }
+  ]
+}

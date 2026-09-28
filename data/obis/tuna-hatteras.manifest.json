@@ -1,0 +1,90 @@
+{
+  "accessed_at_utc": "2026-09-28T08:20:46.787251+00:00",
+  "attribution": {
+    "datasets": [
+      {
+        "bibliographicCitation": [
+          "[{\"crossref\":{\"citeinfo\":{\"origin\":\"APEM and Normandeau Associates prepared for the Bureau of Ocean Energy Management (BOEM)\",\"pubdate\":\"2020\",\"title_html\":\"Ecological Baseline Studies of the U.S. Outer Continental Shelf Option Year 1\",\"title\":\"Ecological Baseline Studies of the U.S. Outer Continental Shelf Option Year 1\",\"serinfo\":{\"sername\":\"Data downloaded from OBIS-SEAMAP (http:\\/\\/seamap.env.duke.edu\\/dataset\\/1817) on yyyy-mm-dd\"},\"onlink\":\"https:\\/\\/remote.normandeau.com\"}}},{\"crossref\":{\"citeinfo\":{\"title\":\"Ecological Baseline Studies of the U.S. Outer Continental Shelf Option Year 1\",\"onlink\":\"https:\\/\\/doi.org\\/10.82144\\/47a6c4f3\",\"origin\":\"Vukovich, M\",\"edition\":\"Version 1.4.0\",\"geoform\":\"vector digital data\",\"pubdate\":\"2022\",\"pubinfo\":{\"publish\":\"OBIS-SEAMAP\",\"pubplace\":\"https:\\/\\/seamap.env.duke.edu\\/dataset\\/2065\"},\"serinfo\":{\"issue\":\"2065\",\"sername\":\"OBIS-SEAMAP\"},\"othercit\":\"\"}}},{\"crossref\":{\"citeinfo\":{\"origin\":\"Halpin, P.N., A.J. Read, E. Fujioka, B.D. Best, B. Donnelly, L.J. Hazen, C. Kot, K. Urian, E. LaBrecque, A. Dimatteo, J. Cleary, C. Good, L.B. Crowder, and K.D. Hyrenbach\",\"pubdate\":\"2009\",\"title\":\"OBIS-SEAMAP: The world data center for marine mammal, sea bird, and sea turtle distributions\",\"onlink\":\"http:\\/\\/www.tos.org\\/oceanography\\/article\\/obis-seamap-the-world-data-center-for-marine-mammal-sea-bird-and-sea-turtle\",\"serinfo\":{\"sername\":\"Oceanography\",\"issue\":\"22(2):104-115\"}}}}]Halpin, P.N., A.J. Read, E. Fujioka, B.D. Best, B. Donnelly, L.J. Hazen, C. Kot, K. Urian, E. LaBrecque, A. Dimatteo, J. Cleary, C. Good, L.B. Crowder, and K.D. Hyrenbach. 2009. OBIS-SEAMAP: The world data center for marine mammal, sea bird, and sea turtle distributions. Oceanography 22(2):104-115"
+        ],
+        "datasetName": [
+          "Ecological Baseline Studies of the U.S. Outer Continental Shelf Option Year 1"
+        ],
+        "dataset_id": "5055f146-1a0a-41be-a747-24968c2cf584",
+        "license": [
+          "http://creativecommons.org/licenses/by/4.0/"
+        ],
+        "modified": [
+          "2022-05-09 10:09:05"
+        ],
+        "records": 230,
+        "rightsHolder": [
+          "NORMANDEAU"
+        ]
+      }
+    ],
+    "note": "Review each contributing dataset's citation and license before reuse; missing fields are not a grant of rights.",
+    "obis": "OBIS (2026) Ocean Biodiversity Information System. Intergovernmental Oceanographic Commission of UNESCO. https://obis.org. Accessed: 2026-09-28"
+  },
+  "counts": {
+    "after_coordinate_qc": 230,
+    "api_total_reported": 230,
+    "duplicate_identifiers": 0,
+    "invalid_coordinates_or_outside_bounds": 0,
+    "raw_fetched": 230,
+    "without_duplicate_identifier": 0,
+    "written": 230
+  },
+  "extract": "output/tuna-hatteras.jsonl",
+  "extract_sha256": "50e4bf79ff2c430f8a2651861d8c0e310ee32542bab2da976c2c9ceddc916914",
+  "qc_rule": "Reject missing, non-finite, out-of-range or outside-box coordinates; de-duplicate on repeated OBIS id or dataset_id + occurrenceID. Do not collapse equal positions.",
+  "query": {
+    "bounds_wgs84": [
+      -82,
+      30,
+      -74,
+      39
+    ],
+    "datasetid": "5055f146-1a0a-41be-a747-24968c2cf584",
+    "enddate": "2024-12-31",
+    "geometry": "POLYGON((-82 30,-74 30,-74 39,-82 39,-82 30))",
+    "max_records": 10000,
+    "page_size": 200,
+    "pages": [
+      {
+        "after": null,
+        "offset": 0,
+        "received": 200,
+        "size": 200,
+        "url": "https://api.obis.org/v3/occurrence?taxonid=127029&geometry=POLYGON%28%28-82+30%2C-74+30%2C-74+39%2C-82+39%2C-82+30%29%29&startdate=2014-01-01&enddate=2024-12-31&size=200&datasetid=5055f146-1a0a-41be-a747-24968c2cf584"
+      },
+      {
+        "after": "d63f882e-300a-4ea2-ba39-051f6ad55ca3",
+        "offset": 200,
+        "received": 30,
+        "size": 200,
+        "url": "https://api.obis.org/v3/occurrence?taxonid=127029&geometry=POLYGON%28%28-82+30%2C-74+30%2C-74+39%2C-82+39%2C-82+30%29%29&startdate=2014-01-01&enddate=2024-12-31&size=200&after=d63f882e-300a-4ea2-ba39-051f6ad55ca3&datasetid=5055f146-1a0a-41be-a747-24968c2cf584"
+      }
+    ],
+    "pagination": "after occurrence id",
+    "startdate": "2014-01-01",
+    "taxonid": "127029"
+  },
+  "schema_version": 1,
+  "source": {
+    "api": "https://api.obis.org/v3/occurrence",
+    "api_version": "v3",
+    "name": "Ocean Biodiversity Information System (OBIS)",
+    "record_modified_values": [
+      "2022-05-09 10:09:05"
+    ],
+    "response_headers": [
+      {
+        "ETag": "W/\"1219f6-wPJp1YzSd2ekWKPv7B1NDmmo3vo\""
+      },
+      {
+        "ETag": "W/\"2b72e-hEd2nDO7JcTMP5DsqnqfnWYQiO0\""
+      }
+    ]
+  },
+  "truncated_by_cap": false
+}

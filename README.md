@@ -1,10 +1,10 @@
 # Océano en Movimiento
 
-An experimental marine map in Spanish with seven species and nine
+An experimental marine map in Spanish with seven species and nineteen
 **observation-derived** regional boxes. The older hand-authored habitat
 fixtures have been removed.
-Each turquoise square encloses the positions in one checked, bounded OBIS
-dataset, with a 20 km display margin. The underlying observations, original
+Each turquoise square encloses the positions in one geographically close
+group from a checked, bounded OBIS extract, with a 20 km display margin. The underlying observations, original
 extract, query manifest and source citation are versioned in this repository.
 
 **The pink destinations and animated water-only strands are still a visual
@@ -46,6 +46,11 @@ individual source dataset, with its citation and license displayed in the app.
 | *Thunnus thynnus* | [iNaturalist Marine, western Mediterranean](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2024 | 32 / 38 | CC BY-NC 4.0 |
 | *Thunnus thynnus* | [NYSERDA digital aerial survey, New York Bight](https://obis.org/dataset/ca78b5b9-d4e4-4ab0-bbe1-9f75659769e2), 2017–2018 | 653 / 653 | CC BY 4.0 |
 | *Thunnus thynnus* | [Observatoire PELAGIS boat surveys, Bay of Biscay](https://obis.org/dataset/924c4d25-6358-44a3-8f4d-24086256ad3e), 2015–2021 | 18 / 18 | CC BY-NC 4.0 |
+| *Thunnus thynnus* | [BOEM digital aerial survey, off North Carolina](https://obis.org/dataset/5055f146-1a0a-41be-a747-24968c2cf584), 2018 | 230 / 230 | CC BY 4.0 |
+| *Thunnus thynnus* | [MareCamp expert visual surveys, Sicilian Ionian Sea](https://obis.org/dataset/b14abb47-b481-4272-a8d6-d4e2b612dce9), 2015–2019 | 5 / 5 | CC BY 4.0 |
+| *Thunnus thynnus* | [iNaturalist Marine, eastern Mediterranean](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2020 | 4 / 6 | CC BY-NC 4.0 |
+| *Thunnus thynnus* | [iNaturalist Marine, North Sea and adjacent waters](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2019–2024 | 7 / 12 | CC BY-NC 4.0 |
+| *Thunnus thynnus* | [iNaturalist Marine, Atlantic Canada](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2020–2024 | 8 / 14 | CC BY-NC 4.0 |
 | *Rhincodon typus* | [iNaturalist Marine, Gulf of Mexico](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2024 | 157 / 172 | CC BY-NC 4.0 |
 | *Xiphias gladius* | [ANSE visual surveys, southeastern Spanish Mediterranean](https://obis.org/dataset/da5982a8-e9a1-46af-ab1b-8293edb79c5d), 2014–2024 | 190 / 190 | CC BY-NC 4.0 |
 | *Megaptera novaeangliae* | [NEFSC aerial survey, Gulf of Maine](https://obis.org/dataset/c7d259da-370a-4504-9445-29de96d9223a), 2022 | 479 / 479 | CC0 1.0 |
@@ -59,6 +64,10 @@ The New York Bight aerial survey is credited to Vukovich (2022),
 [doi:10.82144/2972b82d](https://doi.org/10.82144/2972b82d). The Bay of
 Biscay boat surveys are credited to Doremus and Peltier (2025),
 [doi:10.82144/c7d01c61](https://doi.org/10.82144/c7d01c61).
+The BOEM aerial survey is credited to Vukovich (2022),
+[doi:10.82144/47a6c4f3](https://doi.org/10.82144/47a6c4f3).
+The Sicilian expert surveys are credited to Monaco, Garofalo, Raffa,
+MareCamp, Cavallè and LIFE platform (2020); see the linked dataset.
 The ANSE visual survey is credited to Murcia Abellán and Morata (2026).
 The NEFSC 2022 aerial survey is credited to Cole, Khan and Ogilvie (2025),
 [doi:10.82144/9f540955](https://doi.org/10.82144/9f540955).
@@ -68,7 +77,7 @@ the loggerhead transect to the same authors, [doi:10.14284/532](https://doi.org/
 The recorded dataset rights come from OBIS dataset metadata `intellectualrights`
 checked on 2026-09-27 and 2026-09-28. **CC BY-NC sources carry a noncommercial restriction.**
 
-The iNaturalist Marine queries exclude OBIS `ON_LAND` flags (6 tuna, 11 whale
+The iNaturalist Marine queries exclude OBIS `ON_LAND` flags (19 tuna, 11 whale
 sharks, 131 green turtles). Four whale shark and four green turtle records with
 declared position uncertainty greater than 300 km are also excluded. `NO_DEPTH`
 is retained because this map does not analyze depth. The swordfish dataset
@@ -81,11 +90,18 @@ value and must not be interpreted as perfect location accuracy. The ferry
 transects have broad stated uncertainties of roughly 32–257 km. All counts
 are records, not individual animals; citizen reports and survey routes are
 spatially biased. The OBIS source may change after these versioned extracts.
-The three bluefin datasets total **703** accepted records in three separately
-scoped regions. The two new queries use 2014-01-01 to 2024-12-31 and WGS84
-bounds (−75, 38, −69, 43) and (−12, 42, −1, 50); the year labels in the table
-describe when accepted observations actually occurred. One box is drawn for
-each dataset. Survey density cannot be compared directly with citizen reports.
+The eight scoped bluefin extracts total **957** accepted records from five
+distinct contributing datasets, displayed in **thirteen** geographically
+separated boxes. The year labels in the table describe accepted observation
+dates; query dates for the five new areas are 2014-01-01 to 2024-12-31.
+The five new WGS84 search bounds are in `publish_species.py` and the manifests.
+For those areas only, a deterministic complete-link grouping keeps all pairs
+of positions in a box within 500 km; close records share a box and distant
+ones form separate boxes. The earlier three extracts keep their reviewed
+regional boxes. A separate box around one reported position still does not
+establish a habitat area. Search coverage is uneven; gaps on the map are
+unknown, not confirmed absences. Survey density cannot be compared directly
+with citizen reports. The map's region list zooms to each documented group.
 
 ## How the files fit
 
@@ -93,11 +109,11 @@ each dataset. Survey density cannot be compared directly with citizen reports.
 | --- | --- |
 | `data/obis/*.jsonl.gz`, `*.manifest.json` | Lossless raw bounded extracts, query URLs, QC counts, access time and SHA-256. |
 | `python/ocean_pipeline/sources.py` | Bounded OBIS staging using the occurrence ID cursor; refuses incomplete or repeated pages. |
-| `python/ocean_pipeline/publish_species.py` | Source-specific taxon, date, license and quality checks; generates eight non-loggerhead snapshots. |
+| `python/ocean_pipeline/publish_species.py` | Source-specific taxon, date, license and quality checks; generates thirteen non-loggerhead snapshots. |
 | `python/ocean_pipeline/publish_pilot.py` | Rebuilds the original loggerhead snapshot. |
 | `src/data/observations/*.json` | Compact, checked positions and citations bundled in the map. |
-| `src/data/speciesMetadata.json`, `src/data/index.ts` | Descriptive names and nine explicitly scoped display layers across seven species. |
-| `src/data/observationScenario.ts` | Computes one near-ocean-centered square per extract, enclosing every retained point. |
+| `src/data/speciesMetadata.json`, `src/data/index.ts` | Descriptive names and fourteen explicitly scoped extracts across seven species. |
+| `src/data/observationScenario.ts` | Computes an ocean-centered square per reviewed region or geographic group, enclosing its retained points. |
 | `src/MapView.tsx`, `src/data/flowData.ts` | Interactive map and illustrative curved animation over water. |
 
 Run **Refresh regional OBIS extracts** in GitHub Actions for a reviewable new
