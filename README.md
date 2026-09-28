@@ -1,7 +1,7 @@
 # Océano en Movimiento
 
-An experimental marine map in Spanish with seven species and 106
-**observation-derived** regional boxes. The 43 bounded extracts include multiple documented locations for every species.
+An experimental marine map in Spanish with ten species and
+**observation-derived** regional boxes. The 54 bounded extracts include multiple documented locations for every species.
 The older hand-authored habitat fixtures have been removed.
 Each turquoise square encloses the positions in one geographically close
 group from a checked, bounded OBIS extract, with up to a 100 km display margin per side. The underlying observations, original
@@ -34,8 +34,8 @@ geometry and may omit strands for which no marine path is found.
 
 In the species list, choose **Ver todos** beside a group to see its species
 together; the mobile selector offers the same three options. Fish include
-bluefin tuna, whale shark and swordfish; marine mammals currently include the
-two cetaceans; turtles are marine reptiles. There are no amphibian datasets.
+bluefin tuna, whale shark, swordfish and white shark; marine mammals include
+three cetaceans; the three turtles are marine reptiles. There are no amphibian datasets.
 Each species has its own color within a combined view, while pink remains the
 illustrative destination. **Mostrar cajas** hides or reveals both the observed
 and illustrative squares; the animated flows and center markers remain. Use
@@ -100,6 +100,17 @@ A repeated dataset link refers to a separate geographic query, not a new source.
 | *Caretta caretta* | [iNaturalist Marine, Japón](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2024 | 13 / 18 | CC BY-NC 4.0 |
 | *Caretta caretta* | [iNaturalist Marine, Australia oriental](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2024 | 129 / 194 | CC BY-NC 4.0 |
 | *Caretta caretta* | [iNaturalist Marine, Sudáfrica](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2024 | 48 / 80 | CC BY-NC 4.0 |
+| *Orcinus orca* | [iNaturalist Marine, Pacífico nororiental](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2024 | 2341 / 2850 | CC BY-NC 4.0 |
+| *Orcinus orca* | [iNaturalist Marine, Islandia y Noruega](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2024 | 229 / 253 | CC BY-NC 4.0 |
+| *Orcinus orca* | [iNaturalist Marine, Nueva Zelanda](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2024 | 203 / 224 | CC BY-NC 4.0 |
+| *Orcinus orca* | [iNaturalist Marine, Patagonia](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2024 | 72 / 101 | CC BY-NC 4.0 |
+| *Carcharodon carcharias* | [iNaturalist Marine, California](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2024 | 154 / 198 | CC BY-NC 4.0 |
+| *Carcharodon carcharias* | [iNaturalist Marine, Sudáfrica](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2024 | 64 / 85 | CC BY-NC 4.0 |
+| *Carcharodon carcharias* | [iNaturalist Marine, Australia oriental](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2024 | 6 / 10 | CC BY-NC 4.0 |
+| *Carcharodon carcharias* | [iNaturalist Marine, Atlántico estadounidense](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2024 | 20 / 26 | CC BY-NC 4.0 |
+| *Dermochelys coriacea* | [iNaturalist Marine, Atlántico estadounidense](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2024 | 98 / 137 | CC BY-NC 4.0 |
+| *Dermochelys coriacea* | [iNaturalist Marine, Caribe](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2024 | 126 / 259 | CC BY-NC 4.0 |
+| *Dermochelys coriacea* | [iNaturalist Marine, Australia](https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a), 2014–2024 | 14 / 20 | CC BY-NC 4.0 |
 
 The iNaturalist Marine source is credited to iNaturalist contributors / Marine
 Biological Association (2026), [doi:10.17031/0bbcjx](https://doi.org/10.17031/0bbcjx).
@@ -142,10 +153,14 @@ within 500 km; close records share a box and distant ones form separate boxes.
 The earlier regional extracts keep their reviewed one-box grouping. A separate box around one reported position still does not
 establish a habitat area. Search coverage is uneven; gaps on the map are
 unknown, not confirmed absences. Survey density cannot be compared directly
-with citizen reports. The map's scrollable region list zooms to each documented group. The new
-regions add 4,036 accepted records; across all 43 extracts the map displays
+with citizen reports. The map's scrollable region list zooms to each documented group. The
+original 43 extracts account for
 6,404 records in 106 boxes (13 bluefin, 14 whale shark, 12 swordfish,
-18 humpback, 19 bottlenose, 9 green turtle, 21 loggerhead).
+18 humpback, 19 bottlenose, 9 green turtle, 21 loggerhead). The eleven new
+extracts add 3,327 accepted records across three species, so the map now
+contains **9,731 accepted records from 54 scoped extracts**. These new
+sources all use the same iNaturalist Marine dataset license and citation;
+counts are records, not unique animals or survey effort.
 
 ## How the files fit
 
@@ -153,19 +168,19 @@ regions add 4,036 accepted records; across all 43 extracts the map displays
 | --- | --- |
 | `data/obis/*.jsonl.gz`, `*.manifest.json` | Bounded coordinate-checked staging extracts, query URLs, upstream QC counts, access time and SHA-256. The original API response is not retained in full. |
 | `python/ocean_pipeline/sources.py` | Bounded OBIS staging using the occurrence ID cursor; refuses incomplete or repeated pages. |
-| `python/ocean_pipeline/publish_species.py` | Source-specific taxon, date, license and quality checks; generates 42 regional snapshots, including five new loggerhead regions. |
+| `python/ocean_pipeline/publish_species.py` | Source-specific taxon, date, license and quality checks; generates 53 regional snapshots, including eleven scopes for the three additional species. |
 | `python/ocean_pipeline/publish_pilot.py` | Rebuilds the original loggerhead snapshot. |
-| `python/ocean_pipeline/curate.py` | Rebuilds the seven species-level clean files and a rejected-record audit ledger; `--check` detects drift. |
-| `src/data/curated/*.json` | Seven clean species files read by the website: checked positions, taxon and group, source scope, provenance and quality totals. |
+| `python/ocean_pipeline/curate.py` | Rebuilds the ten species-level clean files and a rejected-record audit ledger; `--check` detects drift. |
+| `src/data/curated/*.json` | Ten clean species files read by the website: checked positions, taxon and group, source scope, provenance and quality totals. |
 | `data/curated/rejected-records.jsonl` | Record-level reasons for rows excluded after staging. Upstream coordinate/duplicate rejects are counted in manifests. |
-| `src/data/speciesMetadata.json`, `src/data/index.ts` | Descriptive names and 43 explicitly scoped extracts across seven species. |
+| `src/data/speciesMetadata.json`, `src/data/index.ts` | Descriptive names and 54 explicitly scoped extracts across ten species. |
 | `src/data/observationScenario.ts` | Computes an ocean-centered square per reviewed region or geographic group, enclosing its retained points. |
 | `src/MapView.tsx`, `src/data/flowData.ts` | Interactive map and illustrative curved animation over water. |
 
 Run `PYTHONPATH=python python -m ocean_pipeline.curate` to regenerate the clean
 files from the committed extracts. The Python CI checks reproducibility with
 `--check`. **Refresh regional OBIS extracts** in GitHub Actions produces a
-reviewable artifact containing all staged extracts, manifests, seven clean
+reviewable artifact containing all staged extracts, manifests, ten clean
 files and the rejection ledger. Inspect counts, flags, source rights and
 positions before replacing the committed inputs and outputs. The workflow
 does not silently update the website. See `docs/curated-pipeline.md` for the

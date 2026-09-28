@@ -1,0 +1,153 @@
+{
+  "accessed_at_utc": "2026-09-28T16:00:37.339857+00:00",
+  "attribution": {
+    "datasets": [
+      {
+        "datasetName": [
+          "iNaturalist research-grade observations"
+        ],
+        "dataset_id": "eaea291a-1e1d-4382-b86f-ac3cc15b8d5a",
+        "license": [
+          "https://creativecommons.org/licenses/by/4.0/",
+          "https://creativecommons.org/licenses/by-nc/4.0/",
+          "https://creativecommons.org/publicdomain/zero/1.0/"
+        ],
+        "modified": [
+          "2026-07-14T11:07:45Z",
+          "2026-07-14T11:13:06Z",
+          "2025-06-06T14:51:58Z",
+          "2026-07-14T11:13:44Z",
+          "2026-07-14T11:13:26Z",
+          "2026-07-14T11:11:07Z",
+          "2026-05-25T17:42:07Z",
+          "2024-08-31T20:41:39Z",
+          "2026-03-12T07:42:41Z",
+          "2024-09-07T04:36:00Z",
+          "2024-01-30T00:34:14Z",
+          "2026-07-14T11:11:50Z",
+          "2025-06-30T14:35:33Z",
+          "2023-08-24T20:03:59Z",
+          "2026-07-14T11:15:05Z",
+          "2025-04-05T06:30:43Z",
+          "2026-02-12T12:49:13Z",
+          "2026-07-11T19:22:06Z",
+          "2026-07-14T11:10:39Z",
+          "2026-07-14T11:08:07Z",
+          "2026-07-15T13:44:52Z",
+          "2025-03-23T19:10:15Z",
+          "2023-08-24T20:03:18Z",
+          "2023-08-24T20:02:23Z",
+          "2025-06-30T14:20:59Z",
+          "2026-07-14T11:08:39Z"
+        ],
+        "records": 26,
+        "rightsHolder": [
+          "Roger Shaw",
+          "Nick Tepper",
+          "glide2277",
+          "Sean P. Myers",
+          "bchisholm90",
+          "Eman Khwaja",
+          "Brian Vigorito",
+          "nleav",
+          "Alex Lamoreaux",
+          "josiahmayo",
+          "windder",
+          "Will Kirby",
+          "rllucky",
+          "savhubbard",
+          "Carly Aulicky",
+          "Zac Peterson",
+          "liambren",
+          "David Remsen",
+          "harrier",
+          "Tonyia Johnson Stump",
+          "Yianni Laskaris",
+          "Doug Suitor",
+          "Devin",
+          "Larry Chen",
+          "jamesbury"
+        ]
+      }
+    ],
+    "note": "Review each contributing dataset's citation and license before reuse; missing fields are not a grant of rights.",
+    "obis": "OBIS (2026) Ocean Biodiversity Information System. Intergovernmental Oceanographic Commission of UNESCO. https://obis.org. Accessed: 2026-09-28"
+  },
+  "counts": {
+    "after_coordinate_qc": 26,
+    "api_total_reported": 26,
+    "duplicate_identifiers": 0,
+    "invalid_coordinates_or_outside_bounds": 0,
+    "raw_fetched": 26,
+    "without_duplicate_identifier": 0,
+    "written": 26
+  },
+  "extract": "output/probe/white-shark-us-atlantic.jsonl",
+  "extract_sha256": "1b80ec1e53c7954a7d6ce940928b41138d47753b116962656a56436615778f0c",
+  "qc_rule": "Reject missing, non-finite, out-of-range or outside-box coordinates; de-duplicate on repeated OBIS id or dataset_id + occurrenceID. Do not collapse equal positions.",
+  "query": {
+    "bounds_wgs84": [
+      -82,
+      30,
+      -66,
+      47
+    ],
+    "datasetid": "eaea291a-1e1d-4382-b86f-ac3cc15b8d5a",
+    "enddate": "2024-12-31",
+    "geometry": "POLYGON((-82 30,-66 30,-66 47,-82 47,-82 30))",
+    "max_records": 10000,
+    "page_size": 200,
+    "pages": [
+      {
+        "after": null,
+        "offset": 0,
+        "received": 26,
+        "size": 200,
+        "url": "https://api.obis.org/v3/occurrence?taxonid=105838&geometry=POLYGON%28%28-82+30%2C-66+30%2C-66+47%2C-82+47%2C-82+30%29%29&startdate=2014-01-01&enddate=2024-12-31&size=200&datasetid=eaea291a-1e1d-4382-b86f-ac3cc15b8d5a"
+      }
+    ],
+    "pagination": "after occurrence id",
+    "startdate": "2014-01-01",
+    "taxonid": "105838"
+  },
+  "schema_version": 1,
+  "source": {
+    "api": "https://api.obis.org/v3/occurrence",
+    "api_version": "v3",
+    "name": "Ocean Biodiversity Information System (OBIS)",
+    "record_modified_values": [
+      "2023-08-24T20:02:23Z",
+      "2023-08-24T20:03:18Z",
+      "2023-08-24T20:03:59Z",
+      "2024-01-30T00:34:14Z",
+      "2024-08-31T20:41:39Z",
+      "2024-09-07T04:36:00Z",
+      "2025-03-23T19:10:15Z",
+      "2025-04-05T06:30:43Z",
+      "2025-06-06T14:51:58Z",
+      "2025-06-30T14:20:59Z",
+      "2025-06-30T14:35:33Z",
+      "2026-02-12T12:49:13Z",
+      "2026-03-12T07:42:41Z",
+      "2026-05-25T17:42:07Z",
+      "2026-07-11T19:22:06Z",
+      "2026-07-14T11:07:45Z",
+      "2026-07-14T11:08:07Z",
+      "2026-07-14T11:08:39Z",
+      "2026-07-14T11:10:39Z",
+      "2026-07-14T11:11:07Z",
+      "2026-07-14T11:11:50Z",
+      "2026-07-14T11:13:06Z",
+      "2026-07-14T11:13:26Z",
+      "2026-07-14T11:13:44Z",
+      "2026-07-14T11:15:05Z",
+      "2026-07-15T13:44:52Z"
+    ],
+    "response_headers": [
+      {
+        "ETag": "W/\"ef04-nqBJcqVJgEBFu2dGIpmYNvrffxg\""
+      }
+    ]
+  },
+  "truncated_by_cap": false
+}

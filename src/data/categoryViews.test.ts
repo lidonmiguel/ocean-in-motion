@@ -28,9 +28,9 @@ describe('combined category views', () => {
       const boxesWithStrands = new Set(strands.map(strand => strand.id.slice(0, strand.id.lastIndexOf('-'))));
       expect(boxesWithStrands.size, category.group).toBe(category.view.habitat.current.length);
     }
-  });
+  }, 25_000);
 
   it('rejects unrelated species in a category', () => {
-    expect(() => categoryView('fish', [species[0], species[3]])).toThrow();
+    expect(() => categoryView('fish', [species[0], species.find(item => item.group === 'cetacean')!])).toThrow();
   });
 });

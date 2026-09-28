@@ -47,7 +47,7 @@ jobs:
             raise SystemExit(f'{slug}: incomplete extract')
           print(slug,manifest['counts']['written'],'staged',flush=True)
           PY
-      - name: Curate all seven species and audit rejected records
+      - name: Curate all species and audit rejected records
         run: PYTHONPATH=python python -m ocean_pipeline.curate --input-dir output/obis --output-root output
       - uses: actions/upload-artifact@v4
         with:

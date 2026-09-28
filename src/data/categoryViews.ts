@@ -15,10 +15,13 @@ export const categorySpeciesColors: Record<string, [number, number, number]> = {
   'atlantic-bluefin-tuna': [105, 237, 226],
   'whale-shark': [117, 181, 255],
   swordfish: [255, 207, 119],
+  'great-white-shark': [163, 221, 143],
   'humpback-whale': [105, 237, 226],
   'bottlenose-dolphin': [255, 207, 119],
+  'killer-whale': [117, 181, 255],
   'green-sea-turtle': [105, 237, 226],
-  'loggerhead-turtle': [117, 181, 255]
+  'loggerhead-turtle': [117, 181, 255],
+  'leatherback-turtle': [255, 207, 119]
 };
 
 export function categorySpeciesId(boxId: string) {
