@@ -20,6 +20,13 @@ labeled demonstration offset and has no empirical basis. It is shown only
 when its entire display square remains outside every current square of that
 species with a 35 km gap and its center has a marine route. Regions without a
 valid visual destination have no future square or animated route.
+The map starts with those illustrative squares and routes hidden. The user
+must enable **Mostrar ejemplo ilustrativo** to see them; selecting another
+species or group resets the control. `src/data/mapPresentation.ts` exposes
+the observation layer as `observedAreas` and the optional visual layer as
+`illustrativeDestinations`. The version 1 source contract still uses
+`habitat.current` and `habitat.future` internally for compatibility, but
+those fields do not turn an observation summary into a habitat model.
 
 | Field | Meaning |
 | --- | --- |

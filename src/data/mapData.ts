@@ -18,13 +18,17 @@ export function cellPolygons(cell: HabitatCell): Position[][] {
   return [rectangle(left, right)];
 }
 
-export function displayCells(dataset: SpeciesDataset, period: Period): DisplayCell[] {
-  return dataset.habitat[period].flatMap(cell => cellPolygons(cell).map((polygon, index) => ({
+export function displayAreas(cells: HabitatCell[]): DisplayCell[] {
+  return cells.flatMap(cell => cellPolygons(cell).map((polygon, index) => ({
     id: `${cell.id}-${index}`,
     polygon,
     suitability: cell.suitability,
     uncertainty: cell.uncertainty
   })));
+}
+
+export function displayCells(dataset: SpeciesDataset, period: Period): DisplayCell[] {
+  return displayAreas(dataset.habitat[period]);
 }
 
 export function suitabilityColor(value: number): [number, number, number, number] {

@@ -15,6 +15,10 @@ simulation.** They are explicit translations of the observed squares, not
 observations, migration tracks, predicted 2050 habitat, or a species
 distribution model. The no-overlap rule only prevents a simulated destination
 from covering known observation areas; it does not establish where animals will move.
+The map opens with **only the documented areas**. Select **Mostrar ejemplo
+ilustrativo** to add the pink destinations and strands; the control resets when
+you choose another species or group. This separates the source evidence from
+the optional visual demonstration.
 The square describes the extent of *reported positions in
 the scoped dataset*, not all habitat, animal abundance, or absence elsewhere.
 Land is drawn over the squares, hiding their portions on land without changing
@@ -41,8 +45,9 @@ together; the mobile selector offers the same three options. Fish include
 bluefin tuna, whale shark, swordfish and white shark; marine mammals include
 three cetaceans; the three turtles are marine reptiles. There are no amphibian datasets.
 Each species has its own color within a combined view, while pink remains the
-illustrative destination. **Mostrar cajas** hides or reveals both the observed
-and illustrative squares; the animated flows and center markers remain. Use
+illustrative destination when the example is enabled. **Mostrar cajas** hides
+or reveals the visible squares; the center markers remain. With the example
+enabled, animated strands remain when boxes are hidden. Use
 the scrollable region list to zoom to an individual source group. Viewing
 species together does not establish shared habitat or real migration paths.
 
@@ -181,6 +186,7 @@ counts are records, not unique animals or survey effort.
 | `data/curated/rejected-records.jsonl` | Record-level reasons for rows excluded after staging. Upstream coordinate/duplicate rejects are counted in manifests. |
 | `src/data/speciesMetadata.json`, `src/data/index.ts` | Descriptive names and 54 explicitly scoped extracts across ten species. |
 | `src/data/observationScenario.ts` | Computes an ocean-centered square per reviewed region or geographic group, enclosing its retained points. |
+| `src/data/mapPresentation.ts` | Separates observed areas from optional illustrative destinations at the map boundary; neither is a modeled forecast. |
 | `src/MapView.tsx`, `src/data/flowData.ts` | Interactive map and illustrative curved animation over water. |
 
 Run `PYTHONPATH=python python -m ocean_pipeline.curate` to regenerate the clean
