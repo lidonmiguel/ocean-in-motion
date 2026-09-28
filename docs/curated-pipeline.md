@@ -1,7 +1,7 @@
 # Pipeline de datos OBIS para el mapa
 
 La web lee **un archivo limpio por especie** en `src/data/curated/*.json`.
-Estos siete archivos proceden de 43 extractos OBIS acotados y versionados en
+Estos diez archivos proceden de 54 extractos OBIS acotados y versionados en
 `data/obis/`. La pipeline no calcula destinos ni convierte las simulaciones
 visuales actuales en predicciones.
 
@@ -15,7 +15,7 @@ visuales actuales en predicciones.
    dataset, fechas, posición, estado, banderas y derechos documentados. Se
    excluyen `ON_LAND`, incertidumbre declarada mayor de 300 km y, donde
    corresponda, `NO_ACCEPTED_NAME` con otro AphiaID.
-3. `curate.py` reúne los 43 ámbitos en siete archivos con observaciones
+3. `curate.py` reúne los 54 ámbitos en diez archivos con observaciones
    aceptadas, procedencia y contadores. Deja las exclusiones posteriores al
    staging en `data/curated/rejected-records.jsonl` (ámbito, ID OBIS, motivo).
 4. `src/data/curated.ts` comprueba la estructura, límites y contadores antes
@@ -33,7 +33,7 @@ npm run check
 
 `--check` falla si falta un archivo limpio o difiere de los extractos
 versionados. CI ejecuta esta comprobación. La acción **Refresh regional OBIS
-extracts** obtiene de nuevo los 43 ámbitos, construye los siete archivos y
+extracts** obtiene de nuevo los 54 ámbitos, construye los diez archivos y
 publica todo como artefacto para revisión. No modifica `main`: para actualizar
 la web hay que revisar y versionar juntos extractos, manifiestos y archivos
 limpios. Una nueva fecha de consulta puede cambiar los registros de OBIS.

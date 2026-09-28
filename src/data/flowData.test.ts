@@ -46,7 +46,7 @@ describe('illustrative distribution flows', () => {
         }
       }
     }
-  }, 15_000);
+  }, 25_000);
 
   it('makes most illustrative routes visible at overview scale', () => {
     const lengths = species.flatMap(dataset => displayFlows(dataset).map(flow => {

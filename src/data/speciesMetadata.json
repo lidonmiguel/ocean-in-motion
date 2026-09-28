@@ -54,5 +54,29 @@
     "commonNameEs": "Tortuga boba",
     "group": "reptile",
     "summaryEs": "Una tortuga marina que utiliza zonas costeras y oceánicas a lo largo de su vida."
+  },
+  {
+    "schemaVersion": 1,
+    "id": "killer-whale",
+    "scientificName": "Orcinus orca",
+    "commonNameEs": "Orca",
+    "group": "cetacean",
+    "summaryEs": "Avistamientos documentados en distintas zonas del Pacífico y el Atlántico."
+  },
+  {
+    "schemaVersion": 1,
+    "id": "great-white-shark",
+    "scientificName": "Carcharodon carcharias",
+    "commonNameEs": "Tiburón blanco",
+    "group": "fish",
+    "summaryEs": "Registros de distintas costas del Pacífico, el Atlántico y el océano Índico."
+  },
+  {
+    "schemaVersion": 1,
+    "id": "leatherback-turtle",
+    "scientificName": "Dermochelys coriacea",
+    "commonNameEs": "Tortuga laúd",
+    "group": "reptile",
+    "summaryEs": "Registros documentados en el Atlántico occidental, el Caribe y aguas australianas."
   }
 ]

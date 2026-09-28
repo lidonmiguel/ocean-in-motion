@@ -1,5 +1,5 @@
 import { parseSpeciesDataset, type SpeciesDataset } from './schema';
-import { isOcean, waterSegment } from './oceanRoutes';
+import { isOcean, oceanRoute, waterSegment } from './oceanRoutes';
 
 export type ObservationSnapshot = {
   species: string;
@@ -141,12 +141,17 @@ export function buildObservationScenario(
       // Try a visible translation first; shrink only for restricted coasts.
       const offsets: [number, number][] = [1, 0.75, 0.5, 0.25].flatMap(scale =>
         directions.map(([dx, dy]) => [dx * scale, dy * scale] as [number, number]));
+      const coastalOffsets: [number, number][] = [0.15, 0.1, 0.05].flatMap(scale =>
+        directions.map(([dx, dy]) => [dx * scale, dy * scale] as [number, number]));
       const marine = ([dx, dy]: [number, number]) => {
         const target: [number, number] = [box.center[0] + dx, box.center[1] + dy];
         return (dx !== 0 || dy !== 0) && Math.abs(target[1]) < 78 && isOcean(target);
       };
-      const chosenOffset = offsets.find(offset => marine(offset) && waterSegment(box.center, [box.center[0] + offset[0], box.center[1] + offset[1]]))
-        ?? offsets.find(marine);
+      const direct = (offset: [number, number]) => marine(offset)
+        && waterSegment(box.center, [box.center[0] + offset[0], box.center[1] + offset[1]]);
+      const chosenOffset = offsets.find(direct) ?? coastalOffsets.find(direct)
+        ?? [...offsets, ...coastalOffsets].find(offset => marine(offset)
+          && oceanRoute(box.center, [box.center[0] + offset[0], box.center[1] + offset[1]]) !== null);
       if (!chosenOffset) throw new Error(`No marine illustrative destination near ${boxId}`);
       const futureCenter: [number, number] = [box.center[0] + chosenOffset[0], box.center[1] + chosenOffset[1]];
       return { snapshot, records, box, boxId, chosenOffset,

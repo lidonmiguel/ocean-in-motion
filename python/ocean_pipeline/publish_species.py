@@ -132,6 +132,29 @@ for slug, (species, taxon, dataset, bounds, region, citation, license) in ADDITI
                          region=region, citation=citation, license=license,
                          cluster_diameter_km=500)
 
+# Distinct, nonoverlapping marine queries verified from complete OBIS responses.
+# The iNaturalist Marine dataset carries CC BY-NC 4.0 rights; these observations
+# are sightings, not tracks or systematic absence/presence surveys.
+NEW_SPECIES_REGIONS = {
+    "orca-pacific-nw": ("Orcinus orca", 137102, [-155, 45, -120, 65], "Pacífico nororiental · Alaska y costa noroeste"),
+    "orca-north-atlantic": ("Orcinus orca", 137102, [-30, 56, 25, 72], "Atlántico norte · Islandia y Noruega"),
+    "orca-new-zealand": ("Orcinus orca", 137102, [165, -49, 180, -30], "Pacífico suroccidental · Nueva Zelanda"),
+    "orca-patagonia": ("Orcinus orca", 137102, [-78, -58, -52, -38], "Atlántico sudoccidental · Patagonia"),
+    "white-shark-california": ("Carcharodon carcharias", 105838, [-130, 25, -114, 45], "Pacífico oriental · California"),
+    "white-shark-south-africa": ("Carcharodon carcharias", 105838, [15, -40, 37, -22], "Atlántico e Índico · Sudáfrica"),
+    "white-shark-east-australia": ("Carcharodon carcharias", 105838, [145, -42, 160, -22], "Mar de Tasmania · Australia oriental"),
+    "white-shark-us-atlantic": ("Carcharodon carcharias", 105838, [-82, 30, -66, 47], "Atlántico noroccidental · costa de EE. UU."),
+    "leatherback-us-atlantic": ("Dermochelys coriacea", 137209, [-82, 25, -60, 50], "Atlántico noroccidental · costa de EE. UU."),
+    "leatherback-caribbean": ("Dermochelys coriacea", 137209, [-90, 5, -60, 24.9], "Caribe"),
+    "leatherback-australia": ("Dermochelys coriacea", 137209, [110, -43, 155, -10], "Índico y Pacífico · Australia"),
+}
+
+for slug, (species, taxon, bounds, region) in NEW_SPECIES_REGIONS.items():
+    STUDIES[slug] = dict(species=species, taxon=taxon, dataset=INAT_DATASET,
+                         bounds=bounds, start="2014-01-01", end="2024-12-31",
+                         region=region, citation=INAT_CITATION, license="CC BY-NC 4.0",
+                         cluster_diameter_km=500)
+
 
 def build_snapshot(slug: str, extract_path: Path, manifest_path: Path) -> dict:
     study = STUDIES[slug]
@@ -201,7 +224,7 @@ def build_snapshot(slug: str, extract_path: Path, manifest_path: Path) -> dict:
                        else f"{observed_years[0]}–{observed_years[-1]}")
     return {
         "schemaVersion": 1, "species": study["species"], "aphiaID": study["taxon"],
-        "region": study["region"], "period": study.get("period", observed_period if slug in ADDITIONAL_REGIONS
+        "region": study["region"], "period": study.get("period", observed_period if slug in ADDITIONAL_REGIONS or slug in NEW_SPECIES_REGIONS
             else f'{study["start"][:4]}–{study["end"][:4]}'),
         **({"clusterDiameterKm": study["cluster_diameter_km"]} if "cluster_diameter_km" in study else {}),
         "boundsWgs84": study["bounds"],

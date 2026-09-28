@@ -1,7 +1,7 @@
 # Species map contract (v1)
 
 The displayed species are registered in `src/data/index.ts` from concise
-descriptive metadata and seven species-level clean OBIS files in
+descriptive metadata and ten species-level clean OBIS files in
 `src/data/curated/*.json`. Each clean file contains its checked observations,
 source scopes, quality totals and provenance; see `docs/curated-pipeline.md`.
 `src/data/observationScenario.ts` calculates one square for each scoped

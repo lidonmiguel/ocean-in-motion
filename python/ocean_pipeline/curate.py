@@ -123,6 +123,8 @@ def build_curated(input_dir: Path, metadata_path: Path) -> tuple[dict[str, dict]
                 })
         if not sources:
             raise ValueError(f"No source scopes for {item['id']}")
+        if len({snapshot["aphiaID"] for _, snapshot, _, _ in scopes[item["id"]]}) != 1:
+            raise ValueError(f"Conflicting AphiaIDs for {item['id']}")
         if len({row["obisId"] for row in observations}) != len(observations):
             raise ValueError(f"Duplicate OBIS occurrence between regions for {item['id']}")
         if all_ids & {row["obisId"] for row in observations}:
@@ -157,7 +159,7 @@ def outputs(input_dir: Path = ROOT / "data/obis", metadata_path: Path = ROOT / "
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Curate checked OBIS extracts into seven web datasets and an audit ledger")
+    parser = argparse.ArgumentParser(description="Curate checked OBIS extracts into species-level web datasets and an audit ledger")
     parser.add_argument("--input-dir", type=Path, default=ROOT / "data/obis")
     parser.add_argument("--metadata", type=Path, default=ROOT / "src/data/speciesMetadata.json")
     parser.add_argument("--output-root", type=Path, default=ROOT)

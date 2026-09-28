@@ -14,8 +14,8 @@ class SpeciesSnapshotTests(unittest.TestCase):
     def test_clean_species_files_match_complete_checked_extracts(self):
         curated = {path.stem: json.loads(path.read_text(encoding="utf-8"))
                    for path in (ROOT / "src/data/curated").glob("*.json")}
-        self.assertEqual(len(curated), 7)
-        self.assertEqual(sum(data["quality"]["accepted"] for data in curated.values()), 6404)
+        self.assertEqual(len(curated), 10)
+        self.assertEqual(sum(data["quality"]["accepted"] for data in curated.values()), 9731)
         for slug, study in STUDIES.items():
             with self.subTest(slug=slug):
                 raw = ROOT / f"data/obis/{slug}.jsonl.gz"

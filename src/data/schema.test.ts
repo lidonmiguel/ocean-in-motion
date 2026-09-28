@@ -3,12 +3,12 @@ import { species } from './index';
 import { parseSpeciesDataset } from './schema';
 
 describe('species dataset contract', () => {
-  it('registers seven species and a separate square for each scoped source', () => {
-    expect(species).toHaveLength(7);
-    expect(new Set(species.map(item => item.id)).size).toBe(7);
-    expect(species.filter(item => item.group === 'fish')).toHaveLength(3);
-    expect(species.filter(item => item.group === 'cetacean')).toHaveLength(2);
-    expect(species.filter(item => item.group === 'reptile')).toHaveLength(2);
+  it('registers ten species and a separate square for each scoped source', () => {
+    expect(species).toHaveLength(10);
+    expect(new Set(species.map(item => item.id)).size).toBe(10);
+    expect(species.filter(item => item.group === 'fish')).toHaveLength(4);
+    expect(species.filter(item => item.group === 'cetacean')).toHaveLength(3);
+    expect(species.filter(item => item.group === 'reptile')).toHaveLength(3);
     for (const data of species) {
       expect(parseSpeciesDataset(data)).toEqual(data);
       expect(data.provenance).toBe('observation-demo');
