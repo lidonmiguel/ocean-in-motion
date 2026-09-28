@@ -29,6 +29,16 @@ basemap and checked source snapshots are bundled, so the map needs no map tile
 account. The layout is responsive; water routes use coarse Natural Earth land
 geometry and may omit strands for which no marine path is found.
 
+In the species list, choose **Ver todos** beside a group to see its species
+together; the mobile selector offers the same three options. Fish include
+bluefin tuna, whale shark and swordfish; marine mammals currently include the
+two cetaceans; turtles are marine reptiles. There are no amphibian datasets.
+Each species has its own color within a combined view, while pink remains the
+illustrative destination. **Mostrar cajas** hides or reveals both the observed
+and illustrative squares; the animated flows and center markers remain. Use
+the scrollable region list to zoom to an individual source group. Viewing
+species together does not establish shared habitat or real migration paths.
+
 This public repository deploys through **GitHub Actions**: under **Settings →
 Pages**, choose **GitHub Actions** as the build source, then merge to `main`.
 The published map is at
