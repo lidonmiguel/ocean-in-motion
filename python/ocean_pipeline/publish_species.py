@@ -20,12 +20,13 @@ STUDIES = {
         license="CC BY-NC 4.0"),
     "tuna-ny-bight": dict(species="Thunnus thynnus", taxon=127029,
         dataset="ca78b5b9-d4e4-4ab0-bbe1-9f75659769e2", bounds=[-75,38,-69,43],
-        start="2014-01-01", end="2024-12-31", region="Atlántico noroccidental · plataforma frente a Nueva York",
+        start="2014-01-01", end="2024-12-31", period="2017–2018", uncertainty_decimals=3,
+        region="Atlántico noroccidental · plataforma frente a Nueva York",
         citation="Vukovich, M. (2022). Digital Aerial Baseline Survey of Marine Wildlife in Support of Offshore Wind Energy - OPA 2017. Version 1.3.0. OBIS-SEAMAP. https://doi.org/10.82144/2972b82d",
         license="CC BY 4.0"),
     "tuna-biscay": dict(species="Thunnus thynnus", taxon=127029,
         dataset="924c4d25-6358-44a3-8f4d-24086256ad3e", bounds=[-12,42,-1,50],
-        start="2014-01-01", end="2024-12-31", region="Golfo de Vizcaya · campañas PELAGIS",
+        start="2014-01-01", end="2024-12-31", period="2015–2021", region="Golfo de Vizcaya · campañas PELAGIS",
         citation="Doremus, G. and H. Peltier (2025). Observatoire Pelagis boat surveys 2003-2021. Version 2.1.0. OBIS-SEAMAP. https://doi.org/10.82144/c7d01c61",
         license="CC BY-NC 4.0"),
     "whale-shark-gulf": dict(species="Rhincodon typus", taxon=105847,
@@ -111,7 +112,7 @@ def build_snapshot(slug: str, extract_path: Path, manifest_path: Path) -> dict:
     uncertainties = [r["coordinateUncertaintyInMeters"] for r in records if r["coordinateUncertaintyInMeters"] is not None]
     return {
         "schemaVersion": 1, "species": study["species"], "aphiaID": study["taxon"],
-        "region": study["region"], "period": f'{study["start"][:4]}–{study["end"][:4]}',
+        "region": study["region"], "period": study.get("period", f'{study["start"][:4]}–{study["end"][:4]}'),
         "boundsWgs84": study["bounds"],
         "source": {"name": "Ocean Biodiversity Information System (OBIS)",
                    "datasetId": study["dataset"], "url": f'https://obis.org/dataset/{study["dataset"]}',
@@ -120,7 +121,8 @@ def build_snapshot(slug: str, extract_path: Path, manifest_path: Path) -> dict:
         "summary": {"count": len(records), "byYear": dict(sorted(Counter(r["eventDate"][:4] for r in records).items())),
                     "excluded": dict(excluded),
                     "unknownCoordinateUncertainty": len(records) - len(uncertainties),
-                    "uncertaintyKmRange": [round(min(uncertainties) / 1000), round(max(uncertainties) / 1000)] if uncertainties else None},
+                    "uncertaintyKmRange": [round(min(uncertainties) / 1000, study.get("uncertainty_decimals", 0)),
+                                           round(max(uncertainties) / 1000, study.get("uncertainty_decimals", 0))] if uncertainties else None},
         "observations": records,
     }
 

@@ -21,7 +21,7 @@ Run from the repository root, or first install
 `python -m pip install -e ./python` and omit `PYTHONPATH=python`.
 Both output paths are configurable,
 must differ, and must not exist. No taxon, area or baseline is selected by
-the generic command. The seven displayed layers use documented datasets;
+the generic command. The nine displayed regional boxes use documented datasets;
 see the README. If the box crosses the antimeridian, choose separate bounded
 runs. The hard cap is 10,000 raw API records; pages request at most 200.
 The cap applies before quality control and the manifest says when a reported
@@ -63,8 +63,8 @@ files are written; HTTP or malformed responses fail the run. Existing outputs
 are not overwritten.
 
 `python/ocean_pipeline/publish_species.py` additionally checks the exact
-species, dataset, dates, marine presence, flags and uncertainty for the six
-new snapshots. It retains `NO_DEPTH`, excludes `ON_LAND` and stated location
+species, dataset, dates, marine presence, flags and uncertainty for eight
+non-loggerhead snapshots. It retains `NO_DEPTH`, excludes `ON_LAND` and stated location
 uncertainty above 300 km, and reports these exclusions. Missing uncertainty
 remains unknown. Source rights are reviewed on each OBIS dataset metadata page.
 

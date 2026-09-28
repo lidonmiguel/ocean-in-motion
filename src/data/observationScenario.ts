@@ -7,7 +7,7 @@ export type ObservationSnapshot = {
   period: string;
   source: { datasetId: string; url: string; citation: string; license: string };
   summary: { count: number; uncertaintyKmRange: number[] | null; unknownCoordinateUncertainty?: number };
-  observations: { id: string; longitude: number; latitude: number; coordinateUncertaintyInMeters: number | null }[];
+  observations: { id: string; longitude: number; latitude: number; eventDate: string; coordinateUncertaintyInMeters: number | null }[];
 };
 
 export type SpeciesMetadata = Pick<SpeciesDataset, 'schemaVersion' | 'id' | 'scientificName' | 'commonNameEs' | 'group' | 'summaryEs'>;
@@ -72,6 +72,7 @@ export function buildObservationScenario(
   if (!snapshots.length || !simulationOffsetDeg.every(Number.isFinite)
       || simulationOffsetDeg.every(value => value === 0)) throw new Error('A scoped source and explicit nonzero demonstration offset are required');
   const ids = new Set<string>();
+  const observedYears = snapshots.flatMap(snapshot => snapshot.observations.map(row => row.eventDate.slice(0, 4))).sort();
   const boxes = snapshots.map(snapshot => {
     if (snapshot.species !== template.scientificName || snapshot.summary.count !== snapshot.observations.length
         || (snapshot.summary.uncertaintyKmRange !== null && snapshot.summary.uncertaintyKmRange.length !== 2)
@@ -88,8 +89,8 @@ export function buildObservationScenario(
   return parseSpeciesDataset({
     ...template,
     provenance: 'observation-demo', reviewStatus: 'illustrative', scenario: 'illustrative',
-    periods: { current: snapshots.map(s => s.period).join(' / '), future: 'Simulación visual' },
-    ecologyEs: 'La caja turquesa engloba los registros documentados de una región. La rosa y sus trazos muestran una traslación visual sin modelo predictivo.',
+    periods: { current: snapshots.length === 1 ? snapshots[0].period : `${observedYears[0]}–${observedYears.at(-1)}`, future: 'Simulación visual' },
+    ecologyEs: 'Cada caja turquesa engloba los registros documentados de una región. Las rosas y sus trazos muestran traslaciones visuales sin modelo predictivo.',
     citations: [
       ...snapshots.map(({ source }) => ({ id: source.datasetId, title: source.citation, url: source.url, role: 'occurrence' })),
       { id: 'visual-only', title: 'Traslación ilustrativa sin modelo predictivo', url: null, role: 'demonstration' }
