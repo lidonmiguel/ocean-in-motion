@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import * as maplibregl from 'maplibre-gl';
 import { MapLibreOverlay } from '@deck.gl/maplibre';
 import { GeoJsonLayer, PathLayer, PolygonLayer, ScatterplotLayer } from '@deck.gl/layers';
@@ -6,6 +6,7 @@ import { feature } from 'topojson-client';
 import world from 'world-atlas/land-110m.json';
 import { displayCells, suitabilityColor, type DisplayCell } from './data/mapData';
 import { displayFlows, displayStreamlines, flowSection, visibleFlowWindow, type DisplayFlow } from './data/flowData';
+import { categorySpeciesColors, categorySpeciesId } from './data/categoryViews';
 import type { SpeciesDataset } from './data/schema';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
@@ -27,7 +28,7 @@ function fallbackLandPath(position: (longitude: number, latitude: number) => [nu
   }).join('');
 }
 
-function illustrativeFallback(selected: SpeciesDataset, focusBoxId: string | null) {
+function illustrativeFallback(selected: SpeciesDataset, focusBoxId: string | null, streamlines: DisplayFlow[]) {
   const cells = [...selected.habitat.current, ...selected.habitat.future].filter(cell => !focusBoxId || cell.id === focusBoxId);
   const margin = focusBoxId ? 1 : 6;
   const west = Math.min(...cells.map(cell => cell.center[0] - cell.widthDeg / 2)) - margin;
@@ -42,12 +43,19 @@ function illustrativeFallback(selected: SpeciesDataset, focusBoxId: string | nul
     const [x, y] = position(lon, lat);
     return `${index ? 'L' : 'M'}${x.toFixed(1)},${y.toFixed(1)}`;
   }).join('');
+  const seen = new Set<string>();
   return { position, path, coast: fallbackLandPath(position),
-    current: displayCells(selected, 'current').filter(cell => !focusBoxId || cell.id === focusBoxId),
-    future: displayCells(selected, 'future').filter(cell => !focusBoxId || cell.id === focusBoxId),
+    current: displayCells(selected, 'current').filter(cell => !focusBoxId || cell.id.startsWith(`${focusBoxId}-`)),
+    future: displayCells(selected, 'future').filter(cell => !focusBoxId || cell.id.startsWith(`${focusBoxId}-`)),
     currentCenters: selected.habitat.current.filter(cell => !focusBoxId || cell.id === focusBoxId),
     futureCenters: selected.habitat.future.filter(cell => !focusBoxId || cell.id === focusBoxId),
-    strands: displayStreamlines(selected).filter((strand, index) => index % 3 === 0 && (!focusBoxId || strand.id.startsWith(`${focusBoxId}-`))) };
+    strands: streamlines.filter((strand, index) => {
+      const boxId = strand.id.slice(0, strand.id.lastIndexOf('-'));
+      if (focusBoxId && boxId !== focusBoxId) return false;
+      const first = !seen.has(boxId);
+      seen.add(boxId);
+      return first || index % 3 === 0;
+    }) };
 }
 
 const graticule = {
@@ -67,11 +75,16 @@ const graticule = {
 };
 
 type Hover = { x: number; y: number; cell: DisplayCell; period: 'Actual' | '2050' } | null;
-type Endpoint = { position: [number, number]; period: 'current' | 'future' };
+type Endpoint = { position: [number, number]; period: 'current' | 'future'; boxId: string };
 type Segment = { path: [number, number][]; color: [number, number, number, number] };
 type Trail = { path: [number, number][] };
 
-function flowSegments(flow: DisplayFlow, start: number, end: number): Segment[] {
+function speciesColor(boxId: string): [number, number, number] {
+  return categorySpeciesColors[categorySpeciesId(boxId)] ?? [105, 237, 226];
+}
+
+function flowSegments(flow: DisplayFlow, start: number, end: number, grouped: boolean): Segment[] {
+  const sourceColor = grouped ? speciesColor(flow.id) : [60, 237, 224];
   return Array.from({ length: 6 }, (_, index) => {
     const from = Math.max(start, index / 6);
     const to = Math.min(end, (index + 1) / 6);
@@ -80,17 +93,22 @@ function flowSegments(flow: DisplayFlow, start: number, end: number): Segment[] 
     return {
       path: flowSection(flow, from, to),
       color: [
-        Math.round(60 + 195 * blend),
-        Math.round(237 - 130 * blend),
-        Math.round(224 - 44 * blend),
+        Math.round(sourceColor[0] * (1 - blend) + 255 * blend),
+        Math.round(sourceColor[1] * (1 - blend) + 107 * blend),
+        Math.round(sourceColor[2] * (1 - blend) + 180 * blend),
         230
       ] as [number, number, number, number]
     };
   }).filter((segment): segment is Segment => segment !== null);
 }
 
-export function MapView({ selected, focusBoxId = null }: { selected: SpeciesDataset; focusBoxId?: string | null }) {
+export function MapView({ selected, focusBoxId = null, showBoxes = true }: {
+  selected: SpeciesDataset; focusBoxId?: string | null; showBoxes?: boolean
+}) {
   const observed = selected.provenance === 'observation-demo';
+  const grouped = selected.id.startsWith('all-');
+  const flows = useMemo(() => displayFlows(selected), [selected]);
+  const streamlines = useMemo(() => displayStreamlines(selected, grouped ? 6 : 18), [selected, grouped]);
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
   const overlay = useRef<MapLibreOverlay | null>(null);
@@ -180,27 +198,27 @@ export function MapView({ selected, focusBoxId = null }: { selected: SpeciesData
 
     const currentCells = displayCells(selected, 'current');
     const futureCells = displayCells(selected, 'future');
-    const flows = displayFlows(selected);
-    const streamlines = displayStreamlines(selected);
     const visibleFlows = flows.filter(flow => streamlines.some(strand =>
       selected.provenance !== 'reviewed-model' ? strand.id.startsWith(`${flow.id}-`) : strand.id === flow.id
     ));
     const endpoints: Endpoint[] = visibleFlows.flatMap(flow => [
-      { position: flow.from, period: 'current' },
-      { position: flow.to, period: 'future' }
+      { position: flow.from, period: 'current', boxId: flow.id },
+      { position: flow.to, period: 'future', boxId: flow.id }
     ]);
     const layers = [
         ...background,
+        ...(showBoxes ? [
         new PolygonLayer<DisplayCell>({
           id: 'current-habitat',
           data: currentCells,
           getPolygon: d => d.polygon,
           getFillColor: d => {
+            if (grouped) return [...speciesColor(d.id), 46];
             if (observed) return [58, 227, 212, 46];
             const [red, green, blue] = suitabilityColor(d.suitability ?? 0.5);
             return [red, green, blue, 38];
           },
-          getLineColor: [114, 231, 222, 108],
+          getLineColor: d => grouped ? [...speciesColor(d.id), 180] : [114, 231, 222, 108],
           getLineWidth: 0.8,
           lineWidthUnits: 'pixels',
           filled: true,
@@ -224,12 +242,14 @@ export function MapView({ selected, focusBoxId = null }: { selected: SpeciesData
           stroked: true,
           pickable: true,
           onHover: info => setHover(info.object ? { x: info.x, y: info.y, cell: info.object, period: '2050' } : null)
-        }),
+        })] : []),
         new ScatterplotLayer<Endpoint>({
           id: 'flow-endpoints',
           data: endpoints,
           getPosition: d => d.position,
-          getFillColor: d => d.period === 'current' ? [125, 245, 230, 255] : [255, 140, 205, 255],
+          getFillColor: d => d.period === 'current'
+            ? grouped ? [...speciesColor(d.boxId), 255] : [125, 245, 230, 255]
+            : [255, 140, 205, 255],
           getLineColor: [9, 33, 48, 255],
           lineWidthUnits: 'pixels',
           getLineWidth: 1.5,
@@ -262,7 +282,7 @@ export function MapView({ selected, focusBoxId = null }: { selected: SpeciesData
         const [start, end] = visibleFlowWindow(progress);
         if (end - start < 0.015) return;
         trails.push({ path: flowSection(flow, start, end) });
-        segments.push(...flowSegments(flow, start, end));
+        segments.push(...flowSegments(flow, start, end, grouped));
       });
       overlay.current?.setProps({ layers: [
         ...layers,
@@ -291,25 +311,25 @@ export function MapView({ selected, focusBoxId = null }: { selected: SpeciesData
     };
     frame = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(frame);
-  }, [selected, ready, observed]);
+  }, [selected, ready, observed, grouped, showBoxes, flows, streamlines]);
 
-  const demoFallback = webglUnavailable ? illustrativeFallback(selected, focusBoxId) : null;
-  const hoveredSource = hover && selected.occurrence?.sources.find(source => hover.cell.id === source.boxId);
+  const demoFallback = webglUnavailable ? illustrativeFallback(selected, focusBoxId, streamlines) : null;
+  const hoveredSource = hover && selected.occurrence?.sources.find(source => hover.cell.id.startsWith(`${source.boxId}-`));
 
   return (
     <div className="map-wrap">
-      <div ref={container} className="map-canvas" style={webglUnavailable ? { display: 'none' } : undefined} role="img" aria-label={observed ? `${selected.occurrence?.sources.length} cajas calculadas con ${selected.occurrence?.count} avistamientos de ${selected.commonNameEs}; las cajas rosas y los trazos son una simulación sin predicción científica` : `Mapa de hábitat ilustrativo actual y en 2050 para ${selected.commonNameEs}; los trazos aparecen en las celdas actuales y avanzan hasta las de 2050, sin rutas permanentes ni trayectorias reales de animales`} />
+      <div ref={container} className="map-canvas" style={webglUnavailable ? { display: 'none' } : undefined} role="img" aria-label={observed ? `${selected.occurrence?.sources.length} zonas de ${selected.occurrence?.count} avistamientos de ${selected.commonNameEs}; ${showBoxes ? 'cajas visibles' : 'cajas ocultas'}; los trazos son una simulación sin predicción científica` : `Mapa de hábitat ilustrativo actual y en 2050 para ${selected.commonNameEs}; los trazos aparecen en las celdas actuales y avanzan hasta las de 2050, sin rutas permanentes ni trayectorias reales de animales`} />
       {demoFallback && <div className="fallback-map">
-        <svg viewBox={`0 0 ${fallbackWidth} ${fallbackHeight}`} role="img" aria-label={observed ? `${selected.occurrence?.sources.length} cajas de ${selected.occurrence?.count} avistamientos y destinos simulados de ${selected.commonNameEs}` : `Flujos ilustrativos para ${selected.commonNameEs}; los trazos no son rutas reales`}>
+        <svg viewBox={`0 0 ${fallbackWidth} ${fallbackHeight}`} role="img" aria-label={observed ? `${selected.occurrence?.sources.length} zonas de ${selected.occurrence?.count} avistamientos y destinos simulados de ${selected.commonNameEs}; cajas ${showBoxes ? 'visibles' : 'ocultas'}` : `Flujos ilustrativos para ${selected.commonNameEs}; los trazos no son rutas reales`}>
           <rect width={fallbackWidth} height={fallbackHeight} fill="#071c29" />
           <path d={demoFallback.coast} fill="#bbccc9" fillRule="evenodd" stroke="#e1eae0" strokeWidth="1.5" />
-          {demoFallback.current.map(cell => <path key={`now-${cell.id}`} d={`${demoFallback.path(cell.polygon)}Z`} fill="#50dcdd" fillOpacity=".13" stroke="#83e9df" strokeOpacity=".5" />)}
-          {demoFallback.future.map(cell => <path key={`then-${cell.id}`} d={`${demoFallback.path(cell.polygon)}Z`} fill="#fc9dcb" fillOpacity=".09" stroke="#f7a3cd" strokeOpacity=".5" />)}
-          {demoFallback.strands.map((strand, index) => <path key={strand.id} className="fallback-flow" d={demoFallback.path(strand.path)} pathLength="1" style={{ animationDelay: `${-(index * .618 % 1) * 5}s` }} />)}
-          {demoFallback.currentCenters.map(cell => { const [x, y] = demoFallback.position(...cell.center); return <circle key={`start-${cell.id}`} cx={x} cy={y} r="3" fill="#83f3e5" />; })}
+          {showBoxes && demoFallback.current.map(cell => <path key={`now-${cell.id}`} d={`${demoFallback.path(cell.polygon)}Z`} fill={grouped ? `rgb(${speciesColor(cell.id).join(',')})` : '#50dcdd'} fillOpacity=".13" stroke={grouped ? `rgb(${speciesColor(cell.id).join(',')})` : '#83e9df'} strokeOpacity=".5" />)}
+          {showBoxes && demoFallback.future.map(cell => <path key={`then-${cell.id}`} d={`${demoFallback.path(cell.polygon)}Z`} fill="#fc9dcb" fillOpacity=".09" stroke="#f7a3cd" strokeOpacity=".5" />)}
+          {demoFallback.strands.map((strand, index) => <path key={strand.id} className="fallback-flow" d={demoFallback.path(strand.path)} pathLength="1" style={{ animationDelay: `${-(index * .618 % 1) * 5}s`, stroke: grouped ? `rgb(${speciesColor(strand.id).join(',')})` : undefined }} />)}
+          {demoFallback.currentCenters.map(cell => { const [x, y] = demoFallback.position(...cell.center); return <circle key={`start-${cell.id}`} cx={x} cy={y} r="3" fill={grouped ? `rgb(${speciesColor(cell.id).join(',')})` : '#83f3e5'} />; })}
           {demoFallback.futureCenters.map(cell => { const [x, y] = demoFallback.position(...cell.center); return <circle key={`end-${cell.id}`} cx={x} cy={y} r="3" fill="#ffa8d0" />; })}
         </svg>
-        <div className="fallback-note">{observed ? 'Cajas calculadas con OBIS · destinos ilustrativos' : 'Flujo ilustrativo'} · vista simplificada sin WebGL2</div>
+        <div className="fallback-note">{observed ? `${showBoxes ? 'Cajas calculadas con OBIS' : 'Cajas ocultas'} · destinos ilustrativos` : 'Flujo ilustrativo'} · vista simplificada sin WebGL2</div>
       </div>}
       <div className="map-stamp"><span className="pulse" /> {observed ? `${selected.occurrence?.count} AVISTAMIENTOS REALES · FUTURO ILUSTRATIVO` : 'FLUJOS ILUSTRATIVOS · DATOS SINTÉTICOS'}</div>
       <div className="map-credit">Siluetas geográficas: Natural Earth / world-atlas · Sin teselas externas</div>

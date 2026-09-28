@@ -42,7 +42,8 @@ export function displayFlows(dataset: SpeciesDataset): DisplayFlow[] {
 
 // A decorative field for illustrative scenarios. Each observed square is
 // connected to its translated visual pair, never an inferred migration route.
-export function displayStreamlines(dataset: SpeciesDataset): DisplayFlow[] {
+export function displayStreamlines(dataset: SpeciesDataset, strandsPerBox = 18): DisplayFlow[] {
+  if (!Number.isInteger(strandsPerBox) || strandsPerBox < 2) throw new Error('Invalid display strand count');
   if (dataset.provenance === 'reviewed-model') {
     return displayFlows(dataset).flatMap((flow, index) => {
       const path = oceanRoute(flow.from, flow.to);
@@ -59,9 +60,10 @@ export function displayStreamlines(dataset: SpeciesDataset): DisplayFlow[] {
   return pairs.flatMap((pair, pairIndex) => {
     const { current, future } = pair;
 
-    return Array.from({ length: 18 }, (_, strand) => {
+    return Array.from({ length: strandsPerBox }, (_, strand) => {
       // Equal offsets at both ends preserve the direction of the paired centers.
-      const lane = (strand - 8.5) / 8.5;
+      const midpoint = (strandsPerBox - 1) / 2;
+      const lane = (strand - midpoint) / Math.max(midpoint, 8.5);
       const wave = Math.sin(pairIndex * 2.7 + strand * 1.9);
       const longitudeOffset = lane * Math.min(current.widthDeg, future.widthDeg) * 0.31;
       const latitudeOffset = wave * Math.min(current.heightDeg, future.heightDeg) * 0.29;
@@ -74,7 +76,7 @@ export function displayStreamlines(dataset: SpeciesDataset): DisplayFlow[] {
         future.center[1] + latitudeOffset
       ];
       const path = oceanRoute(from, to);
-      return path ? { id: `${current.id}-${strand}`, from, to, path: curveOceanRoute(path, pairIndex * 18 + strand) } : null;
+      return path ? { id: `${current.id}-${strand}`, from, to, path: curveOceanRoute(path, pairIndex * strandsPerBox + strand) } : null;
     }).filter((flow): flow is DisplayFlow => flow !== null);
   });
 }
