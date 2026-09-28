@@ -1,4 +1,4 @@
-name: Probe multi-species occurrence geography
+name: Stage multi-species candidate extracts
 
 on:
   pull_request:
@@ -9,87 +9,60 @@ permissions:
   contents: read
 
 jobs:
-  probe:
+  extract:
     runs-on: ubuntu-latest
     steps:
-      - name: Inspect regional OBIS sources
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Stage bounded direct-sighting candidates
         run: |
-          python - <<'PY'
-          import collections, json, time, urllib.parse, urllib.request
+          PYTHONPATH=python python - <<'PY'
           from pathlib import Path
+          from ocean_pipeline.sources import SourcePlan, stage_obis_occurrences
 
-          studies = {
-            'whale-shark': (105847, {
-              'gulf-california': (-114,18,-99,31), 'galapagos': (-94,-5,-84,4),
-              'red-sea': (32,12,44,30), 'mozambique': (34,-28,45,-10),
-              'philippines': (114,0,131,22), 'ningaloo': (111,-26,117,-17),
-              'maldives': (70,-2,76,9)}),
-            'swordfish': (127094, {
-              'iberian-atlantic': (-15,32,-4,46), 'eastern-med': (14,30,37,43),
-              'us-east': (-82,25,-66,44), 'california': (-126,28,-114,44),
-              'south-africa': (15,-38,38,-25), 'west-indian': (40,-30,70,5)}),
-            'humpback': (137092, {
-              'hawaii': (-162,18,-153,24), 'alaska': (-160,52,-130,64),
-              'california': (-127,31,-116,48), 'east-australia': (145,-40,158,-12),
-              'iceland': (-28,62,-12,68), 'south-africa': (13,-38,39,-22)}),
-            'bottlenose': (137111, {
-              'gulf-mexico': (-98,18,-80,32), 'europe-atlantic': (-13,35,2,53),
-              'california': (-127,29,-115,44), 'east-australia': (145,-40,158,-11),
-              'south-africa': (28,-36,47,-10), 'east-caribbean': (-73,8,-59,24)}),
-            'green-turtle': (137206, {
-              'hawaii': (-162,18,-153,24), 'east-australia': (141,-30,155,-10),
-              'red-sea': (32,12,44,30), 'east-pacific': (-94,-5,-78,16),
-              'seychelles': (45,-12,61,0), 'east-caribbean': (-73,8,-59,24)}),
-            'loggerhead': (137205, {
-              'florida': (-85,23,-74,35), 'eastern-med': (14,30,37,43),
-              'northwest-atlantic': (-75,34,-60,50), 'japan': (125,24,148,46),
-              'east-australia': (145,-40,158,-14), 'south-africa': (16,-38,37,-25)}),
-          }
           inat='eaea291a-1e1d-4382-b86f-ac3cc15b8d5a'
-          def get(url):
-            for attempt in range(4):
-              try:
-                with urllib.request.urlopen(urllib.request.Request(url,headers={'Accept':'application/json','User-Agent':'ocean-in-motion/0.1'}),timeout=45) as response:
-                  return json.load(response)
-              except Exception:
-                if attempt == 3: raise
-                time.sleep(2*(attempt+1))
-          metadata={}
-          def source(dataset):
-            if dataset not in metadata:
-              payload=get('https://api.obis.org/v3/dataset/'+dataset)
-              m=payload['results'][0] if payload.get('results') else payload
-              metadata[dataset]={key:m.get(key) for key in ('title','citation','intellectualrights','abstract')}
-              metadata[dataset]['abstract']=(metadata[dataset]['abstract'] or '')[:900]
-            return metadata[dataset]
-          result={}
-          for species,(taxon,regions) in studies.items():
-            result[species]={}
-            for slug,(w,s,e,n) in regions.items():
-              geometry=f'POLYGON(({w} {s},{e} {s},{e} {n},{w} {n},{w} {s}))'
-              params={'taxonid':taxon,'geometry':geometry,'startdate':'2014-01-01','enddate':'2024-12-31','size':120}
-              payload=get('https://api.obis.org/v3/occurrence?'+urllib.parse.urlencode(params))
-              rows=payload.get('results',[])
-              summary=[]
-              for dataset,count in collections.Counter(row.get('dataset_id') for row in rows).most_common(4):
-                if not dataset: continue
-                scoped=get('https://api.obis.org/v3/occurrence?'+urllib.parse.urlencode({**params,'datasetid':dataset,'size':1}))
-                sample=next(row for row in rows if row.get('dataset_id')==dataset)
-                summary.append({'dataset_id':dataset,'sample_count':count,'regional_total':scoped.get('total'),
-                  **source(dataset),'example':{key:sample.get(key) for key in ('scientificName','eventDate','decimalLongitude','decimalLatitude','basisOfRecord','occurrenceStatus','coordinateUncertaintyInMeters','flags','marine','absence','dropped')}})
-              if not any(item['dataset_id']==inat for item in summary):
-                scoped=get('https://api.obis.org/v3/occurrence?'+urllib.parse.urlencode({**params,'datasetid':inat,'size':1}))
-                if scoped.get('total'):
-                  sample=scoped['results'][0]
-                  summary.append({'dataset_id':inat,'sample_count':0,'regional_total':scoped.get('total'),
-                    **source(inat),'example':{key:sample.get(key) for key in ('scientificName','eventDate','decimalLongitude','decimalLatitude','basisOfRecord','occurrenceStatus','coordinateUncertaintyInMeters','flags','marine','absence','dropped')}})
-              result[species][slug]={'bounds':[w,s,e,n],'total':payload.get('total'),'datasets':summary}
-              print(species,slug,payload.get('total'),[(d['regional_total'],d['title']) for d in summary],flush=True)
+          studies={
+            'whale-shark-gulf-cal': (105847,inat,(-114,18,-99,31)),
+            'whale-shark-philippines': (105847,inat,(114,0,131,22)),
+            'whale-shark-ningaloo': (105847,inat,(111,-26,117,-17)),
+            'whale-shark-mozambique': (105847,inat,(34,-28,45,-10)),
+            'whale-shark-maldives': (105847,inat,(70,-2,76,9)),
+            'swordfish-east-med': (127094,inat,(14,30,37,43)),
+            'swordfish-us-east': (127094,inat,(-82,25,-66,44)),
+            'swordfish-california': (127094,inat,(-126,28,-114,44)),
+            'swordfish-iberian': (127094,inat,(-15,32,-6.1,46)),
+            'humpback-hawaii': (137092,'9fc29d00-9998-4059-b0bd-f28cfa63a793',(-162,18,-153,24)),
+            'humpback-alaska': (137092,'1dc828ac-d522-4ebf-97c3-e5a521b4509c',(-160,52,-130,64)),
+            'humpback-australia': (137092,'3f424661-13b8-4008-8600-091bf43037ad',(145,-40,158,-12)),
+            'humpback-south-africa': (137092,inat,(13,-38,39,-22)),
+            'humpback-iceland': (137092,inat,(-28,62,-12,68)),
+            'bottlenose-gulf-mexico': (137111,'717041c4-dd72-4457-8963-4e63e8e35710',(-98,18,-80,32)),
+            'bottlenose-california': (137111,'86ffd903-47fc-435e-a42e-f3aec79c2d03',(-127,29,-115,44)),
+            'bottlenose-australia': (137111,inat,(145,-40,158,-11)),
+            'bottlenose-caribbean': (137111,inat,(-73,8,-59,24)),
+            'bottlenose-south-africa': (137111,inat,(28,-36,47,-10)),
+            'green-turtle-hawaii': (137206,'57fc04f0-c9f9-4d2f-9030-bf7281afda92',(-162,18,-153,24)),
+            'green-turtle-australia': (137206,'0ae49e4e-ad4c-4b89-be2e-b6003c0038ec',(141,-30,155,-10)),
+            'green-turtle-red-sea': (137206,inat,(32,12,44,30)),
+            'green-turtle-seychelles': (137206,inat,(45,-12,61,0)),
+            'green-turtle-galapagos': (137206,inat,(-92,-3,-89,2)),
+            'loggerhead-florida': (137205,'eeb7f0c5-dfe8-4a07-b273-6dc4a634cc14',(-85,23,-74,35)),
+            'loggerhead-east-med': (137205,'7225dc7b-dd9a-4bec-b689-f084a49d13eb',(14,30,37,43)),
+            'loggerhead-japan': (137205,inat,(125,24,148,46)),
+            'loggerhead-australia': (137205,inat,(145,-40,158,-14)),
+            'loggerhead-south-africa': (137205,inat,(16,-38,37,-25)),
+          }
           Path('output').mkdir(exist_ok=True)
-          Path('output/species-geography-probe.json').write_text(json.dumps(result,ensure_ascii=False,indent=2))
+          for slug,(taxon,dataset,bounds) in studies.items():
+            manifest=stage_obis_occurrences(
+              SourcePlan(str(taxon),bounds,'2014-01-01','2024-12-31',10000,dataset_id=dataset),
+              Path(f'output/{slug}.jsonl'),Path(f'output/{slug}.manifest.json'))
+            print(slug,manifest['counts']['written'],manifest['truncated_by_cap'],flush=True)
           PY
       - uses: actions/upload-artifact@v4
         with:
-          name: species-geography-probe
-          path: output/species-geography-probe.json
+          name: multi-species-candidate-extracts
+          path: output/
           retention-days: 3
