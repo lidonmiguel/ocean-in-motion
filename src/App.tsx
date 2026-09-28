@@ -23,9 +23,10 @@ export default function App() {
   const [selectedId, setSelectedId] = useState('loggerhead-turtle');
   const [focusBoxId, setFocusBoxId] = useState<string | null>(null);
   const [showBoxes, setShowBoxes] = useState(true);
+  const [showIllustration, setShowIllustration] = useState(false);
   const category = categories.find(item => item.selectionId === selectedId);
   const selected = category?.view ?? species.find(item => item.id === selectedId) ?? species[0];
-  const selectView = (id: string) => { setSelectedId(id); setFocusBoxId(null); };
+  const selectView = (id: string) => { setSelectedId(id); setFocusBoxId(null); setShowIllustration(false); };
   const observationLayer = selected.provenance === 'observation-demo';
   const observations = selected.occurrence;
   const sourceCount = observations?.sources.length ?? 0;
@@ -43,7 +44,7 @@ export default function App() {
         <aside className="selector-panel" aria-label="Selección de especie">
           <div className="section-index">01 / EXPLORAR</div>
           <h2>Un océano.<br /><em>Muchas posibilidades.</em></h2>
-          <p className="intro">Cada caja actual agrupa avistamientos regionales. Los destinos rosas quedan fuera de las zonas observadas de la especie, pero siguen siendo una simulación visual, no una predicción.</p>
+          <p className="intro">Cada caja agrupa posiciones notificadas en una zona consultada de OBIS. Puedes activar un ejemplo visual de destinos y flujos; no representa migraciones observadas ni predicciones.</p>
           <div className="fine-rule" />
           <label className="field-label" htmlFor="species-select">SELECCIONA ESPECIE O GRUPO</label>
           <select id="species-select" value={selectedId} onChange={event => selectView(event.target.value)}>
@@ -58,21 +59,21 @@ export default function App() {
               </button>)}
             </div>)}
           </div>
-          <div className="sidebar-bottom"><span className="asterisk">✳</span><p>{observationLayer ? <><strong>Origen real, destino ilustrativo.</strong> {sourceCount === 1 ? 'La caja actual se calcula' : 'Las cajas actuales se calculan'} con OBIS. El desplazamiento no se ha predicho con un modelo.</> : <><strong>Datos de demostración.</strong> Celdas inventadas. No son previsiones científicas ni trayectorias reales.</>}</p></div>
+          <div className="sidebar-bottom"><span className="asterisk">✳</span><p>{observationLayer ? <><strong>Registros documentados.</strong> {sourceCount === 1 ? 'La caja se calcula' : 'Las cajas se calculan'} con OBIS.{showIllustration ? ' Los destinos y trazos añadidos son una simulación visual, sin modelo predictivo.' : ''}</> : <><strong>Datos de demostración.</strong> Celdas inventadas. No son previsiones científicas ni trayectorias reales.</>}</p></div>
         </aside>
 
-        <section className="map-panel" aria-label="Comparación de hábitat">
-          <div className="map-header"><div><div className="section-index">02 / VISUALIZAR</div><h2>{observationLayer ? 'Avistamientos y simulación visual' : 'Un océano en movimiento'}</h2></div><label className="box-toggle"><input type="checkbox" checked={showBoxes} onChange={event => setShowBoxes(event.target.checked)} /><span>Mostrar cajas</span></label><div className="coordinates">{observationLayer ? <>REGISTROS <span>→</span> SIMULACIÓN</> : <>ACTUAL <span>→</span> 2050</>}</div></div>
+        <section className="map-panel" aria-label={observationLayer ? 'Mapa de zonas con registros' : 'Comparación de hábitat'}>
+          <div className="map-header"><div><div className="section-index">02 / VISUALIZAR</div><h2>{observationLayer ? showIllustration ? 'Registros y ejemplo ilustrativo' : 'Zonas con registros documentados' : 'Un océano en movimiento'}</h2></div><div className="map-controls"><label className="box-toggle"><input type="checkbox" checked={showBoxes} onChange={event => setShowBoxes(event.target.checked)} /><span>Mostrar cajas</span></label>{observationLayer && <label className="box-toggle illustration-toggle"><input type="checkbox" checked={showIllustration} onChange={event => setShowIllustration(event.target.checked)} /><span>Mostrar ejemplo ilustrativo</span></label>}</div><div className="coordinates">{observationLayer ? showIllustration ? <>REGISTROS <span>→</span> EJEMPLO</> : 'SOLO REGISTROS' : <>ACTUAL <span>→</span> 2050</>}</div></div>
           <div className="map-stage">
-            <MapView selected={selected} focusBoxId={focusBoxId} showBoxes={showBoxes} />
-            <div className="flow-key" aria-label={observationLayer ? `${showBoxes ? 'Cajas de color con registros' : 'Centros de zonas con registros'}; rosa: destino simulado` : 'Turquesa: hábitat actual; rosa: hábitat en 2050'}>
+            <MapView selected={selected} focusBoxId={focusBoxId} showBoxes={showBoxes} showIllustration={showIllustration} />
+            {(!observationLayer || showIllustration) && <div className="flow-key" aria-label={observationLayer ? `${showBoxes ? 'Cajas de color con registros' : 'Centros de zonas con registros'}; rosa: destino ilustrativo sin predicción` : 'Turquesa: hábitat actual; rosa: hábitat en 2050'}>
               <span><i className="flow-key-current" /> {observationLayer ? showBoxes ? 'Zonas con registros' : 'Centros de zonas' : 'Actual'}</span>
               <b aria-hidden="true">→</b>
-              <span><i className="flow-key-future" /> {observationLayer ? 'Simulación' : '2050'}</span>
-              <small>{observationLayer ? 'FUTURO NO PREDICHO' : 'TRAMA ILUSTRATIVA'}</small>
-            </div>
+              <span><i className="flow-key-future" /> {observationLayer ? 'Ejemplo ilustrativo' : '2050'}</span>
+              <small>{observationLayer ? 'SIN PREDICCIÓN NI RUTAS OBSERVADAS' : 'TRAMA ILUSTRATIVA'}</small>
+            </div>}
           </div>
-          <div className="map-bottom"><div className="legend">{observationLayer ? <span className="legend-title">{sourceCount} {sourceCount === 1 ? 'ZONA' : 'ZONAS'} {showBoxes ? '' : 'OCULTAS'} · {observations?.count} REGISTROS · {visualDestinations} DESTINOS ILUSTRATIVOS</span> : <><span className="legend-title">IDONEIDAD DEL HÁBITAT · ÍNDICE ILUSTRATIVO</span><div className="legend-swatches"><i /><i /><i /></div><span className="legend-values">BAJA <b>→</b> ALTA</span></>}</div><span className="map-hint">Arrastra para mover · desplázate para ampliar</span></div>
+          <div className="map-bottom"><div className="legend">{observationLayer ? <span className="legend-title">{sourceCount} {sourceCount === 1 ? 'ZONA' : 'ZONAS'} {showBoxes ? '' : 'OCULTAS'} · {observations?.count} REGISTROS{showIllustration ? ` · ${visualDestinations} DESTINOS ILUSTRATIVOS` : ''}</span> : <><span className="legend-title">IDONEIDAD DEL HÁBITAT · ÍNDICE ILUSTRATIVO</span><div className="legend-swatches"><i /><i /><i /></div><span className="legend-values">BAJA <b>→</b> ALTA</span></>}</div><span className="map-hint">Arrastra para mover · desplázate para ampliar</span></div>
         </section>
 
         <aside className="info-panel" aria-label="Información de la especie">
@@ -82,15 +83,15 @@ export default function App() {
           <p className="latin">{category ? `${category.members.length} especies` : selected.scientificName}</p>
           <div className="cyan-rule" />
           <p className="lead">{selected.summaryEs}</p>
-          <p className="body-copy">{selected.ecologyEs}</p>
+          <p className="body-copy">{observationLayer && !showIllustration ? 'Las cajas resumen posiciones notificadas dentro de consultas regionales. No delimitan todo el hábitat ni muestran desplazamientos de animales.' : selected.ecologyEs}</p>
           <div className="metric-block"><div><span>{observationLayer ? 'REGISTROS' : 'PERIODOS'}</span><strong>{observationLayer ? observations?.count : 'Actual → 2050'}</strong></div><div><span>{observationLayer ? 'PERIODO' : 'ESCENARIO'}</span><strong>{observationLayer ? selected.periods.current : 'SSP2-4.5'}</strong></div></div>
           {category && <div className="category-key" aria-label="Colores de las especies">{category.members.map(member => <span key={member.id}><i style={{ backgroundColor: `rgb(${categorySpeciesColors[member.id].join(',')})` }} />{member.commonNameEs}</span>)}</div>}
-          {observationLayer ? <div className="info-note"><span className="note-icon">◎</span><div><strong>{showBoxes ? `Cómo leer ${sourceCount === 1 ? 'esta caja' : 'estas cajas'}` : 'Cajas ocultas'}</strong><p>{showBoxes ? `${boxLabel} ${observations?.count} registros en zonas documentadas. Cada caja resume posiciones notificadas, no todo el hábitat.` : 'Los puntos marcan centros de zonas con registros; los trazos siguen visibles. Puedes mostrar las cajas de nuevo.'} Los destinos rosas evitan las zonas actuales de esa especie; son ilustrativos y algunas zonas no tienen destino visual.{category ? ' Las especies se muestran juntas, sin inferir que comparten hábitat.' : ''}</p></div></div> : <div className="info-note"><span className="note-icon">↗</span><div><strong>Cómo leer este flujo</strong><p>Cada trazo conecta dos celdas por agua. No es la ruta de un animal.</p></div></div>}
-          {observationLayer && observations && <div className="source-note"><strong>Zonas documentadas</strong>{sourceCount > 1 && <button type="button" className="all-regions" onClick={() => setFocusBoxId(null)} disabled={!focusBoxId}>Ver todas</button>}<div className="source-regions" role="region" aria-label="Zonas documentadas">{observations.sources.map(source => <div className="source-region" key={source.boxId}><button type="button" className="source-region-button" aria-pressed={focusBoxId === source.boxId} onClick={() => setFocusBoxId(source.boxId)}>{source.region} ↗</button><span>{source.count} {source.count === 1 ? 'registro' : 'registros'} · {coordinateUncertainty(source.coordinateUncertaintyKmRange)}{source.simulationOffsetDeg === null ? ' · sin destino ilustrativo' : ''}</span></div>)}</div><details><summary>Fuentes y licencias</summary>{observations.sources.filter((source, index, sources) => sources.findIndex(other => other.datasetId === source.datasetId) === index).map(source => <p key={source.datasetId}><a href={source.sourceUrl} target="_blank" rel="noreferrer">{source.citation}</a> · {source.license}.</p>)}</details></div>}
-          <div className="status-label">● {observationLayer ? `ZONAS DE AVISTAMIENTOS REALES · ${showBoxes ? 'CAJAS VISIBLES' : 'CAJAS OCULTAS'} · FUTURO SIMULADO` : 'MODO ILUSTRATIVO · SIN VALIDACIÓN CIENTÍFICA'}</div>
+          {observationLayer ? <div className="info-note"><span className="note-icon">◎</span><div><strong>{showBoxes ? `Cómo leer ${sourceCount === 1 ? 'esta caja' : 'estas cajas'}` : 'Cajas ocultas'}</strong><p>{showBoxes ? `${boxLabel} ${observations?.count} registros en zonas documentadas. Cada caja resume posiciones notificadas, no todo el hábitat.` : 'Los puntos marcan centros de zonas con registros. Puedes mostrar las cajas de nuevo.'}{showIllustration ? ' Los destinos rosas y los trazos son elecciones visuales, no rutas observadas ni predicciones; algunas zonas no tienen destino.' : ' Activa el ejemplo ilustrativo solo si quieres ver destinos y trazos inventados.'}{category ? ' Las especies se muestran juntas, sin inferir que comparten hábitat.' : ''}</p></div></div> : <div className="info-note"><span className="note-icon">↗</span><div><strong>Cómo leer este flujo</strong><p>Cada trazo conecta dos celdas por agua. No es la ruta de un animal.</p></div></div>}
+          {observationLayer && observations && <div className="source-note"><strong>Zonas documentadas</strong>{sourceCount > 1 && <button type="button" className="all-regions" onClick={() => setFocusBoxId(null)} disabled={!focusBoxId}>Ver todas</button>}<div className="source-regions" role="region" aria-label="Zonas documentadas">{observations.sources.map(source => <div className="source-region" key={source.boxId}><button type="button" className="source-region-button" aria-pressed={focusBoxId === source.boxId} onClick={() => setFocusBoxId(source.boxId)}>{source.region} ↗</button><span>{source.count} {source.count === 1 ? 'registro' : 'registros'} · {coordinateUncertainty(source.coordinateUncertaintyKmRange)}{showIllustration && source.simulationOffsetDeg === null ? ' · sin destino ilustrativo' : ''}</span></div>)}</div><details><summary>Fuentes y licencias</summary>{observations.sources.filter((source, index, sources) => sources.findIndex(other => other.datasetId === source.datasetId) === index).map(source => <p key={source.datasetId}><a href={source.sourceUrl} target="_blank" rel="noreferrer">{source.citation}</a> · {source.license}.</p>)}</details></div>}
+          <div className="status-label">● {observationLayer ? `ZONAS CON REGISTROS OBIS · ${showBoxes ? 'CAJAS VISIBLES' : 'CAJAS OCULTAS'} · ${showIllustration ? 'EJEMPLO ILUSTRATIVO ACTIVADO, SIN PREDICCIÓN' : 'EJEMPLO ILUSTRATIVO OCULTO'}` : 'MODO ILUSTRATIVO · SIN VALIDACIÓN CIENTÍFICA'}</div>
         </aside>
       </main>
-      <footer className="site-footer"><span>OCÉANO EN MOVIMIENTO © PROTOTIPO</span><span>{observationLayer ? 'Avistamientos: OBIS · Futuro ilustrativo' : 'Sin afirmaciones científicas'}</span><span>{category ? category.shortLabel.toUpperCase() : `${String(species.findIndex(item => item.id === selected.id) + 1).padStart(2, '0')} / ${String(species.length).padStart(2, '0')}`}</span></footer>
+      <footer className="site-footer"><span>OCÉANO EN MOVIMIENTO © PROTOTIPO</span><span>{observationLayer ? `Registros: OBIS · Ejemplo ilustrativo ${showIllustration ? 'visible' : 'oculto'}` : 'Sin afirmaciones científicas'}</span><span>{category ? category.shortLabel.toUpperCase() : `${String(species.findIndex(item => item.id === selected.id) + 1).padStart(2, '0')} / ${String(species.length).padStart(2, '0')}`}</span></footer>
     </div>
   );
 }

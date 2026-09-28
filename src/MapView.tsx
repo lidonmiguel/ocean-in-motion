@@ -4,9 +4,10 @@ import { MapLibreOverlay } from '@deck.gl/maplibre';
 import { GeoJsonLayer, PathLayer, PolygonLayer, ScatterplotLayer } from '@deck.gl/layers';
 import { feature } from 'topojson-client';
 import world from 'world-atlas/land-110m.json';
-import { displayCells, suitabilityColor, type DisplayCell } from './data/mapData';
+import { displayAreas, suitabilityColor, type DisplayCell } from './data/mapData';
 import { displayFlows, displayStreamlines, flowSection, visibleFlowWindow, type DisplayFlow } from './data/flowData';
 import { categorySpeciesColors, categorySpeciesId } from './data/categoryViews';
+import { mapPresentation, type MapPresentation } from './data/mapPresentation';
 import type { SpeciesDataset } from './data/schema';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
@@ -28,8 +29,10 @@ function fallbackLandPath(position: (longitude: number, latitude: number) => [nu
   }).join('');
 }
 
-function illustrativeFallback(selected: SpeciesDataset, focusBoxId: string | null, streamlines: DisplayFlow[]) {
-  const cells = [...selected.habitat.current, ...selected.habitat.future].filter(cell => !focusBoxId || cell.id === focusBoxId);
+function illustrativeFallback(presentation: MapPresentation, focusBoxId: string | null, streamlines: DisplayFlow[]) {
+  const currentAreas = presentation.kind === 'observations' ? presentation.observedAreas : presentation.currentHabitat;
+  const destinationAreas = presentation.kind === 'observations' ? presentation.illustrativeDestinations : presentation.futureHabitat;
+  const cells = [...currentAreas, ...destinationAreas].filter(cell => !focusBoxId || cell.id === focusBoxId);
   const margin = focusBoxId ? 1 : 6;
   const west = Math.min(...cells.map(cell => cell.center[0] - cell.widthDeg / 2)) - margin;
   const east = Math.max(...cells.map(cell => cell.center[0] + cell.widthDeg / 2)) + margin;
@@ -44,10 +47,10 @@ function illustrativeFallback(selected: SpeciesDataset, focusBoxId: string | nul
     return `${index ? 'L' : 'M'}${x.toFixed(1)},${y.toFixed(1)}`;
   }).join('');
   return { position, path, coast: fallbackLandPath(position),
-    current: displayCells(selected, 'current').filter(cell => !focusBoxId || cell.id.startsWith(`${focusBoxId}-`)),
-    future: displayCells(selected, 'future').filter(cell => !focusBoxId || cell.id.startsWith(`${focusBoxId}-`)),
-    currentCenters: selected.habitat.current.filter(cell => !focusBoxId || cell.id === focusBoxId),
-    futureCenters: selected.habitat.future.filter(cell => !focusBoxId || cell.id === focusBoxId),
+    current: displayAreas(currentAreas).filter(cell => !focusBoxId || cell.id.startsWith(`${focusBoxId}-`)),
+    future: displayAreas(destinationAreas).filter(cell => !focusBoxId || cell.id.startsWith(`${focusBoxId}-`)),
+    currentCenters: currentAreas.filter(cell => !focusBoxId || cell.id === focusBoxId),
+    futureCenters: destinationAreas.filter(cell => !focusBoxId || cell.id === focusBoxId),
     strands: streamlines.filter(strand => {
       const boxId = strand.id.slice(0, strand.id.lastIndexOf('-'));
       return !focusBoxId || boxId === focusBoxId;
@@ -70,7 +73,7 @@ const graticule = {
   ]
 };
 
-type Hover = { x: number; y: number; cell: DisplayCell; period: 'Actual' | '2050' } | null;
+type Hover = { x: number; y: number; cell: DisplayCell; period: 'observed' | 'illustrative' | 'current-model' | 'future-model' } | null;
 type Endpoint = { position: [number, number]; period: 'current' | 'future'; boxId: string };
 type Segment = { path: [number, number][]; color: [number, number, number, number] };
 type Trail = { path: [number, number][] };
@@ -99,13 +102,16 @@ function flowSegments(flow: DisplayFlow, start: number, end: number, grouped: bo
   }).filter((segment): segment is Segment => segment !== null);
 }
 
-export function MapView({ selected, focusBoxId = null, showBoxes = true }: {
-  selected: SpeciesDataset; focusBoxId?: string | null; showBoxes?: boolean
+export function MapView({ selected, focusBoxId = null, showBoxes = true, showIllustration = false }: {
+  selected: SpeciesDataset; focusBoxId?: string | null; showBoxes?: boolean; showIllustration?: boolean
 }) {
   const observed = selected.provenance === 'observation-demo';
   const grouped = selected.id.startsWith('all-');
-  const flows = useMemo(() => displayFlows(selected), [selected]);
-  const streamlines = useMemo(() => displayStreamlines(selected, grouped ? 6 : 12), [selected, grouped]);
+  const presentation = useMemo(() => mapPresentation(selected, showIllustration), [selected, showIllustration]);
+  const currentAreas = presentation.kind === 'observations' ? presentation.observedAreas : presentation.currentHabitat;
+  const destinationAreas = presentation.kind === 'observations' ? presentation.illustrativeDestinations : presentation.futureHabitat;
+  const flows = useMemo(() => observed && !showIllustration ? [] : displayFlows(selected), [selected, observed, showIllustration]);
+  const streamlines = useMemo(() => observed && !showIllustration ? [] : displayStreamlines(selected, grouped ? 6 : 12), [selected, observed, grouped, showIllustration]);
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
   const overlay = useRef<MapLibreOverlay | null>(null);
@@ -151,7 +157,7 @@ export function MapView({ selected, focusBoxId = null, showBoxes = true }: {
 
   useEffect(() => {
     if (!ready || !map.current) return;
-    const cells = [...selected.habitat.current, ...selected.habitat.future].filter(cell => !focusBoxId || cell.id === focusBoxId);
+    const cells = [...currentAreas, ...destinationAreas].filter(cell => !focusBoxId || cell.id === focusBoxId);
     const lonMargin = focusBoxId ? 1 : 6;
     const latMargin = focusBoxId ? 1 : 5;
     const west = Math.min(...cells.map(cell => cell.center[0] - cell.widthDeg / 2));
@@ -163,7 +169,7 @@ export function MapView({ selected, focusBoxId = null, showBoxes = true }: {
       maxZoom: focusBoxId ? 5.4 : 3.4,
       duration: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 750
     });
-  }, [selected, ready, focusBoxId]);
+  }, [currentAreas, destinationAreas, ready, focusBoxId]);
 
   useEffect(() => {
     if (!ready || !overlay.current) return;
@@ -195,15 +201,15 @@ export function MapView({ selected, focusBoxId = null, showBoxes = true }: {
       onHover: () => setHover(null)
     });
 
-    const currentCells = displayCells(selected, 'current');
-    const futureCells = displayCells(selected, 'future');
+    const currentCells = displayAreas(currentAreas);
+    const futureCells = displayAreas(destinationAreas);
     const visibleFlows = flows.filter(flow => streamlines.some(strand =>
       selected.provenance !== 'reviewed-model' ? strand.id.startsWith(`${flow.id}-`) : strand.id === flow.id
     ));
-    const endpoints: Endpoint[] = visibleFlows.flatMap(flow => [
-      { position: flow.from, period: 'current', boxId: flow.id },
-      { position: flow.to, period: 'future', boxId: flow.id }
-    ]);
+    const endpoints: Endpoint[] = [
+      ...currentAreas.map(area => ({ position: area.center, period: 'current' as const, boxId: area.id })),
+      ...visibleFlows.map(flow => ({ position: flow.to, period: 'future' as const, boxId: flow.id }))
+    ];
     const layers = [
         graticuleLayer,
         ...(showBoxes ? [
@@ -223,8 +229,9 @@ export function MapView({ selected, focusBoxId = null, showBoxes = true }: {
           filled: true,
           stroked: true,
           pickable: true,
-          onHover: info => setHover(info.object ? { x: info.x, y: info.y, cell: info.object, period: 'Actual' } : null)
+          onHover: info => setHover(info.object ? { x: info.x, y: info.y, cell: info.object, period: observed ? 'observed' : 'current-model' } : null)
         }),
+        ...(destinationAreas.length ? [
         new PolygonLayer<DisplayCell>({
           id: 'future-habitat',
           data: futureCells,
@@ -240,8 +247,8 @@ export function MapView({ selected, focusBoxId = null, showBoxes = true }: {
           filled: true,
           stroked: true,
           pickable: true,
-          onHover: info => setHover(info.object ? { x: info.x, y: info.y, cell: info.object, period: '2050' } : null)
-        })] : []),
+          onHover: info => setHover(info.object ? { x: info.x, y: info.y, cell: info.object, period: observed ? 'illustrative' : 'future-model' } : null)
+        })] : [])] : []),
         new ScatterplotLayer<Endpoint>({
           id: 'flow-endpoints',
           data: endpoints,
@@ -311,16 +318,16 @@ export function MapView({ selected, focusBoxId = null, showBoxes = true }: {
     };
     frame = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(frame);
-  }, [selected, ready, observed, grouped, showBoxes, flows, streamlines]);
+  }, [selected, currentAreas, destinationAreas, ready, observed, grouped, showBoxes, flows, streamlines]);
 
-  const demoFallback = webglUnavailable ? illustrativeFallback(selected, focusBoxId, streamlines) : null;
+  const demoFallback = webglUnavailable ? illustrativeFallback(presentation, focusBoxId, streamlines) : null;
   const hoveredSource = hover && selected.occurrence?.sources.find(source => hover.cell.id.startsWith(`${source.boxId}-`));
 
   return (
     <div className="map-wrap">
-      <div ref={container} className="map-canvas" style={webglUnavailable ? { display: 'none' } : undefined} role="img" aria-label={observed ? `${selected.occurrence?.sources.length} zonas de ${selected.occurrence?.count} avistamientos de ${selected.commonNameEs}; ${showBoxes ? 'cajas visibles' : 'cajas ocultas'}; los trazos son una simulación sin predicción científica` : `Mapa de hábitat ilustrativo actual y en 2050 para ${selected.commonNameEs}; los trazos aparecen en las celdas actuales y avanzan hasta las de 2050, sin rutas permanentes ni trayectorias reales de animales`} />
+      <div ref={container} className="map-canvas" style={webglUnavailable ? { display: 'none' } : undefined} role="img" aria-label={observed ? `${selected.occurrence?.sources.length} zonas con ${selected.occurrence?.count} registros de ${selected.commonNameEs}; ${showBoxes ? 'cajas visibles' : 'cajas ocultas'}; ${showIllustration ? 'destinos y trazos ilustrativos, sin predicción científica' : 'solo se muestran las zonas documentadas'}` : `Mapa de hábitat ilustrativo actual y en 2050 para ${selected.commonNameEs}; los trazos aparecen en las celdas actuales y avanzan hasta las de 2050, sin rutas permanentes ni trayectorias reales de animales`} />
       {demoFallback && <div className="fallback-map">
-        <svg viewBox={`0 0 ${fallbackWidth} ${fallbackHeight}`} role="img" aria-label={observed ? `${selected.occurrence?.sources.length} zonas de ${selected.occurrence?.count} avistamientos y destinos simulados de ${selected.commonNameEs}; cajas ${showBoxes ? 'visibles' : 'ocultas'}` : `Flujos ilustrativos para ${selected.commonNameEs}; los trazos no son rutas reales`}>
+        <svg viewBox={`0 0 ${fallbackWidth} ${fallbackHeight}`} role="img" aria-label={observed ? `${selected.occurrence?.sources.length} zonas con ${selected.occurrence?.count} registros de ${selected.commonNameEs}; cajas ${showBoxes ? 'visibles' : 'ocultas'}; ${showIllustration ? 'destinos ilustrativos visibles' : 'ilustración oculta'}` : `Flujos ilustrativos para ${selected.commonNameEs}; los trazos no son rutas reales`}>
           <rect width={fallbackWidth} height={fallbackHeight} fill="#071c29" />
           {showBoxes && demoFallback.current.map(cell => <path key={`now-${cell.id}`} d={`${demoFallback.path(cell.polygon)}Z`} fill={grouped ? `rgb(${speciesColor(cell.id).join(',')})` : '#50dcdd'} fillOpacity=".13" stroke={grouped ? `rgb(${speciesColor(cell.id).join(',')})` : '#83e9df'} strokeOpacity=".5" />)}
           {showBoxes && demoFallback.future.map(cell => <path key={`then-${cell.id}`} d={`${demoFallback.path(cell.polygon)}Z`} fill="#fc9dcb" fillOpacity=".09" stroke="#f7a3cd" strokeOpacity=".5" />)}
@@ -329,13 +336,13 @@ export function MapView({ selected, focusBoxId = null, showBoxes = true }: {
           {demoFallback.futureCenters.map(cell => { const [x, y] = demoFallback.position(...cell.center); return <circle key={`end-${cell.id}`} cx={x} cy={y} r="3" fill="#ffa8d0" />; })}
           <path d={demoFallback.coast} fill="#bbccc9" fillRule="evenodd" stroke="#e1eae0" strokeWidth="1.5" />
         </svg>
-        <div className="fallback-note">{observed ? `${showBoxes ? 'Cajas calculadas con OBIS' : 'Cajas ocultas'} · destinos ilustrativos` : 'Flujo ilustrativo'} · vista simplificada sin WebGL2</div>
+        <div className="fallback-note">{observed ? `${showBoxes ? 'Cajas calculadas con OBIS' : 'Cajas ocultas'}${showIllustration ? ' · destinos ilustrativos' : ' · solo observaciones'}` : 'Flujo ilustrativo'} · vista simplificada sin WebGL2</div>
       </div>}
-      <div className="map-stamp"><span className="pulse" /> {observed ? `${selected.occurrence?.count} AVISTAMIENTOS REALES · FUTURO ILUSTRATIVO` : 'FLUJOS ILUSTRATIVOS · DATOS SINTÉTICOS'}</div>
+      <div className="map-stamp"><span className="pulse" /> {observed ? `${selected.occurrence?.count} REGISTROS OBIS · ${showIllustration ? 'DESTINOS ILUSTRATIVOS, SIN PREDICCIÓN' : 'SOLO ZONAS DOCUMENTADAS'}` : 'FLUJOS ILUSTRATIVOS · DATOS SINTÉTICOS'}</div>
       <div className="map-credit">Siluetas geográficas: Natural Earth / world-atlas · Sin teselas externas</div>
       {hover && <div className="map-tooltip" style={{ left: hover.x + 14, top: hover.y + 14 }}>
-        <strong>{observed ? (hover.period === 'Actual' ? 'Caja de avistamientos' : 'Caja simulada') : `Celda ilustrativa · ${hover.period}`}</strong>
-        {observed ? <span>{hover.period === 'Actual' ? `${hoveredSource?.region ?? 'Región documentada'} · ${hoveredSource?.count ?? 0} registros; no implica presencia en toda la caja` : 'Desplazamiento visual, sin predicción de 2050'}</span> : <><span>Idoneidad: {Math.round((hover.cell.suitability ?? 0) * 100)} / 100</span><span>Incertidumbre: {Math.round((hover.cell.uncertainty ?? 0) * 100)} / 100</span></>}
+        <strong>{observed ? (hover.period === 'observed' ? 'Caja de registros' : 'Destino ilustrativo') : `Celda ilustrativa · ${hover.period === 'current-model' ? 'Actual' : '2050'}`}</strong>
+        {observed ? <span>{hover.period === 'observed' ? `${hoveredSource?.region ?? 'Región documentada'} · ${hoveredSource?.count ?? 0} registros; no implica presencia en toda la caja` : 'Desplazamiento visual, sin predicción científica'}</span> : <><span>Idoneidad: {Math.round((hover.cell.suitability ?? 0) * 100)} / 100</span><span>Incertidumbre: {Math.round((hover.cell.uncertainty ?? 0) * 100)} / 100</span></>}
       </div>}
     </div>
   );
