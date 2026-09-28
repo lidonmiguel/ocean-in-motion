@@ -33,7 +33,7 @@ export const speciesDatasetSchema = z.object({
       citation: z.string().min(1),
       license: z.string().min(1),
       count: z.number().int().positive(),
-      simulationOffsetDeg: position,
+      simulationOffsetDeg: position.nullable(),
       coordinateUncertaintyKmRange: z.tuple([z.number().nonnegative(), z.number().nonnegative()]).nullable(),
       observedBoundsWgs84: z.tuple([z.number(), z.number(), z.number(), z.number()])
     }).strict()).min(1)
@@ -44,7 +44,7 @@ export const speciesDatasetSchema = z.object({
     url: z.url().nullable(),
     role: z.enum(['demonstration', 'occurrence', 'environment', 'method', 'model'])
   }).strict()).min(1),
-  habitat: z.object({ current: z.array(cell).min(1), future: z.array(cell).min(1) }).strict(),
+  habitat: z.object({ current: z.array(cell).min(1), future: z.array(cell) }).strict(),
   movementVectors: z.array(z.object({
     from: position,
     to: position,
@@ -63,11 +63,16 @@ export const speciesDatasetSchema = z.object({
         || [...dataset.habitat.current, ...dataset.habitat.future].some(c => c.suitability !== undefined || c.uncertainty !== undefined)
         || dataset.occurrence.count !== dataset.occurrence.sources.reduce((sum, source) => sum + source.count, 0)
         || dataset.habitat.current.length !== dataset.occurrence.sources.length
-        || dataset.habitat.future.length !== dataset.occurrence.sources.length) {
+        || dataset.habitat.future.length !== dataset.occurrence.sources.filter(source => source.simulationOffsetDeg !== null).length
+        || dataset.occurrence.sources.some(source =>
+          (source.simulationOffsetDeg !== null) !== dataset.habitat.future.some(cell => cell.id === source.boxId))) {
       ctx.addIssue({ code: 'custom', message: 'Observation demos require occurrence metadata and cannot invent suitability', path: ['occurrence'] });
     }
   } else if (dataset.occurrence) {
     ctx.addIssue({ code: 'custom', message: 'Occurrence metadata belongs to an observation demo', path: ['occurrence'] });
+  }
+  if (dataset.provenance !== 'observation-demo' && dataset.habitat.future.length === 0) {
+    ctx.addIssue({ code: 'custom', message: 'A model or fixture requires future cells', path: ['habitat', 'future'] });
   }
   if (dataset.provenance === 'reviewed-model') {
     const roles = new Set(dataset.citations.map(c => c.role));

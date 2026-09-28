@@ -4,16 +4,18 @@ An experimental marine map in Spanish with ten species and
 **observation-derived** regional boxes. The 54 bounded extracts include multiple documented locations for every species.
 The older hand-authored habitat fixtures have been removed.
 Each turquoise square encloses the positions in one geographically close
-group from a checked, bounded OBIS extract, with up to a 100 km display margin per side. The underlying observations, original
+group from a checked, bounded OBIS extract, with up to a 250 km display margin per side. The underlying observations, original
 extract, query manifest and source citation are versioned in this repository.
-The animated strands spread across each display square and reach the paired
-illustrative square; their width and destination spacing are visual choices,
+Where a separate marine destination can be drawn outside all current squares
+for that species, animated strands reach it. Their width and destination spacing are visual choices,
 not measured movement or estimated habitat.
 
 **The pink destinations and animated water-only strands are still a visual
 simulation.** They are explicit translations of the observed squares, not
 observations, migration tracks, predicted 2050 habitat, or a species
-distribution model. The square describes the extent of *reported positions in
+distribution model. The no-overlap rule only prevents a simulated destination
+from covering known observation areas; it does not establish where animals will move.
+The square describes the extent of *reported positions in
 the scoped dataset*, not all habitat, animal abundance, or absence elsewhere.
 
 ## Explore and publish
@@ -149,16 +151,18 @@ dates; query dates for the 29 newly staged regions, and the five recently added
 bluefin regions, are 2014-01-01 to 2024-12-31. The exact WGS84 search bounds
 are in `publish_species.py` and the manifests. For these grouped extracts, a
 deterministic complete-link grouping keeps all pairs of positions in a box
-within 500 km; close records share a box and distant ones form separate boxes.
+within 800 km, reducing the diameter to 700, 600 or 500 km for a scope when
+needed to fit every group within the 20° map limit. Close records share a box
+and distant ones form separate boxes.
 The earlier regional extracts keep their reviewed one-box grouping. A separate box around one reported position still does not
 establish a habitat area. Search coverage is uneven; gaps on the map are
 unknown, not confirmed absences. Survey density cannot be compared directly
 with citizen reports. The map's scrollable region list zooms to each documented group. The
-original 43 extracts account for
-6,404 records in 106 boxes (13 bluefin, 14 whale shark, 12 swordfish,
-18 humpback, 19 bottlenose, 9 green turtle, 21 loggerhead). The eleven new
+original 43 extracts account for 6,404 records. The eleven newer
 extracts add 3,327 accepted records across three species, so the map now
-contains **9,731 accepted records from 54 scoped extracts**. These new
+contains **9,731 accepted records from 54 scoped extracts**, displayed in
+121 current areas. Only 111 have a separate illustrative destination;
+the others remain visible without an invented flow. These newer
 sources all use the same iNaturalist Marine dataset license and citation;
 counts are records, not unique animals or survey effort.
 

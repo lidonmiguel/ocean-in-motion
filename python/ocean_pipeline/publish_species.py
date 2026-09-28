@@ -36,31 +36,31 @@ STUDIES = {
         license="CC BY-NC 4.0"),
     "tuna-hatteras": dict(species="Thunnus thynnus", taxon=127029,
         dataset="5055f146-1a0a-41be-a747-24968c2cf584", bounds=[-82,30,-74,39],
-        start="2014-01-01", end="2024-12-31", period="2018", cluster_diameter_km=500,
+        start="2014-01-01", end="2024-12-31", period="2018", cluster_diameter_km=800,
         region="Atlántico noroccidental · costa de Carolina del Norte",
         citation="Vukovich, M. (2022). Ecological Baseline Studies of the U.S. Outer Continental Shelf Option Year 1. Version 1.4.0. OBIS-SEAMAP. https://doi.org/10.82144/47a6c4f3",
         license="CC BY 4.0"),
     "tuna-ionian": dict(species="Thunnus thynnus", taxon=127029,
         dataset="b14abb47-b481-4272-a8d6-d4e2b612dce9", bounds=[12,34,20,40],
-        start="2014-01-01", end="2024-12-31", period="2015–2019", cluster_diameter_km=500,
+        start="2014-01-01", end="2024-12-31", period="2015–2019", cluster_diameter_km=800,
         region="Mar Jónico · costa de Sicilia",
         citation="Monaco, C., Garofalo, D., Raffa, A., MareCamp Association, Cavallè, M. and LIFE platform (2020). Observation of marine vulnerable mobile species in Sicilian waters, Ionian Sea (surveys 2015-2019). https://obis.org/dataset/b14abb47-b481-4272-a8d6-d4e2b612dce9",
         license="CC BY 4.0"),
     "tuna-east-med": dict(species="Thunnus thynnus", taxon=127029,
         dataset="eaea291a-1e1d-4382-b86f-ac3cc15b8d5a", bounds=[23,30,37,42],
-        start="2014-01-01", end="2024-12-31", period="2014–2020", cluster_diameter_km=500,
+        start="2014-01-01", end="2024-12-31", period="2014–2020", cluster_diameter_km=800,
         region="Mediterráneo oriental · Egeo y costa de Anatolia",
         citation="iNaturalist contributors, iNaturalist (2026). iNaturalist Research-grade Observations Marine Subset. Version 2.0. Marine Biological Association. https://doi.org/10.17031/0bbcjx",
         license="CC BY-NC 4.0"),
     "tuna-north-sea": dict(species="Thunnus thynnus", taxon=127029,
         dataset="eaea291a-1e1d-4382-b86f-ac3cc15b8d5a", bounds=[-5,50,14,63],
-        start="2014-01-01", end="2024-12-31", period="2019–2024", cluster_diameter_km=500,
+        start="2014-01-01", end="2024-12-31", period="2019–2024", cluster_diameter_km=800,
         region="Mar del Norte y aguas adyacentes",
         citation="iNaturalist contributors, iNaturalist (2026). iNaturalist Research-grade Observations Marine Subset. Version 2.0. Marine Biological Association. https://doi.org/10.17031/0bbcjx",
         license="CC BY-NC 4.0"),
     "tuna-nova-scotia": dict(species="Thunnus thynnus", taxon=127029,
         dataset="eaea291a-1e1d-4382-b86f-ac3cc15b8d5a", bounds=[-63,42,-42,55],
-        start="2014-01-01", end="2024-12-31", period="2020–2024", cluster_diameter_km=500,
+        start="2014-01-01", end="2024-12-31", period="2020–2024", cluster_diameter_km=800,
         region="Atlántico canadiense · Nueva Escocia y Terranova",
         citation="iNaturalist contributors, iNaturalist (2026). iNaturalist Research-grade Observations Marine Subset. Version 2.0. Marine Biological Association. https://doi.org/10.17031/0bbcjx",
         license="CC BY-NC 4.0"),
@@ -130,7 +130,7 @@ for slug, (species, taxon, dataset, bounds, region, citation, license) in ADDITI
     STUDIES[slug] = dict(species=species, taxon=taxon, dataset=dataset,
                          bounds=bounds, start="2014-01-01", end="2024-12-31",
                          region=region, citation=citation, license=license,
-                         cluster_diameter_km=500)
+                         cluster_diameter_km=800)
 
 # Distinct, nonoverlapping marine queries verified from complete OBIS responses.
 # The iNaturalist Marine dataset carries CC BY-NC 4.0 rights; these observations
@@ -153,7 +153,7 @@ for slug, (species, taxon, bounds, region) in NEW_SPECIES_REGIONS.items():
     STUDIES[slug] = dict(species=species, taxon=taxon, dataset=INAT_DATASET,
                          bounds=bounds, start="2014-01-01", end="2024-12-31",
                          region=region, citation=INAT_CITATION, license="CC BY-NC 4.0",
-                         cluster_diameter_km=500)
+                         cluster_diameter_km=800)
 
 
 def build_snapshot(slug: str, extract_path: Path, manifest_path: Path) -> dict:

@@ -41,7 +41,7 @@ export function categoryView(group: Group, members: SpeciesDataset[]): SpeciesDa
     commonNameEs: label,
     scientificName: `${members.length} especies`,
     summaryEs: `Avistamientos documentados de ${members.length} especies de ${label.toLowerCase()}.`,
-    ecologyEs: 'Cada caja turquesa o de color resume posiciones notificadas de una especie. Las cajas rosas y los trazos son desplazamientos visuales sin modelo predictivo.',
+    ecologyEs: 'Cada caja de color resume avistamientos regionales de una especie. Los destinos rosas evitan sus zonas actuales documentadas; algunas zonas no tienen destino visual. Los trazos no son predicciones.',
     periods: { current: `${years[0]}–${years.at(-1)}`, future: 'Simulación visual' },
     citations: members.flatMap(member => member.citations.map(citation => ({
       ...citation, id: scoped(member, citation.id)

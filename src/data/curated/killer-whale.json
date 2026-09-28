@@ -19,7 +19,7 @@
         -120,
         65
       ],
-      "clusterDiameterKm": 500,
+      "clusterDiameterKm": 800,
       "query": {
         "startDate": "2014-01-01",
         "endDate": "2024-12-31"
@@ -61,7 +61,7 @@
         25,
         72
       ],
-      "clusterDiameterKm": 500,
+      "clusterDiameterKm": 800,
       "query": {
         "startDate": "2014-01-01",
         "endDate": "2024-12-31"
@@ -103,7 +103,7 @@
         180,
         -30
       ],
-      "clusterDiameterKm": 500,
+      "clusterDiameterKm": 800,
       "query": {
         "startDate": "2014-01-01",
         "endDate": "2024-12-31"
@@ -144,7 +144,7 @@
         -52,
         -38
       ],
-      "clusterDiameterKm": 500,
+      "clusterDiameterKm": 800,
       "query": {
         "startDate": "2014-01-01",
         "endDate": "2024-12-31"
