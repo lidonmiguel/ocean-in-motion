@@ -1,0 +1,952 @@
+{
+  "schemaVersion": 1,
+  "species": "Caretta caretta",
+  "aphiaID": 137205,
+  "region": "Australia oriental",
+  "period": "2014–2024",
+  "clusterDiameterKm": 500,
+  "boundsWgs84": [
+    145,
+    -40,
+    158,
+    -14
+  ],
+  "source": {
+    "name": "Ocean Biodiversity Information System (OBIS)",
+    "datasetId": "eaea291a-1e1d-4382-b86f-ac3cc15b8d5a",
+    "url": "https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a",
+    "citation": "iNaturalist contributors, iNaturalist (2026). iNaturalist Research-grade Observations Marine Subset. Version 2.0. Marine Biological Association. https://doi.org/10.17031/0bbcjx",
+    "license": "CC BY-NC 4.0",
+    "accessedAtUtc": "2026-09-28T08:58:58.300115+00:00",
+    "extractSha256": "a25fc9c8b4a61ec9ab485720a91827b5f1f39a32ebdb9c4e210a35c7b2669f64"
+  },
+  "summary": {
+    "count": 129,
+    "byYear": {
+      "2014": 1,
+      "2015": 2,
+      "2016": 4,
+      "2017": 2,
+      "2018": 8,
+      "2019": 14,
+      "2020": 11,
+      "2021": 10,
+      "2022": 12,
+      "2023": 36,
+      "2024": 29
+    },
+    "excluded": {
+      "obis_on_land": 65
+    },
+    "unknownCoordinateUncertainty": 10,
+    "uncertaintyKmRange": [
+      0.0,
+      121.0
+    ]
+  },
+  "observations": [
+    {
+      "id": "01b14a04-c553-420d-a6f3-edc7a69fc1a2",
+      "longitude": 153.6300582501,
+      "latitude": -28.61081983,
+      "eventDate": "2023-09-24T11:34:00+10:00",
+      "coordinateUncertaintyInMeters": null
+    },
+    {
+      "id": "01bb3895-df45-4135-9ef7-af35370c6af5",
+      "longitude": 153.5452461007,
+      "latitude": -27.4373446669,
+      "eventDate": "2023-08-11T12:23:00+10:00",
+      "coordinateUncertaintyInMeters": 15
+    },
+    {
+      "id": "04aa2e7c-4f80-4478-8d0e-094b1121195f",
+      "longitude": 152.70889342,
+      "latitude": -24.1140848499,
+      "eventDate": "2024-08-08T17:59:00+10:00",
+      "coordinateUncertaintyInMeters": null
+    },
+    {
+      "id": "06d35394-05b4-4cd4-adaa-29281ff42d96",
+      "longitude": 153.6015374092,
+      "latitude": -29.0750674527,
+      "eventDate": "2024-02-03T09:50:00+10:00",
+      "coordinateUncertaintyInMeters": 29533
+    },
+    {
+      "id": "0c5d37aa-7524-4470-a681-0ad8712f4170",
+      "longitude": 153.7890406958,
+      "latitude": -28.158449932,
+      "eventDate": "2022-08-13T11:46:00+10:00",
+      "coordinateUncertaintyInMeters": 29656
+    },
+    {
+      "id": "0c686f79-e3b1-47b8-9b90-ef6d0cb6e714",
+      "longitude": 151.9147990751,
+      "latitude": -23.3033577569,
+      "eventDate": "2024-11-21T15:57:00+10:00",
+      "coordinateUncertaintyInMeters": 2
+    },
+    {
+      "id": "0f932170-2866-40ce-a42f-2b48d21b344e",
+      "longitude": 151.9145546821,
+      "latitude": -23.442177188,
+      "eventDate": "2020-01-24",
+      "coordinateUncertaintyInMeters": 3218
+    },
+    {
+      "id": "1257da7e-82d4-4546-9aa2-3acd66514d24",
+      "longitude": 151.9088715101,
+      "latitude": -23.442682285,
+      "eventDate": "2024-01-13T17:26:00+10:00",
+      "coordinateUncertaintyInMeters": 69
+    },
+    {
+      "id": "18cddab0-356b-476a-b457-af3dec67b6ca",
+      "longitude": 153.6296613692,
+      "latitude": -28.6114372691,
+      "eventDate": "2024-10-13T08:47:18+11:00",
+      "coordinateUncertaintyInMeters": 504
+    },
+    {
+      "id": "195ae29e-3d82-4e98-8b3a-ac7694f31e41",
+      "longitude": 153.5264354806,
+      "latitude": -27.4140550773,
+      "eventDate": "2020-07-31T12:34:00+10:00",
+      "coordinateUncertaintyInMeters": 164
+    },
+    {
+      "id": "1ab5e926-5435-4963-be48-af2b81420f12",
+      "longitude": 152.4425088161,
+      "latitude": -24.797195519,
+      "eventDate": "2019-01-14T06:15:00+10:00",
+      "coordinateUncertaintyInMeters": 122
+    },
+    {
+      "id": "1b39a065-9e1c-4918-a006-40a732d1192c",
+      "longitude": 151.9148004,
+      "latitude": -23.4422976,
+      "eventDate": "2023-10-24",
+      "coordinateUncertaintyInMeters": 696
+    },
+    {
+      "id": "1eff0d31-cf34-42ae-b4b9-ee2d105bf8af",
+      "longitude": 153.2654675322,
+      "latitude": -30.201199123,
+      "eventDate": "2023-12-21T11:38:25+11:00",
+      "coordinateUncertaintyInMeters": 125
+    },
+    {
+      "id": "221b2cd3-d3a6-44ab-a2c3-3fb4fdb86791",
+      "longitude": 151.909535788,
+      "latitude": -23.4422067285,
+      "eventDate": "2023-06-27T07:28:41+10:00",
+      "coordinateUncertaintyInMeters": 223
+    },
+    {
+      "id": "226bc929-e262-40aa-a2af-9cf10b1975c8",
+      "longitude": 152.7098557122,
+      "latitude": -24.1128601147,
+      "eventDate": "2016-07-30T05:33:00+10:00",
+      "coordinateUncertaintyInMeters": 637
+    },
+    {
+      "id": "22b6c38e-c47d-4581-826f-42c6f7254c6e",
+      "longitude": 153.5461469373,
+      "latitude": -27.4375938237,
+      "eventDate": "2022-10-26T12:11:00+10:00",
+      "coordinateUncertaintyInMeters": 50
+    },
+    {
+      "id": "263005a3-1e15-4ca4-8018-0a778fa7d1cc",
+      "longitude": 152.8672469651,
+      "latitude": -25.2798698731,
+      "eventDate": "2022-11-30T16:21:00+10:00",
+      "coordinateUncertaintyInMeters": 977
+    },
+    {
+      "id": "28b889e7-361e-4584-9e63-f12a27df59f5",
+      "longitude": 153.628292914,
+      "latitude": -28.6122785953,
+      "eventDate": "2024-02-03T09:11:48+11:00",
+      "coordinateUncertaintyInMeters": 38
+    },
+    {
+      "id": "28e2964b-465b-4b1f-ac73-3b634eab8d51",
+      "longitude": 153.6282943955,
+      "latitude": -28.6115368114,
+      "eventDate": "2021-02-09T13:44:00+11:00",
+      "coordinateUncertaintyInMeters": 25
+    },
+    {
+      "id": "2aa73de6-0159-4428-bac0-a7eee221b6d1",
+      "longitude": 152.8272148228,
+      "latitude": -25.2475443484,
+      "eventDate": "2021-01-13T12:46:00+10:00",
+      "coordinateUncertaintyInMeters": 29
+    },
+    {
+      "id": "2ecd51fd-814d-45bb-b909-266aa9545401",
+      "longitude": 153.5460471969,
+      "latitude": -27.4352495633,
+      "eventDate": "2023-03-17T16:24:00+10:00",
+      "coordinateUncertaintyInMeters": 50
+    },
+    {
+      "id": "2ee443dc-b200-4b5d-9e2a-64e40996142c",
+      "longitude": 153.6441457922,
+      "latitude": -27.8519435175,
+      "eventDate": "2023-06-17T09:39:00+10:00",
+      "coordinateUncertaintyInMeters": 29680
+    },
+    {
+      "id": "319ebbeb-5ce2-4bce-ae03-e86faca59ed5",
+      "longitude": 147.7791909391,
+      "latitude": -19.3071797209,
+      "eventDate": "2023-04-07T15:44:00+10:00",
+      "coordinateUncertaintyInMeters": 30580
+    },
+    {
+      "id": "3579e6b5-f432-42ca-b001-4cbdef8df0d6",
+      "longitude": 146.9699577467,
+      "latitude": -18.4847571363,
+      "eventDate": "2023-08-31T23:07:00+10:00",
+      "coordinateUncertaintyInMeters": 30649
+    },
+    {
+      "id": "3a721656-1f7b-4723-881d-b8accc8103b0",
+      "longitude": 151.9110305519,
+      "latitude": -23.44225559,
+      "eventDate": "2024-11-27T16:09:00+10:00",
+      "coordinateUncertaintyInMeters": 2
+    },
+    {
+      "id": "3abadeb9-0990-4d34-9c8b-d2780c6df85c",
+      "longitude": 151.9148004,
+      "latitude": -23.4422976,
+      "eventDate": "2020-01-09T07:57:00+10:00",
+      "coordinateUncertaintyInMeters": 514
+    },
+    {
+      "id": "3fcd90f7-f38e-41e7-a48c-9064b38da8d6",
+      "longitude": 151.9100260116,
+      "latitude": -23.4419251321,
+      "eventDate": "2023-09-22T06:31:20+10:00",
+      "coordinateUncertaintyInMeters": 23
+    },
+    {
+      "id": "42c3dfc6-b2cb-4221-b2c8-73e0978317ba",
+      "longitude": 151.9104785845,
+      "latitude": -23.4416275107,
+      "eventDate": "2020-12-16T18:03:24+10:00",
+      "coordinateUncertaintyInMeters": 514
+    },
+    {
+      "id": "45fd2834-2729-4f15-98ff-28869179eeb9",
+      "longitude": 145.1096805,
+      "latitude": -38.4012533333,
+      "eventDate": "2023-12-23T06:16:58+11:00",
+      "coordinateUncertaintyInMeters": 4
+    },
+    {
+      "id": "479fee70-792c-4a50-b3e6-f93e60965797",
+      "longitude": 153.1629471667,
+      "latitude": -26.988845,
+      "eventDate": "2023-12-06T05:22:20+10:00",
+      "coordinateUncertaintyInMeters": 14
+    },
+    {
+      "id": "490ff08e-aa33-470a-a288-2eef6f2ff046",
+      "longitude": 153.1062992741,
+      "latitude": -26.3769954517,
+      "eventDate": "2019-12-13T05:58:00+11:00",
+      "coordinateUncertaintyInMeters": 108
+    },
+    {
+      "id": "4ca1ec9c-a660-4597-8fa0-fe5dac3f7e86",
+      "longitude": 153.5679033333,
+      "latitude": -28.393395,
+      "eventDate": "2023-04-05T07:47:12+10:00",
+      "coordinateUncertaintyInMeters": 4
+    },
+    {
+      "id": "4cfced56-fda9-4b66-a3c7-16d6d5ca1f98",
+      "longitude": 152.3856409809,
+      "latitude": -23.9141690644,
+      "eventDate": "2024-10-12T15:29:03+10:00",
+      "coordinateUncertaintyInMeters": 157
+    },
+    {
+      "id": "4f3729c5-8c2c-40a1-b9bd-0b96195b9f67",
+      "longitude": 153.5534052229,
+      "latitude": -27.3915805555,
+      "eventDate": "2016-01-02T02:34:00+10:00",
+      "coordinateUncertaintyInMeters": 8
+    },
+    {
+      "id": "50815c29-4ef7-4062-a2fc-e69794e1f933",
+      "longitude": 153.1434027778,
+      "latitude": -30.3049611111,
+      "eventDate": "2024-03-16T13:49:00+11:00",
+      "coordinateUncertaintyInMeters": 5
+    },
+    {
+      "id": "5242b885-bc64-47e0-b5b9-f8d5e5c38bf5",
+      "longitude": 151.9089272618,
+      "latitude": -23.4420501585,
+      "eventDate": "2021-06-16",
+      "coordinateUncertaintyInMeters": 514
+    },
+    {
+      "id": "52fc96e7-5dfa-46f9-8878-e09a113c91b7",
+      "longitude": 151.6725098116,
+      "latitude": -33.0895096747,
+      "eventDate": "2015-09-12T11:14:00+10:00",
+      "coordinateUncertaintyInMeters": 88
+    },
+    {
+      "id": "57004787-158f-47d8-a72f-ce7e0435333d",
+      "longitude": 147.7502851165,
+      "latitude": -19.366074834,
+      "eventDate": "2024-06-18",
+      "coordinateUncertaintyInMeters": 30580
+    },
+    {
+      "id": "5715b5cf-5e03-4658-a344-47cb1b619464",
+      "longitude": 152.5691667,
+      "latitude": -32.2108333,
+      "eventDate": "2019-10-11T08:50:00+11:00",
+      "coordinateUncertaintyInMeters": 131
+    },
+    {
+      "id": "5d4c9d68-949d-455a-a351-80041c61c38e",
+      "longitude": 151.909260191,
+      "latitude": -23.4426924328,
+      "eventDate": "2023-06-29T06:50:00+10:00",
+      "coordinateUncertaintyInMeters": 201
+    },
+    {
+      "id": "5ea7de2f-c54f-407a-9a01-db787e5701c9",
+      "longitude": 153.6284565926,
+      "latitude": -28.6115845314,
+      "eventDate": "2024-12-21",
+      "coordinateUncertaintyInMeters": 76
+    },
+    {
+      "id": "63bbb7cd-826e-4b1b-b251-4605949e6680",
+      "longitude": 153.1672366667,
+      "latitude": -26.99898,
+      "eventDate": "2024-01-12T04:59:25+10:00",
+      "coordinateUncertaintyInMeters": 3
+    },
+    {
+      "id": "65cbaab9-1262-4c4c-9cdd-9d2737014bc3",
+      "longitude": 153.1670667714,
+      "latitude": -26.9812882872,
+      "eventDate": "2024-01-12T04:56:24+10:00",
+      "coordinateUncertaintyInMeters": 1270
+    },
+    {
+      "id": "699bcb8e-efe4-478b-8d07-3bf190de4fa7",
+      "longitude": 146.3404533333,
+      "latitude": -18.5402466667,
+      "eventDate": "2023-04-08T13:46:38+10:00",
+      "coordinateUncertaintyInMeters": 4
+    },
+    {
+      "id": "6a760e3c-e463-47a5-acc0-0d118b94a1c4",
+      "longitude": 145.4487021267,
+      "latitude": -14.6656704255,
+      "eventDate": "2023-07-26T18:31:15+10:00",
+      "coordinateUncertaintyInMeters": 7
+    },
+    {
+      "id": "6ba3b573-a868-4bdd-9275-aed9824c9e0a",
+      "longitude": 153.5103693334,
+      "latitude": -28.0433162661,
+      "eventDate": "2019-01-03T13:30:00+11:00",
+      "coordinateUncertaintyInMeters": 29656
+    },
+    {
+      "id": "6cfa8406-aeb0-4b81-be7e-d3c901ce9146",
+      "longitude": 153.6275268045,
+      "latitude": -28.6105146771,
+      "eventDate": "2023-02-05T12:37:28+11:00",
+      "coordinateUncertaintyInMeters": 844
+    },
+    {
+      "id": "6e064431-170b-4b1d-8c80-2bd4a8959fd3",
+      "longitude": 151.9152177125,
+      "latitude": -23.4412500796,
+      "eventDate": "2023-07-15T09:27:37+10:00",
+      "coordinateUncertaintyInMeters": 174
+    },
+    {
+      "id": "6e327188-91cb-4597-9f31-45848e6f6380",
+      "longitude": 152.7098751068,
+      "latitude": -24.1097809456,
+      "eventDate": "2017-04-15T14:55:00+10:00",
+      "coordinateUncertaintyInMeters": 392
+    },
+    {
+      "id": "6eac2b03-45b9-4bf8-8dc6-7cb2e2dc069a",
+      "longitude": 151.9088162854,
+      "latitude": -23.4420969142,
+      "eventDate": "2023-01-09T19:50:00+10:00",
+      "coordinateUncertaintyInMeters": 117
+    },
+    {
+      "id": "6eb8b258-7975-4523-b83d-9fb64b6c6453",
+      "longitude": 151.9188449138,
+      "latitude": -23.4428113014,
+      "eventDate": "2023-01-06T20:45:15+10:00",
+      "coordinateUncertaintyInMeters": 46
+    },
+    {
+      "id": "6f5408a1-f792-4e00-9004-ccb6a797e15f",
+      "longitude": 152.709212571,
+      "latitude": -24.1142534589,
+      "eventDate": "2024-02-21T17:09:00+10:00",
+      "coordinateUncertaintyInMeters": 125
+    },
+    {
+      "id": "71dde60e-5760-40d2-97ff-f58d407722f4",
+      "longitude": 151.9070721511,
+      "latitude": -23.4416333464,
+      "eventDate": "2022-09-21T13:49:13+10:00",
+      "coordinateUncertaintyInMeters": 297
+    },
+    {
+      "id": "72e49115-7634-4363-bcdb-0cc1c360aa95",
+      "longitude": 153.1002415313,
+      "latitude": -30.939177503,
+      "eventDate": "2019-10-24T11:14:00+11:00",
+      "coordinateUncertaintyInMeters": 122
+    },
+    {
+      "id": "7460b0cb-7033-49d2-a205-83db1e080d00",
+      "longitude": 153.1882468725,
+      "latitude": -27.0405703252,
+      "eventDate": "2023-02-25T08:09:13+10:00",
+      "coordinateUncertaintyInMeters": 56
+    },
+    {
+      "id": "74729044-e2d6-4f0f-9054-3348a0595993",
+      "longitude": 152.4394783934,
+      "latitude": -24.7930504673,
+      "eventDate": "2020-02-06T19:04:04+11:00",
+      "coordinateUncertaintyInMeters": 90
+    },
+    {
+      "id": "7a95c5de-ca47-4655-99e6-04f0af630425",
+      "longitude": 151.9070155174,
+      "latitude": -23.4427597977,
+      "eventDate": "2024-08-25T06:59:31+10:00",
+      "coordinateUncertaintyInMeters": 312
+    },
+    {
+      "id": "7e42f743-69e9-4603-a2ef-1cf069218301",
+      "longitude": 152.4426375621,
+      "latitude": -24.7973123944,
+      "eventDate": "2019-01-15T16:43:00+10:00",
+      "coordinateUncertaintyInMeters": 71
+    },
+    {
+      "id": "7e89ec58-04b5-479a-8fd7-08db448717c2",
+      "longitude": 151.9107838046,
+      "latitude": -23.4423563417,
+      "eventDate": "2023-09-19T22:49:00+10:00",
+      "coordinateUncertaintyInMeters": 15
+    },
+    {
+      "id": "7f6cd515-5db5-4dda-8479-a5d05b9b7b20",
+      "longitude": 150.2246984839,
+      "latitude": -36.2438443271,
+      "eventDate": "2021-11-09T12:00:00Z",
+      "coordinateUncertaintyInMeters": 180
+    },
+    {
+      "id": "82e3aafb-696f-4ea2-9c1f-0cbf8facc136",
+      "longitude": 153.1375077606,
+      "latitude": -27.0687532905,
+      "eventDate": "2024-06-27T10:10:00+10:00",
+      "coordinateUncertaintyInMeters": 100
+    },
+    {
+      "id": "83df3081-bbf7-425f-9a40-65bde763f54a",
+      "longitude": 152.4441448551,
+      "latitude": -24.7990029841,
+      "eventDate": "2019-01-13T16:00:00+10:00",
+      "coordinateUncertaintyInMeters": 172
+    },
+    {
+      "id": "850801c0-ca4e-4899-b59d-244d081a7960",
+      "longitude": 147.7433655361,
+      "latitude": -19.3983306199,
+      "eventDate": "2024-06-18",
+      "coordinateUncertaintyInMeters": 30580
+    },
+    {
+      "id": "86d0ce6f-5115-4d24-874a-f620db7ff8b5",
+      "longitude": 152.4428862536,
+      "latitude": -24.7975387297,
+      "eventDate": "2019-01-12T16:20:00+10:00",
+      "coordinateUncertaintyInMeters": 115
+    },
+    {
+      "id": "89d2b187-f707-4052-b5bd-867600deffbd",
+      "longitude": 152.5432133656,
+      "latitude": -24.9930372176,
+      "eventDate": "2018-02-17T07:52:00+11:00",
+      "coordinateUncertaintyInMeters": 30025
+    },
+    {
+      "id": "8b2c2e9e-a25c-4949-a6bc-80fdaf5a0c32",
+      "longitude": 152.8103367282,
+      "latitude": -25.2449875005,
+      "eventDate": "2024-12-20T21:45:00+10:00",
+      "coordinateUncertaintyInMeters": 244
+    },
+    {
+      "id": "8b4832c7-6be1-427d-8d13-775528f6c395",
+      "longitude": 153.5610092746,
+      "latitude": -28.4235904818,
+      "eventDate": "2020-01-26T05:26:10+10:00",
+      "coordinateUncertaintyInMeters": 7
+    },
+    {
+      "id": "8cbc2b1d-f0c7-485c-9a15-19edb2faf9c9",
+      "longitude": 151.91873,
+      "latitude": -23.443025,
+      "eventDate": "2022-03-01T17:54:38+10:00",
+      "coordinateUncertaintyInMeters": 4
+    },
+    {
+      "id": "8fd9ccca-6e03-46c2-a79c-9b486bbdbfdf",
+      "longitude": 153.5309397468,
+      "latitude": -28.1626233909,
+      "eventDate": "2019-02-19T10:40:46+10:00",
+      "coordinateUncertaintyInMeters": 357
+    },
+    {
+      "id": "90f3ea89-84ed-48b1-b20f-d87197141d93",
+      "longitude": 151.9148004,
+      "latitude": -23.4422976,
+      "eventDate": "2015-10-06T21:10:00+10:00",
+      "coordinateUncertaintyInMeters": 514
+    },
+    {
+      "id": "95db3dc9-4a80-40e3-a0a2-3961f52f02f4",
+      "longitude": 152.7115613422,
+      "latitude": -24.1117690034,
+      "eventDate": "2021-02-03T12:42:48+10:00",
+      "coordinateUncertaintyInMeters": 59
+    },
+    {
+      "id": "971ca522-8fb5-4a0c-81b2-2a73f13bd75b",
+      "longitude": 152.443156166,
+      "latitude": -24.7975216904,
+      "eventDate": "2024-12-18T20:00:00+10:00",
+      "coordinateUncertaintyInMeters": 272
+    },
+    {
+      "id": "99ebb23d-308b-4e13-8523-0091880dce7b",
+      "longitude": 152.9811482004,
+      "latitude": -24.8332838824,
+      "eventDate": "2022-12-24T09:36:51+10:00",
+      "coordinateUncertaintyInMeters": 51470
+    },
+    {
+      "id": "9c783ff8-7ebc-42d2-8f68-f2457843fa94",
+      "longitude": 152.438995,
+      "latitude": -24.7920666667,
+      "eventDate": "2022-12-10T22:28:00+10:00",
+      "coordinateUncertaintyInMeters": 9
+    },
+    {
+      "id": "9c9f71c8-afe9-4bc6-b5ea-bd143958554f",
+      "longitude": 151.9103827756,
+      "latitude": -23.4422314855,
+      "eventDate": "2024-12-06T08:02:00+10:00",
+      "coordinateUncertaintyInMeters": 15
+    },
+    {
+      "id": "9d0d913a-2612-4f3c-9a4d-b44ef297fbda",
+      "longitude": 152.43936167,
+      "latitude": -24.79288,
+      "eventDate": "2019-12-19T19:40:49+11:00",
+      "coordinateUncertaintyInMeters": null
+    },
+    {
+      "id": "9eb26ca1-00af-4dd2-9368-ca265f09984e",
+      "longitude": 153.2,
+      "latitude": -25.9166667,
+      "eventDate": "2024-07-26T11:14:00+10:00",
+      "coordinateUncertaintyInMeters": 201
+    },
+    {
+      "id": "a32e44d6-5d49-486c-90b2-0dba4db9a71b",
+      "longitude": 152.5869547874,
+      "latitude": -24.684238981,
+      "eventDate": "2018-02-13T20:06:00+11:00",
+      "coordinateUncertaintyInMeters": 30047
+    },
+    {
+      "id": "a68373f8-2eb3-48c5-8fbe-4de51a5efbd5",
+      "longitude": 147.7411433638,
+      "latitude": -19.2974009209,
+      "eventDate": "2024-06-18",
+      "coordinateUncertaintyInMeters": 30580
+    },
+    {
+      "id": "a6ce4b85-71e6-48d3-aa76-9dab31b520df",
+      "longitude": 151.9153444444,
+      "latitude": -23.3040472222,
+      "eventDate": "2024-11-22T05:46:00+10:00",
+      "coordinateUncertaintyInMeters": 12
+    },
+    {
+      "id": "a8f18d3b-9f7d-4f66-aed4-75481d8c99f9",
+      "longitude": 152.4393783333,
+      "latitude": -24.7928666667,
+      "eventDate": "2023-12-17T20:40:15+10:00",
+      "coordinateUncertaintyInMeters": 3
+    },
+    {
+      "id": "aa78b13d-b924-4bee-ada7-544041565502",
+      "longitude": 152.4406133333,
+      "latitude": -24.7947383333,
+      "eventDate": "2023-01-30T17:00:00+10:00",
+      "coordinateUncertaintyInMeters": 3
+    },
+    {
+      "id": "ac843620-7b44-4b50-b825-ea6718f774eb",
+      "longitude": 151.9084948168,
+      "latitude": -23.4430478892,
+      "eventDate": "2022-11-04T13:36:56+10:00",
+      "coordinateUncertaintyInMeters": 23
+    },
+    {
+      "id": "ae1c418e-116f-401c-bcc9-e5c3cc54494c",
+      "longitude": 153.2649217636,
+      "latitude": -30.2051532577,
+      "eventDate": "2017-02-22T11:58:00+11:00",
+      "coordinateUncertaintyInMeters": 122
+    },
+    {
+      "id": "b3ac0f41-01bb-4d01-9006-764401b351f6",
+      "longitude": 153.1006841,
+      "latitude": -30.9383998,
+      "eventDate": "2020-10-06T09:12:00+11:00",
+      "coordinateUncertaintyInMeters": 195
+    },
+    {
+      "id": "b553267f-fa62-41c7-a945-755d902e22fb",
+      "longitude": 153.5602526378,
+      "latitude": -28.1514351638,
+      "eventDate": "2016-08-19T10:43:00+10:00",
+      "coordinateUncertaintyInMeters": 2063
+    },
+    {
+      "id": "b5563085-ee80-40cf-a365-03caeee1598a",
+      "longitude": 152.5652383346,
+      "latitude": -32.2086746483,
+      "eventDate": "2019-10-11T11:22:00+11:00",
+      "coordinateUncertaintyInMeters": 53
+    },
+    {
+      "id": "b80b81ad-4a93-40a7-b3b0-517ac40b26fc",
+      "longitude": 151.9543990118,
+      "latitude": -24.2878762196,
+      "eventDate": "2021-01-04T18:10:21+10:00",
+      "coordinateUncertaintyInMeters": 20
+    },
+    {
+      "id": "b8877993-599f-470c-92e8-1b76289e870f",
+      "longitude": 148.2478801079,
+      "latitude": -20.0183440996,
+      "eventDate": "2018-06-01T19:02:00+10:00",
+      "coordinateUncertaintyInMeters": null
+    },
+    {
+      "id": "b9724a97-29e9-4f79-afac-caf1cd17c4d3",
+      "longitude": 151.906554848,
+      "latitude": -23.442788097,
+      "eventDate": "2024-10-27T10:59:31+10:00",
+      "coordinateUncertaintyInMeters": 78
+    },
+    {
+      "id": "bc6fdbfd-6780-4f69-9ec4-8cf2e45b8866",
+      "longitude": 151.9179861111,
+      "latitude": -23.4435361111,
+      "eventDate": "2020-12-13T09:58:43+11:00",
+      "coordinateUncertaintyInMeters": null
+    },
+    {
+      "id": "bd970faa-7d1e-4c95-a697-c96fe7d48e3b",
+      "longitude": 151.91516,
+      "latitude": -23.4424882,
+      "eventDate": "2021-06-21T00:26:15+10:00",
+      "coordinateUncertaintyInMeters": 198
+    },
+    {
+      "id": "bdced59a-ec70-4110-a998-4f331b9ddceb",
+      "longitude": 152.4438799853,
+      "latitude": -24.798437719,
+      "eventDate": "2018-11-17T02:34:00+10:00",
+      "coordinateUncertaintyInMeters": 83
+    },
+    {
+      "id": "be2dbb99-f4d5-45fc-8bb9-4ae56a5038dc",
+      "longitude": 147.6867320241,
+      "latitude": -19.3878046855,
+      "eventDate": "2024-05-20T12:05:32+10:00",
+      "coordinateUncertaintyInMeters": 30580
+    },
+    {
+      "id": "c20a137d-2fcb-46fa-a41a-8bf708dc2ad8",
+      "longitude": 145.4482343886,
+      "latitude": -14.6651078168,
+      "eventDate": "2023-08-04T11:25:03+10:00",
+      "coordinateUncertaintyInMeters": 45
+    },
+    {
+      "id": "c5810754-ac55-4b59-b72c-b585da52428e",
+      "longitude": 152.4379742146,
+      "latitude": -24.7892314171,
+      "eventDate": "2022-01-04T21:22:56+10:00",
+      "coordinateUncertaintyInMeters": 52
+    },
+    {
+      "id": "c5d815e5-ffb9-4e37-a975-266c31dfe577",
+      "longitude": 152.5683861253,
+      "latitude": -32.5996730401,
+      "eventDate": "2023-06-10T11:50:00+10:00",
+      "coordinateUncertaintyInMeters": 29093
+    },
+    {
+      "id": "d097483a-c70d-40b7-b897-126f1d6afae4",
+      "longitude": 151.8966595231,
+      "latitude": -24.1839133816,
+      "eventDate": "2022-12-25T22:06:34+10:00",
+      "coordinateUncertaintyInMeters": 242
+    },
+    {
+      "id": "d0e6bc09-757b-4e66-ba03-f0e1817138b2",
+      "longitude": 151.909853965,
+      "latitude": -23.441434335,
+      "eventDate": "2021-07-16T16:40:00+10:00",
+      "coordinateUncertaintyInMeters": 515
+    },
+    {
+      "id": "d1690b15-eb18-4535-bdfd-ea676dfcc849",
+      "longitude": 153.1369738529,
+      "latitude": -26.6469087533,
+      "eventDate": "2020-11-21T13:56:48+11:00",
+      "coordinateUncertaintyInMeters": 3380
+    },
+    {
+      "id": "d2d4d416-d851-4bb4-878b-8e92dce2be36",
+      "longitude": 154.060236922,
+      "latitude": -27.86273954,
+      "eventDate": "2024-10-20T09:18:00+10:00",
+      "coordinateUncertaintyInMeters": 29680
+    },
+    {
+      "id": "d729c8d1-4b2e-4525-bd37-7036fae74ec5",
+      "longitude": 151.9104466667,
+      "latitude": -23.442075,
+      "eventDate": "2024-09-16T19:33:13+10:00",
+      "coordinateUncertaintyInMeters": 70
+    },
+    {
+      "id": "d745847d-1887-4e48-b4b7-a00a01976e94",
+      "longitude": 153.1430853792,
+      "latitude": -30.3046479352,
+      "eventDate": "2022-10-24T16:26:00+11:00",
+      "coordinateUncertaintyInMeters": 74
+    },
+    {
+      "id": "d77097eb-3eba-4e0e-b5e4-8d6540f0c3ab",
+      "longitude": 152.4388333333,
+      "latitude": -24.7916666667,
+      "eventDate": "2018-02-05T19:43:07+10:00",
+      "coordinateUncertaintyInMeters": null
+    },
+    {
+      "id": "d9f8e669-a797-4bf7-a9e5-615fd53dacd4",
+      "longitude": 153.1435861667,
+      "latitude": -26.9246716667,
+      "eventDate": "2021-03-13T07:39:31+10:00",
+      "coordinateUncertaintyInMeters": 10
+    },
+    {
+      "id": "dab01113-210b-4da2-96ab-ace9090ce229",
+      "longitude": 153.3931583333,
+      "latitude": -27.3223083333,
+      "eventDate": "2024-06-06T11:03:37+10:00",
+      "coordinateUncertaintyInMeters": null
+    },
+    {
+      "id": "dc3c7648-acd9-4454-ae09-d9ab16743694",
+      "longitude": 152.506030907,
+      "latitude": -24.6617894999,
+      "eventDate": "2020-12-14",
+      "coordinateUncertaintyInMeters": 120748
+    },
+    {
+      "id": "dcd67ca5-57ee-4c98-a15f-733d7e33e77f",
+      "longitude": 151.9088400977,
+      "latitude": -23.4428784569,
+      "eventDate": "2021-12-17T18:11:46+10:00",
+      "coordinateUncertaintyInMeters": 51
+    },
+    {
+      "id": "dd47e4f9-93ba-45b1-a700-a31c598ea13d",
+      "longitude": 152.4397862502,
+      "latitude": -24.7936062636,
+      "eventDate": "2019-01-14T16:45:00+10:00",
+      "coordinateUncertaintyInMeters": 210
+    },
+    {
+      "id": "ddda8819-a8ad-4469-a96d-cc1795ccae22",
+      "longitude": 153.0717221019,
+      "latitude": -24.9430314076,
+      "eventDate": "2023-10-12T12:24:00+10:00",
+      "coordinateUncertaintyInMeters": 30025
+    },
+    {
+      "id": "de11f3f5-24ac-431a-a5c5-ea59c01149f4",
+      "longitude": 152.4393916667,
+      "latitude": -24.7927283333,
+      "eventDate": "2018-11-24T19:09:32+10:00",
+      "coordinateUncertaintyInMeters": 5
+    },
+    {
+      "id": "e104f6df-d28f-4b92-a2a4-5b77e46d3f86",
+      "longitude": 153.4666739989,
+      "latitude": -29.1719246404,
+      "eventDate": "2023-03-05T06:42:00+11:00",
+      "coordinateUncertaintyInMeters": 15
+    },
+    {
+      "id": "e5621ba5-746c-4e67-aa34-ac36b5e61d35",
+      "longitude": 153.6281815218,
+      "latitude": -28.6116609636,
+      "eventDate": "2018-01-03T09:25:00+11:00",
+      "coordinateUncertaintyInMeters": 15
+    },
+    {
+      "id": "e722077c-faff-4e5b-b33e-de06e9f95d0f",
+      "longitude": 151.9093977519,
+      "latitude": -23.4426020084,
+      "eventDate": "2023-01-01T00:00:00+10:00",
+      "coordinateUncertaintyInMeters": 8
+    },
+    {
+      "id": "e83a6187-56fc-4bab-9c7f-5a0b31189ee8",
+      "longitude": 151.9148004,
+      "latitude": -23.4422976,
+      "eventDate": "2019-04-24T07:03:00+10:00",
+      "coordinateUncertaintyInMeters": 514
+    },
+    {
+      "id": "e9608190-1376-47f3-b6ac-b17ffae3bbc9",
+      "longitude": 152.7117775415,
+      "latitude": -24.1103944278,
+      "eventDate": "2018-07-17T15:28:00+10:00",
+      "coordinateUncertaintyInMeters": 61
+    },
+    {
+      "id": "ee8a32c8-77cc-453a-8482-d5d6d2d06894",
+      "longitude": 153.5255105053,
+      "latitude": -27.414017281,
+      "eventDate": "2019-11-15T12:01:00+10:00",
+      "coordinateUncertaintyInMeters": 244
+    },
+    {
+      "id": "ef3e8659-37ce-4f68-8136-efab473db0e1",
+      "longitude": 153.1098138889,
+      "latitude": -26.11615,
+      "eventDate": "2023-07-29T09:59:00+10:00",
+      "coordinateUncertaintyInMeters": null
+    },
+    {
+      "id": "efc9bdbb-b99d-4924-bd18-d737aa9da257",
+      "longitude": 151.8544970272,
+      "latitude": -23.5295062086,
+      "eventDate": "2022-10-21T13:54:29+10:00",
+      "coordinateUncertaintyInMeters": 30175
+    },
+    {
+      "id": "f04ebec6-87df-4e18-b12c-8e382a944cb5",
+      "longitude": 154.1419230665,
+      "latitude": -28.1068145749,
+      "eventDate": "2023-06-17T09:44:00+10:00",
+      "coordinateUncertaintyInMeters": 29656
+    },
+    {
+      "id": "f2224de8-7fd3-4e6b-94b1-8e2b2a24190c",
+      "longitude": 152.4400634766,
+      "latitude": -24.7933883667,
+      "eventDate": "2023-04-08T17:37:12+10:00",
+      "coordinateUncertaintyInMeters": null
+    },
+    {
+      "id": "f2a83bf3-150d-44bc-a9c8-0fe632e7fb79",
+      "longitude": 153.5755667484,
+      "latitude": -27.9282254216,
+      "eventDate": "2023-09-16T15:29:00+10:00",
+      "coordinateUncertaintyInMeters": 29680
+    },
+    {
+      "id": "f4ad5541-bed9-4635-b2b6-e24b80bb1ac4",
+      "longitude": 151.9134254106,
+      "latitude": -23.4430865998,
+      "eventDate": "2020-01-27T13:34:00+11:00",
+      "coordinateUncertaintyInMeters": 12
+    },
+    {
+      "id": "f5d3eb44-c4e2-490a-a9eb-37978b24f71c",
+      "longitude": 153.6109284167,
+      "latitude": -28.6381718889,
+      "eventDate": "2023-03-18T07:05:00+11:00",
+      "coordinateUncertaintyInMeters": null
+    },
+    {
+      "id": "f7ca4365-470b-415a-b77e-3d65a271d5d2",
+      "longitude": 153.199999854,
+      "latitude": -25.9166661692,
+      "eventDate": "2023-11-25T14:32:20+10:00",
+      "coordinateUncertaintyInMeters": 1954
+    },
+    {
+      "id": "f9dfe21d-6e52-4529-abc5-985a2356feea",
+      "longitude": 153.1012075729,
+      "latitude": -30.9387285116,
+      "eventDate": "2016-07-16T08:36:00+10:00",
+      "coordinateUncertaintyInMeters": 209
+    },
+    {
+      "id": "faae39da-01ae-4a33-8432-6175d64e127d",
+      "longitude": 151.9108716667,
+      "latitude": -23.4422383333,
+      "eventDate": "2023-05-04T06:33:48+10:00",
+      "coordinateUncertaintyInMeters": 4
+    },
+    {
+      "id": "facbf917-fa8b-46fd-a910-5a238a0b7097",
+      "longitude": 152.1954596973,
+      "latitude": -32.7402644321,
+      "eventDate": "2014-05-31T11:50:00+10:00",
+      "coordinateUncertaintyInMeters": 122
+    },
+    {
+      "id": "fc0ddcec-ed57-459e-ac2e-d7f46a156cc8",
+      "longitude": 153.6276647923,
+      "latitude": -28.6118876886,
+      "eventDate": "2024-03-23T10:23:28+11:00",
+      "coordinateUncertaintyInMeters": 55
+    }
+  ]
+}

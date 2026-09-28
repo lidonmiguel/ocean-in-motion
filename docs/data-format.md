@@ -45,11 +45,11 @@ route or prediction; narrow channels and small islands may be absent from
 the basemap. The app omits inferred connectors for reviewed model outputs
 unless explicit supported vectors are supplied.
 
-Bluefin's five new source extracts declare a 500 km maximum pairwise distance
+The five additional bluefin and 29 additional other-species extracts declare a 500 km maximum pairwise distance
 per group. Points are sorted by location and added to the nearest group only
 when every point in that group remains within this diameter. Distant points
-make a separate box. The older regional extracts, and all other species,
-keep their original one-box-per-extract grouping. This spatial rule is a
+make a separate box. The older regional extracts keep their original
+one-box-per-extract grouping. This spatial rule is a
 display choice, not a biological clustering model. Its exact source bounds,
 group diameter and uncertainty are retained with the published snapshots.
 

@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "species": "Tursiops truncatus",
+  "aphiaID": 137111,
+  "region": "Costa sudafricana del Índico",
+  "period": "2014–2024",
+  "clusterDiameterKm": 500,
+  "boundsWgs84": [
+    28,
+    -36,
+    47,
+    -10
+  ],
+  "source": {
+    "name": "Ocean Biodiversity Information System (OBIS)",
+    "datasetId": "eaea291a-1e1d-4382-b86f-ac3cc15b8d5a",
+    "url": "https://obis.org/dataset/eaea291a-1e1d-4382-b86f-ac3cc15b8d5a",
+    "citation": "iNaturalist contributors, iNaturalist (2026). iNaturalist Research-grade Observations Marine Subset. Version 2.0. Marine Biological Association. https://doi.org/10.17031/0bbcjx",
+    "license": "CC BY-NC 4.0",
+    "accessedAtUtc": "2026-09-28T08:58:19.468033+00:00",
+    "extractSha256": "bb271a528454ad57eaedbfed85e795e49709593e941f12131d70c6d11734c49f"
+  },
+  "summary": {
+    "count": 11,
+    "byYear": {
+      "2014": 1,
+      "2016": 1,
+      "2017": 1,
+      "2018": 1,
+      "2019": 1,
+      "2021": 1,
+      "2023": 1,
+      "2024": 4
+    },
+    "excluded": {
+      "obis_on_land": 2
+    },
+    "unknownCoordinateUncertainty": 0,
+    "uncertaintyKmRange": [
+      0.0,
+      9.0
+    ]
+  },
+  "observations": [
+    {
+      "id": "03898978-af5c-4f84-b2e4-0b750af63b0b",
+      "longitude": 32.1643,
+      "latitude": -28.82437,
+      "eventDate": "2024-07-12T07:46:00+02:00",
+      "coordinateUncertaintyInMeters": 5
+    },
+    {
+      "id": "0b5ff804-ce8f-45dd-bba6-6919710d473c",
+      "longitude": 29.6375,
+      "latitude": -31.58399,
+      "eventDate": "2024-06-22T13:15:00+02:00",
+      "coordinateUncertaintyInMeters": 5
+    },
+    {
+      "id": "12ee75eb-caea-4c46-bfe6-a40b607fd10c",
+      "longitude": 31.0973431309,
+      "latitude": -29.7131603485,
+      "eventDate": "2023-11-26T08:56:00+02:00",
+      "coordinateUncertaintyInMeters": 69
+    },
+    {
+      "id": "3138bac6-354d-40a3-b323-db1c51a06204",
+      "longitude": 31.25533,
+      "latitude": -29.48828,
+      "eventDate": "2014-07-11",
+      "coordinateUncertaintyInMeters": 1
+    },
+    {
+      "id": "4a9ea9c8-95c3-41af-ad3b-f03bd69fa577",
+      "longitude": 30.7643422857,
+      "latitude": -30.2874728182,
+      "eventDate": "2021-05-02T07:57:14+02:00",
+      "coordinateUncertaintyInMeters": 974
+    },
+    {
+      "id": "5c746bdd-5c42-4d8a-aba0-c229fd6216b0",
+      "longitude": 29.83024,
+      "latitude": -31.43715,
+      "eventDate": "2024-06-22T14:55:00+02:00",
+      "coordinateUncertaintyInMeters": 5
+    },
+    {
+      "id": "98884928-46f8-42a4-84a7-8495c88d9c7c",
+      "longitude": 29.6179962158,
+      "latitude": -31.6614077879,
+      "eventDate": "2016-06-22T11:18:00+02:00",
+      "coordinateUncertaintyInMeters": 8654
+    },
+    {
+      "id": "aa63d9e1-dc3a-45fb-a03f-867b88a47b6b",
+      "longitude": 30.761398306,
+      "latitude": -30.2848872448,
+      "eventDate": "2024-04-06T12:32:00+02:00",
+      "coordinateUncertaintyInMeters": 15
+    },
+    {
+      "id": "df6c1433-30f4-4e3b-bae8-93a7bca50a59",
+      "longitude": 28.3400152241,
+      "latitude": -32.7116704511,
+      "eventDate": "2019-09-03T09:58:00+02:00",
+      "coordinateUncertaintyInMeters": 8
+    },
+    {
+      "id": "efb63390-a378-4a09-860b-a997f0d886ff",
+      "longitude": 32.1884,
+      "latitude": -28.801,
+      "eventDate": "2017-07-29",
+      "coordinateUncertaintyInMeters": 1
+    },
+    {
+      "id": "f7c0053e-c6a8-4216-b065-6484e2dcaf6f",
+      "longitude": 28.0924626599,
+      "latitude": -32.8950687879,
+      "eventDate": "2018-01-03T06:32:00+02:00",
+      "coordinateUncertaintyInMeters": 15
+    }
+  ]
+}

@@ -1,27 +1,14 @@
 import { describe, expect, it } from 'vitest';
 import pilot from './observations/loggerhead-west-med.json';
 import metadata from './speciesMetadata.json';
-import tuna from './observations/tuna-west-med.json';
-import tunaNybight from './observations/tuna-ny-bight.json';
-import tunaBiscay from './observations/tuna-biscay.json';
-import tunaHatteras from './observations/tuna-hatteras.json';
-import tunaIonian from './observations/tuna-ionian.json';
-import tunaEastMed from './observations/tuna-east-med.json';
-import tunaNorthSea from './observations/tuna-north-sea.json';
-import tunaNovaScotia from './observations/tuna-nova-scotia.json';
-import whaleShark from './observations/whale-shark-gulf.json';
-import swordfish from './observations/swordfish-west-med.json';
-import humpback from './observations/humpback-gulf-maine.json';
-import bottlenose from './observations/bottlenose-west-med.json';
-import greenTurtle from './observations/green-turtle-caribbean.json';
-import { species } from './index';
+import { sourceLayers, species } from './index';
 import { buildObservationScenario, enclosingObservationBox, observationGroups, type ObservationSnapshot } from './observationScenario';
 import { displayStreamlines } from './flowData';
 import { waterSegment } from './oceanRoutes';
 
 describe('one observation box per scoped source', () => {
   it('keeps all accepted positions inside their matching regional source square', () => {
-    const snapshots: ObservationSnapshot[][] = [[tuna, tunaNybight, tunaBiscay, tunaHatteras, tunaIonian, tunaEastMed, tunaNorthSea, tunaNovaScotia], [whaleShark], [swordfish], [humpback], [bottlenose], [greenTurtle], [pilot]];
+    const snapshots: ObservationSnapshot[][] = sourceLayers.map(([, sources]) => sources);
     for (const [index, scenario] of species.entries()) {
       const groups = snapshots[index].flatMap(snapshot => observationGroups(snapshot.observations, snapshot.clusterDiameterKm).map(records => ({ snapshot, records })));
       expect(scenario.habitat.current, scenario.id).toHaveLength(groups.length);
@@ -55,7 +42,7 @@ describe('one observation box per scoped source', () => {
 
   it('routes the illustrative future over water without claiming a forecast', () => {
     const scenario = species.find(item => item.id === 'loggerhead-turtle')!;
-    expect(scenario.habitat.current).toHaveLength(1);
+    expect(scenario.habitat.current.length).toBeGreaterThan(1);
     expect(scenario.habitat.future[0].center).toEqual([
       scenario.habitat.current[0].center[0], scenario.habitat.current[0].center[1] - 2
     ]);

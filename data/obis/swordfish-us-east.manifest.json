@@ -1,0 +1,121 @@
+{
+  "accessed_at_utc": "2026-09-28T08:57:47.037976+00:00",
+  "attribution": {
+    "datasets": [
+      {
+        "datasetName": [
+          "iNaturalist research-grade observations"
+        ],
+        "dataset_id": "eaea291a-1e1d-4382-b86f-ac3cc15b8d5a",
+        "license": [
+          "https://creativecommons.org/licenses/by-nc/4.0/",
+          "https://creativecommons.org/licenses/by/4.0/",
+          "https://creativecommons.org/publicdomain/zero/1.0/"
+        ],
+        "modified": [
+          "2026-06-10T17:35:52Z",
+          "2026-01-25T13:11:58Z",
+          "2026-01-25T16:58:33Z",
+          "2022-02-08T11:54:45Z",
+          "2024-11-12T00:53:32Z",
+          "2026-05-31T10:35:12Z",
+          "2026-05-31T10:34:14Z",
+          "2026-05-31T10:33:11Z",
+          "2023-10-21T22:37:33Z",
+          "2025-04-27T23:33:13Z",
+          "2023-01-17T14:53:52Z",
+          "2024-08-10T01:52:10Z",
+          "2024-05-30T21:31:59Z",
+          "2023-10-09T19:49:40Z",
+          "2023-08-31T14:17:42Z"
+        ],
+        "records": 15,
+        "rightsHolder": [
+          "Joe MDO",
+          "Bobby McCabe",
+          "boughter52",
+          "stevek77",
+          "Andres Vila",
+          "Brandon Long",
+          "Stephen John Davies",
+          "Jonathan Irons",
+          "Kenny Miller",
+          "Cody Limber",
+          "Brian Vigorito",
+          "Pat P",
+          "Joe Bourget",
+          "Alex Lin-Moore",
+          "Fred"
+        ]
+      }
+    ],
+    "note": "Review each contributing dataset's citation and license before reuse; missing fields are not a grant of rights.",
+    "obis": "OBIS (2026) Ocean Biodiversity Information System. Intergovernmental Oceanographic Commission of UNESCO. https://obis.org. Accessed: 2026-09-28"
+  },
+  "counts": {
+    "after_coordinate_qc": 15,
+    "api_total_reported": 15,
+    "duplicate_identifiers": 0,
+    "invalid_coordinates_or_outside_bounds": 0,
+    "raw_fetched": 15,
+    "without_duplicate_identifier": 0,
+    "written": 15
+  },
+  "extract": "output/swordfish-us-east.jsonl",
+  "extract_sha256": "d594af32e0d737e6cd3e1e31d4e8d37ae38e2c31280211a952bee4530c259e16",
+  "qc_rule": "Reject missing, non-finite, out-of-range or outside-box coordinates; de-duplicate on repeated OBIS id or dataset_id + occurrenceID. Do not collapse equal positions.",
+  "query": {
+    "bounds_wgs84": [
+      -82,
+      25,
+      -66,
+      44
+    ],
+    "datasetid": "eaea291a-1e1d-4382-b86f-ac3cc15b8d5a",
+    "enddate": "2024-12-31",
+    "geometry": "POLYGON((-82 25,-66 25,-66 44,-82 44,-82 25))",
+    "max_records": 10000,
+    "page_size": 200,
+    "pages": [
+      {
+        "after": null,
+        "offset": 0,
+        "received": 15,
+        "size": 200,
+        "url": "https://api.obis.org/v3/occurrence?taxonid=127094&geometry=POLYGON%28%28-82+25%2C-66+25%2C-66+44%2C-82+44%2C-82+25%29%29&startdate=2014-01-01&enddate=2024-12-31&size=200&datasetid=eaea291a-1e1d-4382-b86f-ac3cc15b8d5a"
+      }
+    ],
+    "pagination": "after occurrence id",
+    "startdate": "2014-01-01",
+    "taxonid": "127094"
+  },
+  "schema_version": 1,
+  "source": {
+    "api": "https://api.obis.org/v3/occurrence",
+    "api_version": "v3",
+    "name": "Ocean Biodiversity Information System (OBIS)",
+    "record_modified_values": [
+      "2022-02-08T11:54:45Z",
+      "2023-01-17T14:53:52Z",
+      "2023-08-31T14:17:42Z",
+      "2023-10-09T19:49:40Z",
+      "2023-10-21T22:37:33Z",
+      "2024-05-30T21:31:59Z",
+      "2024-08-10T01:52:10Z",
+      "2024-11-12T00:53:32Z",
+      "2025-04-27T23:33:13Z",
+      "2026-01-25T13:11:58Z",
+      "2026-01-25T16:58:33Z",
+      "2026-05-31T10:33:11Z",
+      "2026-05-31T10:34:14Z",
+      "2026-05-31T10:35:12Z",
+      "2026-06-10T17:35:52Z"
+    ],
+    "response_headers": [
+      {
+        "ETag": "W/\"7f9b-5zYESvgHOzFcI/SCCkY/ELeQnso\""
+      }
+    ]
+  },
+  "truncated_by_cap": false
+}

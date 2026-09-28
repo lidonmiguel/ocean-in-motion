@@ -21,7 +21,7 @@ Run from the repository root, or first install
 `python -m pip install -e ./python` and omit `PYTHONPATH=python`.
 Both output paths are configurable,
 must differ, and must not exist. No taxon, area or baseline is selected by
-the generic command. The nineteen displayed regional boxes derive from fourteen scoped extracts;
+the generic command. The 106 displayed regional boxes derive from 43 scoped extracts;
 see the README. If the box crosses the antimeridian, choose separate bounded
 runs. The hard cap is 10,000 raw API records; pages request at most 200.
 The cap applies before quality control and the manifest says when a reported
@@ -63,10 +63,14 @@ files are written; HTTP or malformed responses fail the run. Existing outputs
 are not overwritten.
 
 `python/ocean_pipeline/publish_species.py` additionally checks the exact
-species, dataset, dates, marine presence, flags and uncertainty for thirteen
-non-loggerhead snapshots. It retains `NO_DEPTH`, excludes `ON_LAND` and stated location
-uncertainty above 300 km, and reports these exclusions. Missing uncertainty
-remains unknown. Source rights are reviewed on each OBIS dataset metadata page.
+species, dataset, dates, marine presence, flags and uncertainty for 42
+regional snapshots (including five new loggerhead regions). The original
+loggerhead pilot is built by `publish_pilot.py`. This stage retains `NO_DEPTH`, excludes `ON_LAND` and stated location
+uncertainty above 300 km, and reports these exclusions. For the newly staged
+regions it also counts and excludes `NO_ACCEPTED_NAME` records whose AphiaID
+differs from the reviewed species, even if the species-level query returned
+them. Missing uncertainty remains unknown. Source rights were checked on
+each OBIS dataset metadata page on 2026-09-28.
 
 These checks cannot verify a taxonomic identification, event date precision,
 georeferencing uncertainty, depth, effort, independence of observations,

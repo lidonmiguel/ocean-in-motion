@@ -26,6 +26,8 @@ describe('illustrative distribution flows', () => {
     for (const dataset of species) {
       const strands = displayStreamlines(dataset);
       expect(strands.length, dataset.id).toBeGreaterThan(0);
+      expect(new Set(strands.map(strand => strand.id.split('-')[0])).size, dataset.id)
+        .toBe(dataset.habitat.current.length);
       for (const strand of strands) {
         const cellId = strand.id.split('-')[0];
         const current = dataset.habitat.current.find(cell => cell.id === cellId)!;

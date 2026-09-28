@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "species": "Megaptera novaeangliae",
+  "aphiaID": 137092,
+  "region": "Hawái · prospección en embarcación",
+  "period": "2015",
+  "clusterDiameterKm": 500,
+  "boundsWgs84": [
+    -162,
+    18,
+    -153,
+    24
+  ],
+  "source": {
+    "name": "Ocean Biodiversity Information System (OBIS)",
+    "datasetId": "9fc29d00-9998-4059-b0bd-f28cfa63a793",
+    "url": "https://obis.org/dataset/9fc29d00-9998-4059-b0bd-f28cfa63a793",
+    "citation": "Ampela, K. and C. Bacon (2023). CRC HRC PMRF Small Vessel-Based Monitoring Surveys February 2015. Version 1.0.0. OBIS-SEAMAP. https://doi.org/10.82144/1210f715",
+    "license": "CC BY 4.0",
+    "accessedAtUtc": "2026-09-28T08:57:49.672600+00:00",
+    "extractSha256": "0b6814e4f67c307699110ba50ed8e480cb925653cac27190360a649020a1a397"
+  },
+  "summary": {
+    "count": 15,
+    "byYear": {
+      "2015": 15
+    },
+    "excluded": {},
+    "unknownCoordinateUncertainty": 0,
+    "uncertaintyKmRange": [
+      0.0,
+      0.0
+    ]
+  },
+  "observations": [
+    {
+      "id": "00265619-1356-408c-9331-0e1696ecfc0f",
+      "longitude": -159.96573,
+      "latitude": 21.99808,
+      "eventDate": "2015-02-12T09:06",
+      "coordinateUncertaintyInMeters": 1.11
+    },
+    {
+      "id": "111764fa-3d8c-478c-968b-d2414eb5d23d",
+      "longitude": -159.21007,
+      "latitude": 22.0059,
+      "eventDate": "2015-02-11T09:38",
+      "coordinateUncertaintyInMeters": 1.11
+    },
+    {
+      "id": "1a96e39e-6cd9-49b6-901a-36b56060f4d4",
+      "longitude": -159.29576,
+      "latitude": 21.96433,
+      "eventDate": "2015-02-05T07:52",
+      "coordinateUncertaintyInMeters": 1.11
+    },
+    {
+      "id": "1d64724e-b296-4008-b006-e48daef019b4",
+      "longitude": -159.31992,
+      "latitude": 21.96466,
+      "eventDate": "2015-02-05T11:27",
+      "coordinateUncertaintyInMeters": 1.11
+    },
+    {
+      "id": "605a04b1-9810-4fd5-bd81-24e72d1a49ba",
+      "longitude": -159.79973,
+      "latitude": 22.03217,
+      "eventDate": "2015-02-16T16:49",
+      "coordinateUncertaintyInMeters": 1.11
+    },
+    {
+      "id": "64377223-cc26-49dd-aacb-c7b9e800b3fc",
+      "longitude": -159.89429,
+      "latitude": 22.15049,
+      "eventDate": "2015-02-15T14:55",
+      "coordinateUncertaintyInMeters": 1.11
+    },
+    {
+      "id": "80f46404-b425-49d2-bcfd-c997385289b7",
+      "longitude": -159.23876,
+      "latitude": 22.09541,
+      "eventDate": "2015-02-04T10:33",
+      "coordinateUncertaintyInMeters": 1.11
+    },
+    {
+      "id": "949cd5d6-5489-44d8-906c-c24498d8d8a3",
+      "longitude": -159.25912,
+      "latitude": 22.0121,
+      "eventDate": "2015-02-11T08:01",
+      "coordinateUncertaintyInMeters": 1.11
+    },
+    {
+      "id": "a435e49a-bf41-43f2-8cc3-09f8ce153617",
+      "longitude": -159.83162,
+      "latitude": 22.09544,
+      "eventDate": "2015-02-15T13:43",
+      "coordinateUncertaintyInMeters": 1.11
+    },
+    {
+      "id": "b3944313-5fa2-4ab0-93a0-8353ab9b0806",
+      "longitude": -159.29273,
+      "latitude": 22.06484,
+      "eventDate": "2015-02-06T10:54",
+      "coordinateUncertaintyInMeters": 1.11
+    },
+    {
+      "id": "bc8a6cbf-3d76-413b-9f9b-119f1d49ee4a",
+      "longitude": -159.34707,
+      "latitude": 21.91178,
+      "eventDate": "2015-02-05T10:04",
+      "coordinateUncertaintyInMeters": 1.11
+    },
+    {
+      "id": "c37bc4df-6753-4269-9fa0-a9c4c12fadac",
+      "longitude": -159.90722,
+      "latitude": 22.1641,
+      "eventDate": "2015-02-08T09:07",
+      "coordinateUncertaintyInMeters": 1.11
+    },
+    {
+      "id": "cf6412b6-4af6-4446-bc48-9b581ee0486b",
+      "longitude": -159.21374,
+      "latitude": 22.12519,
+      "eventDate": "2015-02-04T11:07",
+      "coordinateUncertaintyInMeters": 1.11
+    },
+    {
+      "id": "e0debde6-ceff-402b-bd88-5a0347dba20b",
+      "longitude": -159.80234,
+      "latitude": 22.02668,
+      "eventDate": "2015-02-16T18:03",
+      "coordinateUncertaintyInMeters": 1.11
+    },
+    {
+      "id": "ed0a728e-256b-4155-8c81-c5116098c377",
+      "longitude": -159.24547,
+      "latitude": 22.04867,
+      "eventDate": "2015-02-04T09:24",
+      "coordinateUncertaintyInMeters": 1.11
+    }
+  ]
+}

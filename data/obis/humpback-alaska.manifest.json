@@ -1,0 +1,90 @@
+{
+  "accessed_at_utc": "2026-09-28T08:57:54.414842+00:00",
+  "attribution": {
+    "datasets": [
+      {
+        "bibliographicCitation": [
+          "[{\"crossref\":{\"citeinfo\":{\"origin\":\"Weller DW, Carretta JV, Chivers SJ, Ford JKB, Kownacki AK, Lang AR, Martínez-Aguilar S, Rone BK, Schulman-Janiger A\",\"pubdate\":\"2017\",\"title_html\":\"COLLABORATIVE LARGE WHALE SURVEY 2015: GRAY WHALE PHOTO-IDENTIFICATION CATALOG\",\"title\":\"COLLABORATIVE LARGE WHALE SURVEY 2015: GRAY WHALE PHOTO-IDENTIFICATION CATALOG\",\"serinfo\":{\"sername\":\"NOAA Technical Memorandum\",\"issue\":\"NOAA-TM-NMFS-SWFSC-584\"},\"onlink\":\"https:\\/\\/repository.library.noaa.gov\\/view\\/noaa\\/15459\"}}},{\"crossref\":{\"citeinfo\":{\"origin\":\"Halpin, P.N., A.J. Read, E. Fujioka, B.D. Best, B. Donnelly, L.J. Hazen, C. Kot, K. Urian, E. LaBrecque, A. Dimatteo, J. Cleary, C. Good, L.B. Crowder, and K.D. Hyrenbach\",\"pubdate\":\"2009\",\"title_html\":\"OBIS-SEAMAP: The world data center for marine mammal, sea bird, and sea turtle distributions\",\"title\":\"OBIS-SEAMAP: The world data center for marine mammal, sea bird, and sea turtle distributions\",\"serinfo\":{\"sername\":\"Oceanography\",\"issue\":\"22(2):104-115\"},\"onlink\":\"http:\\/\\/www.tos.org\\/oceanography\\/article\\/obis-seamap-the-world-data-center-for-marine-mammal-sea-bird-and-sea-turtle\"}}}]Halpin, P.N., A.J. Read, E. Fujioka, B.D. Best, B. Donnelly, L.J. Hazen, C. Kot, K. Urian, E. LaBrecque, A. Dimatteo, J. Cleary, C. Good, L.B. Crowder, and K.D. Hyrenbach. 2009. OBIS-SEAMAP: The world data center for marine mammal, sea bird, and sea turtle distributions. Oceanography 22(2):104-115"
+        ],
+        "datasetName": [
+          "SWFSC Marine Mammal Survey, CLAWS 2015, Cruise 1648"
+        ],
+        "dataset_id": "1dc828ac-d522-4ebf-97c3-e5a521b4509c",
+        "license": [
+          "http://creativecommons.org/licenses/by-nc/4.0/"
+        ],
+        "modified": [
+          "2021-04-13 13:07:53"
+        ],
+        "records": 369,
+        "rightsHolder": [
+          "NOAA;NMFS;SWFSC"
+        ]
+      }
+    ],
+    "note": "Review each contributing dataset's citation and license before reuse; missing fields are not a grant of rights.",
+    "obis": "OBIS (2026) Ocean Biodiversity Information System. Intergovernmental Oceanographic Commission of UNESCO. https://obis.org. Accessed: 2026-09-28"
+  },
+  "counts": {
+    "after_coordinate_qc": 369,
+    "api_total_reported": 369,
+    "duplicate_identifiers": 0,
+    "invalid_coordinates_or_outside_bounds": 0,
+    "raw_fetched": 369,
+    "without_duplicate_identifier": 0,
+    "written": 369
+  },
+  "extract": "output/humpback-alaska.jsonl",
+  "extract_sha256": "0114da677cea4d7daaf69634fe5e97ffa9cedccfcca825237c6086ae7e4e8b6e",
+  "qc_rule": "Reject missing, non-finite, out-of-range or outside-box coordinates; de-duplicate on repeated OBIS id or dataset_id + occurrenceID. Do not collapse equal positions.",
+  "query": {
+    "bounds_wgs84": [
+      -160,
+      52,
+      -130,
+      64
+    ],
+    "datasetid": "1dc828ac-d522-4ebf-97c3-e5a521b4509c",
+    "enddate": "2024-12-31",
+    "geometry": "POLYGON((-160 52,-130 52,-130 64,-160 64,-160 52))",
+    "max_records": 10000,
+    "page_size": 200,
+    "pages": [
+      {
+        "after": null,
+        "offset": 0,
+        "received": 200,
+        "size": 200,
+        "url": "https://api.obis.org/v3/occurrence?taxonid=137092&geometry=POLYGON%28%28-160+52%2C-130+52%2C-130+64%2C-160+64%2C-160+52%29%29&startdate=2014-01-01&enddate=2024-12-31&size=200&datasetid=1dc828ac-d522-4ebf-97c3-e5a521b4509c"
+      },
+      {
+        "after": "8ddf5497-ea03-4256-80fb-64301700a720",
+        "offset": 200,
+        "received": 169,
+        "size": 200,
+        "url": "https://api.obis.org/v3/occurrence?taxonid=137092&geometry=POLYGON%28%28-160+52%2C-130+52%2C-130+64%2C-160+64%2C-160+52%29%29&startdate=2014-01-01&enddate=2024-12-31&size=200&after=8ddf5497-ea03-4256-80fb-64301700a720&datasetid=1dc828ac-d522-4ebf-97c3-e5a521b4509c"
+      }
+    ],
+    "pagination": "after occurrence id",
+    "startdate": "2014-01-01",
+    "taxonid": "137092"
+  },
+  "schema_version": 1,
+  "source": {
+    "api": "https://api.obis.org/v3/occurrence",
+    "api_version": "v3",
+    "name": "Ocean Biodiversity Information System (OBIS)",
+    "record_modified_values": [
+      "2021-04-13 13:07:53"
+    ],
+    "response_headers": [
+      {
+        "ETag": "W/\"ff9b1-ar4e0aanhaAVbfuBKdyJhEx/qmY\""
+      },
+      {
+        "ETag": "W/\"d8048-DHLl4T5AaucIQpTGjlNsoGbqcMY\""
+      }
+    ]
+  },
+  "truncated_by_cap": false
+}
