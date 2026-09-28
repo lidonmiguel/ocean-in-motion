@@ -67,3 +67,36 @@ jobs:
           name: bluefin-geography-probe
           path: output/bluefin-geography-probe.json
           retention-days: 3
+
+  extracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Stage candidate sightings
+        run: |
+          PYTHONPATH=python python - <<'PY'
+          from pathlib import Path
+          from ocean_pipeline.sources import SourcePlan, stage_obis_occurrences
+
+          studies = {
+            'tuna-hatteras': ('5055f146-1a0a-41be-a747-24968c2cf584', (-82,30,-74,39)),
+            'tuna-ionian': ('b14abb47-b481-4272-a8d6-d4e2b612dce9', (12,34,20,40)),
+            'tuna-east-med': ('eaea291a-1e1d-4382-b86f-ac3cc15b8d5a', (23,30,37,42)),
+            'tuna-north-sea': ('eaea291a-1e1d-4382-b86f-ac3cc15b8d5a', (-5,50,14,63)),
+            'tuna-nova-scotia': ('eaea291a-1e1d-4382-b86f-ac3cc15b8d5a', (-63,42,-42,55)),
+          }
+          Path('output').mkdir(exist_ok=True)
+          for slug,(dataset,bounds) in studies.items():
+            manifest=stage_obis_occurrences(
+              SourcePlan('127029',bounds,'2014-01-01','2024-12-31',10000,dataset_id=dataset),
+              Path(f'output/{slug}.jsonl'),Path(f'output/{slug}.manifest.json'))
+            print(slug,manifest['counts']['written'],manifest['truncated_by_cap'],flush=True)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bluefin-candidate-extracts
+          path: output/
+          retention-days: 3
