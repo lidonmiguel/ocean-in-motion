@@ -105,7 +105,11 @@ export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea, worldVie
         id: 'sea-temperature',
         data: seaAreas.features.filter(item => records.has(item.properties.id)),
         filled: true, stroked: true, pickable: true,
-        getFillColor: item => temperatureColor(records.get(item.properties.id)!.celsius),
+        getFillColor: item => {
+          const record = records.get(item.properties.id)!;
+          const [red, green, blue] = temperatureColor(record.celsius);
+          return [red, green, blue, record.method === 'estimated' ? 120 : 195];
+        },
         getLineColor: item => item.properties.id === selectedAreaId ? [255, 255, 255, 245] : [126, 220, 218, 90],
         getLineWidth: item => item.properties.id === selectedAreaId ? 2 : 0.5,
         lineWidthUnits: 'pixels',
@@ -114,8 +118,8 @@ export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea, worldVie
       }),
       new GeoJsonLayer({
         id: 'land-cover', data: land, filled: true, stroked: true,
-        getFillColor: [187, 204, 201, 255], getLineColor: [222, 234, 224, 210],
-        getLineWidth: 0.8, lineWidthUnits: 'pixels', parameters: { depthTest: false },
+        getFillColor: [44, 84, 83, 255], getLineColor: [113, 155, 148, 190],
+        getLineWidth: 0.65, lineWidthUnits: 'pixels', parameters: { depthTest: false },
         pickable: true, onHover: () => setHover(null)
       })
     ] });
@@ -128,14 +132,14 @@ export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea, worldVie
         <rect width="1200" height="600" fill="#173746" />
         {seaAreas.features.filter(item => records.has(item.properties.id)).map(item => <path
           key={item.properties.id} d={geometryPath(item.geometry)} fill={`rgb(${temperatureColor(records.get(item.properties.id)!.celsius).slice(0, 3).join(',')})`}
-          fillOpacity=".8" fillRule="evenodd" stroke={item.properties.id === selectedAreaId ? '#fff' : '#76cfc8'} strokeWidth={item.properties.id === selectedAreaId ? 2 : 0.4}
-          onClick={() => onSelectArea(item.properties.id)}><title>{item.properties.name}: {records.get(item.properties.id)!.celsius.toFixed(2)} °C</title></path>)}
-        <path d={coast} fill="#bbccc9" fillRule="evenodd" stroke="#e1eae0" strokeWidth=".7" />
+          fillOpacity={records.get(item.properties.id)!.method === 'estimated' ? '.55' : '.8'} fillRule="evenodd" stroke={item.properties.id === selectedAreaId ? '#fff' : '#76cfc8'} strokeWidth={item.properties.id === selectedAreaId ? 2 : 0.4}
+          onClick={() => onSelectArea(item.properties.id)}><title>{item.properties.name}: {records.get(item.properties.id)!.method === 'estimated' ? '≈ ' : ''}{records.get(item.properties.id)!.celsius.toFixed(2)} °C</title></path>)}
+        <path d={coast} fill="#2c5453" fillRule="evenodd" stroke="#719b94" strokeWidth=".65" />
       </svg>
       <div className="fallback-note">Vista simplificada sin WebGL2 · pulsa una zona o elige su nombre en la lista</div>
     </div>}
-    <div className="map-stamp"><span className="pulse" /> NOAA ERSSTv6 · MEDIA ANUAL {year}</div>
-    <div className="map-credit">Temperaturas: NOAA ERSSTv6 · Límites: IHO / VLIZ (CC BY 4.0) · Costa: Natural Earth</div>
-    {hover && records.get(hover.id) && <div className="map-tooltip" style={{ left: hover.x + 14, top: hover.y + 14 }}><strong>{hover.name}</strong><span>{records.get(hover.id)!.celsius.toFixed(2)} °C · {year}</span><span>Media superficial de {records.get(hover.id)!.cells} celdas de 2°</span></div>}
+    <div className="map-stamp"><span className="pulse" /> NOAA + ESTIMACIONES · {year}</div>
+    <div className="map-credit">NOAA ERSSTv6 y estimaciones vecinas · Límites: IHO / VLIZ (CC BY 4.0) · Costa: Natural Earth</div>
+    {hover && records.get(hover.id) && <div className="map-tooltip" style={{ left: hover.x + 14, top: hover.y + 14 }}><strong>{hover.name}</strong><span>{records.get(hover.id)!.method === 'estimated' ? '≈ ' : ''}{records.get(hover.id)!.celsius.toFixed(2)} °C · {year}</span><span>{records.get(hover.id)!.method === 'estimated' ? 'Estimación de zonas cercanas; sin celdas NOAA locales' : `Media de ${records.get(hover.id)!.cells} celdas NOAA de 2°`}</span></div>}
   </div>;
 }

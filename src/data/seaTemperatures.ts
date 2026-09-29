@@ -6,17 +6,21 @@ export type SeaFeature = {
   properties: { id: string; name: string };
   geometry: { type: 'Polygon'; coordinates: number[][][] } | { type: 'MultiPolygon'; coordinates: number[][][][] };
 };
-export type TemperatureRecord = { year: number; areaId: string; celsius: number; cells: number };
+export type TemperatureRecord = {
+  year: number; areaId: string; celsius: number; cells: number;
+  method?: 'estimated'; estimatedFrom?: string[];
+};
 
 export const seaAreas = JSON.parse(areas) as { type: 'FeatureCollection'; features: SeaFeature[] };
 export const temperatureMetadata = temperatures;
-export const availableYears = Array.from(new Set(temperatures.records.map(row => row.year))).sort((a, b) => a - b);
+const temperatureRows = temperatures.records as TemperatureRecord[];
+export const availableYears = Array.from(new Set(temperatureRows.map(row => row.year))).sort((a, b) => a - b);
 export const recordsByYear = new Map<number, Map<string, TemperatureRecord>>(
-  availableYears.map(year => [year, new Map(temperatures.records.filter(row => row.year === year).map(row => [row.areaId, row]))])
+  availableYears.map(year => [year, new Map(temperatureRows.filter(row => row.year === year).map(row => [row.areaId, row]))])
 );
 
 export function seaSeries(areaId: string): TemperatureRecord[] {
-  return temperatures.records.filter(row => row.areaId === areaId);
+  return temperatureRows.filter(row => row.areaId === areaId);
 }
 
 export function temperatureColor(value: number): [number, number, number, number] {
