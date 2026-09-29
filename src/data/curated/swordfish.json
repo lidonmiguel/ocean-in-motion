@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pipelineVersion": 1,
+  "pipelineVersion": 2,
   "species": {
     "id": "swordfish",
     "scientificName": "Xiphias gladius",
@@ -11,6 +11,7 @@
   "sourceScopes": [
     {
       "id": "swordfish-west-med",
+      "extractId": "swordfish-west-med",
       "region": "Mediterráneo sudoccidental · costa de España",
       "period": "2014–2024",
       "boundsWgs84": [
@@ -31,6 +32,17 @@
         "accessedAtUtc": "2026-09-27T22:23:58.366964+00:00",
         "extractSha256": "81a45c88e318105993909b05cf17864156f0c6f5fcb2abcc272761e2564dd086"
       },
+      "recordMetadata": {
+        "basisOfRecordCounts": {
+          "HumanObservation": 190
+        },
+        "samplingProtocolCounts": {
+          "Single platform line-transect survey using Distance Sampling": 190
+        },
+        "missingSamplingProtocol": 0,
+        "recordLicenseCounts": {},
+        "missingRecordLicense": 190
+      },
       "quality": {
         "rawFetched": 190,
         "staged": 190,
@@ -46,6 +58,7 @@
     },
     {
       "id": "swordfish-east-med",
+      "extractId": "swordfish-east-med",
       "region": "Mediterráneo oriental",
       "period": "2014–2024",
       "boundsWgs84": [
@@ -67,6 +80,17 @@
         "accessedAtUtc": "2026-09-28T08:57:46.088817+00:00",
         "extractSha256": "b3241bf1c27540a8be7df820921e8a9126503b645c3c8d44ce679c4c3e40f4a0"
       },
+      "recordMetadata": {
+        "basisOfRecordCounts": {
+          "HumanObservation": 15
+        },
+        "samplingProtocolCounts": {},
+        "missingSamplingProtocol": 15,
+        "recordLicenseCounts": {
+          "https://creativecommons.org/licenses/by-nc/4.0/": 15
+        },
+        "missingRecordLicense": 0
+      },
       "quality": {
         "rawFetched": 19,
         "staged": 19,
@@ -87,6 +111,7 @@
     },
     {
       "id": "swordfish-us-east",
+      "extractId": "swordfish-us-east",
       "region": "Atlántico occidental · costa de EE. UU.",
       "period": "2017–2024",
       "boundsWgs84": [
@@ -108,6 +133,19 @@
         "accessedAtUtc": "2026-09-28T08:57:47.037976+00:00",
         "extractSha256": "d594af32e0d737e6cd3e1e31d4e8d37ae38e2c31280211a952bee4530c259e16"
       },
+      "recordMetadata": {
+        "basisOfRecordCounts": {
+          "HumanObservation": 13
+        },
+        "samplingProtocolCounts": {},
+        "missingSamplingProtocol": 13,
+        "recordLicenseCounts": {
+          "https://creativecommons.org/licenses/by-nc/4.0/": 10,
+          "https://creativecommons.org/licenses/by/4.0/": 1,
+          "https://creativecommons.org/publicdomain/zero/1.0/": 2
+        },
+        "missingRecordLicense": 0
+      },
       "quality": {
         "rawFetched": 15,
         "staged": 15,
@@ -128,6 +166,7 @@
     },
     {
       "id": "swordfish-california",
+      "extractId": "swordfish-california",
       "region": "Pacífico oriental · California",
       "period": "2017–2024",
       "boundsWgs84": [
@@ -149,6 +188,19 @@
         "accessedAtUtc": "2026-09-28T08:57:48.012927+00:00",
         "extractSha256": "e994b3e3b955a52d81bc835e4218a2bc116f2663849f3b39f3a40bdd997ca4c4"
       },
+      "recordMetadata": {
+        "basisOfRecordCounts": {
+          "HumanObservation": 20
+        },
+        "samplingProtocolCounts": {},
+        "missingSamplingProtocol": 20,
+        "recordLicenseCounts": {
+          "https://creativecommons.org/licenses/by-nc/4.0/": 16,
+          "https://creativecommons.org/licenses/by/4.0/": 3,
+          "https://creativecommons.org/publicdomain/zero/1.0/": 1
+        },
+        "missingRecordLicense": 0
+      },
       "quality": {
         "rawFetched": 21,
         "staged": 21,
@@ -169,6 +221,7 @@
     },
     {
       "id": "swordfish-iberian",
+      "extractId": "swordfish-iberian",
       "region": "Atlántico ibérico",
       "period": "2021–2022",
       "boundsWgs84": [
@@ -189,6 +242,17 @@
         "license": "CC BY-NC 4.0",
         "accessedAtUtc": "2026-09-28T08:57:48.656993+00:00",
         "extractSha256": "7f9a0765d3e714bda0e1da60e07704810fa00e651882b5b92a50f95561c8954b"
+      },
+      "recordMetadata": {
+        "basisOfRecordCounts": {
+          "HumanObservation": 2
+        },
+        "samplingProtocolCounts": {},
+        "missingSamplingProtocol": 2,
+        "recordLicenseCounts": {
+          "https://creativecommons.org/licenses/by-nc/4.0/": 2
+        },
+        "missingRecordLicense": 0
       },
       "quality": {
         "rawFetched": 4,
@@ -228,6 +292,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_003276"
     },
     {
@@ -239,6 +305,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_012554"
     },
     {
@@ -250,6 +318,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_010034"
     },
     {
@@ -261,6 +331,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_005823"
     },
     {
@@ -272,6 +344,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011579"
     },
     {
@@ -283,6 +357,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_005563"
     },
     {
@@ -294,6 +370,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_006325"
     },
     {
@@ -305,6 +383,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_006315"
     },
     {
@@ -316,6 +396,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_005829"
     },
     {
@@ -327,6 +409,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_013956"
     },
     {
@@ -338,6 +422,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_013198"
     },
     {
@@ -349,6 +435,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_005998"
     },
     {
@@ -360,6 +448,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011431"
     },
     {
@@ -371,6 +461,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_013213"
     },
     {
@@ -382,6 +474,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_003444"
     },
     {
@@ -393,6 +487,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_008120"
     },
     {
@@ -404,6 +500,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_003675"
     },
     {
@@ -415,6 +513,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_012978"
     },
     {
@@ -426,6 +526,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_006781"
     },
     {
@@ -437,6 +539,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_003466"
     },
     {
@@ -448,6 +552,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_013396"
     },
     {
@@ -459,6 +565,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011303"
     },
     {
@@ -470,6 +578,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_006754"
     },
     {
@@ -481,6 +591,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011727"
     },
     {
@@ -492,6 +604,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011465"
     },
     {
@@ -503,6 +617,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_005855"
     },
     {
@@ -514,6 +630,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_003399"
     },
     {
@@ -525,6 +643,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011423"
     },
     {
@@ -536,6 +656,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011657"
     },
     {
@@ -547,6 +669,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_005602"
     },
     {
@@ -558,6 +682,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_013620"
     },
     {
@@ -569,6 +695,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_002524"
     },
     {
@@ -580,6 +708,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_012370"
     },
     {
@@ -591,6 +721,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011356"
     },
     {
@@ -602,6 +734,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_006867"
     },
     {
@@ -613,6 +747,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011497"
     },
     {
@@ -624,6 +760,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_003758"
     },
     {
@@ -635,6 +773,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_010051"
     },
     {
@@ -646,6 +786,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_006841"
     },
     {
@@ -657,6 +799,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_013171"
     },
     {
@@ -668,6 +812,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_005685"
     },
     {
@@ -679,6 +825,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_007007"
     },
     {
@@ -690,6 +838,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_007280"
     },
     {
@@ -701,6 +851,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011812"
     },
     {
@@ -712,6 +864,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011498"
     },
     {
@@ -723,6 +877,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_003456"
     },
     {
@@ -734,6 +890,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_002176"
     },
     {
@@ -745,6 +903,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011459"
     },
     {
@@ -756,6 +916,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_012062"
     },
     {
@@ -767,6 +929,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_010022"
     },
     {
@@ -778,6 +942,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_013802"
     },
     {
@@ -789,6 +955,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_013963"
     },
     {
@@ -800,6 +968,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_013630"
     },
     {
@@ -811,6 +981,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_003564"
     },
     {
@@ -822,6 +994,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_002135"
     },
     {
@@ -833,6 +1007,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_013779"
     },
     {
@@ -844,6 +1020,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_006750"
     },
     {
@@ -855,6 +1033,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011388"
     },
     {
@@ -866,6 +1046,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_012283"
     },
     {
@@ -877,6 +1059,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_009865"
     },
     {
@@ -888,6 +1072,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_005772"
     },
     {
@@ -899,6 +1085,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_013660"
     },
     {
@@ -910,6 +1098,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_013020"
     },
     {
@@ -921,6 +1111,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_012960"
     },
     {
@@ -932,6 +1124,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_007025"
     },
     {
@@ -943,6 +1137,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_005992"
     },
     {
@@ -954,6 +1150,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011408"
     },
     {
@@ -965,6 +1163,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_013796"
     },
     {
@@ -976,6 +1176,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_003213"
     },
     {
@@ -987,6 +1189,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011790"
     },
     {
@@ -998,6 +1202,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_007123"
     },
     {
@@ -1009,6 +1215,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_005857"
     },
     {
@@ -1020,6 +1228,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_004937"
     },
     {
@@ -1031,6 +1241,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_004268"
     },
     {
@@ -1042,6 +1254,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_007024"
     },
     {
@@ -1053,6 +1267,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_013810"
     },
     {
@@ -1064,6 +1280,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_003390"
     },
     {
@@ -1075,6 +1293,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011355"
     },
     {
@@ -1086,6 +1306,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_007243"
     },
     {
@@ -1097,6 +1319,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_013188"
     },
     {
@@ -1108,6 +1332,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_002093"
     },
     {
@@ -1119,6 +1345,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_006843"
     },
     {
@@ -1130,6 +1358,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_005816"
     },
     {
@@ -1141,6 +1371,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_013107"
     },
     {
@@ -1152,6 +1384,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_014070"
     },
     {
@@ -1163,6 +1397,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011402"
     },
     {
@@ -1174,6 +1410,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_007171"
     },
     {
@@ -1185,6 +1423,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_005751"
     },
     {
@@ -1196,6 +1436,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_003755"
     },
     {
@@ -1207,6 +1449,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_005764"
     },
     {
@@ -1218,6 +1462,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_013783"
     },
     {
@@ -1229,6 +1475,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_007202"
     },
     {
@@ -1240,6 +1488,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_005565"
     },
     {
@@ -1251,6 +1501,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011363"
     },
     {
@@ -1262,6 +1514,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_012194"
     },
     {
@@ -1273,6 +1527,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011401"
     },
     {
@@ -1284,6 +1540,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011362"
     },
     {
@@ -1295,6 +1553,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_013170"
     },
     {
@@ -1306,6 +1566,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011580"
     },
     {
@@ -1317,6 +1579,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_005812"
     },
     {
@@ -1328,6 +1592,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011323"
     },
     {
@@ -1339,6 +1605,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011682"
     },
     {
@@ -1350,6 +1618,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_005576"
     },
     {
@@ -1361,6 +1631,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011461"
     },
     {
@@ -1372,6 +1644,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_013794"
     },
     {
@@ -1383,6 +1657,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_003455"
     },
     {
@@ -1394,6 +1670,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_006075"
     },
     {
@@ -1405,6 +1683,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_012639"
     },
     {
@@ -1416,6 +1696,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_006007"
     },
     {
@@ -1427,6 +1709,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_007098"
     },
     {
@@ -1438,6 +1722,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_003088"
     },
     {
@@ -1449,6 +1735,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_006775"
     },
     {
@@ -1460,6 +1748,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_006882"
     },
     {
@@ -1471,6 +1761,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_007140"
     },
     {
@@ -1482,6 +1774,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_005188"
     },
     {
@@ -1493,6 +1787,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_006008"
     },
     {
@@ -1504,6 +1800,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_008114"
     },
     {
@@ -1515,6 +1813,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011913"
     },
     {
@@ -1526,6 +1826,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_004020"
     },
     {
@@ -1537,6 +1839,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_002873"
     },
     {
@@ -1548,6 +1852,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_013069"
     },
     {
@@ -1559,6 +1865,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_013625"
     },
     {
@@ -1570,6 +1878,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_004997"
     },
     {
@@ -1581,6 +1891,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_012232"
     },
     {
@@ -1592,6 +1904,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_012159"
     },
     {
@@ -1603,6 +1917,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_002762"
     },
     {
@@ -1614,6 +1930,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011265"
     },
     {
@@ -1625,6 +1943,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_003559"
     },
     {
@@ -1636,6 +1956,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_012557"
     },
     {
@@ -1647,6 +1969,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_005664"
     },
     {
@@ -1658,6 +1982,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_005938"
     },
     {
@@ -1669,6 +1995,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011316"
     },
     {
@@ -1680,6 +2008,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_012811"
     },
     {
@@ -1691,6 +2021,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_007249"
     },
     {
@@ -1702,6 +2034,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_007794"
     },
     {
@@ -1713,6 +2047,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_006721"
     },
     {
@@ -1724,6 +2060,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_012003"
     },
     {
@@ -1735,6 +2073,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_003125"
     },
     {
@@ -1746,6 +2086,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_003395"
     },
     {
@@ -1757,6 +2099,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_007052"
     },
     {
@@ -1768,6 +2112,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011640"
     },
     {
@@ -1779,6 +2125,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_006023"
     },
     {
@@ -1790,6 +2138,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011723"
     },
     {
@@ -1801,6 +2151,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_005704"
     },
     {
@@ -1812,6 +2164,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_013194"
     },
     {
@@ -1823,6 +2177,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_005769"
     },
     {
@@ -1834,6 +2190,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011763"
     },
     {
@@ -1845,6 +2203,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_006785"
     },
     {
@@ -1856,6 +2216,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_010061"
     },
     {
@@ -1867,6 +2229,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_006722"
     },
     {
@@ -1878,6 +2242,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_005953"
     },
     {
@@ -1889,6 +2255,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_013866"
     },
     {
@@ -1900,6 +2268,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_010058"
     },
     {
@@ -1911,6 +2281,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_008121"
     },
     {
@@ -1922,6 +2294,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_005304"
     },
     {
@@ -1933,6 +2307,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_005747"
     },
     {
@@ -1944,6 +2320,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_013656"
     },
     {
@@ -1955,6 +2333,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_002785"
     },
     {
@@ -1966,6 +2346,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_007254"
     },
     {
@@ -1977,6 +2359,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_013247"
     },
     {
@@ -1988,6 +2372,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_003490"
     },
     {
@@ -1999,6 +2385,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_012382"
     },
     {
@@ -2010,6 +2398,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_003827"
     },
     {
@@ -2021,6 +2411,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_013163"
     },
     {
@@ -2032,6 +2424,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_005934"
     },
     {
@@ -2043,6 +2437,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_012869"
     },
     {
@@ -2054,6 +2450,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_006780"
     },
     {
@@ -2065,6 +2463,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011358"
     },
     {
@@ -2076,6 +2476,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_007227"
     },
     {
@@ -2087,6 +2489,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_013183"
     },
     {
@@ -2098,6 +2502,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_005626"
     },
     {
@@ -2109,6 +2515,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_006868"
     },
     {
@@ -2120,6 +2528,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011518"
     },
     {
@@ -2131,6 +2541,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_012416"
     },
     {
@@ -2142,6 +2554,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_012091"
     },
     {
@@ -2153,6 +2567,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_004562"
     },
     {
@@ -2164,6 +2580,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_003732"
     },
     {
@@ -2175,6 +2593,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_006751"
     },
     {
@@ -2186,6 +2606,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_008127"
     },
     {
@@ -2197,6 +2619,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_012713"
     },
     {
@@ -2208,6 +2632,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_006065"
     },
     {
@@ -2219,6 +2645,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_013803"
     },
     {
@@ -2230,6 +2658,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_003761"
     },
     {
@@ -2241,6 +2671,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_013243"
     },
     {
@@ -2252,6 +2684,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011484"
     },
     {
@@ -2263,6 +2697,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011844"
     },
     {
@@ -2274,6 +2710,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_006141"
     },
     {
@@ -2285,6 +2723,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_007182"
     },
     {
@@ -2296,6 +2736,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_011404"
     },
     {
@@ -2307,6 +2749,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": "Single platform line-transect survey using Distance Sampling",
+      "recordLicense": null,
+      "rightsHolder": null,
       "providerOccurrenceId": "occ_007795"
     },
     {
@@ -2318,6 +2762,8 @@
       "coordinateUncertaintyInMeters": 10491,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Marsel Mersinaj",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/261660079"
     },
     {
@@ -2329,6 +2775,8 @@
       "coordinateUncertaintyInMeters": 4349,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Marsel Mersinaj",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/324040090"
     },
     {
@@ -2340,6 +2788,8 @@
       "coordinateUncertaintyInMeters": 884,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Marsel Mersinaj",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/330575218"
     },
     {
@@ -2351,6 +2801,8 @@
       "coordinateUncertaintyInMeters": 6621,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Marsel Mersinaj",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/260282226"
     },
     {
@@ -2362,6 +2814,8 @@
       "coordinateUncertaintyInMeters": 1636,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Marsel Mersinaj",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/260735765"
     },
     {
@@ -2373,6 +2827,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "John Michelakes",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/187543796"
     },
     {
@@ -2384,6 +2840,8 @@
       "coordinateUncertaintyInMeters": 8847,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Marsel Mersinaj",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/258631664"
     },
     {
@@ -2395,6 +2853,8 @@
       "coordinateUncertaintyInMeters": 70773,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Marsel Mersinaj",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/271035616"
     },
     {
@@ -2406,6 +2866,8 @@
       "coordinateUncertaintyInMeters": 8680,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Marsel Mersinaj",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/283178626"
     },
     {
@@ -2417,6 +2879,8 @@
       "coordinateUncertaintyInMeters": 27939,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Marsel Mersinaj",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/260695490"
     },
     {
@@ -2428,6 +2892,8 @@
       "coordinateUncertaintyInMeters": 600,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Marsel Mersinaj",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/330574529"
     },
     {
@@ -2439,6 +2905,8 @@
       "coordinateUncertaintyInMeters": 3057,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Robert Moorhead",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/84660307"
     },
     {
@@ -2450,6 +2918,8 @@
       "coordinateUncertaintyInMeters": 5963,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Marsel Mersinaj",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/258389752"
     },
     {
@@ -2461,6 +2931,8 @@
       "coordinateUncertaintyInMeters": 3221,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Marsel Mersinaj",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/261864279"
     },
     {
@@ -2472,6 +2944,8 @@
       "coordinateUncertaintyInMeters": 11410,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Marsel Mersinaj",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/258930180"
     },
     {
@@ -2483,6 +2957,8 @@
       "coordinateUncertaintyInMeters": 21,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Joe MDO",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/6186068"
     },
     {
@@ -2494,6 +2970,8 @@
       "coordinateUncertaintyInMeters": 14,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by/4.0/",
+      "rightsHolder": "Bobby McCabe",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/175451844"
     },
     {
@@ -2505,6 +2983,8 @@
       "coordinateUncertaintyInMeters": 7647,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Andres Vila",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/142088712"
     },
     {
@@ -2516,6 +2996,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Brandon Long",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/233482530"
     },
     {
@@ -2527,6 +3009,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "rightsHolder": "Stephen John Davies",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/235463319"
     },
     {
@@ -2538,6 +3022,8 @@
       "coordinateUncertaintyInMeters": 977,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Jonathan Irons",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/241160808"
     },
     {
@@ -2549,6 +3035,8 @@
       "coordinateUncertaintyInMeters": 11339,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Kenny Miller",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/186605832"
     },
     {
@@ -2560,6 +3048,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Cody Limber",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/133031885"
     },
     {
@@ -2571,6 +3061,8 @@
       "coordinateUncertaintyInMeters": 59217,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "rightsHolder": "Brian Vigorito",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/90477627"
     },
     {
@@ -2582,6 +3074,8 @@
       "coordinateUncertaintyInMeters": 73098,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Pat P",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/233571962"
     },
     {
@@ -2593,6 +3087,8 @@
       "coordinateUncertaintyInMeters": 28000,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Joe Bourget",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/215553296"
     },
     {
@@ -2604,6 +3100,8 @@
       "coordinateUncertaintyInMeters": 1000,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Alex Lin-Moore",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/133161474"
     },
     {
@@ -2615,6 +3113,8 @@
       "coordinateUncertaintyInMeters": 77100,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Fred",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/161116429"
     },
     {
@@ -2626,6 +3126,8 @@
       "coordinateUncertaintyInMeters": 488,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "ppek",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/87003064"
     },
     {
@@ -2637,6 +3139,8 @@
       "coordinateUncertaintyInMeters": 4,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Tom Benson",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/130833776"
     },
     {
@@ -2648,6 +3152,8 @@
       "coordinateUncertaintyInMeters": 5,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by/4.0/",
+      "rightsHolder": "Adam J. Searcy",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/17341054"
     },
     {
@@ -2659,6 +3165,8 @@
       "coordinateUncertaintyInMeters": 488,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Andrew Newmark",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/180700412"
     },
     {
@@ -2670,6 +3178,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Tom Benson",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/15934760"
     },
     {
@@ -2681,6 +3191,8 @@
       "coordinateUncertaintyInMeters": 15625,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Bailey",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/15914954"
     },
     {
@@ -2692,6 +3204,8 @@
       "coordinateUncertaintyInMeters": 122,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Sean Cozart",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/239706063"
     },
     {
@@ -2703,6 +3217,8 @@
       "coordinateUncertaintyInMeters": 1953,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Diane Etchison",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/133513738"
     },
     {
@@ -2714,6 +3230,8 @@
       "coordinateUncertaintyInMeters": 2129,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "bryanto",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/246872518"
     },
     {
@@ -2725,6 +3243,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Tom Benson",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/213594845"
     },
     {
@@ -2736,6 +3256,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "kliewer",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/7111094"
     },
     {
@@ -2747,6 +3269,8 @@
       "coordinateUncertaintyInMeters": 195,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Ari Boehm",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/230649185"
     },
     {
@@ -2758,6 +3282,8 @@
       "coordinateUncertaintyInMeters": 29066,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Yinan Li",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/204305951"
     },
     {
@@ -2769,6 +3295,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Mario Balitbit",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/34173789"
     },
     {
@@ -2780,6 +3308,8 @@
       "coordinateUncertaintyInMeters": 977,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Siobhan O'Neill",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/249603132"
     },
     {
@@ -2791,6 +3321,8 @@
       "coordinateUncertaintyInMeters": 5,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by/4.0/",
+      "rightsHolder": "Adam J. Searcy",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/7097077"
     },
     {
@@ -2802,6 +3334,8 @@
       "coordinateUncertaintyInMeters": 7512,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Bridget Spencer",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/180608730"
     },
     {
@@ -2813,6 +3347,8 @@
       "coordinateUncertaintyInMeters": 3617,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "rightsHolder": "Nick Moore",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/180929619"
     },
     {
@@ -2824,6 +3360,8 @@
       "coordinateUncertaintyInMeters": 20274,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Tom Turner",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/179245506"
     },
     {
@@ -2835,6 +3373,8 @@
       "coordinateUncertaintyInMeters": 5,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by/4.0/",
+      "rightsHolder": "Adam J. Searcy",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/32370611"
     },
     {
@@ -2846,6 +3386,8 @@
       "coordinateUncertaintyInMeters": 28240,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "martim_zk",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/133326110"
     },
     {
@@ -2857,6 +3399,8 @@
       "coordinateUncertaintyInMeters": 3906,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Gonzalo Mucientes Sandoval",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/68800141"
     }
   ]

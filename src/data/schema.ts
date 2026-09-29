@@ -1,6 +1,9 @@
 import { z } from 'zod';
 
 const position = z.tuple([z.number().min(-180).max(180), z.number().min(-85).max(85)]);
+const nonnegativeCount = z.number().int().nonnegative();
+const counts = z.record(z.string(), nonnegativeCount);
+const bounds = z.tuple([z.number().min(-180).max(180), z.number().min(-90).max(90), z.number().min(-180).max(180), z.number().min(-90).max(90)]);
 
 const cell = z.object({
   id: z.string().min(1),
@@ -27,15 +30,33 @@ export const speciesDatasetSchema = z.object({
     count: z.number().int().positive(),
     sources: z.array(z.object({
       boxId: z.string().min(1),
+      speciesId: z.string().min(1), scopeId: z.string().min(1), extractId: z.string().min(1),
+      queryBoundsWgs84: bounds,
+      query: z.object({ startDate: z.iso.date(), endDate: z.iso.date() }).strict(),
+      scopeQuality: z.object({
+        rawFetched: nonnegativeCount, staged: nonnegativeCount, accepted: nonnegativeCount,
+        upstreamRejected: counts, rejectedByReason: counts,
+        unknownCoordinateUncertainty: nonnegativeCount,
+        uncertaintyKmRange: z.tuple([z.number().nonnegative(), z.number().nonnegative()]).nullable()
+      }).strict(),
+      recordMetadata: z.object({
+        basisOfRecordCounts: counts, samplingProtocolCounts: counts,
+        missingSamplingProtocol: nonnegativeCount, recordLicenseCounts: counts,
+        missingRecordLicense: nonnegativeCount
+      }).strict(),
+      recordIds: z.array(z.string().min(1)).min(1),
+      boxRecordRights: z.object({ counts, missing: nonnegativeCount }).strict(),
       datasetId: z.string().min(1),
       sourceUrl: z.url(),
       region: z.string().min(1),
       citation: z.string().min(1),
       license: z.string().min(1),
+      accessedAtUtc: z.string().min(1), extractSha256: z.string().regex(/^[0-9a-f]{64}$/),
       count: z.number().int().positive(),
+      unknownCoordinateUncertainty: nonnegativeCount,
       simulationOffsetDeg: position.nullable(),
       coordinateUncertaintyKmRange: z.tuple([z.number().nonnegative(), z.number().nonnegative()]).nullable(),
-      observedBoundsWgs84: z.tuple([z.number(), z.number(), z.number(), z.number()])
+      observedBoundsWgs84: bounds
     }).strict()).min(1)
   }).strict().optional(),
   citations: z.array(z.object({
@@ -65,7 +86,15 @@ export const speciesDatasetSchema = z.object({
         || dataset.habitat.current.length !== dataset.occurrence.sources.length
         || dataset.habitat.future.length !== dataset.occurrence.sources.filter(source => source.simulationOffsetDeg !== null).length
         || dataset.occurrence.sources.some(source =>
-          (source.simulationOffsetDeg !== null) !== dataset.habitat.future.some(cell => cell.id === source.boxId))) {
+          (source.simulationOffsetDeg !== null) !== dataset.habitat.future.some(cell => cell.id === source.boxId))
+        || dataset.occurrence.sources.some(source => source.count !== source.recordIds.length
+          || source.count !== Object.values(source.boxRecordRights.counts).reduce((sum, count) => sum + count, source.boxRecordRights.missing)
+          || source.unknownCoordinateUncertainty > source.count
+          || source.count > source.scopeQuality.accepted
+          || source.query.startDate > source.query.endDate
+          || source.queryBoundsWgs84[0] >= source.queryBoundsWgs84[2]
+          || source.queryBoundsWgs84[1] >= source.queryBoundsWgs84[3])
+        || new Set(dataset.occurrence.sources.flatMap(source => source.recordIds)).size !== dataset.occurrence.count) {
       ctx.addIssue({ code: 'custom', message: 'Observation demos require occurrence metadata and cannot invent suitability', path: ['occurrence'] });
     }
   } else if (dataset.occurrence) {

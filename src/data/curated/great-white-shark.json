@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "pipelineVersion": 1,
+  "pipelineVersion": 2,
   "species": {
     "id": "great-white-shark",
     "scientificName": "Carcharodon carcharias",
@@ -11,6 +11,7 @@
   "sourceScopes": [
     {
       "id": "white-shark-california",
+      "extractId": "white-shark-california",
       "region": "Pacífico oriental · California",
       "period": "2014–2024",
       "boundsWgs84": [
@@ -32,6 +33,19 @@
         "accessedAtUtc": "2026-09-28T16:00:33.486679+00:00",
         "extractSha256": "3e495569badd842d99dc19f608907fd45ae3d73acc73ef2be3d7c86f60fac888"
       },
+      "recordMetadata": {
+        "basisOfRecordCounts": {
+          "HumanObservation": 154
+        },
+        "samplingProtocolCounts": {},
+        "missingSamplingProtocol": 154,
+        "recordLicenseCounts": {
+          "https://creativecommons.org/licenses/by-nc/4.0/": 146,
+          "https://creativecommons.org/licenses/by/4.0/": 7,
+          "https://creativecommons.org/publicdomain/zero/1.0/": 1
+        },
+        "missingRecordLicense": 0
+      },
       "quality": {
         "rawFetched": 198,
         "staged": 198,
@@ -52,6 +66,7 @@
     },
     {
       "id": "white-shark-south-africa",
+      "extractId": "white-shark-south-africa",
       "region": "Atlántico e Índico · Sudáfrica",
       "period": "2014–2024",
       "boundsWgs84": [
@@ -73,6 +88,18 @@
         "accessedAtUtc": "2026-09-28T16:00:35.052586+00:00",
         "extractSha256": "69ebe9a12d028ec5e4191806feb2d253f72c6657bbc3d15fd1f8841ee3b62e10"
       },
+      "recordMetadata": {
+        "basisOfRecordCounts": {
+          "HumanObservation": 64
+        },
+        "samplingProtocolCounts": {},
+        "missingSamplingProtocol": 64,
+        "recordLicenseCounts": {
+          "https://creativecommons.org/licenses/by-nc/4.0/": 60,
+          "https://creativecommons.org/licenses/by/4.0/": 4
+        },
+        "missingRecordLicense": 0
+      },
       "quality": {
         "rawFetched": 85,
         "staged": 85,
@@ -93,6 +120,7 @@
     },
     {
       "id": "white-shark-east-australia",
+      "extractId": "white-shark-east-australia",
       "region": "Mar de Tasmania · Australia oriental",
       "period": "2015–2020",
       "boundsWgs84": [
@@ -114,6 +142,17 @@
         "accessedAtUtc": "2026-09-28T16:00:35.775163+00:00",
         "extractSha256": "e01c537ec6864bcd52d8a9743800821f4b6e9b29419407acfeea2d529602584a"
       },
+      "recordMetadata": {
+        "basisOfRecordCounts": {
+          "HumanObservation": 6
+        },
+        "samplingProtocolCounts": {},
+        "missingSamplingProtocol": 6,
+        "recordLicenseCounts": {
+          "https://creativecommons.org/licenses/by-nc/4.0/": 6
+        },
+        "missingRecordLicense": 0
+      },
       "quality": {
         "rawFetched": 10,
         "staged": 10,
@@ -134,6 +173,7 @@
     },
     {
       "id": "white-shark-us-atlantic",
+      "extractId": "white-shark-us-atlantic",
       "region": "Atlántico noroccidental · costa de EE. UU.",
       "period": "2015–2024",
       "boundsWgs84": [
@@ -154,6 +194,19 @@
         "license": "CC BY-NC 4.0",
         "accessedAtUtc": "2026-09-28T16:00:37.339857+00:00",
         "extractSha256": "1b80ec1e53c7954a7d6ce940928b41138d47753b116962656a56436615778f0c"
+      },
+      "recordMetadata": {
+        "basisOfRecordCounts": {
+          "HumanObservation": 20
+        },
+        "samplingProtocolCounts": {},
+        "missingSamplingProtocol": 20,
+        "recordLicenseCounts": {
+          "https://creativecommons.org/licenses/by-nc/4.0/": 16,
+          "https://creativecommons.org/licenses/by/4.0/": 2,
+          "https://creativecommons.org/publicdomain/zero/1.0/": 2
+        },
+        "missingRecordLicense": 0
       },
       "quality": {
         "rawFetched": 26,
@@ -193,6 +246,8 @@
       "coordinateUncertaintyInMeters": 28476,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/7072290"
     },
     {
@@ -204,6 +259,8 @@
       "coordinateUncertaintyInMeters": 344,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Sam McNally",
       "providerOccurrenceId": "http://www.inaturalist.org/observations/1806091"
     },
     {
@@ -215,6 +272,8 @@
       "coordinateUncertaintyInMeters": 31,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/34893450"
     },
     {
@@ -226,6 +285,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/175144247"
     },
     {
@@ -237,6 +298,8 @@
       "coordinateUncertaintyInMeters": 28706,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Andrew Harmer",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/189617365"
     },
     {
@@ -248,6 +311,8 @@
       "coordinateUncertaintyInMeters": 2,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Alexis",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/89860268"
     },
     {
@@ -259,6 +324,8 @@
       "coordinateUncertaintyInMeters": 983,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Martin Gil Gallo",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/61525715"
     },
     {
@@ -270,6 +337,8 @@
       "coordinateUncertaintyInMeters": 31,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/60041281"
     },
     {
@@ -281,6 +350,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Dylan Otte",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/229961274"
     },
     {
@@ -292,6 +363,8 @@
       "coordinateUncertaintyInMeters": 28476,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/13760443"
     },
     {
@@ -303,6 +376,8 @@
       "coordinateUncertaintyInMeters": 51,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/222806959"
     },
     {
@@ -314,6 +389,8 @@
       "coordinateUncertaintyInMeters": 244,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Edgar Eduardo Becerril-García",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/117031646"
     },
     {
@@ -325,6 +402,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "guyincognito",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/238624124"
     },
     {
@@ -336,6 +415,8 @@
       "coordinateUncertaintyInMeters": 24281,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "barefootartist",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/313741038"
     },
     {
@@ -347,6 +428,8 @@
       "coordinateUncertaintyInMeters": 28476,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "http://www.inaturalist.org/observations/1715534"
     },
     {
@@ -358,6 +441,8 @@
       "coordinateUncertaintyInMeters": 26,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "waterspecimens",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/213226710"
     },
     {
@@ -369,6 +454,8 @@
       "coordinateUncertaintyInMeters": 263,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Ryan Masters",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/54119223"
     },
     {
@@ -380,6 +467,8 @@
       "coordinateUncertaintyInMeters": 28476,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/13760444"
     },
     {
@@ -391,6 +480,8 @@
       "coordinateUncertaintyInMeters": 267,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "crittersmama",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/224563501"
     },
     {
@@ -402,6 +493,8 @@
       "coordinateUncertaintyInMeters": 31,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Michael Langhans",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/198335081"
     },
     {
@@ -413,6 +506,8 @@
       "coordinateUncertaintyInMeters": 51,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Kennedy Rivera",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/213238313"
     },
     {
@@ -424,6 +519,8 @@
       "coordinateUncertaintyInMeters": 172440,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "martinmoscovich",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/52274337"
     },
     {
@@ -435,6 +532,8 @@
       "coordinateUncertaintyInMeters": 28476,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "http://www.inaturalist.org/observations/3392923"
     },
     {
@@ -446,6 +545,8 @@
       "coordinateUncertaintyInMeters": 113,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "pazuzu2021",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/163425182"
     },
     {
@@ -457,6 +558,8 @@
       "coordinateUncertaintyInMeters": 8,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/83222927"
     },
     {
@@ -468,6 +571,8 @@
       "coordinateUncertaintyInMeters": 969,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Danny Siwek",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/173440119"
     },
     {
@@ -479,6 +584,8 @@
       "coordinateUncertaintyInMeters": 59,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/27976410"
     },
     {
@@ -490,6 +597,8 @@
       "coordinateUncertaintyInMeters": 8,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Danny Siwek",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/172751465"
     },
     {
@@ -501,6 +610,8 @@
       "coordinateUncertaintyInMeters": 12,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/224537736"
     },
     {
@@ -512,6 +623,8 @@
       "coordinateUncertaintyInMeters": 31,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/174424588"
     },
     {
@@ -523,6 +636,8 @@
       "coordinateUncertaintyInMeters": 2813,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Fernando Olea",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/21723467"
     },
     {
@@ -534,6 +649,8 @@
       "coordinateUncertaintyInMeters": 441,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by/4.0/",
+      "rightsHolder": "Cricket Raspet",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/331582944"
     },
     {
@@ -545,6 +662,8 @@
       "coordinateUncertaintyInMeters": 14,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/28919771"
     },
     {
@@ -556,6 +675,8 @@
       "coordinateUncertaintyInMeters": 28476,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/213064055"
     },
     {
@@ -567,6 +688,8 @@
       "coordinateUncertaintyInMeters": 7,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/56593429"
     },
     {
@@ -578,6 +701,8 @@
       "coordinateUncertaintyInMeters": 13010,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "marcusleverus",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/361654541"
     },
     {
@@ -589,6 +714,8 @@
       "coordinateUncertaintyInMeters": 242,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "haolsen",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/74569929"
     },
     {
@@ -600,6 +727,8 @@
       "coordinateUncertaintyInMeters": 167,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "frankf",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/247327992"
     },
     {
@@ -611,6 +740,8 @@
       "coordinateUncertaintyInMeters": 6465,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Kin8man",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/98258812"
     },
     {
@@ -622,6 +753,8 @@
       "coordinateUncertaintyInMeters": 1953,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Caitlyn Ruskell",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/63215449"
     },
     {
@@ -633,6 +766,8 @@
       "coordinateUncertaintyInMeters": 50,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "John Garrett",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/17909335"
     },
     {
@@ -644,6 +779,8 @@
       "coordinateUncertaintyInMeters": 946,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "joe_cutler",
       "providerOccurrenceId": "http://www.inaturalist.org/observations/3919005"
     },
     {
@@ -655,6 +792,8 @@
       "coordinateUncertaintyInMeters": 85,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by/4.0/",
+      "rightsHolder": "Adam J. Searcy",
       "providerOccurrenceId": "http://www.inaturalist.org/observations/4403807"
     },
     {
@@ -666,6 +805,8 @@
       "coordinateUncertaintyInMeters": 3,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by/4.0/",
+      "rightsHolder": "Jess Mullins",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/197505170"
     },
     {
@@ -677,6 +818,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Patricia Butter",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/222953609"
     },
     {
@@ -688,6 +831,8 @@
       "coordinateUncertaintyInMeters": 28706,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Andrew Harmer",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/266434716"
     },
     {
@@ -699,6 +844,8 @@
       "coordinateUncertaintyInMeters": 30,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Sam Darmstadt",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/185945794"
     },
     {
@@ -710,6 +857,8 @@
       "coordinateUncertaintyInMeters": 28476,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/6518801"
     },
     {
@@ -721,6 +870,8 @@
       "coordinateUncertaintyInMeters": 17,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by/4.0/",
+      "rightsHolder": "Pat Webster @underwaterpat",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/55651810"
     },
     {
@@ -732,6 +883,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "grant_mccargar",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/155399098"
     },
     {
@@ -743,6 +896,8 @@
       "coordinateUncertaintyInMeters": 39,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Ken Chamberlain",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/180786610"
     },
     {
@@ -754,6 +909,8 @@
       "coordinateUncertaintyInMeters": 4,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/81815836"
     },
     {
@@ -765,6 +922,8 @@
       "coordinateUncertaintyInMeters": 12,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/224537740"
     },
     {
@@ -776,6 +935,8 @@
       "coordinateUncertaintyInMeters": 61,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/121171467"
     },
     {
@@ -787,6 +948,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Todd Fitzgerald",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/14352999"
     },
     {
@@ -798,6 +961,8 @@
       "coordinateUncertaintyInMeters": 28476,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/7072292"
     },
     {
@@ -809,6 +974,8 @@
       "coordinateUncertaintyInMeters": 6,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "erikaashley11",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/60884380"
     },
     {
@@ -820,6 +987,8 @@
       "coordinateUncertaintyInMeters": 31,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/26791294"
     },
     {
@@ -831,6 +1000,8 @@
       "coordinateUncertaintyInMeters": 12224,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Kin8man",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/98258813"
     },
     {
@@ -842,6 +1013,8 @@
       "coordinateUncertaintyInMeters": 488,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Edgar Eduardo Becerril-García",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/117031001"
     },
     {
@@ -853,6 +1026,8 @@
       "coordinateUncertaintyInMeters": 28706,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Andrew Harmer",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/266332963"
     },
     {
@@ -864,6 +1039,8 @@
       "coordinateUncertaintyInMeters": 26045,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Robin Gwen Agarwal",
       "providerOccurrenceId": "http://www.inaturalist.org/observations/1881140"
     },
     {
@@ -875,6 +1052,8 @@
       "coordinateUncertaintyInMeters": 28706,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Andrew Harmer",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/90049990"
     },
     {
@@ -886,6 +1065,8 @@
       "coordinateUncertaintyInMeters": 31,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Todd Fitzgerald",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/14353005"
     },
     {
@@ -897,6 +1078,8 @@
       "coordinateUncertaintyInMeters": 57,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/29837335"
     },
     {
@@ -908,6 +1091,8 @@
       "coordinateUncertaintyInMeters": 7987,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Susanne Spindler",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/91050983"
     },
     {
@@ -919,6 +1104,8 @@
       "coordinateUncertaintyInMeters": 13789,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Susanne Spindler",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/90009683"
     },
     {
@@ -930,6 +1117,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Tom Benson",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/237963259"
     },
     {
@@ -941,6 +1130,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "jessiemonsters",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/235876929"
     },
     {
@@ -952,6 +1143,8 @@
       "coordinateUncertaintyInMeters": 28476,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "http://www.inaturalist.org/observations/3523826"
     },
     {
@@ -963,6 +1156,8 @@
       "coordinateUncertaintyInMeters": 24281,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "barefootartist",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/313741269"
     },
     {
@@ -974,6 +1169,8 @@
       "coordinateUncertaintyInMeters": 28706,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Andrew Harmer",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/265471059"
     },
     {
@@ -985,6 +1182,8 @@
       "coordinateUncertaintyInMeters": 99,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/31387477"
     },
     {
@@ -996,6 +1195,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Craig Callender",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/175619715"
     },
     {
@@ -1007,6 +1208,8 @@
       "coordinateUncertaintyInMeters": 35,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "bradleyjordan",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/341261621"
     },
     {
@@ -1018,6 +1221,8 @@
       "coordinateUncertaintyInMeters": 31,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/24968303"
     },
     {
@@ -1029,6 +1234,8 @@
       "coordinateUncertaintyInMeters": 16,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/121363730"
     },
     {
@@ -1040,6 +1247,8 @@
       "coordinateUncertaintyInMeters": 28476,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/6726657"
     },
     {
@@ -1051,6 +1260,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Elise Scheuermann",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/83268614"
     },
     {
@@ -1062,6 +1273,8 @@
       "coordinateUncertaintyInMeters": 41,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/48509417"
     },
     {
@@ -1073,6 +1286,8 @@
       "coordinateUncertaintyInMeters": 8,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Alan King",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/130299270"
     },
     {
@@ -1084,6 +1299,8 @@
       "coordinateUncertaintyInMeters": 5,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Donna Pomeroy",
       "providerOccurrenceId": "http://www.inaturalist.org/observations/1879576"
     },
     {
@@ -1095,6 +1312,8 @@
       "coordinateUncertaintyInMeters": 47376,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "marcusleverus",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/361817756"
     },
     {
@@ -1106,6 +1325,8 @@
       "coordinateUncertaintyInMeters": 28706,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Andrew Harmer",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/191863465"
     },
     {
@@ -1117,6 +1338,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "wkord",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/8642531"
     },
     {
@@ -1128,6 +1351,8 @@
       "coordinateUncertaintyInMeters": 59,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/52436718"
     },
     {
@@ -1139,6 +1364,8 @@
       "coordinateUncertaintyInMeters": 31250,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "kdlafferty",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/41619428"
     },
     {
@@ -1150,6 +1377,8 @@
       "coordinateUncertaintyInMeters": 21737,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "jules_leclair",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/65429940"
     },
     {
@@ -1161,6 +1390,8 @@
       "coordinateUncertaintyInMeters": 977,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Jeff Alvarez",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/41643840"
     },
     {
@@ -1172,6 +1403,8 @@
       "coordinateUncertaintyInMeters": 1953,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Rino",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/42660500"
     },
     {
@@ -1183,6 +1416,8 @@
       "coordinateUncertaintyInMeters": 8,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Alexis",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/89860267"
     },
     {
@@ -1194,6 +1429,8 @@
       "coordinateUncertaintyInMeters": 113168,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "jdepedro211",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/96860574"
     },
     {
@@ -1205,6 +1442,8 @@
       "coordinateUncertaintyInMeters": 37,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Kennedy Rivera",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/229966287"
     },
     {
@@ -1216,6 +1455,8 @@
       "coordinateUncertaintyInMeters": 2,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Alexis",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/89860269"
     },
     {
@@ -1227,6 +1468,8 @@
       "coordinateUncertaintyInMeters": 28476,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "http://www.inaturalist.org/observations/3652459"
     },
     {
@@ -1238,6 +1481,8 @@
       "coordinateUncertaintyInMeters": 29533,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Saunders Drukker",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/195031585"
     },
     {
@@ -1249,6 +1494,8 @@
       "coordinateUncertaintyInMeters": 15,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/47455815"
     },
     {
@@ -1260,6 +1507,8 @@
       "coordinateUncertaintyInMeters": 4,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/81815837"
     },
     {
@@ -1271,6 +1520,8 @@
       "coordinateUncertaintyInMeters": 60,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/26951678"
     },
     {
@@ -1282,6 +1533,8 @@
       "coordinateUncertaintyInMeters": 3475,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "AK",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/229657154"
     },
     {
@@ -1293,6 +1546,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Stefanie",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/58169788"
     },
     {
@@ -1304,6 +1559,8 @@
       "coordinateUncertaintyInMeters": 31,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by/4.0/",
+      "rightsHolder": "Garth Harwood",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/21218747"
     },
     {
@@ -1315,6 +1572,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Renee Artigues",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/27323901"
     },
     {
@@ -1326,6 +1585,8 @@
       "coordinateUncertaintyInMeters": 4,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/81815834"
     },
     {
@@ -1337,6 +1598,8 @@
       "coordinateUncertaintyInMeters": 100,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "John Garrett",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/17771066"
     },
     {
@@ -1348,6 +1611,8 @@
       "coordinateUncertaintyInMeters": 376,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "rightsHolder": "Jenni Peters",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/53206843"
     },
     {
@@ -1359,6 +1624,8 @@
       "coordinateUncertaintyInMeters": 28476,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/82115828"
     },
     {
@@ -1370,6 +1637,8 @@
       "coordinateUncertaintyInMeters": 15,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by/4.0/",
+      "rightsHolder": "Garth Harwood",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/26409378"
     },
     {
@@ -1381,6 +1650,8 @@
       "coordinateUncertaintyInMeters": 29533,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Saunders Drukker",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/19915871"
     },
     {
@@ -1392,6 +1663,8 @@
       "coordinateUncertaintyInMeters": 1953,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Mike Krampf",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/29288780"
     },
     {
@@ -1403,6 +1676,8 @@
       "coordinateUncertaintyInMeters": 24281,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "barefootartist",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/313740731"
     },
     {
@@ -1414,6 +1689,8 @@
       "coordinateUncertaintyInMeters": 31,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/34893451"
     },
     {
@@ -1425,6 +1702,8 @@
       "coordinateUncertaintyInMeters": 31,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Todd Fitzgerald",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/14353002"
     },
     {
@@ -1436,6 +1715,8 @@
       "coordinateUncertaintyInMeters": 61,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/16512494"
     },
     {
@@ -1447,6 +1728,8 @@
       "coordinateUncertaintyInMeters": 28706,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Andrew Harmer",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/242602305"
     },
     {
@@ -1458,6 +1741,8 @@
       "coordinateUncertaintyInMeters": 100,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "John Garrett",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/34841834"
     },
     {
@@ -1469,6 +1754,8 @@
       "coordinateUncertaintyInMeters": 61,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Yinan Li",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/198461062"
     },
     {
@@ -1480,6 +1767,8 @@
       "coordinateUncertaintyInMeters": 49,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/55000360"
     },
     {
@@ -1491,6 +1780,8 @@
       "coordinateUncertaintyInMeters": 7,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/56593428"
     },
     {
@@ -1502,6 +1793,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by/4.0/",
+      "rightsHolder": "Jonah Evans",
       "providerOccurrenceId": "http://www.inaturalist.org/observations/3885681"
     },
     {
@@ -1513,6 +1806,8 @@
       "coordinateUncertaintyInMeters": 244,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Edgar Eduardo Becerril-García",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/116912150"
     },
     {
@@ -1524,6 +1819,8 @@
       "coordinateUncertaintyInMeters": 28476,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/7345887"
     },
     {
@@ -1535,6 +1832,8 @@
       "coordinateUncertaintyInMeters": 28706,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Andrew Harmer",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/263673359"
     },
     {
@@ -1546,6 +1845,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Robin Gwen Agarwal",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/28842788"
     },
     {
@@ -1557,6 +1858,8 @@
       "coordinateUncertaintyInMeters": 28476,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/7072291"
     },
     {
@@ -1568,6 +1871,8 @@
       "coordinateUncertaintyInMeters": 162,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "frankf",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/247328266"
     },
     {
@@ -1579,6 +1884,8 @@
       "coordinateUncertaintyInMeters": 65,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/49086896"
     },
     {
@@ -1590,6 +1897,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Rocío Maldonado López",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/37478617"
     },
     {
@@ -1601,6 +1910,8 @@
       "coordinateUncertaintyInMeters": 31,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/34893447"
     },
     {
@@ -1612,6 +1923,8 @@
       "coordinateUncertaintyInMeters": 32,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/27541319"
     },
     {
@@ -1623,6 +1936,8 @@
       "coordinateUncertaintyInMeters": 718,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Danny Siwek",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/173440118"
     },
     {
@@ -1634,6 +1949,8 @@
       "coordinateUncertaintyInMeters": 30,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/52333757"
     },
     {
@@ -1645,6 +1962,8 @@
       "coordinateUncertaintyInMeters": 61,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/60924869"
     },
     {
@@ -1656,6 +1975,8 @@
       "coordinateUncertaintyInMeters": 31,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/174424586"
     },
     {
@@ -1667,6 +1988,8 @@
       "coordinateUncertaintyInMeters": 28706,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Andrew Harmer",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/264434972"
     },
     {
@@ -1678,6 +2001,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "bmag",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/30153013"
     },
     {
@@ -1689,6 +2014,8 @@
       "coordinateUncertaintyInMeters": 100,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "John Garrett",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/34839630"
     },
     {
@@ -1700,6 +2027,8 @@
       "coordinateUncertaintyInMeters": 207,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Ted Judah",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/97141268"
     },
     {
@@ -1711,6 +2040,8 @@
       "coordinateUncertaintyInMeters": 31,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/127624128"
     },
     {
@@ -1722,6 +2053,8 @@
       "coordinateUncertaintyInMeters": 1265,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Kin8man",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/98258842"
     },
     {
@@ -1733,6 +2066,8 @@
       "coordinateUncertaintyInMeters": 8,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Alexis",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/106819666"
     },
     {
@@ -1744,6 +2079,8 @@
       "coordinateUncertaintyInMeters": 100,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/27908840"
     },
     {
@@ -1755,6 +2092,8 @@
       "coordinateUncertaintyInMeters": 25,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "thechancellor",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/130031405"
     },
     {
@@ -1766,6 +2105,8 @@
       "coordinateUncertaintyInMeters": 1219,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "thomasfarrugia",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/39309236"
     },
     {
@@ -1777,6 +2118,8 @@
       "coordinateUncertaintyInMeters": 34,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/218567322"
     },
     {
@@ -1788,6 +2131,8 @@
       "coordinateUncertaintyInMeters": 31,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/34893452"
     },
     {
@@ -1799,6 +2144,8 @@
       "coordinateUncertaintyInMeters": 15,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/174424587"
     },
     {
@@ -1810,6 +2157,8 @@
       "coordinateUncertaintyInMeters": 28476,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/6832660"
     },
     {
@@ -1821,6 +2170,8 @@
       "coordinateUncertaintyInMeters": 61,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/29559816"
     },
     {
@@ -1832,6 +2183,8 @@
       "coordinateUncertaintyInMeters": 28476,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/12624994"
     },
     {
@@ -1843,6 +2196,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "asugi",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/188665754"
     },
     {
@@ -1854,6 +2209,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/175151996"
     },
     {
@@ -1865,6 +2222,8 @@
       "coordinateUncertaintyInMeters": 7990,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Andrew Gottscho",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/65513685"
     },
     {
@@ -1876,6 +2235,8 @@
       "coordinateUncertaintyInMeters": 31,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "James Maughn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/95504387"
     },
     {
@@ -1887,6 +2248,8 @@
       "coordinateUncertaintyInMeters": 244,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Jonny_utah83",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/302611542"
     },
     {
@@ -1898,6 +2261,8 @@
       "coordinateUncertaintyInMeters": 2154,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "azure27014",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/81983891"
     },
     {
@@ -1909,6 +2274,8 @@
       "coordinateUncertaintyInMeters": 43422,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "canadian1986",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/297399584"
     },
     {
@@ -1920,6 +2287,8 @@
       "coordinateUncertaintyInMeters": 2763,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "bernie2u2",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/73657189"
     },
     {
@@ -1931,6 +2300,8 @@
       "coordinateUncertaintyInMeters": 6457,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Royle Safaris",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/193716720"
     },
     {
@@ -1942,6 +2313,8 @@
       "coordinateUncertaintyInMeters": 1,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Callum Evans",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/11218632"
     },
     {
@@ -1953,6 +2326,8 @@
       "coordinateUncertaintyInMeters": 1750,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Nicole LaRoche",
       "providerOccurrenceId": "http://www.inaturalist.org/observations/1486439"
     },
     {
@@ -1964,6 +2339,8 @@
       "coordinateUncertaintyInMeters": 33,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Esther Jacobs",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/44589311"
     },
     {
@@ -1975,6 +2352,8 @@
       "coordinateUncertaintyInMeters": 32258,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Will Sweet",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/26298628"
     },
     {
@@ -1986,6 +2365,8 @@
       "coordinateUncertaintyInMeters": 5577,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Justin Walker",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/34103911"
     },
     {
@@ -1997,6 +2378,8 @@
       "coordinateUncertaintyInMeters": 132,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Esther Jacobs",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/39758212"
     },
     {
@@ -2008,6 +2391,8 @@
       "coordinateUncertaintyInMeters": 112,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Kirran Barnes",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/45978393"
     },
     {
@@ -2019,6 +2404,8 @@
       "coordinateUncertaintyInMeters": 9188,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Will Sweet",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/82067359"
     },
     {
@@ -2030,6 +2417,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Pieterjan Verhelst",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/298392299"
     },
     {
@@ -2041,6 +2430,8 @@
       "coordinateUncertaintyInMeters": 1532,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Kyle Leader",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/173132240"
     },
     {
@@ -2052,6 +2443,8 @@
       "coordinateUncertaintyInMeters": 441,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "wonderwalker",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/63085080"
     },
     {
@@ -2063,6 +2456,8 @@
       "coordinateUncertaintyInMeters": 3534,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "ellie5010ml",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/137193394"
     },
     {
@@ -2074,6 +2469,8 @@
       "coordinateUncertaintyInMeters": 5,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "pablotm",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/345688811"
     },
     {
@@ -2085,6 +2482,8 @@
       "coordinateUncertaintyInMeters": 14524,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "cgardiner41",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/194036680"
     },
     {
@@ -2096,6 +2495,8 @@
       "coordinateUncertaintyInMeters": 36,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "David Aitken",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/302427781"
     },
     {
@@ -2107,6 +2508,8 @@
       "coordinateUncertaintyInMeters": 3312,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Lauren McGough",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/78438333"
     },
     {
@@ -2118,6 +2521,8 @@
       "coordinateUncertaintyInMeters": 7628,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "jpbuenorodrigues",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/116395803"
     },
     {
@@ -2129,6 +2534,8 @@
       "coordinateUncertaintyInMeters": 6211,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "afonsomaleitas",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/199085122"
     },
     {
@@ -2140,6 +2547,8 @@
       "coordinateUncertaintyInMeters": 1275,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "agbasteiro",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/90756261"
     },
     {
@@ -2151,6 +2560,8 @@
       "coordinateUncertaintyInMeters": 9125,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Irelandrbi",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/61895630"
     },
     {
@@ -2162,6 +2573,8 @@
       "coordinateUncertaintyInMeters": 122,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Kirran Barnes",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/45979453"
     },
     {
@@ -2173,6 +2586,8 @@
       "coordinateUncertaintyInMeters": 3547,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "alwaysadventure",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/318281141"
     },
     {
@@ -2184,6 +2599,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by/4.0/",
+      "rightsHolder": "Riley Pollom",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/7913855"
     },
     {
@@ -2195,6 +2612,8 @@
       "coordinateUncertaintyInMeters": 977,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "craigdux",
       "providerOccurrenceId": "http://www.inaturalist.org/observations/4152080"
     },
     {
@@ -2206,6 +2625,8 @@
       "coordinateUncertaintyInMeters": 3042,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Lynne Correia",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/238126195"
     },
     {
@@ -2217,6 +2638,8 @@
       "coordinateUncertaintyInMeters": 11154,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Justin Walker",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/34217941"
     },
     {
@@ -2228,6 +2651,8 @@
       "coordinateUncertaintyInMeters": 488,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by/4.0/",
+      "rightsHolder": "Keith Martin-Smith",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/90372170"
     },
     {
@@ -2239,6 +2664,8 @@
       "coordinateUncertaintyInMeters": 130,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Jenna Cheramie",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/37029534"
     },
     {
@@ -2250,6 +2677,8 @@
       "coordinateUncertaintyInMeters": 1052,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Esther Jacobs",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/42737857"
     },
     {
@@ -2261,6 +2690,8 @@
       "coordinateUncertaintyInMeters": 22730,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "vhaghighi",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/283174019"
     },
     {
@@ -2272,6 +2703,8 @@
       "coordinateUncertaintyInMeters": 11154,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Justin Walker",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/35020404"
     },
     {
@@ -2283,6 +2716,8 @@
       "coordinateUncertaintyInMeters": 28,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Esther Jacobs",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/44582995"
     },
     {
@@ -2294,6 +2729,8 @@
       "coordinateUncertaintyInMeters": 15,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Niall Perrins",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/85893582"
     },
     {
@@ -2305,6 +2742,8 @@
       "coordinateUncertaintyInMeters": 50000,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "cozp",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/280530641"
     },
     {
@@ -2316,6 +2755,8 @@
       "coordinateUncertaintyInMeters": 33,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Esther Jacobs",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/44588599"
     },
     {
@@ -2327,6 +2768,8 @@
       "coordinateUncertaintyInMeters": 499,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by/4.0/",
+      "rightsHolder": "Patrick Delhalt",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/32633293"
     },
     {
@@ -2338,6 +2781,8 @@
       "coordinateUncertaintyInMeters": 33,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Esther Jacobs",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/44589139"
     },
     {
@@ -2349,6 +2794,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Timshroom",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/297793210"
     },
     {
@@ -2360,6 +2807,8 @@
       "coordinateUncertaintyInMeters": 236,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Burak Doğansoysal",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/291569048"
     },
     {
@@ -2371,6 +2820,8 @@
       "coordinateUncertaintyInMeters": 1,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Callum Evans",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/11208374"
     },
     {
@@ -2382,6 +2833,8 @@
       "coordinateUncertaintyInMeters": 61,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by/4.0/",
+      "rightsHolder": "Robin Fokker",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/198137644"
     },
     {
@@ -2393,6 +2846,8 @@
       "coordinateUncertaintyInMeters": 5,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Rob",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/71588177"
     },
     {
@@ -2404,6 +2859,8 @@
       "coordinateUncertaintyInMeters": 1953,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Rino",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/42770209"
     },
     {
@@ -2415,6 +2872,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Felicity Spoors",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/311024900"
     },
     {
@@ -2426,6 +2885,8 @@
       "coordinateUncertaintyInMeters": 1395,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Justin Walker",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/35020646"
     },
     {
@@ -2437,6 +2898,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "jellygelletich",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/336350560"
     },
     {
@@ -2448,6 +2911,8 @@
       "coordinateUncertaintyInMeters": 5,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Felicity Spoors",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/297848405"
     },
     {
@@ -2459,6 +2924,8 @@
       "coordinateUncertaintyInMeters": 30,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Esther Jacobs",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/44582742"
     },
     {
@@ -2470,6 +2937,8 @@
       "coordinateUncertaintyInMeters": 2121,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Alison Kock",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/68196968"
     },
     {
@@ -2481,6 +2950,8 @@
       "coordinateUncertaintyInMeters": 1507,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Erlin Mansfield",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/313774085"
     },
     {
@@ -2492,6 +2963,8 @@
       "coordinateUncertaintyInMeters": 1532,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Kyle Leader",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/173132242"
     },
     {
@@ -2503,6 +2976,8 @@
       "coordinateUncertaintyInMeters": 64629,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Timothy Storer",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/351623843"
     },
     {
@@ -2514,6 +2989,8 @@
       "coordinateUncertaintyInMeters": 22014,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Xavierfr",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/12711017"
     },
     {
@@ -2525,6 +3002,8 @@
       "coordinateUncertaintyInMeters": null,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Dr. Ryne D. Rutherford",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/37651901"
     },
     {
@@ -2536,6 +3015,8 @@
       "coordinateUncertaintyInMeters": 110,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "carel van der Colff",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/11111002"
     },
     {
@@ -2547,6 +3028,8 @@
       "coordinateUncertaintyInMeters": 12561,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "guyshavit",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/324033350"
     },
     {
@@ -2558,6 +3041,8 @@
       "coordinateUncertaintyInMeters": 5,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Jenna Cheramie",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/21195940"
     },
     {
@@ -2569,6 +3054,8 @@
       "coordinateUncertaintyInMeters": 1264,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Kirby Morejohn",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/216405073"
     },
     {
@@ -2580,6 +3067,8 @@
       "coordinateUncertaintyInMeters": 33,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Esther Jacobs",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/44583334"
     },
     {
@@ -2591,6 +3080,8 @@
       "coordinateUncertaintyInMeters": 29146,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Robin Laws-Wall",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/48896298"
     },
     {
@@ -2602,6 +3093,8 @@
       "coordinateUncertaintyInMeters": 61,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Mark McGrouther",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/17586182"
     },
     {
@@ -2613,6 +3106,8 @@
       "coordinateUncertaintyInMeters": 854,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Tom Davis",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/50749048"
     },
     {
@@ -2624,6 +3119,8 @@
       "coordinateUncertaintyInMeters": 324,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Derrick Cruz",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/6701964"
     },
     {
@@ -2635,6 +3132,8 @@
       "coordinateUncertaintyInMeters": 57,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "luluchouette",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/75169970"
     },
     {
@@ -2646,6 +3145,8 @@
       "coordinateUncertaintyInMeters": 27,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "nickd",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/7875267"
     },
     {
@@ -2657,6 +3158,8 @@
       "coordinateUncertaintyInMeters": 321,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Nick Tepper",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/31080800"
     },
     {
@@ -2668,6 +3171,8 @@
       "coordinateUncertaintyInMeters": 6220,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "glide2277",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/285708386"
     },
     {
@@ -2679,6 +3184,8 @@
       "coordinateUncertaintyInMeters": 6,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Sean P. Myers",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/15480432"
     },
     {
@@ -2690,6 +3197,8 @@
       "coordinateUncertaintyInMeters": 4,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Sean P. Myers",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/15711026"
     },
     {
@@ -2701,6 +3210,8 @@
       "coordinateUncertaintyInMeters": 23824,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Eman Khwaja",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/231196597"
     },
     {
@@ -2712,6 +3223,8 @@
       "coordinateUncertaintyInMeters": 1509,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "rightsHolder": "Brian Vigorito",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/178082617"
     },
     {
@@ -2723,6 +3236,8 @@
       "coordinateUncertaintyInMeters": 31294,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "nleav",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/132490170"
     },
     {
@@ -2734,6 +3249,8 @@
       "coordinateUncertaintyInMeters": 4,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Alex Lamoreaux",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/141109121"
     },
     {
@@ -2745,6 +3262,8 @@
       "coordinateUncertaintyInMeters": 357,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "josiahmayo",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/64332480"
     },
     {
@@ -2756,6 +3275,8 @@
       "coordinateUncertaintyInMeters": 932,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "windder",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/92947519"
     },
     {
@@ -2767,6 +3288,8 @@
       "coordinateUncertaintyInMeters": 7450,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Will Kirby",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/234954822"
     },
     {
@@ -2778,6 +3301,8 @@
       "coordinateUncertaintyInMeters": 125249,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "rllucky",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/66114954"
     },
     {
@@ -2789,6 +3314,8 @@
       "coordinateUncertaintyInMeters": 12717,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "savhubbard",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/55411112"
     },
     {
@@ -2800,6 +3327,8 @@
       "coordinateUncertaintyInMeters": 61,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by/4.0/",
+      "rightsHolder": "Zac Peterson",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/242408050"
     },
     {
@@ -2811,6 +3340,8 @@
       "coordinateUncertaintyInMeters": 6886,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "liambren",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/232265737"
     },
     {
@@ -2822,6 +3353,8 @@
       "coordinateUncertaintyInMeters": 2197,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "rightsHolder": "David Remsen",
       "providerOccurrenceId": "http://www.inaturalist.org/observations/1738689"
     },
     {
@@ -2833,6 +3366,8 @@
       "coordinateUncertaintyInMeters": 4373,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Yianni Laskaris",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/129753632"
     },
     {
@@ -2844,6 +3379,8 @@
       "coordinateUncertaintyInMeters": 4,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by/4.0/",
+      "rightsHolder": "Doug Suitor",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/92087034"
     },
     {
@@ -2855,6 +3392,8 @@
       "coordinateUncertaintyInMeters": 1610,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "Devin",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/137916493"
     },
     {
@@ -2866,6 +3405,8 @@
       "coordinateUncertaintyInMeters": 4,
       "basisOfRecord": "HumanObservation",
       "samplingProtocol": null,
+      "recordLicense": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "rightsHolder": "jamesbury",
       "providerOccurrenceId": "https://www.inaturalist.org/observations/142828142"
     }
   ]

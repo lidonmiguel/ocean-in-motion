@@ -38,14 +38,14 @@ publica todo como artefacto para revisión. No modifica `main`: para actualizar
 la web hay que revisar y versionar juntos extractos, manifiestos y archivos
 limpios. Una nueva fecha de consulta puede cambiar los registros de OBIS.
 
-## Contrato del archivo limpio (versión 1)
+## Contrato del archivo limpio (esquema 1, pipeline 2)
 
 | Campo | Contenido |
 | --- | --- |
 | `schemaVersion`, `pipelineVersion` | Versiones del contrato y de la transformación. |
 | `species` | ID estable, nombre científico latino, nombre común, grupo (`fish`, `cetacean`, `reptile`) y AphiaID. |
-| `sourceScopes[]` | ID de ámbito, región, periodo, límites y fechas de consulta; si aplica, diámetro de agrupación. Cada dataset conserva UUID, URL, cita, licencia, fecha de acceso y SHA-256 del extracto. |
-| `observations[]` | ID de OBIS, ámbito, fecha, longitud y latitud WGS84, incertidumbre declarada en metros o `null`, `basisOfRecord`, protocolo y `occurrenceID` de origen cuando existen. |
+| `sourceScopes[]` | ID de ámbito y del extracto, región, periodo, límites y fechas de consulta; si aplica, diámetro de agrupación. Cada dataset conserva UUID, URL, cita, licencia de metadatos, fecha de acceso y SHA-256 del extracto. `recordMetadata` cuenta por ámbito los valores de método y licencia de las filas aceptadas, incluidos los ausentes. |
+| `observations[]` | ID de OBIS, ámbito, fecha, longitud y latitud WGS84, incertidumbre declarada en metros o `null`, `basisOfRecord`, protocolo, licencia y titular de derechos de la fila y `occurrenceID` de origen cuando existen. Los ausentes permanecen `null`. |
 | `quality` y `sourceScopes[].quality` | `rawFetched`, `staged`, `accepted`, descartes previos al staging, descartes posteriores por motivo, incertidumbre desconocida y rango por ámbito. |
 
 Las igualdades `rawFetched = staged + upstreamRejected` y
@@ -53,6 +53,18 @@ Las igualdades `rawFetched = staged + upstreamRejected` y
 agregado. Un ID repetido, ámbito desconocido, metadato no revisado, posición
 fuera de límites, consulta truncada o extracto cuya huella no coincide detiene
 la generación. No se fabrican valores para fechas o incertidumbre ausentes.
+
+La interfaz presenta una ficha por caja seleccionada con el ámbito OBIS, el
+recuento de esa caja, los totales y motivos de descarte del ámbito, límites y
+fechas de consulta, incertidumbre, método, licencias y límites de muestreo.
+Los IDs enumerados en la ficha identifican exactamente las filas de
+`observations[]` de esa caja en el archivo limpio. Una misma consulta puede
+producir varias cajas; **los descartes y el método son del ámbito completo**,
+mientras que los IDs, la incertidumbre y las licencias de la caja proceden de
+sus registros. El enlace al manifiesto conserva la consulta y sus contadores
+anteriores al staging. La ficha no describe destinos ilustrativos como datos
+observados. Consulte [la revisión de derechos](rights-review.md) antes de
+reutilizar registros; la web no ofrece descargas.
 
 El archivo de rechazados enumera solo las filas **que llegaron al staging y
 fueron excluidas después**. Las filas inválidas o duplicadas retiradas antes

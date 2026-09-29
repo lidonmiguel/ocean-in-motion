@@ -19,7 +19,7 @@ from .publish_species import STUDIES, build_snapshot
 ROOT = Path(__file__).resolve().parents[2]
 PILOT_SLUG = "loggerhead-west-med"
 PILOT_INPUT = "loggerhead-west-med-2013-2017"
-PIPELINE_VERSION = 1
+PIPELINE_VERSION = 2
 
 
 def _raw_lines(path: Path) -> list[dict]:
@@ -83,6 +83,20 @@ def build_curated(input_dir: Path, metadata_path: Path) -> tuple[dict[str, dict]
         sources, observations = [], []
         for slug, snapshot, manifest, raw_rows in scopes[item["id"]]:
             by_id = {row["id"]: row for row in raw_rows}
+            accepted_rows = [by_id[row["id"]] for row in snapshot["observations"]]
+            for row in accepted_rows:
+                if any(value is not None and not isinstance(value, str)
+                       for value in (row.get("license"), row.get("rightsHolder"), row.get("samplingProtocol"), row.get("occurrenceID"))):
+                    raise ValueError(f"{slug}: unreviewed source metadata type")
+            record_metadata = {
+                "basisOfRecordCounts": dict(sorted(Counter(row["basisOfRecord"] for row in accepted_rows).items())),
+                "samplingProtocolCounts": dict(sorted(Counter(row["samplingProtocol"] for row in accepted_rows
+                                                       if row.get("samplingProtocol")).items())),
+                "missingSamplingProtocol": sum(not row.get("samplingProtocol") for row in accepted_rows),
+                "recordLicenseCounts": dict(sorted(Counter(row["license"] for row in accepted_rows
+                                                     if row.get("license")).items())),
+                "missingRecordLicense": sum(not row.get("license") for row in accepted_rows),
+            }
             source = snapshot["source"]
             query = manifest["query"]
             upstream = {
@@ -92,11 +106,13 @@ def build_curated(input_dir: Path, metadata_path: Path) -> tuple[dict[str, dict]
             if (manifest["counts"]["raw_fetched"] - sum(upstream.values()) != manifest["counts"]["written"]):
                 raise ValueError(f"{slug}: upstream QC accounting is inconsistent")
             sources.append({
-                "id": slug, "region": snapshot["region"], "period": snapshot["period"],
+                "id": slug, "extractId": PILOT_INPUT if slug == PILOT_SLUG else slug,
+                "region": snapshot["region"], "period": snapshot["period"],
                 "boundsWgs84": snapshot["boundsWgs84"],
                 **({"clusterDiameterKm": snapshot["clusterDiameterKm"]} if "clusterDiameterKm" in snapshot else {}),
                 "query": {"startDate": query["startdate"], "endDate": query["enddate"]},
                 "dataset": {key: source[key] for key in ("datasetId", "url", "citation", "license", "accessedAtUtc", "extractSha256")},
+                "recordMetadata": record_metadata,
                 "quality": {"rawFetched": manifest["counts"]["raw_fetched"],
                             "staged": manifest["counts"]["written"],
                             "accepted": snapshot["summary"]["count"],
@@ -109,9 +125,6 @@ def build_curated(input_dir: Path, metadata_path: Path) -> tuple[dict[str, dict]
                 raw = by_id[record["id"]]
                 if raw.get("basisOfRecord") not in {"HumanObservation", "Occurrence"}:
                     raise ValueError(f"{slug}: unreviewed basis of record")
-                if any(value is not None and not isinstance(value, str)
-                       for value in (raw.get("samplingProtocol"), raw.get("occurrenceID"))):
-                    raise ValueError(f"{slug}: unreviewed source metadata type")
                 observations.append({
                     "obisId": record["id"], "scopeId": slug,
                     "eventDate": record["eventDate"], "longitude": record["longitude"],
@@ -119,6 +132,7 @@ def build_curated(input_dir: Path, metadata_path: Path) -> tuple[dict[str, dict]
                     "coordinateUncertaintyInMeters": record["coordinateUncertaintyInMeters"],
                     "basisOfRecord": raw.get("basisOfRecord"),
                     "samplingProtocol": raw.get("samplingProtocol"),
+                    "recordLicense": raw.get("license"), "rightsHolder": raw.get("rightsHolder"),
                     "providerOccurrenceId": raw.get("occurrenceID"),
                 })
         if not sources:
