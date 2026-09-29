@@ -1,11 +1,12 @@
 """Build annual, area-weighted SST snapshots for the map from NOAA ERSSTv6.
 
 Run from the repository root after installing the temperature extra:
-    python python/ocean_pipeline/temperature.py --start 1982 --end 2025
+    python -m ocean_pipeline.temperature --start 1982 --end 2025
 
 The source geometry is IHO Sea Areas v3, simplified by alvinometric (CC BY 4.0).
 Only complete calendar years are published. Downloaded monthly files are not
-committed; the resulting compact annual table and selected geometry are.
+committed; areas with fewer than two complete NOAA cells are explicitly
+estimated from neighboring areas.
 """
 
 from __future__ import annotations
@@ -23,31 +24,10 @@ from netCDF4 import Dataset
 from shapely.geometry import shape
 from shapely import contains_xy
 
+from ocean_pipeline.sea_area_catalog import AREAS
+from ocean_pipeline.temperature_fill import complete_dataset
 
 BASE_URL = "https://www.ncei.noaa.gov/data/sea-surface-temperature-extended-reconstructed/v6/access"
-AREAS = {
-    "North Atlantic Ocean": ("atlantic-north", "Atlántico norte"),
-    "South Atlantic Ocean": ("atlantic-south", "Atlántico sur"),
-    "North Pacific Ocean": ("pacific-north", "Pacífico norte"),
-    "South Pacific Ocean": ("pacific-south", "Pacífico sur"),
-    "Indian Ocean": ("indian", "Océano Índico"),
-    "Arctic Ocean": ("arctic", "Océano Ártico"),
-    "Southern Ocean": ("southern", "Océano Austral"),
-    "Mediterranean Sea - Western Basin": ("med-west", "Mediterráneo occidental"),
-    "Mediterranean Sea - Eastern Basin": ("med-east", "Mediterráneo oriental"),
-    "North Sea": ("north-sea", "Mar del Norte"),
-    "Baltic Sea": ("baltic", "Mar Báltico"),
-    "Black Sea": ("black", "Mar Negro"),
-    "Red Sea": ("red", "Mar Rojo"),
-    "Caribbean Sea": ("caribbean", "Mar Caribe"),
-    "Gulf of Mexico": ("gulf-mexico", "Golfo de México"),
-    "Arabian Sea": ("arabian", "Mar Arábigo"),
-    "Bay of Bengal": ("bengal", "Bahía de Bengala"),
-    "South China Sea": ("south-china", "Mar de China Meridional"),
-    "Bering Sea": ("bering", "Mar de Bering"),
-    "Tasman Sea": ("tasman", "Mar de Tasmania"),
-    "Coral Sea": ("coral", "Mar del Coral"),
-}
 
 
 def fetch_month(year: int, month: int) -> tuple[int, int, bytes]:
@@ -114,14 +94,16 @@ def build(areas_path: Path, start: int, end: int, output: Path) -> None:
                 continue
             mean = float(np.sum(sums[year][valid] / full_days * weights[valid]) / np.sum(weights[valid]))
             records.append({"year": year, "areaId": ident, "celsius": round(mean, 2), "cells": cells})
-    output.mkdir(parents=True, exist_ok=True)
-    (output / "seaAreas.geojson").write_text(json.dumps({"type": "FeatureCollection", "features": features}, separators=(",", ":")))
-    (output / "seaTemperatures.json").write_text(json.dumps({
+    annual = {
         "source": "NOAA ERSSTv6", "startYear": start, "endYear": end,
         "accessed": date.today().isoformat(), "gridDegrees": 2,
         "records": records,
-    }, separators=(",", ":")))
-    print(f"Published {len(records)} annual area values in {output}")
+    }
+    areas, annual = complete_dataset(source, annual)
+    output.mkdir(parents=True, exist_ok=True)
+    (output / "seaAreas.geojson").write_text(json.dumps(areas, ensure_ascii=False, separators=(",", ":")))
+    (output / "seaTemperatures.json").write_text(json.dumps(annual, ensure_ascii=False, separators=(",", ":")))
+    print(f"Published {len(annual['records'])} annual area values in {output}")
 
 
 if __name__ == "__main__":

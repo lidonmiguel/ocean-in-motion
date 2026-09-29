@@ -43,42 +43,59 @@ geometry and may omit strands for which no marine path is found.
 ## Sea temperatures
 
 Select **Ver mares y temperaturas** to switch to an independent temperature
-view. Choose a complete calendar year, select one of 21 named sea and ocean
+view. Choose a complete calendar year, select one of 101 named sea and ocean
 areas on the map or in the list, inspect its annual history, or download the
-full CSV. The species map and its illustrative flows remain separate.
+full CSV (with origin and donor columns). The species map and its illustrative
+flows remain separate.
 
-The checked-in values are **annual mean sea-surface temperatures in °C**, not
-anomalies or forecasts. The current snapshot covers **1982–2025** and is
-derived from all twelve monthly [NOAA ERSSTv6](https://www.ncei.noaa.gov/products/extended-reconstructed-sst)
-files per year. It includes only ocean grid-cell centers within each named
-polygon, requires a value in every month of the year, weights the months by
-their days and the cells by cosine of latitude, and rounds the resulting mean
-to 0.01 °C. NOAA's 2° reconstruction smooths local changes; very small seas
-are excluded if fewer than two complete cells fall within their boundaries.
-In ice-covered areas, NOAA uses an ice/SST proxy, which matters especially in
-the Arctic. The annual data are in `src/data/seaTemperatures.json`; each record
-also reports its cell count. This snapshot is a regional overview, not a
-coastal or harbor reading.
+The checked-in values are **annual sea-surface temperatures in °C**, not
+anomalies or forecasts. The snapshot covers **1982–2025**. Its 21 original
+areas were computed from all twelve monthly [NOAA ERSSTv6](https://www.ncei.noaa.gov/products/extended-reconstructed-sst)
+files per year. Only ocean grid-cell centers within each polygon are used;
+all twelve months must be present. Months are weighted by days and cells by
+cosine of latitude. NOAA's 2° reconstruction smooths local changes. Ice-covered
+areas use NOAA's ice/SST proxy, which matters especially in the Arctic.
+
+The other **80 areas in the checked-in snapshot are estimates**, marked `≈`
+throughout the map, detail panel, history, and CSV. For each year, the pipeline
+takes the closest one or two areas with NOAA-derived values by IHO polygon
+distance, averages their temperatures after an approximate latitude correction,
+and rounds to 0.1 °C. The correction uses a capped broad latitude curve
+(`max(-1.8, 28 - 0.008 × latitude²)` in °C). These estimates do **not** represent
+local NOAA grid cells, and their `cells` count is zero. The record lists its
+`estimatedFrom` donors and `method: "estimated"`. They are coarse visual
+approximations; exclude them from model training that requires observations.
+The annual data are in `src/data/seaTemperatures.json`. This is a regional
+overview, not a coastal or harbor reading.
 
 The boundaries are a simplified copy of **Flanders Marine Institute (2018),
 IHO Sea Areas v3**, [doi:10.14284/323](https://doi.org/10.14284/323),
 licensed CC BY 4.0 and distributed as GeoJSON by
 [alvinometric/oceans-seas.geojson](https://github.com/alvinometric/oceans-seas.geojson).
-The upstream geography is kept in `data/geography/`; the 21 selected polygons
+The upstream geography is kept in `data/geography/`; all 101 polygons
 used by the app are in `src/data/seaAreas.geojson`. Larger ocean and smaller sea
 names refer to the source's distinct areas; no extra ocean-wide total is
 inferred by adding them together.
 
-To regenerate the snapshot for complete years:
+To reproduce the offline extension of the existing NOAA snapshot:
 
 ```bash
 python -m pip install -e './python[temperature]'
-python python/ocean_pipeline/temperature.py --start 1982 --end 2025
+python -m ocean_pipeline.temperature_fill
 ```
 
-The script downloads monthly files from NOAA, refuses missing months, and
-replaces the two derived files in `src/data/`. It needs a network connection;
-the website itself reads only the checked-in files and works offline.
+To regenerate the snapshot directly from NOAA for complete years:
+
+```bash
+python -m pip install -e './python[temperature]'
+python -m ocean_pipeline.temperature --start 1982 --end 2025
+```
+
+The second script downloads monthly files from NOAA, refuses missing months,
+and computes observed means for **all 101 polygons** where at least two
+complete 2° cells are available. Only areas without sufficient NOAA cells are
+estimated from neighboring areas. It replaces the two derived files in
+`src/data/` and needs network access; the website itself works offline.
 
 In the species list, choose **Ver todos** beside a group to see its species
 together; the mobile selector offers the same three options. Fish include
