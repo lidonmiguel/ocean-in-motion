@@ -26,8 +26,25 @@ function landPath(): string {
 
 const coast = landPath();
 
-export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea }: {
-  year: number; selectedAreaId: string | null; onSelectArea: (id: string) => void;
+function boundsForArea(area: SeaFeature): maplibregl.LngLatBoundsLike {
+  const polygons = area.geometry.type === 'Polygon'
+    ? [area.geometry.coordinates as number[][][]]
+    : area.geometry.coordinates as number[][][][];
+  const points = polygons.flatMap(polygon => polygon.flat());
+  const south = Math.max(-82, Math.min(...points.map(point => point[1])));
+  const north = Math.min(82, Math.max(...points.map(point => point[1])));
+
+  // These areas cross the 180° meridian or span every longitude. Keep the
+  // world in view and focus on their latitude instead of cutting them in half.
+  if (points.some(point => point[0] <= -179) && points.some(point => point[0] >= 179)) {
+    return [[-179.5, south], [179.5, north]];
+  }
+  return [[Math.min(...points.map(point => point[0])), south],
+    [Math.max(...points.map(point => point[0])), north]];
+}
+
+export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea, worldViewKey }: {
+  year: number; selectedAreaId: string | null; onSelectArea: (id: string) => void; worldViewKey: number;
 }) {
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
@@ -35,6 +52,7 @@ export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea }: {
   const [ready, setReady] = useState(false);
   const [fallback, setFallback] = useState(false);
   const [hover, setHover] = useState<{ x: number; y: number; id: string; name: string } | null>(null);
+  const previousArea = useRef(selectedAreaId);
   const records = recordsByYear.get(year)!;
 
   useEffect(() => {
@@ -43,8 +61,8 @@ export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea }: {
     try {
       instance = new maplibregl.Map({
         container: container.current,
-        style: { version: 8, sources: {}, layers: [{ id: 'ocean', type: 'background', paint: { 'background-color': '#07141d' } }] },
-        center: [0, 8], zoom: 1.22, minZoom: 0.7, maxZoom: 9,
+        style: { version: 8, sources: {}, layers: [{ id: 'ocean', type: 'background', paint: { 'background-color': '#173746' } }] },
+        center: [0, 0], zoom: 0, minZoom: -0.5, maxZoom: 9,
         renderWorldCopies: false, attributionControl: false
       });
     } catch {
@@ -66,6 +84,20 @@ export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea }: {
   }, [fallback]);
 
   useEffect(() => {
+    if (!ready || !map.current) return;
+    map.current.fitBounds([[-179.5, -82], [179.5, 82]], { padding: 16, duration: 500 });
+  }, [ready, worldViewKey]);
+
+  useEffect(() => {
+    if (!ready || !map.current) return;
+    if (previousArea.current === selectedAreaId) return;
+    previousArea.current = selectedAreaId;
+    const area = seaAreas.features.find(item => item.properties.id === selectedAreaId);
+    if (!area) return;
+    map.current.fitBounds(boundsForArea(area), { padding: 55, maxZoom: 3.8, duration: 550 });
+  }, [ready, selectedAreaId]);
+
+  useEffect(() => {
     if (!ready || !overlay.current) return;
     setHover(null);
     overlay.current.setProps({ layers: [
@@ -74,8 +106,8 @@ export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea }: {
         data: seaAreas.features.filter(item => records.has(item.properties.id)),
         filled: true, stroked: true, pickable: true,
         getFillColor: item => temperatureColor(records.get(item.properties.id)!.celsius),
-        getLineColor: item => item.properties.id === selectedAreaId ? [255, 255, 255, 245] : [126, 220, 218, 140],
-        getLineWidth: item => item.properties.id === selectedAreaId ? 2 : 0.7,
+        getLineColor: item => item.properties.id === selectedAreaId ? [255, 255, 255, 245] : [126, 220, 218, 90],
+        getLineWidth: item => item.properties.id === selectedAreaId ? 2 : 0.5,
         lineWidthUnits: 'pixels',
         onHover: info => setHover(info.object ? { x: info.x, y: info.y, id: info.object.properties.id, name: info.object.properties.name } : null),
         onClick: info => { if (info.object) onSelectArea(info.object.properties.id); }
@@ -93,10 +125,10 @@ export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea }: {
     <div ref={container} className="map-canvas" style={fallback ? { display: 'none' } : undefined} role="img" aria-label={`Temperatura media superficial anual en ${year}, por mar y océano. Selecciona una zona para ver su serie histórica.`} />
     {fallback && <div className="fallback-map">
       <svg viewBox="0 0 1200 600" role="img" aria-label={`Mapa de temperaturas superficiales por zona en ${year}`}>
-        <rect width="1200" height="600" fill="#071c29" />
+        <rect width="1200" height="600" fill="#173746" />
         {seaAreas.features.filter(item => records.has(item.properties.id)).map(item => <path
           key={item.properties.id} d={geometryPath(item.geometry)} fill={`rgb(${temperatureColor(records.get(item.properties.id)!.celsius).slice(0, 3).join(',')})`}
-          fillOpacity=".8" fillRule="evenodd" stroke={item.properties.id === selectedAreaId ? '#fff' : '#76cfc8'} strokeWidth={item.properties.id === selectedAreaId ? 2 : 0.6}
+          fillOpacity=".8" fillRule="evenodd" stroke={item.properties.id === selectedAreaId ? '#fff' : '#76cfc8'} strokeWidth={item.properties.id === selectedAreaId ? 2 : 0.4}
           onClick={() => onSelectArea(item.properties.id)}><title>{item.properties.name}: {records.get(item.properties.id)!.celsius.toFixed(2)} °C</title></path>)}
         <path d={coast} fill="#bbccc9" fillRule="evenodd" stroke="#e1eae0" strokeWidth=".7" />
       </svg>
