@@ -40,6 +40,46 @@ basemap and checked source snapshots are bundled, so the map needs no map tile
 account. The layout is responsive; water routes use coarse Natural Earth land
 geometry and may omit strands for which no marine path is found.
 
+## Sea temperatures
+
+Select **Ver mares y temperaturas** to switch to an independent temperature
+view. Choose a complete calendar year, select one of 21 named sea and ocean
+areas on the map or in the list, inspect its annual history, or download the
+full CSV. The species map and its illustrative flows remain separate.
+
+The checked-in values are **annual mean sea-surface temperatures in °C**, not
+anomalies or forecasts. The current snapshot covers **1982–2025** and is
+derived from all twelve monthly [NOAA ERSSTv6](https://www.ncei.noaa.gov/products/extended-reconstructed-sst)
+files per year. It includes only ocean grid-cell centers within each named
+polygon, requires a value in every month of the year, weights the months by
+their days and the cells by cosine of latitude, and rounds the resulting mean
+to 0.01 °C. NOAA's 2° reconstruction smooths local changes; very small seas
+are excluded if fewer than two complete cells fall within their boundaries.
+In ice-covered areas, NOAA uses an ice/SST proxy, which matters especially in
+the Arctic. The annual data are in `src/data/seaTemperatures.json`; each record
+also reports its cell count. This snapshot is a regional overview, not a
+coastal or harbor reading.
+
+The boundaries are a simplified copy of **Flanders Marine Institute (2018),
+IHO Sea Areas v3**, [doi:10.14284/323](https://doi.org/10.14284/323),
+licensed CC BY 4.0 and distributed as GeoJSON by
+[alvinometric/oceans-seas.geojson](https://github.com/alvinometric/oceans-seas.geojson).
+The upstream geography is kept in `data/geography/`; the 21 selected polygons
+used by the app are in `src/data/seaAreas.geojson`. Larger ocean and smaller sea
+names refer to the source's distinct areas; no extra ocean-wide total is
+inferred by adding them together.
+
+To regenerate the snapshot for complete years:
+
+```bash
+python -m pip install -e './python[temperature]'
+python python/ocean_pipeline/temperature.py --start 1982 --end 2025
+```
+
+The script downloads monthly files from NOAA, refuses missing months, and
+replaces the two derived files in `src/data/`. It needs a network connection;
+the website itself reads only the checked-in files and works offline.
+
 In the species list, choose **Ver todos** beside a group to see its species
 together; the mobile selector offers the same three options. Fish include
 bluefin tuna, whale shark, swordfish and white shark; marine mammals include

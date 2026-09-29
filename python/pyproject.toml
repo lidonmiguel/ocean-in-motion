@@ -9,6 +9,9 @@ description = "Small, offline-first staging area for future marine geospatial pr
 requires-python = ">=3.11"
 dependencies = []
 
+[project.optional-dependencies]
+temperature = ["numpy>=1.26", "netCDF4>=1.6", "shapely>=2.0"]
+
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["ocean_pipeline*"]
