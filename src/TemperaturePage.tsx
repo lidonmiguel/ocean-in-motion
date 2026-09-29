@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { SeaTemperatureMap } from './SeaTemperatureMap';
-import { availableYears, recordsByYear, seaAreas, seaSeries, temperatureMetadata, type TemperatureRecord } from './data/seaTemperatures';
+import { availableYears, formatTemperature, recordsByYear, seaAreas, seaSeries, temperatureMetadata, type TemperatureRecord } from './data/seaTemperatures';
 
 const firstYear = availableYears[0];
 const lastYear = availableYears[availableYears.length - 1];
@@ -54,7 +54,7 @@ export function TemperaturePage({ onBack }: { onBack: () => void }) {
           {areas.map(item => <option key={item.properties.id} value={item.properties.id}>{item.properties.name}</option>)}
         </select>
         <div className="temperature-region-list" role="region" aria-label="Temperaturas por zona en el año seleccionado">
-          {areas.map(item => <button type="button" key={item.properties.id} className={`temperature-region ${areaId === item.properties.id ? 'active' : ''}`} onClick={() => setAreaId(item.properties.id)}><span>{item.properties.name}</span><strong>{values.get(item.properties.id)!.method === 'estimated' ? '≈ ' : ''}{values.get(item.properties.id)!.celsius.toFixed(2)} °C</strong></button>)}
+          {areas.map(item => <button type="button" key={item.properties.id} className={`temperature-region ${areaId === item.properties.id ? 'active' : ''}`} onClick={() => setAreaId(item.properties.id)}><span>{item.properties.name}</span><strong>{formatTemperature(values.get(item.properties.id)!)}</strong></button>)}
         </div>
         <div className="sidebar-bottom"><span className="asterisk">✳</span><p><strong>NOAA o estimación.</strong> Las zonas sin datos NOAA locales muestran una media aproximada de zonas cercanas, ajustada por latitud.</p></div>
       </aside>
@@ -69,12 +69,12 @@ export function TemperaturePage({ onBack }: { onBack: () => void }) {
         <h2>{selected?.properties.name ?? 'Selecciona una zona'}</h2>
         <p className="latin">Superficie del mar · {year}</p>
         <div className="cyan-rule" />
-        <p className="temperature-value">{record ? `${estimated ? '≈ ' : ''}${record.celsius.toFixed(2)} °C` : 'Sin datos'}</p>
+        <p className="temperature-value">{record ? formatTemperature(record) : 'Sin datos'}</p>
         <p className="body-copy">{estimated
           ? `Estimación aproximada basada en ${donorNames}. Se promedian sus medias NOAA y se ajustan por latitud. No hay medición local para esta zona en el conjunto publicado; no la uses como dato observado.`
           : `Media ponderada por superficie de ${record?.cells ?? 0} celdas oceánicas NOAA de 2° con los doce meses del año. Cada mes se pondera según sus días.`}</p>
-        {series.length > 1 && <><div className="field-label">EVOLUCIÓN · {firstYear}–{lastYear}{estimated ? ' · ESTIMADA' : ''}</div><svg className="temperature-chart" viewBox="0 0 260 80" role="img" aria-label={`Evolución anual ${estimated ? 'estimada' : 'NOAA'} de ${selected?.properties.name}: de ${series[0].celsius.toFixed(2)} a ${series[series.length - 1].celsius.toFixed(2)} grados Celsius`}><line x1="0" y1="67" x2="260" y2="67" stroke="#4a737a" /><polyline points={points} fill="none" stroke="#88e5db" strokeWidth="2.5" /></svg><div className="year-ends"><span>{firstYear}</span><span>{lastYear}</span></div></>}
-        <div className="temperature-history" role="region" aria-label="Tabla de temperatura anual de la zona seleccionada"><table><thead><tr><th>Año</th><th>Temperatura</th></tr></thead><tbody>{series.map(row => <tr key={row.year} className={row.year === year ? 'selected' : ''}><td>{row.year}</td><td>{row.method === 'estimated' ? '≈ ' : ''}{row.celsius.toFixed(2)} °C</td></tr>)}</tbody></table></div>
+        {series.length > 1 && <><div className="field-label">EVOLUCIÓN · {firstYear}–{lastYear}{estimated ? ' · ESTIMADA' : ''}</div><svg className="temperature-chart" viewBox="0 0 260 80" role="img" aria-label={`Evolución anual ${estimated ? 'estimada' : 'NOAA'} de ${selected?.properties.name}: de ${formatTemperature(series[0])} a ${formatTemperature(series[series.length - 1])}`}><line x1="0" y1="67" x2="260" y2="67" stroke="#4a737a" /><polyline points={points} fill="none" stroke="#88e5db" strokeWidth="2.5" /></svg><div className="year-ends"><span>{firstYear}</span><span>{lastYear}</span></div></>}
+        <div className="temperature-history" role="region" aria-label="Tabla de temperatura anual de la zona seleccionada"><table><thead><tr><th>Año</th><th>Temperatura</th></tr></thead><tbody>{series.map(row => <tr key={row.year} className={row.year === year ? 'selected' : ''}><td>{row.year}</td><td>{formatTemperature(row)}</td></tr>)}</tbody></table></div>
         <button type="button" className="view-switch export-button" onClick={downloadCsv}>Descargar tabla completa (CSV) ↓</button>
         <p className="source-note">Datos observados: <a href="https://www.ncei.noaa.gov/products/extended-reconstructed-sst" target="_blank" rel="noreferrer">NOAA ERSSTv6</a>. Zonas: <a href="https://www.marineregions.org/" target="_blank" rel="noreferrer">VLIZ / IHO Sea Areas v3</a>. ≈ indica una estimación por zonas vecinas y latitud, no una medición local ni una predicción.</p>
       </aside>

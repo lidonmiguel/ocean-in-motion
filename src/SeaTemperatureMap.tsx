@@ -4,7 +4,7 @@ import { MapLibreOverlay } from '@deck.gl/maplibre';
 import { GeoJsonLayer } from '@deck.gl/layers';
 import { feature } from 'topojson-client';
 import world from 'world-atlas/land-110m.json';
-import { recordsByYear, seaAreas, temperatureColor, type SeaFeature } from './data/seaTemperatures';
+import { formatTemperature, recordsByYear, seaAreas, temperatureColor, type SeaFeature } from './data/seaTemperatures';
 
 const topology = world as unknown as Parameters<typeof feature>[0];
 const land = feature(topology, topology.objects.land);
@@ -133,13 +133,13 @@ export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea, worldVie
         {seaAreas.features.filter(item => records.has(item.properties.id)).map(item => <path
           key={item.properties.id} d={geometryPath(item.geometry)} fill={`rgb(${temperatureColor(records.get(item.properties.id)!.celsius).slice(0, 3).join(',')})`}
           fillOpacity={records.get(item.properties.id)!.method === 'estimated' ? '.55' : '.8'} fillRule="evenodd" stroke={item.properties.id === selectedAreaId ? '#fff' : '#76cfc8'} strokeWidth={item.properties.id === selectedAreaId ? 2 : 0.4}
-          onClick={() => onSelectArea(item.properties.id)}><title>{item.properties.name}: {records.get(item.properties.id)!.method === 'estimated' ? '≈ ' : ''}{records.get(item.properties.id)!.celsius.toFixed(2)} °C</title></path>)}
+          onClick={() => onSelectArea(item.properties.id)}><title>{item.properties.name}: {formatTemperature(records.get(item.properties.id)!)}</title></path>)}
         <path d={coast} fill="#2c5453" fillRule="evenodd" stroke="#719b94" strokeWidth=".65" />
       </svg>
       <div className="fallback-note">Vista simplificada sin WebGL2 · pulsa una zona o elige su nombre en la lista</div>
     </div>}
     <div className="map-stamp"><span className="pulse" /> NOAA + ESTIMACIONES · {year}</div>
     <div className="map-credit">NOAA ERSSTv6 y estimaciones vecinas · Límites: IHO / VLIZ (CC BY 4.0) · Costa: Natural Earth</div>
-    {hover && records.get(hover.id) && <div className="map-tooltip" style={{ left: hover.x + 14, top: hover.y + 14 }}><strong>{hover.name}</strong><span>{records.get(hover.id)!.method === 'estimated' ? '≈ ' : ''}{records.get(hover.id)!.celsius.toFixed(2)} °C · {year}</span><span>{records.get(hover.id)!.method === 'estimated' ? 'Estimación de zonas cercanas; sin celdas NOAA locales' : `Media de ${records.get(hover.id)!.cells} celdas NOAA de 2°`}</span></div>}
+    {hover && records.get(hover.id) && <div className="map-tooltip" style={{ left: hover.x + 14, top: hover.y + 14 }}><strong>{hover.name}</strong><span>{formatTemperature(records.get(hover.id)!)} · {year}</span><span>{records.get(hover.id)!.method === 'estimated' ? 'Estimación de zonas cercanas; sin celdas NOAA locales' : `Media de ${records.get(hover.id)!.cells} celdas NOAA de 2°`}</span></div>}
   </div>;
 }

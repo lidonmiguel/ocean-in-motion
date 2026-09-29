@@ -23,6 +23,10 @@ export function seaSeries(areaId: string): TemperatureRecord[] {
   return temperatureRows.filter(row => row.areaId === areaId);
 }
 
+export function formatTemperature(row: TemperatureRecord): string {
+  return `${row.method === 'estimated' ? '≈ ' : ''}${row.celsius.toFixed(row.method === 'estimated' ? 1 : 2)} °C`;
+}
+
 export function temperatureColor(value: number): [number, number, number, number] {
   const stops: [number, [number, number, number]][] = [
     [-2, [37, 91, 150]], [8, [52, 164, 192]], [16, [92, 209, 187]],

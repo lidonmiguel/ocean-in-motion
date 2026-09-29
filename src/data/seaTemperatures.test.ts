@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { availableYears, recordsByYear, seaAreas, seaSeries, temperatureColor } from './seaTemperatures';
+import { availableYears, formatTemperature, recordsByYear, seaAreas, seaSeries, temperatureColor } from './seaTemperatures';
 
 describe('annual sea surface temperature snapshot', () => {
   it('has complete annual values with observed and estimated origins identified', () => {
@@ -34,5 +34,10 @@ describe('annual sea surface temperature snapshot', () => {
 
   it('keeps temperatures above the warm end of the legend warm', () => {
     expect(temperatureColor(34)).toEqual(temperatureColor(32));
+  });
+
+  it('marks estimates and shows only their stored precision', () => {
+    expect(formatTemperature({ year: 2025, areaId: 'x', celsius: 13.8, cells: 0, method: 'estimated' })).toBe('≈ 13.8 °C');
+    expect(formatTemperature({ year: 2025, areaId: 'y', celsius: 20.36, cells: 12 })).toBe('20.36 °C');
   });
 });
