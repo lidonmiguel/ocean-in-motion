@@ -173,6 +173,14 @@ the others remain visible without an invented flow. These newer
 sources all use the same iNaturalist Marine dataset license and citation;
 counts are records, not unique animals or survey effort.
 
+Select a documented area to open its evidence card: source and manifest,
+query bounds and dates, accepted and rejected counts, coordinate uncertainty,
+recorded method, dataset and record-level rights, and the exact OBIS IDs in
+that box. Search those IDs in its linked species-level curated file to inspect
+the retained rows. Scope totals may cover several boxes. The card does not
+offer a download; [the rights review](docs/rights-review.md) records mixed and
+missing occurrence-level license fields for source-by-source review.
+
 ## How the files fit
 
 | Path | Purpose |

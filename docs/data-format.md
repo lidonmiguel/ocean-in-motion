@@ -37,6 +37,8 @@ those fields do not turn an observation summary into a habitat model.
 | `reviewStatus`, `scenario` | `illustrative`, `illustrative` on observation layers. A tag alone is never scientific review. |
 | `periods` | Observed study years and `Simulación visual` for the translated box. |
 | `occurrence` | Total accepted record count, per-box ID and contributing dataset UUID, URL, citation, license, region, count, observed coordinate extrema, declared uncertainty range (or `null` when absent), and each box's illustrative offset or `null` when no separate destination is drawn. A dataset UUID can occur in multiple geographically separate boxes. |
+| `occurrence.sources[].recordIds`, `scopeId`, `speciesId` | Exact OBIS IDs for that box and the species-level clean file and query scope containing its rows. A group view retains the member species ID. |
+| `occurrence.sources[].query`, `scopeQuality`, `recordMetadata`, `boxRecordRights` | Query bounds/dates and acceptance accounting for the whole scope; method and record-license counts for the scope; record-license counts for the selected box. The scope totals must not be summed across boxes from the same query. |
 | `citations[]` | Linked occurrence source plus explicit unlinked visual demonstration. Reviewed model output must also link its environment and model references. |
 | `habitat.current[]`, `habitat.future[]` | One current box per reviewed geographic group; a subset has an illustrative future box with the same ID. No destination is required when a separate, marine display square cannot be placed. |
 | `movementVectors[]` | Only for reviewed results with documented direction statistics. It is not an individual's movement path. |

@@ -20,6 +20,9 @@ describe('one observation box per scoped source', () => {
         expect(box.id).toBe(scenario.occurrence?.sources[sourceIndex].boxId);
         expect(scenario.occurrence?.sources[sourceIndex].datasetId).toBe(snapshot.source.datasetId);
         expect(scenario.occurrence?.sources[sourceIndex].count).toBe(records.length);
+        expect(scenario.occurrence?.sources[sourceIndex].recordIds).toEqual(records.map(record => record.id));
+        expect(scenario.occurrence?.sources[sourceIndex].scopeId).toBe(snapshot.scopeId);
+        expect(scenario.occurrence?.sources[sourceIndex].queryBoundsWgs84).toEqual(snapshot.boundsWgs84);
         for (const record of records) {
           expect(Math.abs(record.longitude - box.center[0]), scenario.id).toBeLessThan(box.widthDeg / 2);
           expect(Math.abs(record.latitude - box.center[1]), scenario.id).toBeLessThan(box.heightDeg / 2);

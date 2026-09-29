@@ -3,13 +3,26 @@ import { isOcean, oceanRoute, waterSegment } from './oceanRoutes';
 
 export type ObservationSnapshot = {
   species: string;
+  speciesId: string;
+  scopeId: string;
+  extractId: string;
   region: string;
   period: string;
   boundsWgs84: number[];
+  query: { startDate: string; endDate: string };
+  scopeQuality: {
+    rawFetched: number; staged: number; accepted: number;
+    upstreamRejected: Record<string, number>; rejectedByReason: Record<string, number>;
+    unknownCoordinateUncertainty: number; uncertaintyKmRange: [number, number] | null;
+  };
+  recordMetadata: {
+    basisOfRecordCounts: Record<string, number>; samplingProtocolCounts: Record<string, number>;
+    missingSamplingProtocol: number; recordLicenseCounts: Record<string, number>; missingRecordLicense: number;
+  };
   clusterDiameterKm?: number;
-  source: { datasetId: string; url: string; citation: string; license: string };
+  source: { datasetId: string; url: string; citation: string; license: string; accessedAtUtc: string; extractSha256: string };
   summary: { count: number; uncertaintyKmRange: number[] | null; unknownCoordinateUncertainty?: number };
-  observations: { id: string; longitude: number; latitude: number; eventDate: string; coordinateUncertaintyInMeters: number | null }[];
+  observations: { id: string; longitude: number; latitude: number; eventDate: string; coordinateUncertaintyInMeters: number | null; recordLicense?: string | null }[];
 };
 
 export type SpeciesMetadata = Pick<SpeciesDataset, 'schemaVersion' | 'id' | 'scientificName' | 'commonNameEs' | 'group' | 'summaryEs'>;
@@ -219,9 +232,22 @@ export function buildObservationScenario(
     occurrence: {
       count: snapshots.reduce((sum, s) => sum + s.summary.count, 0),
       sources: boxes.map(({ snapshot, records, box, boxId, chosenOffset, region }) => ({
-        boxId, datasetId: snapshot.source.datasetId, sourceUrl: snapshot.source.url, region,
+        boxId, speciesId: snapshot.speciesId, scopeId: snapshot.scopeId, extractId: snapshot.extractId,
+        queryBoundsWgs84: snapshot.boundsWgs84, query: snapshot.query,
+        scopeQuality: snapshot.scopeQuality, recordMetadata: snapshot.recordMetadata,
+        recordIds: records.map(record => record.id),
+        boxRecordRights: {
+          counts: records.reduce<Record<string, number>>((counts, record) => {
+            if (record.recordLicense) counts[record.recordLicense] = (counts[record.recordLicense] ?? 0) + 1;
+            return counts;
+          }, {}),
+          missing: records.filter(record => !record.recordLicense).length
+        },
+        datasetId: snapshot.source.datasetId, sourceUrl: snapshot.source.url, region,
         citation: snapshot.source.citation, license: snapshot.source.license,
+        accessedAtUtc: snapshot.source.accessedAtUtc, extractSha256: snapshot.source.extractSha256,
         count: records.length,
+        unknownCoordinateUncertainty: records.filter(record => record.coordinateUncertaintyInMeters === null).length,
         simulationOffsetDeg: chosenOffset,
         coordinateUncertaintyKmRange: (() => {
           const values = records.flatMap(record => record.coordinateUncertaintyInMeters === null ? [] : [record.coordinateUncertaintyInMeters / 1000]);
