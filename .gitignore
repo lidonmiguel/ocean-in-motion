@@ -3,6 +3,7 @@ dist/
 .vite/
 *.tsbuildinfo
 .venv/
+.deps/
 __pycache__/
 *.pyc
 .DS_Store

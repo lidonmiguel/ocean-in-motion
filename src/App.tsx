@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { MapView } from './MapView';
 import { AreaEvidenceCard } from './AreaEvidenceCard';
+import { TemperaturePage } from './TemperaturePage';
 import { species } from './data';
 import { categories, categorySpeciesColors } from './data/categoryViews';
 
@@ -21,6 +22,7 @@ function coordinateUncertainty(range: [number, number] | null): string {
 }
 
 export default function App() {
+  const [viewMode, setViewMode] = useState<'species' | 'temperature'>('species');
   const [selectedId, setSelectedId] = useState('loggerhead-turtle');
   const [focusBoxId, setFocusBoxId] = useState<string | null>(null);
   const [showBoxes, setShowBoxes] = useState(true);
@@ -35,6 +37,8 @@ export default function App() {
   const visualDestinations = selected.habitat.future.length;
   const boxLabel = sourceCount === 1 ? 'Una caja engloba' : `${sourceCount} cajas engloban`;
 
+  if (viewMode === 'temperature') return <TemperaturePage onBack={() => setViewMode('species')} />;
+
   return (
     <div className="app-shell">
       <header className="site-header">
@@ -47,6 +51,7 @@ export default function App() {
           <div className="section-index">01 / EXPLORAR</div>
           <h2>Un océano.<br /><em>Muchas posibilidades.</em></h2>
           <p className="intro">Cada caja agrupa posiciones notificadas en una zona consultada de OBIS. Puedes activar un ejemplo visual de destinos y flujos; no representa migraciones observadas ni predicciones.</p>
+          <button type="button" className="view-switch" onClick={() => setViewMode('temperature')}>Ver mares y temperaturas →</button>
           <div className="fine-rule" />
           <label className="field-label" htmlFor="species-select">SELECCIONA ESPECIE O GRUPO</label>
           <select id="species-select" value={selectedId} onChange={event => selectView(event.target.value)}>
