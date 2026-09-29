@@ -20,6 +20,7 @@ function downloadCsv() {
 export function TemperaturePage({ onBack }: { onBack: () => void }) {
   const [year, setYear] = useState(lastYear);
   const [areaId, setAreaId] = useState('med-west');
+  const [worldViewKey, setWorldViewKey] = useState(0);
   const values = recordsByYear.get(year) ?? new Map();
   const areas = seaAreas.features.filter(item => values.has(item.properties.id));
   const selected = seaAreas.features.find(item => item.properties.id === areaId);
@@ -51,9 +52,9 @@ export function TemperaturePage({ onBack }: { onBack: () => void }) {
         <div className="sidebar-bottom"><span className="asterisk">✳</span><p><strong>Medias observadas reconstruidas.</strong> La cuadrícula de 2° suaviza cambios locales. Los mares pequeños pueden carecer de suficiente cobertura.</p></div>
       </aside>
       <section className="map-panel" aria-label="Mapa de temperaturas marinas">
-        <div className="map-header"><div><div className="section-index">02 / VISUALIZAR</div><h2>Temperatura superficial · {year}</h2></div><div className="coordinates">MARES <span>Y</span> OCÉANOS</div></div>
-        <div className="map-stage"><SeaTemperatureMap year={year} selectedAreaId={areaId} onSelectArea={setAreaId} /></div>
-        <div className="map-bottom"><div className="temperature-legend"><span>FRÍA</span><i /><span>CÁLIDA</span><small>−2 °C → 32 °C</small></div><span className="map-hint">Pulsa una zona · arrastra para mover</span></div>
+        <div className="map-header"><div><div className="section-index">02 / VISUALIZAR</div><h2>Temperatura superficial · {year}</h2></div><button type="button" className="world-view-button" onClick={() => setWorldViewKey(key => key + 1)}>Ver mapa mundial</button></div>
+        <div className="map-stage"><SeaTemperatureMap year={year} selectedAreaId={areaId} onSelectArea={setAreaId} worldViewKey={worldViewKey} /></div>
+        <div className="map-bottom"><div className="temperature-legend"><span>FRÍA</span><i /><span>CÁLIDA</span><small>−2 °C → 32 °C</small><span className="no-data-key"><i /> Sin datos de esta zona</span></div><span className="map-hint">Pulsa una zona · arrastra para mover</span></div>
       </section>
       <aside className="info-panel temperature-info" aria-label="Detalle de la zona marítima">
         <div className="section-index">03 / COMPRENDER</div>
