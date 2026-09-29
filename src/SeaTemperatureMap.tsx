@@ -2,12 +2,13 @@ import { useEffect, useRef, useState } from 'react';
 import * as maplibregl from 'maplibre-gl';
 import { MapLibreOverlay } from '@deck.gl/maplibre';
 import { GeoJsonLayer } from '@deck.gl/layers';
-import { feature } from 'topojson-client';
-import world from 'world-atlas/land-110m.json';
+import landRaw from './data/landNoSeams.geojson?raw';
 import { formatTemperature, recordsByYear, seaAreas, temperatureColor, type SeaFeature } from './data/seaTemperatures';
 
-const topology = world as unknown as Parameters<typeof feature>[0];
-const land = feature(topology, topology.objects.land);
+const land = JSON.parse(landRaw) as {
+  type: 'FeatureCollection';
+  features: { type: 'Feature'; properties: object; geometry: SeaFeature['geometry'] }[];
+};
 const svgPosition = (lon: number, lat: number) => [((lon + 180) / 360) * 1200, ((90 - lat) / 180) * 600];
 
 function geometryPath(geometry: SeaFeature['geometry']): string {
@@ -20,8 +21,7 @@ function geometryPath(geometry: SeaFeature['geometry']): string {
 }
 
 function landPath(): string {
-  const parts = land.type === 'FeatureCollection' ? land.features : [land];
-  return parts.map(item => item.geometry ? geometryPath(item.geometry as SeaFeature['geometry']) : '').join('');
+  return land.features.map(item => geometryPath(item.geometry)).join('');
 }
 
 const coast = landPath();
@@ -117,9 +117,8 @@ export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea, worldVie
         onClick: info => { if (info.object) onSelectArea(info.object.properties.id); }
       }),
       new GeoJsonLayer({
-        id: 'land-cover', data: land, filled: true, stroked: true,
-        getFillColor: [44, 84, 83, 255], getLineColor: [113, 155, 148, 190],
-        getLineWidth: 0.65, lineWidthUnits: 'pixels', parameters: { depthTest: false },
+        id: 'land-cover', data: land, filled: true, stroked: false,
+        getFillColor: [187, 204, 201, 255], parameters: { depthTest: false },
         pickable: true, onHover: () => setHover(null)
       })
     ] });
@@ -134,7 +133,7 @@ export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea, worldVie
           key={item.properties.id} d={geometryPath(item.geometry)} fill={`rgb(${temperatureColor(records.get(item.properties.id)!.celsius).slice(0, 3).join(',')})`}
           fillOpacity={records.get(item.properties.id)!.method === 'estimated' ? '.55' : '.8'} fillRule="evenodd" stroke={item.properties.id === selectedAreaId ? '#fff' : '#76cfc8'} strokeWidth={item.properties.id === selectedAreaId ? 2 : 0.4}
           onClick={() => onSelectArea(item.properties.id)}><title>{item.properties.name}: {formatTemperature(records.get(item.properties.id)!)}</title></path>)}
-        <path d={coast} fill="#2c5453" fillRule="evenodd" stroke="#719b94" strokeWidth=".65" />
+        <path d={coast} fill="#bbccc9" fillRule="evenodd" />
       </svg>
       <div className="fallback-note">Vista simplificada sin WebGL2 · pulsa una zona o elige su nombre en la lista</div>
     </div>}
