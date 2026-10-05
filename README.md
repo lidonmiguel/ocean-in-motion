@@ -34,6 +34,7 @@ paused or hidden.
 
 <img width="1828" height="820" alt="image" src="https://github.com/user-attachments/assets/44fcf501-93c8-4370-ba8b-edfc06c757ff" />
 
+<img width="1811" height="634" alt="image" src="https://github.com/user-attachments/assets/9207a9d5-a0d1-4c19-ab55-3851a471073d" />
 
 ## The Data Science result
 
