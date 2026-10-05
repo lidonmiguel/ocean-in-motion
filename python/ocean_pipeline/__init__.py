@@ -1,1 +1,1 @@
-"""Future ingestion and export boundaries. No observations or forecasts are bundled."""
+"""Sea-surface temperature processing, forecasting and ocean geometry tools."""

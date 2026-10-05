@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import * as maplibregl from 'maplibre-gl';
+import 'maplibre-gl/dist/maplibre-gl.css';
 import { MapLibreOverlay } from '@deck.gl/maplibre';
 import { GeoJsonLayer, PathLayer, TextLayer } from '@deck.gl/layers';
 import landRaw from './data/temperatureLand.geojson?raw';
@@ -188,7 +189,7 @@ export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea, worldVie
         {seaAreas.features.filter(item => records.has(item.properties.id)).map(item => <path
           key={item.properties.id} d={geometryPath(item.geometry)} fill={`rgb(${temperatureColor(records.get(item.properties.id)!.celsius).slice(0, 3).join(',')})`}
           fillOpacity={records.get(item.properties.id)!.method === 'estimated' || records.get(item.properties.id)!.forecastBasis === 'estimated-history' ? '.55' : '.8'} fillRule="evenodd" stroke={item.properties.id === selectedAreaId ? '#fff' : '#76cfc8'} strokeWidth={item.properties.id === selectedAreaId ? 2 : 0.4}
-          onClick={() => onSelectArea(item.properties.id)}><title>{item.properties.name}: {formatTemperature(records.get(item.properties.id)!)}</title></path>)}
+          onClick={() => onSelectArea(item.properties.id)}><title>{`${item.properties.name}: ${formatTemperature(records.get(item.properties.id)!)}`}</title></path>)}
         {flows.flatMap(flow => [-1, 0, 1, 2].map(part => <path key={`${flow.id}|${part}`} data-part={`${flow.id}|${part}`}
           ref={element => { const key = `${flow.id}|${part}`; if (element) svgTrails.current.set(key, element); else svgTrails.current.delete(key); }}
           fill="none" stroke={part < 0 ? `rgb(${FLOW_STYLE.glowColor.slice(0, 3).join(',')})` : '#3cede0'}

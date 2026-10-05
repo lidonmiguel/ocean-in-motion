@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "ocean-in-motion-pipeline"
 version = "0.1.0"
-description = "Small, offline-first staging area for future marine geospatial processing"
+description = "Reproducible sea-surface temperature analysis, forecasting and ocean geometry"
 requires-python = ">=3.11"
 dependencies = []
 

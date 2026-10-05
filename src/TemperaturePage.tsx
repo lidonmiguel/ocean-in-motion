@@ -16,7 +16,7 @@ function downloadCsv() {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
-export function TemperaturePage({ onBack, initialYear = lastYear, initialAreaId = 'med-west' }: { onBack: () => void; initialYear?: number; initialAreaId?: string }) {
+export function TemperaturePage({ initialYear = lastYear, initialAreaId = 'med-west' }: { initialYear?: number; initialAreaId?: string } = {}) {
   const [year, setYear] = useState(initialYear);
   const [areaId, setAreaId] = useState(initialAreaId);
   const forecastMode = year > lastYear;
@@ -42,13 +42,12 @@ export function TemperaturePage({ onBack, initialYear = lastYear, initialAreaId 
   const areaQuality = (forecastMetadata.testByArea as Record<string, Quality>)[areaId];
 
   return <div className="app-shell">
-    <header className="site-header"><div className="identity"><div className="mark" aria-hidden="true"><span>≈</span></div><div><div className="eyebrow">ATLAS EXPERIMENTAL / 02</div><h1>Océano <em>en Movimiento</em></h1></div></div><div className="header-right"><span>AGUAS SUPERFICIALES</span><span className="scenario-pill">HISTÓRICO Y PREVISIÓN · {firstYear}–{rangeEnd}</span></div></header>
+    <header className="site-header"><div className="identity"><div className="mark" aria-hidden="true"><span>≈</span></div><div><div className="eyebrow">ATLAS EXPERIMENTAL / 01</div><h1>Océano <em>en Movimiento</em></h1></div></div><div className="header-right"><span>AGUAS SUPERFICIALES</span><span className="scenario-pill">HISTÓRICO Y PREVISIÓN · {firstYear}–{rangeEnd}</span></div></header>
     <main className="workspace temperature-workspace">
       <aside className="selector-panel" aria-label="Controles de temperaturas">
         <div className="section-index">01 / EXPLORAR</div>
         <h2>La temperatura<br /><em>de cada mar.</em></h2>
         <p className="intro">Explora de 1982 a 2030 en una misma serie. ≈ indica histórico estimado y ↗ predicción desde 2026.</p>
-        <button type="button" className="view-switch" onClick={onBack}>← Volver a especies</button>
         <div className="fine-rule" />
         <label className="field-label" htmlFor="temperature-year">AÑO · {year} · {forecastMode ? 'PREDICCIÓN' : 'HISTÓRICO'}</label>
         <input id="temperature-year" className="year-slider" type="range" min={firstYear} max={rangeEnd} value={year} onChange={event => setYear(Number(event.target.value))} />
@@ -56,7 +55,7 @@ export function TemperaturePage({ onBack, initialYear = lastYear, initialAreaId 
         <p className="timeline-note">Histórico hasta 2025 · predicción 2026–2030 en las 102 zonas.</p>
         <label className="cooling-toggle"><input type="checkbox" checked={showCooling} onChange={event => setShowCooling(event.target.checked)} /><span>Mostrar recorridos hacia mares más fríos</span></label>
         {showCooling && <button type="button" className="view-switch cooling-pause" aria-pressed={motionPaused} onClick={() => setMotionPaused(paused => !paused)}>{motionPaused ? 'Reanudar recorridos' : 'Pausar recorridos'}</button>}
-        <p className="cooling-note">Las líneas salen de distintas partes de cada zona. Desde su posición, cada una busca el mar más cercano entre los vecinos que tocan su zona y son más fríos. Al llegar, vuelve a comparar solo los vecinos de la nueva zona. Sin otro más fresco, gira y se desvanece. Es una animación ilustrativa, no una ruta de animales ni una corriente real.</p>
+        <p className="cooling-note">Las líneas salen de distintas partes de cada zona. Desde su posición, cada una busca el mar más cercano entre los vecinos que tocan su zona y son más fríos. Al llegar, vuelve a comparar solo los vecinos de la nueva zona. Sin otro más fresco, gira y se desvanece. Es una animación ilustrativa, no una corriente real ni una simulación física.</p>
         <label className="field-label" htmlFor="sea-select">MAR U OCÉANO</label>
         <select id="sea-select" className="temperature-select" value={areaId} onChange={event => setAreaId(event.target.value)}>
           {areas.map(item => <option key={item.properties.id} value={item.properties.id}>{item.properties.name}</option>)}

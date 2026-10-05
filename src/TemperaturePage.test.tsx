@@ -27,7 +27,7 @@ describe('reviewed temperature forecasts', () => {
   });
 
   it('shows one continuous timeline and the full history and future without mode controls', () => {
-    const html = renderToStaticMarkup(<TemperaturePage onBack={() => {}} />);
+    const html = renderToStaticMarkup(<TemperaturePage />);
     expect(html).toContain('HISTÓRICO Y PREVISIÓN · 1982–2030');
     expect(html).toContain('102 ZONAS');
     expect(html).toContain('min="1982" max="2030"');
@@ -46,7 +46,7 @@ describe('reviewed temperature forecasts', () => {
   });
 
   it('identifies the future as an experiment with measured evaluation and uncertainty', () => {
-    const html = renderToStaticMarkup(<TemperaturePage onBack={() => {}} initialYear={2030} />);
+    const html = renderToStaticMarkup(<TemperaturePage initialYear={2030} />);
     expect(html).toContain('min="1982" max="2030"');
     expect(html).toContain('102 ZONAS');
     expect(html).toContain('AÑO · 2030 · PREDICCIÓN');
@@ -62,7 +62,7 @@ describe('reviewed temperature forecasts', () => {
   });
 
   it('keeps an estimated sea selected in the future without claiming local validation', () => {
-    const html = renderToStaticMarkup(<TemperaturePage onBack={() => {}} initialYear={2026} initialAreaId="iho-adriatic-sea" />);
+    const html = renderToStaticMarkup(<TemperaturePage initialYear={2026} initialAreaId="iho-adriatic-sea" />);
     expect(html).toContain('Mar Adriático');
     expect(html).toContain('PREDICCIÓN · BASE ESTIMADA');
     expect(html).toContain('Rango derivado de las zonas base');
