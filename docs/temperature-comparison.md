@@ -68,5 +68,5 @@ provenance, cells, donor regions and forecast traceability. UTF-8 BOM and quoted
 fields support spreadsheet imports. Raw numerical values are preserved. CSV headers, categories, provenance labels
 and region names are in English; stable regional identifiers are unchanged.
 
-See [source preparation and geographic limitations](../README.md#sea-temperatures-and-provenance)
+See [source preparation and geographic limitations](temperature-data.md#sea-temperatures-and-provenance)
 and [forecast methodology](temperature-forecast.md).
