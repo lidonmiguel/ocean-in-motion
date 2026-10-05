@@ -143,11 +143,12 @@ The published map is at
 ## Temperature forecasting · 2026–2030
 
 The temperature map also animates **illustrative paths toward cooler seas**.
-From each point's current water position, it finds the nearest reachable cooler
-sea by geographic distance from its current position, then follows a water
-route, arrives and repeats the search. Without a cooler
-destination it circles locally and fades. Paths use the selected year's values;
-controls pause or hide them, and reduced-motion preferences are respected.
+Lines start from multiple distributed water positions in each region and share
+the species map's curved, growing turquoise-to-pink traces. Each point chooses
+the nearest **touching, cooler neighbor** from its current position, arrives,
+then compares only the new region's neighbors. Without a cooler neighbor it
+turns locally and disappears. Paths use the selected year's values; controls
+pause or hide them, and reduced-motion preferences are respected.
 These are visual traces, not measured animal routes or ocean currents.
 See [distance rules, water geometry and limitations](docs/temperature-cooling-paths.md).
 

@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import * as maplibregl from 'maplibre-gl';
 import { MapLibreOverlay } from '@deck.gl/maplibre';
-import { GeoJsonLayer, PathLayer, ScatterplotLayer, TextLayer } from '@deck.gl/layers';
+import { GeoJsonLayer, PathLayer, TextLayer } from '@deck.gl/layers';
 import landRaw from './data/temperatureLand.geojson?raw';
 import { formatTemperature, recordsByYear, seaAreas, temperatureColor, type SeaFeature } from './data/seaTemperatures';
+import { FLOW_STYLE, type FlowSegment } from './data/flowAnimation';
 import { coolingFlowFrame, coolingSvgPath, temperatureFlows, type CoolingFrame } from './data/temperatureFlows';
 
 const land = JSON.parse(landRaw) as {
@@ -134,35 +135,33 @@ export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea, worldVie
         parameters: { depthTest: false }
       });
     if (clock.current.year !== year) clock.current = { year, seconds: 0 };
-    type Draw = CoolingFrame & { id: string; selected: boolean };
+    type Draw = CoolingFrame & { id: string };
     const render = (seconds: number) => {
       const trails: Draw[] = flows.map(flow => ({ ...coolingFlowFrame(flow, seconds),
-        id: flow.id, selected: flow.areas[0] === selectedAreaId })).filter(frame => frame.alpha > 0.01);
+        id: flow.id })).filter(frame => frame.alpha > 0.01 && frame.path.length > 1);
       if (ready) overlay.current?.setProps({ layers: [seaLayer,
-        new PathLayer<Draw>({ id: 'temperature-flow-shadow', data: trails, getPath: d => d.path,
-          getColor: d => [6, 27, 39, Math.round(d.alpha*155)], getWidth: 4.5,
-          widthUnits: 'pixels', wrapLongitude: true, pickable: false }),
-        new PathLayer<Draw>({ id: 'temperature-cooling-trails', data: trails, getPath: d => d.path,
-          getColor: d => d.selected ? [255, 242, 188, Math.round(d.alpha*255)] : [212, 255, 251, Math.round(d.alpha*235)],
-          getWidth: d => d.selected ? 2.4 : 1.6, widthUnits: 'pixels', wrapLongitude: true,
-          capRounded: true, jointRounded: true, pickable: false }),
-        new ScatterplotLayer<Draw>({ id: 'temperature-flow-heads', data: trails,
-          getPosition: d => [((d.head![0]+180)%360+360)%360-180, d.head![1]],
-          getFillColor: d => [248, 255, 247, Math.round(d.alpha*255)], radiusUnits: 'pixels', getRadius: 2,
-          wrapLongitude: true, pickable: false }), landLayer, labelLayer] });
+        new PathLayer<Draw>({ id: 'temperature-flow-glow', data: trails, getPath: d => d.path,
+          getColor: d => [...FLOW_STYLE.glowColor.slice(0, 3), Math.round(d.alpha*FLOW_STYLE.glowColor[3])] as [number, number, number, number],
+          getWidth: FLOW_STYLE.glowWidth, widthUnits: 'pixels', wrapLongitude: true, pickable: false }),
+        new PathLayer<FlowSegment>({ id: 'temperature-flow-color', data: trails.flatMap(t => t.segments),
+          getPath: d => d.path, getColor: d => d.color, getWidth: FLOW_STYLE.width,
+          widthUnits: 'pixels', wrapLongitude: true, pickable: false }), landLayer, labelLayer] });
       if (fallback) {
         const frames = new Map(trails.map(t => [t.id, t]));
-        svgTrails.current.forEach((element, id) => {
-          const frame = frames.get(id);
-          element.setAttribute('d', frame ? coolingSvgPath(frame.path) : '');
-          element.setAttribute('opacity', String(frame?.alpha ?? 0));
+        svgTrails.current.forEach(element => {
+          const [id, part] = element.dataset.part!.split('|');
+          const current = frames.get(id);
+          const segment = Number(part);
+          element.setAttribute('d', current ? coolingSvgPath(segment < 0 ? current.path : current.segments[segment]?.path ?? []) : '');
+          element.setAttribute('opacity', String(current?.alpha ?? 0));
+          if (segment >= 0 && current?.segments[segment]) element.setAttribute('stroke', `rgb(${current.segments[segment].color.slice(0, 3).join(',')})`);
         });
       }
     };
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
     let frame = 0, lastFrame = -Infinity, epoch = 0;
     const animate = (time: number) => {
-      if (time-lastFrame >= 40) {
+      if (time-lastFrame >= 30) {
         lastFrame = time;
         clock.current.seconds = (time-epoch)/1000;
         render(clock.current.seconds);
@@ -190,8 +189,11 @@ export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea, worldVie
           key={item.properties.id} d={geometryPath(item.geometry)} fill={`rgb(${temperatureColor(records.get(item.properties.id)!.celsius).slice(0, 3).join(',')})`}
           fillOpacity={records.get(item.properties.id)!.method === 'estimated' || records.get(item.properties.id)!.forecastBasis === 'estimated-history' ? '.55' : '.8'} fillRule="evenodd" stroke={item.properties.id === selectedAreaId ? '#fff' : '#76cfc8'} strokeWidth={item.properties.id === selectedAreaId ? 2 : 0.4}
           onClick={() => onSelectArea(item.properties.id)}><title>{item.properties.name}: {formatTemperature(records.get(item.properties.id)!)}</title></path>)}
-        {flows.map(flow => <path key={flow.id} ref={element => { if (element) svgTrails.current.set(flow.id, element); else svgTrails.current.delete(flow.id); }}
-          d={coolingSvgPath(coolingFlowFrame(flow, 0).path)} fill="none" stroke={flow.areas[0] === selectedAreaId ? '#fff2bc' : '#d4fffb'} strokeWidth="1.8" strokeLinecap="round" pointerEvents="none" />)}
+        {flows.flatMap(flow => [-1, 0, 1, 2].map(part => <path key={`${flow.id}|${part}`} data-part={`${flow.id}|${part}`}
+          ref={element => { const key = `${flow.id}|${part}`; if (element) svgTrails.current.set(key, element); else svgTrails.current.delete(key); }}
+          fill="none" stroke={part < 0 ? `rgb(${FLOW_STYLE.glowColor.slice(0, 3).join(',')})` : '#3cede0'}
+          strokeOpacity={part < 0 ? FLOW_STYLE.glowColor[3]/255 : 245/255}
+          strokeWidth={part < 0 ? FLOW_STYLE.glowWidth : FLOW_STYLE.width} pointerEvents="none" />))}
         <path d={coast} fill="#bbccc9" fillRule="evenodd" />
         <text x={svgPosition(...blackSeaLabel.position)[0]} y={svgPosition(...blackSeaLabel.position)[1]} textAnchor="middle" fill="#fff" fontSize="10" fontWeight="700" pointerEvents="none">{blackSeaLabel.name}</text>
       </svg>

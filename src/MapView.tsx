@@ -6,6 +6,7 @@ import { feature } from 'topojson-client';
 import world from 'world-atlas/land-110m.json';
 import { displayAreas, suitabilityColor, type DisplayCell } from './data/mapData';
 import { displayFlows, displayStreamlines, flowSection, visibleFlowWindow, type DisplayFlow } from './data/flowData';
+import { FLOW_CYCLE_SECONDS, FLOW_STYLE, flowSegments, type FlowSegment } from './data/flowAnimation';
 import { categorySpeciesColors, categorySpeciesId } from './data/categoryViews';
 import { mapPresentation, type MapPresentation } from './data/mapPresentation';
 import type { SpeciesDataset } from './data/schema';
@@ -75,31 +76,11 @@ const graticule = {
 
 type Hover = { x: number; y: number; cell: DisplayCell; period: 'observed' | 'illustrative' | 'current-model' | 'future-model' } | null;
 type Endpoint = { position: [number, number]; period: 'current' | 'future'; boxId: string };
-type Segment = { path: [number, number][]; color: [number, number, number, number] };
+type Segment = FlowSegment;
 type Trail = { path: [number, number][] };
 
 function speciesColor(boxId: string): [number, number, number] {
   return categorySpeciesColors[categorySpeciesId(boxId)] ?? [105, 237, 226];
-}
-
-function flowSegments(flow: DisplayFlow, start: number, end: number, grouped: boolean): Segment[] {
-  const sourceColor = grouped ? speciesColor(flow.id) : [60, 237, 224];
-  const colorSteps = 3;
-  return Array.from({ length: colorSteps }, (_, index) => {
-    const from = Math.max(start, index / colorSteps);
-    const to = Math.min(end, (index + 1) / colorSteps);
-    if (to <= from) return null;
-    const blend = (index + 0.5) / colorSteps;
-    return {
-      path: flowSection(flow, from, to),
-      color: [
-        Math.round(sourceColor[0] * (1 - blend) + 255 * blend),
-        Math.round(sourceColor[1] * (1 - blend) + 107 * blend),
-        Math.round(sourceColor[2] * (1 - blend) + 180 * blend),
-        245
-      ] as [number, number, number, number]
-    };
-  }).filter((segment): segment is Segment => segment !== null);
 }
 
 export function MapView({ selected, focusBoxId = null, showBoxes = true, showIllustration = false }: {
@@ -284,11 +265,11 @@ export function MapView({ selected, focusBoxId = null, showBoxes = true, showIll
       const trails: Trail[] = [];
       const segments: Segment[] = [];
       streamlines.forEach((flow, index) => {
-        const progress = (time / 5600 + (index * 0.618034) % 1) % 1;
+        const progress = (time / (FLOW_CYCLE_SECONDS * 1000) + (index * 0.618034) % 1) % 1;
         const [start, end] = visibleFlowWindow(progress);
         if (end - start < 0.015) return;
         trails.push({ path: flowSection(flow, start, end) });
-        segments.push(...flowSegments(flow, start, end, grouped));
+        segments.push(...flowSegments(flow, start, end, grouped ? speciesColor(flow.id) : undefined));
       });
       overlay.current?.setProps({ layers: [
         ...layers,
@@ -296,8 +277,8 @@ export function MapView({ selected, focusBoxId = null, showBoxes = true, showIll
           id: 'growing-trail-glow',
           data: trails,
           getPath: d => d.path,
-          getColor: [119, 222, 222, 24],
-          getWidth: 5,
+          getColor: FLOW_STYLE.glowColor,
+          getWidth: FLOW_STYLE.glowWidth,
           widthUnits: 'pixels',
           wrapLongitude: true,
           pickable: false
@@ -307,7 +288,7 @@ export function MapView({ selected, focusBoxId = null, showBoxes = true, showIll
           data: segments,
           getPath: d => d.path,
           getColor: d => d.color,
-          getWidth: 1.8,
+          getWidth: FLOW_STYLE.width,
           widthUnits: 'pixels',
           wrapLongitude: true,
           pickable: false

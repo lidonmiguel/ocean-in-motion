@@ -1,139 +1,129 @@
-import geometry from './temperatureRoutes.json';
+import geometryRaw from './temperatureRoutes.json?raw';
+import { FLOW_CYCLE_SECONDS, FLOW_SPAN_DEGREES, growingFlowFrame, type FlowSegment } from './flowAnimation';
+import type { DisplayFlow } from './flowData';
 
 export type Position = [number, number];
+export type CoolingNode = { id: string; areaId: string; position: Position; orbit: Position[] };
 export type CoolingNetwork = {
-  nodes: { areaId: string; anchor: Position; orbit: Position[] }[];
-  links: { from: string; to: string; lengthKm: number; path: Position[] }[];
+  nodes: CoolingNode[];
+  links: { from: string; to: string; proximityKm: number; path: Position[] }[];
 };
-export const temperatureNetwork = geometry as unknown as CoolingNetwork;
+// Reconstruct dense render vertices from the compact offline control points.
+// Raw import prevents TypeScript from inferring a giant tuple type for geometry.
+function renderPath(path: Position[]): Position[] {
+  const result: Position[] = [path[0]];
+  for (let i = 1; i < path.length; i++) {
+    const a = path[i-1], b = path[i];
+    const pieces = Math.max(1, Math.ceil(Math.max(Math.abs(b[0]-a[0]), Math.abs(b[1]-a[1]))/.2-1e-9));
+    for (let j = 1; j <= pieces; j++) result.push([
+      Math.round((a[0]+(b[0]-a[0])*j/pieces)*1e5)/1e5,
+      Math.round((a[1]+(b[1]-a[1])*j/pieces)*1e5)/1e5
+    ]);
+  }
+  return result;
+}
+const compact = JSON.parse(geometryRaw) as CoolingNetwork;
+export const temperatureNetwork: CoolingNetwork = {
+  nodes: compact.nodes, links: compact.links.map(l => ({ ...l, path: renderPath(l.path) }))
+};
 type Values = ReadonlyMap<string, { celsius: number }>;
 export type CoolingFlow = {
-  id: string; areas: string[]; path: Position[]; times: number[];
+  id: string; sourceArea: string; areas: string[]; legs: DisplayFlow[];
   travelDuration: number; orbitDuration: number; duration: number; phase: number;
 };
-export type CoolingFrame = { path: Position[]; head?: Position; alpha: number; stage: 'travel' | 'circling' | 'waiting' };
+export type CoolingFrame = {
+  path: Position[]; segments: FlowSegment[]; alpha: number;
+  stage: 'travel' | 'circling' | 'waiting';
+};
 
-const radians = Math.PI / 180;
 export function geographicDistance(a: Position, b: Position): number {
+  const radians = Math.PI / 180;
   const value = Math.sin((b[1]-a[1])*radians/2)**2 + Math.cos(a[1]*radians)*Math.cos(b[1]*radians)*Math.sin((b[0]-a[0])*radians/2)**2;
   return 12742*Math.asin(Math.min(1, Math.sqrt(value)));
 }
 
-function adjacency(network: CoolingNetwork) {
-  const links = new Map<string, { area: string; length: number; path: Position[] }[]>();
-  for (const edge of network.links) {
-    for (const [from, to, path] of [[edge.from, edge.to, edge.path], [edge.to, edge.from, [...edge.path].reverse()]] as [string, string, Position[]][]) {
-      const neighbors = links.get(from) ?? [];
-      neighbors.push({ area: to, length: edge.lengthKm, path });
-      links.set(from, neighbors);
-    }
+function indexNetwork(network: CoolingNetwork) {
+  const nodes = new Map(network.nodes.map(n => [n.id, n]));
+  const links = new Map<string, CoolingNetwork['links']>();
+  for (const link of network.links) {
+    const choices = links.get(link.from) ?? [];
+    choices.push(link);
+    links.set(link.from, choices);
   }
-  return links;
+  return { nodes, links };
 }
 
-function nearestCooler(start: string, values: Values, neighbors: ReturnType<typeof adjacency>, positions: ReadonlyMap<string, Position>): string[] | null {
-  const temperature = values.get(start)!.celsius;
-  const costs = new Map([[start, 0]]);
-  const previous = new Map<string, string>();
-  const closed = new Set<string>();
-  const queue: { area: string; cost: number }[] = [{ area: start, cost: 0 }];
-  while (queue.length) {
-    queue.sort((a, b) => b.cost-a.cost || b.area.localeCompare(a.area));
-    const current = queue.pop()!;
-    if (closed.has(current.area)) continue;
-    closed.add(current.area);
-    for (const edge of neighbors.get(current.area) ?? []) {
-      const cost = current.cost+edge.length;
-      if (closed.has(edge.area) || cost >= (costs.get(edge.area) ?? Infinity)) continue;
-      costs.set(edge.area, cost);
-      previous.set(edge.area, current.area);
-      queue.push({ area: edge.area, cost });
-    }
-  }
-  const origin = positions.get(start)!;
-  const destination = [...closed].filter(area => Number.isFinite(values.get(area)?.celsius) && values.get(area)!.celsius < temperature-1e-6)
-    .sort((a, b) => geographicDistance(origin, positions.get(a)!)-geographicDistance(origin, positions.get(b)!) || a.localeCompare(b))[0];
-  if (!destination) return null;
-  const route = [destination];
-  while (previous.has(route.at(-1)!)) route.push(previous.get(route.at(-1)!)!);
-  return route.reverse();
-}
-
-function descend(start: string, values: Values, neighbors: ReturnType<typeof adjacency>, positions: ReadonlyMap<string, Position>) {
-  if (!positions.has(start) || !Number.isFinite(values.get(start)?.celsius)) return { stops: [], navigation: [] };
-  const stops = [start], navigation = [start];
+function descend(start: string, values: Values, network: ReturnType<typeof indexNetwork>) {
+  const origin = network.nodes.get(start);
+  if (!origin || !Number.isFinite(values.get(origin.areaId)?.celsius)) return { areas: [], legs: [], terminal: undefined };
+  const areas = [origin.areaId];
+  const legs: DisplayFlow[] = [];
+  let current = origin;
   while (true) {
-    const next = nearestCooler(stops.at(-1)!, values, neighbors, positions);
-    if (!next) break;
-    stops.push(next.at(-1)!);
-    navigation.push(...next.slice(1));
+    const temperature = values.get(current.areaId)!.celsius;
+    // Only directly touching regions: never route through a warmer intermediary.
+    const choice = (network.links.get(current.id) ?? [])
+      .filter(l => {
+        const area = network.nodes.get(l.to)!.areaId;
+        return Number.isFinite(values.get(area)?.celsius) && values.get(area)!.celsius < temperature-1e-6;
+      })
+      .sort((a, b) => a.proximityKm-b.proximityKm || a.to.localeCompare(b.to))[0];
+    if (!choice) break;
+    legs.push({ id: `${start}:${legs.length}`, from: choice.path[0], to: choice.path.at(-1)!, path: choice.path });
+    current = network.nodes.get(choice.to)!;
+    areas.push(current.areaId);
   }
-  return { stops, navigation };
+  return { areas, legs, terminal: current };
 }
 
-// Measure geographic proximity from the particle's current position.
-// Choose the nearest cooler reachable sea, then route it over water.
-// Intermediate seas are navigation only; cooler stops strictly decrease.
+// Starts and arrivals are distributed water points, never regional centers.
 export function coolingChain(start: string, values: Values, network = temperatureNetwork): string[] {
-  return descend(start, values, adjacency(network), new Map(network.nodes.map(n => [n.areaId, n.anchor]))).stops;
+  return descend(start, values, indexNetwork(network)).areas;
+}
+
+function visualSections(flow: DisplayFlow): DisplayFlow[] {
+  const sections: DisplayFlow[] = [];
+  let path = [flow.path[0]], span = 0;
+  for (const point of flow.path.slice(1)) {
+    const previous = path.at(-1)!;
+    const step = Math.hypot(point[0]-previous[0], point[1]-previous[1]);
+    if (span+step > FLOW_SPAN_DEGREES && path.length > 1) {
+      sections.push({ id: `${flow.id}:${sections.length}`, from: path[0], to: previous, path });
+      path = [previous]; span = 0;
+    }
+    path.push(point); span += step;
+  }
+  sections.push({ id: `${flow.id}:${sections.length}`, from: path[0], to: path.at(-1)!, path });
+  return sections;
 }
 
 export function temperatureFlows(values: Values, network = temperatureNetwork): CoolingFlow[] {
-  const neighbors = adjacency(network);
-  const nodes = new Map(network.nodes.map(node => [node.areaId, node]));
-  const positions = new Map(network.nodes.map(node => [node.areaId, node.anchor]));
+  const indexed = indexNetwork(network);
   return network.nodes.flatMap((node, index) => {
-    const { stops: areas, navigation } = descend(node.areaId, values, neighbors, positions);
-    if (!areas.length) return [];
-    const path: Position[] = [node.anchor];
-    for (let leg = 1; leg < navigation.length; leg++) {
-      const edge = neighbors.get(navigation[leg-1])!.find(e => e.area === navigation[leg])!;
-      const shift = 360*Math.round((path.at(-1)![0]-edge.path[0][0])/360);
-      path.push(...edge.path.slice(1).map(([lon, lat]): Position => [lon+shift, lat]));
-    }
-    const distances = [0];
-    for (let i = 1; i < path.length; i++) distances.push(distances[i-1]+geographicDistance(path[i-1], path[i]));
-    const length = distances.at(-1)!;
-    const travelDuration = length === 0 ? 0 : Math.max(5, Math.min(24, length/700));
-    const times = distances.map(d => length ? d/length*travelDuration : 0);
-    const terminal = nodes.get(areas.at(-1)!)!;
-    const shift = 360*Math.round((path.at(-1)![0]-terminal.anchor[0])/360);
-    const orbitDuration = 5.5;
-    terminal.orbit.slice(1).forEach(([lon, lat], i) => {
-      path.push([lon+shift, lat]);
-      times.push(travelDuration+orbitDuration*(i+1)/(terminal.orbit.length-1));
-    });
+    const { areas, legs, terminal } = descend(node.id, values, indexed);
+    if (!terminal) return [];
+    const sections = legs.flatMap(visualSections);
+    const travelDuration = sections.length*FLOW_CYCLE_SECONDS;
+    const orbitDuration = FLOW_CYCLE_SECONDS;
     const duration = travelDuration+orbitDuration+1.4;
-    return [{ id: node.areaId, areas, path, times, travelDuration, orbitDuration, duration,
-      phase: ((index*0.618034)%1)*duration }];
+    const orbit: DisplayFlow = { id: `${node.id}:orbit`, from: terminal.position,
+      to: terminal.position, path: terminal.orbit };
+    return [{ id: node.id, sourceArea: node.areaId, areas, legs: [...sections, orbit],
+      travelDuration, orbitDuration, duration, phase: ((index*.618034)%1)*FLOW_CYCLE_SECONDS }];
   });
 }
 
-function pointAt(flow: CoolingFlow, time: number): Position {
-  const after = flow.times.findIndex(t => t >= time);
-  if (after < 0) return flow.path.at(-1)!;
-  if (after === 0) return flow.path[0];
-  const before = after-1;
-  const fraction = (time-flow.times[before])/Math.max(1e-9, flow.times[after]-flow.times[before]);
-  return [flow.path[before][0]+fraction*(flow.path[after][0]-flow.path[before][0]),
-    flow.path[before][1]+fraction*(flow.path[after][1]-flow.path[before][1])];
-}
-
-// Bounded moving tail; the entire trace fades during the final local orbit.
-// A blank interval follows before a new illustrative particle is emitted.
 export function coolingFlowFrame(flow: CoolingFlow, seconds: number, stagger = true): CoolingFrame {
   const time = ((seconds+(stagger ? flow.phase : 0))%flow.duration+flow.duration)%flow.duration;
   const finish = flow.travelDuration+flow.orbitDuration;
-  if (time >= finish) return { path: [], alpha: 0, stage: 'waiting' };
-  const start = Math.max(0, time-2.4);
-  const orbitProgress = Math.max(0, (time-flow.travelDuration)/flow.orbitDuration);
-  const alpha = Math.min(1, time/0.4)*Math.max(0, 1-Math.max(0, (orbitProgress-0.6)/0.4));
-  const head = pointAt(flow, time);
-  const path = [pointAt(flow, start), ...flow.path.filter((_, i) => flow.times[i] > start && flow.times[i] < time), head];
-  return { path, head, alpha, stage: time < flow.travelDuration ? 'travel' : 'circling' };
+  if (time >= finish) return { path: [], segments: [], alpha: 0, stage: 'waiting' };
+  const leg = Math.min(flow.legs.length-1, Math.floor(time/FLOW_CYCLE_SECONDS));
+  const progress = (time-leg*FLOW_CYCLE_SECONDS)/FLOW_CYCLE_SECONDS;
+  const circling = time >= flow.travelDuration;
+  const alpha = circling ? Math.max(0, 1-Math.max(0, (progress-.8)/.2)) : 1;
+  return { ...growingFlowFrame(flow.legs[leg], progress, alpha), alpha, stage: circling ? 'circling' : 'travel' };
 }
 
-// Split the SVG fallback at ±180°, rather than drawing across the whole map.
 export function coolingSvgPath(path: Position[]): string {
   let previous: number | undefined;
   return path.map(([lon, lat]) => {
