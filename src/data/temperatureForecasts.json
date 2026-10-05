@@ -1,6 +1,6 @@
 {
-  "schemaVersion": 1,
-  "runId": "d384abb90341f47a",
+  "schemaVersion": 2,
+  "runId": "6054406ac5b140dc",
   "model": "persistence",
   "trainedThrough": 2025,
   "intervalLevel": 0.9,
@@ -11,7 +11,10 @@
       "horizon": 1,
       "celsius": 28.16,
       "lower": 27.78,
-      "upper": 28.54
+      "upper": 28.54,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "arctic",
@@ -19,7 +22,10 @@
       "horizon": 1,
       "celsius": -1.44,
       "lower": -1.82,
-      "upper": -1.06
+      "upper": -1.06,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "atlantic-north",
@@ -27,7 +33,10 @@
       "horizon": 1,
       "celsius": 21.9,
       "lower": 21.52,
-      "upper": 22.28
+      "upper": 22.28,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "atlantic-south",
@@ -35,7 +44,10 @@
       "horizon": 1,
       "celsius": 17.2,
       "lower": 16.82,
-      "upper": 17.58
+      "upper": 17.58,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "baltic",
@@ -43,7 +55,10 @@
       "horizon": 1,
       "celsius": 10.39,
       "lower": 10.01,
-      "upper": 10.77
+      "upper": 10.77,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "bengal",
@@ -51,7 +66,10 @@
       "horizon": 1,
       "celsius": 29.05,
       "lower": 28.67,
-      "upper": 29.43
+      "upper": 29.43,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "bering",
@@ -59,7 +77,10 @@
       "horizon": 1,
       "celsius": 5.12,
       "lower": 4.74,
-      "upper": 5.5
+      "upper": 5.5,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "black",
@@ -67,7 +88,10 @@
       "horizon": 1,
       "celsius": 16.55,
       "lower": 16.17,
-      "upper": 16.93
+      "upper": 16.93,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "caribbean",
@@ -75,7 +99,10 @@
       "horizon": 1,
       "celsius": 28.58,
       "lower": 28.2,
-      "upper": 28.96
+      "upper": 28.96,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "caspian",
@@ -83,7 +110,10 @@
       "horizon": 1,
       "celsius": 16.04,
       "lower": 15.66,
-      "upper": 16.42
+      "upper": 16.42,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "coral",
@@ -91,7 +121,10 @@
       "horizon": 1,
       "celsius": 27.32,
       "lower": 26.94,
-      "upper": 27.7
+      "upper": 27.7,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "gulf-mexico",
@@ -99,7 +132,1088 @@
       "horizon": 1,
       "celsius": 26.81,
       "lower": 26.43,
-      "upper": 27.19
+      "upper": 27.19,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
+    },
+    {
+      "areaId": "iho-adriatic-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 17.5,
+      "lower": 17.12,
+      "upper": 17.88,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-east",
+        "med-west"
+      ]
+    },
+    {
+      "areaId": "iho-aegean-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 20.1,
+      "lower": 19.72,
+      "upper": 20.48,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-east",
+        "black"
+      ]
+    },
+    {
+      "areaId": "iho-alboran-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 21.0,
+      "lower": 20.62,
+      "upper": 21.38,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-west",
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-andaman-or-burma-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 27.9,
+      "lower": 27.52,
+      "upper": 28.28,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "bengal",
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-arafura-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 27.8,
+      "lower": 27.42,
+      "upper": 28.18,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "coral",
+        "pacific-south"
+      ]
+    },
+    {
+      "areaId": "iho-baffin-bay",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": -1.4,
+      "lower": -1.78,
+      "upper": -1.02,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-balearic-iberian-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 19.8,
+      "lower": 19.42,
+      "upper": 20.18,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-west"
+      ]
+    },
+    {
+      "areaId": "iho-bali-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 26.9,
+      "lower": 26.52,
+      "upper": 27.28,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-banda-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 27.2,
+      "lower": 26.82,
+      "upper": 27.58,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-south",
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-barentsz-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": -1.4,
+      "lower": -1.78,
+      "upper": -1.02,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-bass-strait",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 16.1,
+      "lower": 15.72,
+      "upper": 16.48,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "tasman",
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-bay-of-biscay",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 13.6,
+      "lower": 13.22,
+      "upper": 13.98,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-bay-of-fundy",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 13.8,
+      "lower": 13.42,
+      "upper": 14.18,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-beaufort-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": -1.4,
+      "lower": -1.78,
+      "upper": -1.02,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-bismarck-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 27.5,
+      "lower": 27.12,
+      "upper": 27.88,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-south",
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-bristol-channel",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 12.4,
+      "lower": 12.02,
+      "upper": 12.78,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "north-sea",
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-celebes-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 28.4,
+      "lower": 28.02,
+      "upper": 28.78,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china",
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-celtic-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 10.2,
+      "lower": 9.82,
+      "upper": 10.58,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-ceram-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 27.6,
+      "lower": 27.22,
+      "upper": 27.98,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-south",
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-chukchi-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 0.5,
+      "lower": 0.12,
+      "upper": 0.88,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic",
+        "bering"
+      ]
+    },
+    {
+      "areaId": "iho-davis-strait",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 0.1,
+      "lower": -0.28,
+      "upper": 0.48,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-east-siberian-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": -1.4,
+      "lower": -1.78,
+      "upper": -1.02,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-eastern-china-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 22.5,
+      "lower": 22.12,
+      "upper": 22.88,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-english-channel",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 13.7,
+      "lower": 13.32,
+      "upper": 14.08,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "north-sea",
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-flores-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 26.9,
+      "lower": 26.52,
+      "upper": 27.28,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-great-australian-bight",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 16.6,
+      "lower": 16.22,
+      "upper": 16.98,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian",
+        "pacific-south"
+      ]
+    },
+    {
+      "areaId": "iho-greenland-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": -0.7,
+      "lower": -1.08,
+      "upper": -0.32,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic",
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-aden",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 29.6,
+      "lower": 29.22,
+      "upper": 29.98,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arabian",
+        "red"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-alaska",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 3.2,
+      "lower": 2.82,
+      "upper": 3.58,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north",
+        "bering"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-aqaba",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 25.2,
+      "lower": 24.82,
+      "upper": 25.58,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "red",
+        "med-east"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-boni",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 27.2,
+      "lower": 26.82,
+      "upper": 27.58,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-bothnia",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 6.3,
+      "lower": 5.92,
+      "upper": 6.68,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "baltic"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-california",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 22.0,
+      "lower": 21.62,
+      "upper": 22.38,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-finland",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 6.8,
+      "lower": 6.42,
+      "upper": 7.18,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "baltic"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-guinea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 28.0,
+      "lower": 27.62,
+      "upper": 28.38,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north",
+        "atlantic-south"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-oman",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 24.8,
+      "lower": 24.42,
+      "upper": 25.18,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arabian"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-riga",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 9.2,
+      "lower": 8.82,
+      "upper": 9.58,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "baltic"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-st-lawrence",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 11.2,
+      "lower": 10.82,
+      "upper": 11.58,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-suez",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 25.3,
+      "lower": 24.92,
+      "upper": 25.68,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "red",
+        "med-east"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-thailand",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 28.5,
+      "lower": 28.12,
+      "upper": 28.88,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-tomini",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 28.5,
+      "lower": 28.12,
+      "upper": 28.88,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north",
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-halmahera-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 27.6,
+      "lower": 27.22,
+      "upper": 27.98,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north",
+        "pacific-south"
+      ]
+    },
+    {
+      "areaId": "iho-hudson-bay",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 1.9,
+      "lower": 1.52,
+      "upper": 2.28,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-hudson-strait",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 0.1,
+      "lower": -0.28,
+      "upper": 0.48,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-inner-seas-off-the-west-coast-of-scotland",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 8.1,
+      "lower": 7.72,
+      "upper": 8.48,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north",
+        "north-sea"
+      ]
+    },
+    {
+      "areaId": "iho-ionian-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 20.5,
+      "lower": 20.12,
+      "upper": 20.88,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-east",
+        "med-west"
+      ]
+    },
+    {
+      "areaId": "iho-irish-sea-and-st-george-s-channel",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 10.7,
+      "lower": 10.32,
+      "upper": 11.08,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "north-sea",
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-japan-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 14.6,
+      "lower": 14.22,
+      "upper": 14.98,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-java-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 28.1,
+      "lower": 27.72,
+      "upper": 28.48,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china",
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-kara-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": -1.4,
+      "lower": -1.78,
+      "upper": -1.02,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-kattegat",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 11.2,
+      "lower": 10.82,
+      "upper": 11.58,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "baltic",
+        "north-sea"
+      ]
+    },
+    {
+      "areaId": "iho-labrador-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 5.0,
+      "lower": 4.62,
+      "upper": 5.38,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-laccadive-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 29.6,
+      "lower": 29.22,
+      "upper": 29.98,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "bengal",
+        "arabian"
+      ]
+    },
+    {
+      "areaId": "iho-laptev-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": -1.4,
+      "lower": -1.78,
+      "upper": -1.02,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-ligurian-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 17.3,
+      "lower": 16.92,
+      "upper": 17.68,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-west"
+      ]
+    },
+    {
+      "areaId": "iho-lincoln-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": -1.4,
+      "lower": -1.78,
+      "upper": -1.02,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-makassar-strait",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 28.3,
+      "lower": 27.92,
+      "upper": 28.68,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian",
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-malacca-strait",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 28.1,
+      "lower": 27.72,
+      "upper": 28.48,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china",
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-molukka-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 27.6,
+      "lower": 27.22,
+      "upper": 27.98,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north",
+        "pacific-south"
+      ]
+    },
+    {
+      "areaId": "iho-mozambique-channel",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 24.4,
+      "lower": 24.02,
+      "upper": 24.78,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-norwegian-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 3.7,
+      "lower": 3.32,
+      "upper": 4.08,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "north-sea",
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-persian-gulf",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 23.8,
+      "lower": 23.42,
+      "upper": 24.18,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arabian"
+      ]
+    },
+    {
+      "areaId": "iho-philippine-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 25.7,
+      "lower": 25.32,
+      "upper": 26.08,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north",
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-rio-de-la-plata",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 16.4,
+      "lower": 16.02,
+      "upper": 16.78,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-south"
+      ]
+    },
+    {
+      "areaId": "iho-savu-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 26.7,
+      "lower": 26.32,
+      "upper": 27.08,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-sea-of-azov",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 14.5,
+      "lower": 14.12,
+      "upper": 14.88,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "black"
+      ]
+    },
+    {
+      "areaId": "iho-sea-of-marmara",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 18.3,
+      "lower": 17.92,
+      "upper": 18.68,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "black"
+      ]
+    },
+    {
+      "areaId": "iho-sea-of-okhotsk",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 7.1,
+      "lower": 6.72,
+      "upper": 7.48,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north",
+        "bering"
+      ]
+    },
+    {
+      "areaId": "iho-seto-naikai-or-inland-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 18.5,
+      "lower": 18.12,
+      "upper": 18.88,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-singapore-strait",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 29.2,
+      "lower": 28.82,
+      "upper": 29.58,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-skagerrak",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 9.6,
+      "lower": 9.22,
+      "upper": 9.98,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "north-sea",
+        "baltic"
+      ]
+    },
+    {
+      "areaId": "iho-solomon-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 28.1,
+      "lower": 27.72,
+      "upper": 28.48,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "coral",
+        "pacific-south"
+      ]
+    },
+    {
+      "areaId": "iho-strait-of-gibraltar",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 19.6,
+      "lower": 19.22,
+      "upper": 19.98,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-sulu-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 28.6,
+      "lower": 28.22,
+      "upper": 28.98,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-the-coastal-waters-of-southeast-alaska-and-british-columbia",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 5.2,
+      "lower": 4.82,
+      "upper": 5.58,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-the-northwestern-passages",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": -1.4,
+      "lower": -1.78,
+      "upper": -1.02,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-timor-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 26.4,
+      "lower": 26.02,
+      "upper": 26.78,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-tyrrhenian-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 19.2,
+      "lower": 18.82,
+      "upper": 19.58,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-west",
+        "med-east"
+      ]
+    },
+    {
+      "areaId": "iho-white-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 2.4,
+      "lower": 2.02,
+      "upper": 2.78,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "baltic",
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-yellow-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 18.5,
+      "lower": 18.12,
+      "upper": 18.88,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china"
+      ]
     },
     {
       "areaId": "indian",
@@ -107,7 +1221,10 @@
       "horizon": 1,
       "celsius": 18.82,
       "lower": 18.44,
-      "upper": 19.2
+      "upper": 19.2,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "med-east",
@@ -115,7 +1232,10 @@
       "horizon": 1,
       "celsius": 22.26,
       "lower": 21.88,
-      "upper": 22.64
+      "upper": 22.64,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "med-west",
@@ -123,7 +1243,10 @@
       "horizon": 1,
       "celsius": 20.24,
       "lower": 19.86,
-      "upper": 20.62
+      "upper": 20.62,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "north-sea",
@@ -131,7 +1254,10 @@
       "horizon": 1,
       "celsius": 11.56,
       "lower": 11.18,
-      "upper": 11.94
+      "upper": 11.94,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "pacific-north",
@@ -139,7 +1265,10 @@
       "horizon": 1,
       "celsius": 23.22,
       "lower": 22.84,
-      "upper": 23.6
+      "upper": 23.6,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "pacific-south",
@@ -147,7 +1276,10 @@
       "horizon": 1,
       "celsius": 20.02,
       "lower": 19.64,
-      "upper": 20.4
+      "upper": 20.4,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "red",
@@ -155,7 +1287,10 @@
       "horizon": 1,
       "celsius": 28.79,
       "lower": 28.41,
-      "upper": 29.17
+      "upper": 29.17,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "south-china",
@@ -163,7 +1298,10 @@
       "horizon": 1,
       "celsius": 28.13,
       "lower": 27.75,
-      "upper": 28.51
+      "upper": 28.51,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "southern",
@@ -171,7 +1309,10 @@
       "horizon": 1,
       "celsius": -0.82,
       "lower": -1.2,
-      "upper": -0.44
+      "upper": -0.44,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "tasman",
@@ -179,7 +1320,10 @@
       "horizon": 1,
       "celsius": 17.11,
       "lower": 16.73,
-      "upper": 17.49
+      "upper": 17.49,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "arabian",
@@ -187,7 +1331,10 @@
       "horizon": 2,
       "celsius": 28.16,
       "lower": 27.67,
-      "upper": 28.65
+      "upper": 28.65,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "arctic",
@@ -195,7 +1342,10 @@
       "horizon": 2,
       "celsius": -1.44,
       "lower": -1.93,
-      "upper": -0.95
+      "upper": -0.95,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "atlantic-north",
@@ -203,7 +1353,10 @@
       "horizon": 2,
       "celsius": 21.9,
       "lower": 21.41,
-      "upper": 22.39
+      "upper": 22.39,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "atlantic-south",
@@ -211,7 +1364,10 @@
       "horizon": 2,
       "celsius": 17.2,
       "lower": 16.71,
-      "upper": 17.69
+      "upper": 17.69,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "baltic",
@@ -219,7 +1375,10 @@
       "horizon": 2,
       "celsius": 10.39,
       "lower": 9.9,
-      "upper": 10.88
+      "upper": 10.88,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "bengal",
@@ -227,7 +1386,10 @@
       "horizon": 2,
       "celsius": 29.05,
       "lower": 28.56,
-      "upper": 29.54
+      "upper": 29.54,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "bering",
@@ -235,7 +1397,10 @@
       "horizon": 2,
       "celsius": 5.12,
       "lower": 4.63,
-      "upper": 5.61
+      "upper": 5.61,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "black",
@@ -243,7 +1408,10 @@
       "horizon": 2,
       "celsius": 16.55,
       "lower": 16.06,
-      "upper": 17.04
+      "upper": 17.04,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "caribbean",
@@ -251,7 +1419,10 @@
       "horizon": 2,
       "celsius": 28.58,
       "lower": 28.09,
-      "upper": 29.07
+      "upper": 29.07,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "caspian",
@@ -259,7 +1430,10 @@
       "horizon": 2,
       "celsius": 16.04,
       "lower": 15.55,
-      "upper": 16.53
+      "upper": 16.53,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "coral",
@@ -267,7 +1441,10 @@
       "horizon": 2,
       "celsius": 27.32,
       "lower": 26.83,
-      "upper": 27.81
+      "upper": 27.81,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "gulf-mexico",
@@ -275,7 +1452,1088 @@
       "horizon": 2,
       "celsius": 26.81,
       "lower": 26.32,
-      "upper": 27.3
+      "upper": 27.3,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
+    },
+    {
+      "areaId": "iho-adriatic-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 17.5,
+      "lower": 17.01,
+      "upper": 17.99,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-east",
+        "med-west"
+      ]
+    },
+    {
+      "areaId": "iho-aegean-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 20.1,
+      "lower": 19.61,
+      "upper": 20.59,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-east",
+        "black"
+      ]
+    },
+    {
+      "areaId": "iho-alboran-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 21.0,
+      "lower": 20.51,
+      "upper": 21.49,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-west",
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-andaman-or-burma-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 27.9,
+      "lower": 27.41,
+      "upper": 28.39,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "bengal",
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-arafura-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 27.8,
+      "lower": 27.31,
+      "upper": 28.29,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "coral",
+        "pacific-south"
+      ]
+    },
+    {
+      "areaId": "iho-baffin-bay",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": -1.4,
+      "lower": -1.89,
+      "upper": -0.91,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-balearic-iberian-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 19.8,
+      "lower": 19.31,
+      "upper": 20.29,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-west"
+      ]
+    },
+    {
+      "areaId": "iho-bali-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 26.9,
+      "lower": 26.41,
+      "upper": 27.39,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-banda-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 27.2,
+      "lower": 26.71,
+      "upper": 27.69,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-south",
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-barentsz-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": -1.4,
+      "lower": -1.89,
+      "upper": -0.91,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-bass-strait",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 16.1,
+      "lower": 15.61,
+      "upper": 16.59,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "tasman",
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-bay-of-biscay",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 13.6,
+      "lower": 13.11,
+      "upper": 14.09,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-bay-of-fundy",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 13.8,
+      "lower": 13.31,
+      "upper": 14.29,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-beaufort-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": -1.4,
+      "lower": -1.89,
+      "upper": -0.91,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-bismarck-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 27.5,
+      "lower": 27.01,
+      "upper": 27.99,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-south",
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-bristol-channel",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 12.4,
+      "lower": 11.91,
+      "upper": 12.89,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "north-sea",
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-celebes-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 28.4,
+      "lower": 27.91,
+      "upper": 28.89,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china",
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-celtic-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 10.2,
+      "lower": 9.71,
+      "upper": 10.69,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-ceram-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 27.6,
+      "lower": 27.11,
+      "upper": 28.09,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-south",
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-chukchi-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 0.5,
+      "lower": 0.01,
+      "upper": 0.99,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic",
+        "bering"
+      ]
+    },
+    {
+      "areaId": "iho-davis-strait",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 0.1,
+      "lower": -0.39,
+      "upper": 0.59,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-east-siberian-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": -1.4,
+      "lower": -1.89,
+      "upper": -0.91,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-eastern-china-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 22.5,
+      "lower": 22.01,
+      "upper": 22.99,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-english-channel",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 13.7,
+      "lower": 13.21,
+      "upper": 14.19,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "north-sea",
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-flores-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 26.9,
+      "lower": 26.41,
+      "upper": 27.39,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-great-australian-bight",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 16.6,
+      "lower": 16.11,
+      "upper": 17.09,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian",
+        "pacific-south"
+      ]
+    },
+    {
+      "areaId": "iho-greenland-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": -0.7,
+      "lower": -1.19,
+      "upper": -0.21,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic",
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-aden",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 29.6,
+      "lower": 29.11,
+      "upper": 30.09,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arabian",
+        "red"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-alaska",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 3.2,
+      "lower": 2.71,
+      "upper": 3.69,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north",
+        "bering"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-aqaba",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 25.2,
+      "lower": 24.71,
+      "upper": 25.69,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "red",
+        "med-east"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-boni",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 27.2,
+      "lower": 26.71,
+      "upper": 27.69,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-bothnia",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 6.3,
+      "lower": 5.81,
+      "upper": 6.79,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "baltic"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-california",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 22.0,
+      "lower": 21.51,
+      "upper": 22.49,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-finland",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 6.8,
+      "lower": 6.31,
+      "upper": 7.29,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "baltic"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-guinea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 28.0,
+      "lower": 27.51,
+      "upper": 28.49,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north",
+        "atlantic-south"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-oman",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 24.8,
+      "lower": 24.31,
+      "upper": 25.29,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arabian"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-riga",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 9.2,
+      "lower": 8.71,
+      "upper": 9.69,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "baltic"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-st-lawrence",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 11.2,
+      "lower": 10.71,
+      "upper": 11.69,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-suez",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 25.3,
+      "lower": 24.81,
+      "upper": 25.79,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "red",
+        "med-east"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-thailand",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 28.5,
+      "lower": 28.01,
+      "upper": 28.99,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-tomini",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 28.5,
+      "lower": 28.01,
+      "upper": 28.99,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north",
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-halmahera-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 27.6,
+      "lower": 27.11,
+      "upper": 28.09,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north",
+        "pacific-south"
+      ]
+    },
+    {
+      "areaId": "iho-hudson-bay",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 1.9,
+      "lower": 1.41,
+      "upper": 2.39,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-hudson-strait",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 0.1,
+      "lower": -0.39,
+      "upper": 0.59,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-inner-seas-off-the-west-coast-of-scotland",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 8.1,
+      "lower": 7.61,
+      "upper": 8.59,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north",
+        "north-sea"
+      ]
+    },
+    {
+      "areaId": "iho-ionian-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 20.5,
+      "lower": 20.01,
+      "upper": 20.99,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-east",
+        "med-west"
+      ]
+    },
+    {
+      "areaId": "iho-irish-sea-and-st-george-s-channel",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 10.7,
+      "lower": 10.21,
+      "upper": 11.19,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "north-sea",
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-japan-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 14.6,
+      "lower": 14.11,
+      "upper": 15.09,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-java-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 28.1,
+      "lower": 27.61,
+      "upper": 28.59,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china",
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-kara-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": -1.4,
+      "lower": -1.89,
+      "upper": -0.91,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-kattegat",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 11.2,
+      "lower": 10.71,
+      "upper": 11.69,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "baltic",
+        "north-sea"
+      ]
+    },
+    {
+      "areaId": "iho-labrador-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 5.0,
+      "lower": 4.51,
+      "upper": 5.49,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-laccadive-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 29.6,
+      "lower": 29.11,
+      "upper": 30.09,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "bengal",
+        "arabian"
+      ]
+    },
+    {
+      "areaId": "iho-laptev-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": -1.4,
+      "lower": -1.89,
+      "upper": -0.91,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-ligurian-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 17.3,
+      "lower": 16.81,
+      "upper": 17.79,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-west"
+      ]
+    },
+    {
+      "areaId": "iho-lincoln-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": -1.4,
+      "lower": -1.89,
+      "upper": -0.91,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-makassar-strait",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 28.3,
+      "lower": 27.81,
+      "upper": 28.79,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian",
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-malacca-strait",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 28.1,
+      "lower": 27.61,
+      "upper": 28.59,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china",
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-molukka-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 27.6,
+      "lower": 27.11,
+      "upper": 28.09,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north",
+        "pacific-south"
+      ]
+    },
+    {
+      "areaId": "iho-mozambique-channel",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 24.4,
+      "lower": 23.91,
+      "upper": 24.89,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-norwegian-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 3.7,
+      "lower": 3.21,
+      "upper": 4.19,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "north-sea",
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-persian-gulf",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 23.8,
+      "lower": 23.31,
+      "upper": 24.29,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arabian"
+      ]
+    },
+    {
+      "areaId": "iho-philippine-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 25.7,
+      "lower": 25.21,
+      "upper": 26.19,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north",
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-rio-de-la-plata",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 16.4,
+      "lower": 15.91,
+      "upper": 16.89,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-south"
+      ]
+    },
+    {
+      "areaId": "iho-savu-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 26.7,
+      "lower": 26.21,
+      "upper": 27.19,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-sea-of-azov",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 14.5,
+      "lower": 14.01,
+      "upper": 14.99,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "black"
+      ]
+    },
+    {
+      "areaId": "iho-sea-of-marmara",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 18.3,
+      "lower": 17.81,
+      "upper": 18.79,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "black"
+      ]
+    },
+    {
+      "areaId": "iho-sea-of-okhotsk",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 7.1,
+      "lower": 6.61,
+      "upper": 7.59,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north",
+        "bering"
+      ]
+    },
+    {
+      "areaId": "iho-seto-naikai-or-inland-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 18.5,
+      "lower": 18.01,
+      "upper": 18.99,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-singapore-strait",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 29.2,
+      "lower": 28.71,
+      "upper": 29.69,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-skagerrak",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 9.6,
+      "lower": 9.11,
+      "upper": 10.09,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "north-sea",
+        "baltic"
+      ]
+    },
+    {
+      "areaId": "iho-solomon-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 28.1,
+      "lower": 27.61,
+      "upper": 28.59,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "coral",
+        "pacific-south"
+      ]
+    },
+    {
+      "areaId": "iho-strait-of-gibraltar",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 19.6,
+      "lower": 19.11,
+      "upper": 20.09,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-sulu-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 28.6,
+      "lower": 28.11,
+      "upper": 29.09,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-the-coastal-waters-of-southeast-alaska-and-british-columbia",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 5.2,
+      "lower": 4.71,
+      "upper": 5.69,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-the-northwestern-passages",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": -1.4,
+      "lower": -1.89,
+      "upper": -0.91,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-timor-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 26.4,
+      "lower": 25.91,
+      "upper": 26.89,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-tyrrhenian-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 19.2,
+      "lower": 18.71,
+      "upper": 19.69,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-west",
+        "med-east"
+      ]
+    },
+    {
+      "areaId": "iho-white-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 2.4,
+      "lower": 1.91,
+      "upper": 2.89,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "baltic",
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-yellow-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 18.5,
+      "lower": 18.01,
+      "upper": 18.99,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china"
+      ]
     },
     {
       "areaId": "indian",
@@ -283,7 +2541,10 @@
       "horizon": 2,
       "celsius": 18.82,
       "lower": 18.33,
-      "upper": 19.31
+      "upper": 19.31,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "med-east",
@@ -291,7 +2552,10 @@
       "horizon": 2,
       "celsius": 22.26,
       "lower": 21.77,
-      "upper": 22.75
+      "upper": 22.75,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "med-west",
@@ -299,7 +2563,10 @@
       "horizon": 2,
       "celsius": 20.24,
       "lower": 19.75,
-      "upper": 20.73
+      "upper": 20.73,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "north-sea",
@@ -307,7 +2574,10 @@
       "horizon": 2,
       "celsius": 11.56,
       "lower": 11.07,
-      "upper": 12.05
+      "upper": 12.05,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "pacific-north",
@@ -315,7 +2585,10 @@
       "horizon": 2,
       "celsius": 23.22,
       "lower": 22.73,
-      "upper": 23.71
+      "upper": 23.71,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "pacific-south",
@@ -323,7 +2596,10 @@
       "horizon": 2,
       "celsius": 20.02,
       "lower": 19.53,
-      "upper": 20.51
+      "upper": 20.51,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "red",
@@ -331,7 +2607,10 @@
       "horizon": 2,
       "celsius": 28.79,
       "lower": 28.3,
-      "upper": 29.28
+      "upper": 29.28,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "south-china",
@@ -339,7 +2618,10 @@
       "horizon": 2,
       "celsius": 28.13,
       "lower": 27.64,
-      "upper": 28.62
+      "upper": 28.62,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "southern",
@@ -347,7 +2629,10 @@
       "horizon": 2,
       "celsius": -0.82,
       "lower": -1.31,
-      "upper": -0.33
+      "upper": -0.33,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "tasman",
@@ -355,7 +2640,10 @@
       "horizon": 2,
       "celsius": 17.11,
       "lower": 16.62,
-      "upper": 17.6
+      "upper": 17.6,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "arabian",
@@ -363,7 +2651,10 @@
       "horizon": 3,
       "celsius": 28.16,
       "lower": 27.73,
-      "upper": 28.59
+      "upper": 28.59,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "arctic",
@@ -371,7 +2662,10 @@
       "horizon": 3,
       "celsius": -1.44,
       "lower": -1.87,
-      "upper": -1.01
+      "upper": -1.01,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "atlantic-north",
@@ -379,7 +2673,10 @@
       "horizon": 3,
       "celsius": 21.9,
       "lower": 21.47,
-      "upper": 22.33
+      "upper": 22.33,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "atlantic-south",
@@ -387,7 +2684,10 @@
       "horizon": 3,
       "celsius": 17.2,
       "lower": 16.77,
-      "upper": 17.63
+      "upper": 17.63,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "baltic",
@@ -395,7 +2695,10 @@
       "horizon": 3,
       "celsius": 10.39,
       "lower": 9.96,
-      "upper": 10.82
+      "upper": 10.82,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "bengal",
@@ -403,7 +2706,10 @@
       "horizon": 3,
       "celsius": 29.05,
       "lower": 28.62,
-      "upper": 29.48
+      "upper": 29.48,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "bering",
@@ -411,7 +2717,10 @@
       "horizon": 3,
       "celsius": 5.12,
       "lower": 4.69,
-      "upper": 5.55
+      "upper": 5.55,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "black",
@@ -419,7 +2728,10 @@
       "horizon": 3,
       "celsius": 16.55,
       "lower": 16.12,
-      "upper": 16.98
+      "upper": 16.98,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "caribbean",
@@ -427,7 +2739,10 @@
       "horizon": 3,
       "celsius": 28.58,
       "lower": 28.15,
-      "upper": 29.01
+      "upper": 29.01,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "caspian",
@@ -435,7 +2750,10 @@
       "horizon": 3,
       "celsius": 16.04,
       "lower": 15.61,
-      "upper": 16.47
+      "upper": 16.47,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "coral",
@@ -443,7 +2761,10 @@
       "horizon": 3,
       "celsius": 27.32,
       "lower": 26.89,
-      "upper": 27.75
+      "upper": 27.75,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "gulf-mexico",
@@ -451,7 +2772,1088 @@
       "horizon": 3,
       "celsius": 26.81,
       "lower": 26.38,
-      "upper": 27.24
+      "upper": 27.24,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
+    },
+    {
+      "areaId": "iho-adriatic-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 17.5,
+      "lower": 17.07,
+      "upper": 17.93,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-east",
+        "med-west"
+      ]
+    },
+    {
+      "areaId": "iho-aegean-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 20.1,
+      "lower": 19.67,
+      "upper": 20.53,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-east",
+        "black"
+      ]
+    },
+    {
+      "areaId": "iho-alboran-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 21.0,
+      "lower": 20.57,
+      "upper": 21.43,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-west",
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-andaman-or-burma-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 27.9,
+      "lower": 27.47,
+      "upper": 28.33,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "bengal",
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-arafura-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 27.8,
+      "lower": 27.37,
+      "upper": 28.23,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "coral",
+        "pacific-south"
+      ]
+    },
+    {
+      "areaId": "iho-baffin-bay",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": -1.4,
+      "lower": -1.83,
+      "upper": -0.97,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-balearic-iberian-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 19.8,
+      "lower": 19.37,
+      "upper": 20.23,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-west"
+      ]
+    },
+    {
+      "areaId": "iho-bali-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 26.9,
+      "lower": 26.47,
+      "upper": 27.33,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-banda-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 27.2,
+      "lower": 26.77,
+      "upper": 27.63,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-south",
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-barentsz-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": -1.4,
+      "lower": -1.83,
+      "upper": -0.97,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-bass-strait",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 16.1,
+      "lower": 15.67,
+      "upper": 16.53,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "tasman",
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-bay-of-biscay",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 13.6,
+      "lower": 13.17,
+      "upper": 14.03,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-bay-of-fundy",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 13.8,
+      "lower": 13.37,
+      "upper": 14.23,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-beaufort-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": -1.4,
+      "lower": -1.83,
+      "upper": -0.97,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-bismarck-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 27.5,
+      "lower": 27.07,
+      "upper": 27.93,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-south",
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-bristol-channel",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 12.4,
+      "lower": 11.97,
+      "upper": 12.83,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "north-sea",
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-celebes-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 28.4,
+      "lower": 27.97,
+      "upper": 28.83,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china",
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-celtic-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 10.2,
+      "lower": 9.77,
+      "upper": 10.63,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-ceram-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 27.6,
+      "lower": 27.17,
+      "upper": 28.03,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-south",
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-chukchi-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 0.5,
+      "lower": 0.07,
+      "upper": 0.93,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic",
+        "bering"
+      ]
+    },
+    {
+      "areaId": "iho-davis-strait",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 0.1,
+      "lower": -0.33,
+      "upper": 0.53,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-east-siberian-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": -1.4,
+      "lower": -1.83,
+      "upper": -0.97,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-eastern-china-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 22.5,
+      "lower": 22.07,
+      "upper": 22.93,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-english-channel",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 13.7,
+      "lower": 13.27,
+      "upper": 14.13,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "north-sea",
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-flores-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 26.9,
+      "lower": 26.47,
+      "upper": 27.33,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-great-australian-bight",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 16.6,
+      "lower": 16.17,
+      "upper": 17.03,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian",
+        "pacific-south"
+      ]
+    },
+    {
+      "areaId": "iho-greenland-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": -0.7,
+      "lower": -1.13,
+      "upper": -0.27,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic",
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-aden",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 29.6,
+      "lower": 29.17,
+      "upper": 30.03,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arabian",
+        "red"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-alaska",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 3.2,
+      "lower": 2.77,
+      "upper": 3.63,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north",
+        "bering"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-aqaba",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 25.2,
+      "lower": 24.77,
+      "upper": 25.63,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "red",
+        "med-east"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-boni",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 27.2,
+      "lower": 26.77,
+      "upper": 27.63,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-bothnia",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 6.3,
+      "lower": 5.87,
+      "upper": 6.73,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "baltic"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-california",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 22.0,
+      "lower": 21.57,
+      "upper": 22.43,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-finland",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 6.8,
+      "lower": 6.37,
+      "upper": 7.23,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "baltic"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-guinea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 28.0,
+      "lower": 27.57,
+      "upper": 28.43,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north",
+        "atlantic-south"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-oman",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 24.8,
+      "lower": 24.37,
+      "upper": 25.23,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arabian"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-riga",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 9.2,
+      "lower": 8.77,
+      "upper": 9.63,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "baltic"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-st-lawrence",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 11.2,
+      "lower": 10.77,
+      "upper": 11.63,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-suez",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 25.3,
+      "lower": 24.87,
+      "upper": 25.73,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "red",
+        "med-east"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-thailand",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 28.5,
+      "lower": 28.07,
+      "upper": 28.93,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-tomini",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 28.5,
+      "lower": 28.07,
+      "upper": 28.93,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north",
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-halmahera-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 27.6,
+      "lower": 27.17,
+      "upper": 28.03,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north",
+        "pacific-south"
+      ]
+    },
+    {
+      "areaId": "iho-hudson-bay",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 1.9,
+      "lower": 1.47,
+      "upper": 2.33,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-hudson-strait",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 0.1,
+      "lower": -0.33,
+      "upper": 0.53,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-inner-seas-off-the-west-coast-of-scotland",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 8.1,
+      "lower": 7.67,
+      "upper": 8.53,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north",
+        "north-sea"
+      ]
+    },
+    {
+      "areaId": "iho-ionian-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 20.5,
+      "lower": 20.07,
+      "upper": 20.93,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-east",
+        "med-west"
+      ]
+    },
+    {
+      "areaId": "iho-irish-sea-and-st-george-s-channel",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 10.7,
+      "lower": 10.27,
+      "upper": 11.13,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "north-sea",
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-japan-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 14.6,
+      "lower": 14.17,
+      "upper": 15.03,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-java-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 28.1,
+      "lower": 27.67,
+      "upper": 28.53,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china",
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-kara-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": -1.4,
+      "lower": -1.83,
+      "upper": -0.97,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-kattegat",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 11.2,
+      "lower": 10.77,
+      "upper": 11.63,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "baltic",
+        "north-sea"
+      ]
+    },
+    {
+      "areaId": "iho-labrador-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 5.0,
+      "lower": 4.57,
+      "upper": 5.43,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-laccadive-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 29.6,
+      "lower": 29.17,
+      "upper": 30.03,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "bengal",
+        "arabian"
+      ]
+    },
+    {
+      "areaId": "iho-laptev-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": -1.4,
+      "lower": -1.83,
+      "upper": -0.97,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-ligurian-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 17.3,
+      "lower": 16.87,
+      "upper": 17.73,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-west"
+      ]
+    },
+    {
+      "areaId": "iho-lincoln-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": -1.4,
+      "lower": -1.83,
+      "upper": -0.97,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-makassar-strait",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 28.3,
+      "lower": 27.87,
+      "upper": 28.73,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian",
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-malacca-strait",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 28.1,
+      "lower": 27.67,
+      "upper": 28.53,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china",
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-molukka-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 27.6,
+      "lower": 27.17,
+      "upper": 28.03,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north",
+        "pacific-south"
+      ]
+    },
+    {
+      "areaId": "iho-mozambique-channel",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 24.4,
+      "lower": 23.97,
+      "upper": 24.83,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-norwegian-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 3.7,
+      "lower": 3.27,
+      "upper": 4.13,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "north-sea",
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-persian-gulf",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 23.8,
+      "lower": 23.37,
+      "upper": 24.23,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arabian"
+      ]
+    },
+    {
+      "areaId": "iho-philippine-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 25.7,
+      "lower": 25.27,
+      "upper": 26.13,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north",
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-rio-de-la-plata",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 16.4,
+      "lower": 15.97,
+      "upper": 16.83,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-south"
+      ]
+    },
+    {
+      "areaId": "iho-savu-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 26.7,
+      "lower": 26.27,
+      "upper": 27.13,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-sea-of-azov",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 14.5,
+      "lower": 14.07,
+      "upper": 14.93,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "black"
+      ]
+    },
+    {
+      "areaId": "iho-sea-of-marmara",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 18.3,
+      "lower": 17.87,
+      "upper": 18.73,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "black"
+      ]
+    },
+    {
+      "areaId": "iho-sea-of-okhotsk",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 7.1,
+      "lower": 6.67,
+      "upper": 7.53,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north",
+        "bering"
+      ]
+    },
+    {
+      "areaId": "iho-seto-naikai-or-inland-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 18.5,
+      "lower": 18.07,
+      "upper": 18.93,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-singapore-strait",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 29.2,
+      "lower": 28.77,
+      "upper": 29.63,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-skagerrak",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 9.6,
+      "lower": 9.17,
+      "upper": 10.03,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "north-sea",
+        "baltic"
+      ]
+    },
+    {
+      "areaId": "iho-solomon-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 28.1,
+      "lower": 27.67,
+      "upper": 28.53,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "coral",
+        "pacific-south"
+      ]
+    },
+    {
+      "areaId": "iho-strait-of-gibraltar",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 19.6,
+      "lower": 19.17,
+      "upper": 20.03,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-sulu-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 28.6,
+      "lower": 28.17,
+      "upper": 29.03,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-the-coastal-waters-of-southeast-alaska-and-british-columbia",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 5.2,
+      "lower": 4.77,
+      "upper": 5.63,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-the-northwestern-passages",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": -1.4,
+      "lower": -1.83,
+      "upper": -0.97,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-timor-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 26.4,
+      "lower": 25.97,
+      "upper": 26.83,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-tyrrhenian-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 19.2,
+      "lower": 18.77,
+      "upper": 19.63,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-west",
+        "med-east"
+      ]
+    },
+    {
+      "areaId": "iho-white-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 2.4,
+      "lower": 1.97,
+      "upper": 2.83,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "baltic",
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-yellow-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 18.5,
+      "lower": 18.07,
+      "upper": 18.93,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china"
+      ]
     },
     {
       "areaId": "indian",
@@ -459,7 +3861,10 @@
       "horizon": 3,
       "celsius": 18.82,
       "lower": 18.39,
-      "upper": 19.25
+      "upper": 19.25,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "med-east",
@@ -467,7 +3872,10 @@
       "horizon": 3,
       "celsius": 22.26,
       "lower": 21.83,
-      "upper": 22.69
+      "upper": 22.69,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "med-west",
@@ -475,7 +3883,10 @@
       "horizon": 3,
       "celsius": 20.24,
       "lower": 19.81,
-      "upper": 20.67
+      "upper": 20.67,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "north-sea",
@@ -483,7 +3894,10 @@
       "horizon": 3,
       "celsius": 11.56,
       "lower": 11.13,
-      "upper": 11.99
+      "upper": 11.99,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "pacific-north",
@@ -491,7 +3905,10 @@
       "horizon": 3,
       "celsius": 23.22,
       "lower": 22.79,
-      "upper": 23.65
+      "upper": 23.65,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "pacific-south",
@@ -499,7 +3916,10 @@
       "horizon": 3,
       "celsius": 20.02,
       "lower": 19.59,
-      "upper": 20.45
+      "upper": 20.45,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "red",
@@ -507,7 +3927,10 @@
       "horizon": 3,
       "celsius": 28.79,
       "lower": 28.36,
-      "upper": 29.22
+      "upper": 29.22,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "south-china",
@@ -515,7 +3938,10 @@
       "horizon": 3,
       "celsius": 28.13,
       "lower": 27.7,
-      "upper": 28.56
+      "upper": 28.56,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "southern",
@@ -523,7 +3949,10 @@
       "horizon": 3,
       "celsius": -0.82,
       "lower": -1.25,
-      "upper": -0.39
+      "upper": -0.39,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "tasman",
@@ -531,7 +3960,10 @@
       "horizon": 3,
       "celsius": 17.11,
       "lower": 16.68,
-      "upper": 17.54
+      "upper": 17.54,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "arabian",
@@ -539,7 +3971,10 @@
       "horizon": 4,
       "celsius": 28.16,
       "lower": 27.68,
-      "upper": 28.64
+      "upper": 28.64,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "arctic",
@@ -547,7 +3982,10 @@
       "horizon": 4,
       "celsius": -1.44,
       "lower": -1.92,
-      "upper": -0.96
+      "upper": -0.96,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "atlantic-north",
@@ -555,7 +3993,10 @@
       "horizon": 4,
       "celsius": 21.9,
       "lower": 21.42,
-      "upper": 22.38
+      "upper": 22.38,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "atlantic-south",
@@ -563,7 +4004,10 @@
       "horizon": 4,
       "celsius": 17.2,
       "lower": 16.72,
-      "upper": 17.68
+      "upper": 17.68,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "baltic",
@@ -571,7 +4015,10 @@
       "horizon": 4,
       "celsius": 10.39,
       "lower": 9.91,
-      "upper": 10.87
+      "upper": 10.87,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "bengal",
@@ -579,7 +4026,10 @@
       "horizon": 4,
       "celsius": 29.05,
       "lower": 28.57,
-      "upper": 29.53
+      "upper": 29.53,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "bering",
@@ -587,7 +4037,10 @@
       "horizon": 4,
       "celsius": 5.12,
       "lower": 4.64,
-      "upper": 5.6
+      "upper": 5.6,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "black",
@@ -595,7 +4048,10 @@
       "horizon": 4,
       "celsius": 16.55,
       "lower": 16.07,
-      "upper": 17.03
+      "upper": 17.03,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "caribbean",
@@ -603,7 +4059,10 @@
       "horizon": 4,
       "celsius": 28.58,
       "lower": 28.1,
-      "upper": 29.06
+      "upper": 29.06,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "caspian",
@@ -611,7 +4070,10 @@
       "horizon": 4,
       "celsius": 16.04,
       "lower": 15.56,
-      "upper": 16.52
+      "upper": 16.52,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "coral",
@@ -619,7 +4081,10 @@
       "horizon": 4,
       "celsius": 27.32,
       "lower": 26.84,
-      "upper": 27.8
+      "upper": 27.8,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "gulf-mexico",
@@ -627,7 +4092,1088 @@
       "horizon": 4,
       "celsius": 26.81,
       "lower": 26.33,
-      "upper": 27.29
+      "upper": 27.29,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
+    },
+    {
+      "areaId": "iho-adriatic-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 17.5,
+      "lower": 17.02,
+      "upper": 17.98,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-east",
+        "med-west"
+      ]
+    },
+    {
+      "areaId": "iho-aegean-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 20.1,
+      "lower": 19.62,
+      "upper": 20.58,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-east",
+        "black"
+      ]
+    },
+    {
+      "areaId": "iho-alboran-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 21.0,
+      "lower": 20.52,
+      "upper": 21.48,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-west",
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-andaman-or-burma-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 27.9,
+      "lower": 27.42,
+      "upper": 28.38,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "bengal",
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-arafura-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 27.8,
+      "lower": 27.32,
+      "upper": 28.28,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "coral",
+        "pacific-south"
+      ]
+    },
+    {
+      "areaId": "iho-baffin-bay",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": -1.4,
+      "lower": -1.88,
+      "upper": -0.92,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-balearic-iberian-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 19.8,
+      "lower": 19.32,
+      "upper": 20.28,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-west"
+      ]
+    },
+    {
+      "areaId": "iho-bali-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 26.9,
+      "lower": 26.42,
+      "upper": 27.38,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-banda-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 27.2,
+      "lower": 26.72,
+      "upper": 27.68,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-south",
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-barentsz-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": -1.4,
+      "lower": -1.88,
+      "upper": -0.92,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-bass-strait",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 16.1,
+      "lower": 15.62,
+      "upper": 16.58,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "tasman",
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-bay-of-biscay",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 13.6,
+      "lower": 13.12,
+      "upper": 14.08,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-bay-of-fundy",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 13.8,
+      "lower": 13.32,
+      "upper": 14.28,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-beaufort-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": -1.4,
+      "lower": -1.88,
+      "upper": -0.92,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-bismarck-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 27.5,
+      "lower": 27.02,
+      "upper": 27.98,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-south",
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-bristol-channel",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 12.4,
+      "lower": 11.92,
+      "upper": 12.88,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "north-sea",
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-celebes-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 28.4,
+      "lower": 27.92,
+      "upper": 28.88,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china",
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-celtic-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 10.2,
+      "lower": 9.72,
+      "upper": 10.68,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-ceram-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 27.6,
+      "lower": 27.12,
+      "upper": 28.08,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-south",
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-chukchi-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 0.5,
+      "lower": 0.02,
+      "upper": 0.98,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic",
+        "bering"
+      ]
+    },
+    {
+      "areaId": "iho-davis-strait",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 0.1,
+      "lower": -0.38,
+      "upper": 0.58,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-east-siberian-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": -1.4,
+      "lower": -1.88,
+      "upper": -0.92,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-eastern-china-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 22.5,
+      "lower": 22.02,
+      "upper": 22.98,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-english-channel",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 13.7,
+      "lower": 13.22,
+      "upper": 14.18,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "north-sea",
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-flores-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 26.9,
+      "lower": 26.42,
+      "upper": 27.38,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-great-australian-bight",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 16.6,
+      "lower": 16.12,
+      "upper": 17.08,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian",
+        "pacific-south"
+      ]
+    },
+    {
+      "areaId": "iho-greenland-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": -0.7,
+      "lower": -1.18,
+      "upper": -0.22,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic",
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-aden",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 29.6,
+      "lower": 29.12,
+      "upper": 30.08,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arabian",
+        "red"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-alaska",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 3.2,
+      "lower": 2.72,
+      "upper": 3.68,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north",
+        "bering"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-aqaba",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 25.2,
+      "lower": 24.72,
+      "upper": 25.68,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "red",
+        "med-east"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-boni",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 27.2,
+      "lower": 26.72,
+      "upper": 27.68,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-bothnia",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 6.3,
+      "lower": 5.82,
+      "upper": 6.78,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "baltic"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-california",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 22.0,
+      "lower": 21.52,
+      "upper": 22.48,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-finland",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 6.8,
+      "lower": 6.32,
+      "upper": 7.28,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "baltic"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-guinea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 28.0,
+      "lower": 27.52,
+      "upper": 28.48,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north",
+        "atlantic-south"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-oman",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 24.8,
+      "lower": 24.32,
+      "upper": 25.28,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arabian"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-riga",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 9.2,
+      "lower": 8.72,
+      "upper": 9.68,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "baltic"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-st-lawrence",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 11.2,
+      "lower": 10.72,
+      "upper": 11.68,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-suez",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 25.3,
+      "lower": 24.82,
+      "upper": 25.78,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "red",
+        "med-east"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-thailand",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 28.5,
+      "lower": 28.02,
+      "upper": 28.98,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-tomini",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 28.5,
+      "lower": 28.02,
+      "upper": 28.98,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north",
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-halmahera-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 27.6,
+      "lower": 27.12,
+      "upper": 28.08,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north",
+        "pacific-south"
+      ]
+    },
+    {
+      "areaId": "iho-hudson-bay",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 1.9,
+      "lower": 1.42,
+      "upper": 2.38,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-hudson-strait",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 0.1,
+      "lower": -0.38,
+      "upper": 0.58,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-inner-seas-off-the-west-coast-of-scotland",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 8.1,
+      "lower": 7.62,
+      "upper": 8.58,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north",
+        "north-sea"
+      ]
+    },
+    {
+      "areaId": "iho-ionian-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 20.5,
+      "lower": 20.02,
+      "upper": 20.98,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-east",
+        "med-west"
+      ]
+    },
+    {
+      "areaId": "iho-irish-sea-and-st-george-s-channel",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 10.7,
+      "lower": 10.22,
+      "upper": 11.18,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "north-sea",
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-japan-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 14.6,
+      "lower": 14.12,
+      "upper": 15.08,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-java-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 28.1,
+      "lower": 27.62,
+      "upper": 28.58,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china",
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-kara-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": -1.4,
+      "lower": -1.88,
+      "upper": -0.92,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-kattegat",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 11.2,
+      "lower": 10.72,
+      "upper": 11.68,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "baltic",
+        "north-sea"
+      ]
+    },
+    {
+      "areaId": "iho-labrador-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 5.0,
+      "lower": 4.52,
+      "upper": 5.48,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-laccadive-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 29.6,
+      "lower": 29.12,
+      "upper": 30.08,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "bengal",
+        "arabian"
+      ]
+    },
+    {
+      "areaId": "iho-laptev-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": -1.4,
+      "lower": -1.88,
+      "upper": -0.92,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-ligurian-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 17.3,
+      "lower": 16.82,
+      "upper": 17.78,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-west"
+      ]
+    },
+    {
+      "areaId": "iho-lincoln-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": -1.4,
+      "lower": -1.88,
+      "upper": -0.92,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-makassar-strait",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 28.3,
+      "lower": 27.82,
+      "upper": 28.78,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian",
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-malacca-strait",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 28.1,
+      "lower": 27.62,
+      "upper": 28.58,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china",
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-molukka-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 27.6,
+      "lower": 27.12,
+      "upper": 28.08,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north",
+        "pacific-south"
+      ]
+    },
+    {
+      "areaId": "iho-mozambique-channel",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 24.4,
+      "lower": 23.92,
+      "upper": 24.88,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-norwegian-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 3.7,
+      "lower": 3.22,
+      "upper": 4.18,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "north-sea",
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-persian-gulf",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 23.8,
+      "lower": 23.32,
+      "upper": 24.28,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arabian"
+      ]
+    },
+    {
+      "areaId": "iho-philippine-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 25.7,
+      "lower": 25.22,
+      "upper": 26.18,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north",
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-rio-de-la-plata",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 16.4,
+      "lower": 15.92,
+      "upper": 16.88,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-south"
+      ]
+    },
+    {
+      "areaId": "iho-savu-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 26.7,
+      "lower": 26.22,
+      "upper": 27.18,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-sea-of-azov",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 14.5,
+      "lower": 14.02,
+      "upper": 14.98,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "black"
+      ]
+    },
+    {
+      "areaId": "iho-sea-of-marmara",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 18.3,
+      "lower": 17.82,
+      "upper": 18.78,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "black"
+      ]
+    },
+    {
+      "areaId": "iho-sea-of-okhotsk",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 7.1,
+      "lower": 6.62,
+      "upper": 7.58,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north",
+        "bering"
+      ]
+    },
+    {
+      "areaId": "iho-seto-naikai-or-inland-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 18.5,
+      "lower": 18.02,
+      "upper": 18.98,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-singapore-strait",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 29.2,
+      "lower": 28.72,
+      "upper": 29.68,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-skagerrak",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 9.6,
+      "lower": 9.12,
+      "upper": 10.08,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "north-sea",
+        "baltic"
+      ]
+    },
+    {
+      "areaId": "iho-solomon-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 28.1,
+      "lower": 27.62,
+      "upper": 28.58,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "coral",
+        "pacific-south"
+      ]
+    },
+    {
+      "areaId": "iho-strait-of-gibraltar",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 19.6,
+      "lower": 19.12,
+      "upper": 20.08,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-sulu-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 28.6,
+      "lower": 28.12,
+      "upper": 29.08,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-the-coastal-waters-of-southeast-alaska-and-british-columbia",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 5.2,
+      "lower": 4.72,
+      "upper": 5.68,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-the-northwestern-passages",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": -1.4,
+      "lower": -1.88,
+      "upper": -0.92,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-timor-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 26.4,
+      "lower": 25.92,
+      "upper": 26.88,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-tyrrhenian-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 19.2,
+      "lower": 18.72,
+      "upper": 19.68,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-west",
+        "med-east"
+      ]
+    },
+    {
+      "areaId": "iho-white-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 2.4,
+      "lower": 1.92,
+      "upper": 2.88,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "baltic",
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-yellow-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 18.5,
+      "lower": 18.02,
+      "upper": 18.98,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china"
+      ]
     },
     {
       "areaId": "indian",
@@ -635,7 +5181,10 @@
       "horizon": 4,
       "celsius": 18.82,
       "lower": 18.34,
-      "upper": 19.3
+      "upper": 19.3,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "med-east",
@@ -643,7 +5192,10 @@
       "horizon": 4,
       "celsius": 22.26,
       "lower": 21.78,
-      "upper": 22.74
+      "upper": 22.74,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "med-west",
@@ -651,7 +5203,10 @@
       "horizon": 4,
       "celsius": 20.24,
       "lower": 19.76,
-      "upper": 20.72
+      "upper": 20.72,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "north-sea",
@@ -659,7 +5214,10 @@
       "horizon": 4,
       "celsius": 11.56,
       "lower": 11.08,
-      "upper": 12.04
+      "upper": 12.04,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "pacific-north",
@@ -667,7 +5225,10 @@
       "horizon": 4,
       "celsius": 23.22,
       "lower": 22.74,
-      "upper": 23.7
+      "upper": 23.7,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "pacific-south",
@@ -675,7 +5236,10 @@
       "horizon": 4,
       "celsius": 20.02,
       "lower": 19.54,
-      "upper": 20.5
+      "upper": 20.5,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "red",
@@ -683,7 +5247,10 @@
       "horizon": 4,
       "celsius": 28.79,
       "lower": 28.31,
-      "upper": 29.27
+      "upper": 29.27,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "south-china",
@@ -691,7 +5258,10 @@
       "horizon": 4,
       "celsius": 28.13,
       "lower": 27.65,
-      "upper": 28.61
+      "upper": 28.61,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "southern",
@@ -699,7 +5269,10 @@
       "horizon": 4,
       "celsius": -0.82,
       "lower": -1.3,
-      "upper": -0.34
+      "upper": -0.34,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "tasman",
@@ -707,7 +5280,10 @@
       "horizon": 4,
       "celsius": 17.11,
       "lower": 16.63,
-      "upper": 17.59
+      "upper": 17.59,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "arabian",
@@ -715,7 +5291,10 @@
       "horizon": 5,
       "celsius": 28.16,
       "lower": 27.72,
-      "upper": 28.6
+      "upper": 28.6,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "arctic",
@@ -723,7 +5302,10 @@
       "horizon": 5,
       "celsius": -1.44,
       "lower": -1.88,
-      "upper": -1.0
+      "upper": -1.0,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "atlantic-north",
@@ -731,7 +5313,10 @@
       "horizon": 5,
       "celsius": 21.9,
       "lower": 21.46,
-      "upper": 22.34
+      "upper": 22.34,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "atlantic-south",
@@ -739,7 +5324,10 @@
       "horizon": 5,
       "celsius": 17.2,
       "lower": 16.76,
-      "upper": 17.64
+      "upper": 17.64,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "baltic",
@@ -747,7 +5335,10 @@
       "horizon": 5,
       "celsius": 10.39,
       "lower": 9.95,
-      "upper": 10.83
+      "upper": 10.83,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "bengal",
@@ -755,7 +5346,10 @@
       "horizon": 5,
       "celsius": 29.05,
       "lower": 28.61,
-      "upper": 29.49
+      "upper": 29.49,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "bering",
@@ -763,7 +5357,10 @@
       "horizon": 5,
       "celsius": 5.12,
       "lower": 4.68,
-      "upper": 5.56
+      "upper": 5.56,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "black",
@@ -771,7 +5368,10 @@
       "horizon": 5,
       "celsius": 16.55,
       "lower": 16.11,
-      "upper": 16.99
+      "upper": 16.99,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "caribbean",
@@ -779,7 +5379,10 @@
       "horizon": 5,
       "celsius": 28.58,
       "lower": 28.14,
-      "upper": 29.02
+      "upper": 29.02,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "caspian",
@@ -787,7 +5390,10 @@
       "horizon": 5,
       "celsius": 16.04,
       "lower": 15.6,
-      "upper": 16.48
+      "upper": 16.48,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "coral",
@@ -795,7 +5401,10 @@
       "horizon": 5,
       "celsius": 27.32,
       "lower": 26.88,
-      "upper": 27.76
+      "upper": 27.76,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "gulf-mexico",
@@ -803,7 +5412,1088 @@
       "horizon": 5,
       "celsius": 26.81,
       "lower": 26.37,
-      "upper": 27.25
+      "upper": 27.25,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
+    },
+    {
+      "areaId": "iho-adriatic-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 17.5,
+      "lower": 17.06,
+      "upper": 17.94,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-east",
+        "med-west"
+      ]
+    },
+    {
+      "areaId": "iho-aegean-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 20.1,
+      "lower": 19.66,
+      "upper": 20.54,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-east",
+        "black"
+      ]
+    },
+    {
+      "areaId": "iho-alboran-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 21.0,
+      "lower": 20.56,
+      "upper": 21.44,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-west",
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-andaman-or-burma-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 27.9,
+      "lower": 27.46,
+      "upper": 28.34,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "bengal",
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-arafura-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 27.8,
+      "lower": 27.36,
+      "upper": 28.24,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "coral",
+        "pacific-south"
+      ]
+    },
+    {
+      "areaId": "iho-baffin-bay",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": -1.4,
+      "lower": -1.84,
+      "upper": -0.96,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-balearic-iberian-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 19.8,
+      "lower": 19.36,
+      "upper": 20.24,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-west"
+      ]
+    },
+    {
+      "areaId": "iho-bali-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 26.9,
+      "lower": 26.46,
+      "upper": 27.34,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-banda-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 27.2,
+      "lower": 26.76,
+      "upper": 27.64,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-south",
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-barentsz-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": -1.4,
+      "lower": -1.84,
+      "upper": -0.96,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-bass-strait",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 16.1,
+      "lower": 15.66,
+      "upper": 16.54,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "tasman",
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-bay-of-biscay",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 13.6,
+      "lower": 13.16,
+      "upper": 14.04,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-bay-of-fundy",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 13.8,
+      "lower": 13.36,
+      "upper": 14.24,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-beaufort-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": -1.4,
+      "lower": -1.84,
+      "upper": -0.96,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-bismarck-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 27.5,
+      "lower": 27.06,
+      "upper": 27.94,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-south",
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-bristol-channel",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 12.4,
+      "lower": 11.96,
+      "upper": 12.84,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "north-sea",
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-celebes-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 28.4,
+      "lower": 27.96,
+      "upper": 28.84,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china",
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-celtic-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 10.2,
+      "lower": 9.76,
+      "upper": 10.64,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-ceram-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 27.6,
+      "lower": 27.16,
+      "upper": 28.04,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-south",
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-chukchi-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 0.5,
+      "lower": 0.06,
+      "upper": 0.94,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic",
+        "bering"
+      ]
+    },
+    {
+      "areaId": "iho-davis-strait",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 0.1,
+      "lower": -0.34,
+      "upper": 0.54,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-east-siberian-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": -1.4,
+      "lower": -1.84,
+      "upper": -0.96,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-eastern-china-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 22.5,
+      "lower": 22.06,
+      "upper": 22.94,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-english-channel",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 13.7,
+      "lower": 13.26,
+      "upper": 14.14,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "north-sea",
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-flores-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 26.9,
+      "lower": 26.46,
+      "upper": 27.34,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-great-australian-bight",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 16.6,
+      "lower": 16.16,
+      "upper": 17.04,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian",
+        "pacific-south"
+      ]
+    },
+    {
+      "areaId": "iho-greenland-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": -0.7,
+      "lower": -1.14,
+      "upper": -0.26,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic",
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-aden",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 29.6,
+      "lower": 29.16,
+      "upper": 30.04,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arabian",
+        "red"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-alaska",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 3.2,
+      "lower": 2.76,
+      "upper": 3.64,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north",
+        "bering"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-aqaba",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 25.2,
+      "lower": 24.76,
+      "upper": 25.64,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "red",
+        "med-east"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-boni",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 27.2,
+      "lower": 26.76,
+      "upper": 27.64,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-bothnia",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 6.3,
+      "lower": 5.86,
+      "upper": 6.74,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "baltic"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-california",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 22.0,
+      "lower": 21.56,
+      "upper": 22.44,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-finland",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 6.8,
+      "lower": 6.36,
+      "upper": 7.24,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "baltic"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-guinea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 28.0,
+      "lower": 27.56,
+      "upper": 28.44,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north",
+        "atlantic-south"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-oman",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 24.8,
+      "lower": 24.36,
+      "upper": 25.24,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arabian"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-riga",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 9.2,
+      "lower": 8.76,
+      "upper": 9.64,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "baltic"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-st-lawrence",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 11.2,
+      "lower": 10.76,
+      "upper": 11.64,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-suez",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 25.3,
+      "lower": 24.86,
+      "upper": 25.74,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "red",
+        "med-east"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-thailand",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 28.5,
+      "lower": 28.06,
+      "upper": 28.94,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-gulf-of-tomini",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 28.5,
+      "lower": 28.06,
+      "upper": 28.94,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north",
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-halmahera-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 27.6,
+      "lower": 27.16,
+      "upper": 28.04,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north",
+        "pacific-south"
+      ]
+    },
+    {
+      "areaId": "iho-hudson-bay",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 1.9,
+      "lower": 1.46,
+      "upper": 2.34,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-hudson-strait",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 0.1,
+      "lower": -0.34,
+      "upper": 0.54,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-inner-seas-off-the-west-coast-of-scotland",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 8.1,
+      "lower": 7.66,
+      "upper": 8.54,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north",
+        "north-sea"
+      ]
+    },
+    {
+      "areaId": "iho-ionian-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 20.5,
+      "lower": 20.06,
+      "upper": 20.94,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-east",
+        "med-west"
+      ]
+    },
+    {
+      "areaId": "iho-irish-sea-and-st-george-s-channel",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 10.7,
+      "lower": 10.26,
+      "upper": 11.14,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "north-sea",
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-japan-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 14.6,
+      "lower": 14.16,
+      "upper": 15.04,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-java-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 28.1,
+      "lower": 27.66,
+      "upper": 28.54,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china",
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-kara-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": -1.4,
+      "lower": -1.84,
+      "upper": -0.96,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-kattegat",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 11.2,
+      "lower": 10.76,
+      "upper": 11.64,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "baltic",
+        "north-sea"
+      ]
+    },
+    {
+      "areaId": "iho-labrador-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 5.0,
+      "lower": 4.56,
+      "upper": 5.44,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-laccadive-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 29.6,
+      "lower": 29.16,
+      "upper": 30.04,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "bengal",
+        "arabian"
+      ]
+    },
+    {
+      "areaId": "iho-laptev-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": -1.4,
+      "lower": -1.84,
+      "upper": -0.96,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-ligurian-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 17.3,
+      "lower": 16.86,
+      "upper": 17.74,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-west"
+      ]
+    },
+    {
+      "areaId": "iho-lincoln-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": -1.4,
+      "lower": -1.84,
+      "upper": -0.96,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-makassar-strait",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 28.3,
+      "lower": 27.86,
+      "upper": 28.74,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian",
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-malacca-strait",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 28.1,
+      "lower": 27.66,
+      "upper": 28.54,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china",
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-molukka-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 27.6,
+      "lower": 27.16,
+      "upper": 28.04,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north",
+        "pacific-south"
+      ]
+    },
+    {
+      "areaId": "iho-mozambique-channel",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 24.4,
+      "lower": 23.96,
+      "upper": 24.84,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-norwegian-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 3.7,
+      "lower": 3.26,
+      "upper": 4.14,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "north-sea",
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-persian-gulf",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 23.8,
+      "lower": 23.36,
+      "upper": 24.24,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arabian"
+      ]
+    },
+    {
+      "areaId": "iho-philippine-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 25.7,
+      "lower": 25.26,
+      "upper": 26.14,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north",
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-rio-de-la-plata",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 16.4,
+      "lower": 15.96,
+      "upper": 16.84,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-south"
+      ]
+    },
+    {
+      "areaId": "iho-savu-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 26.7,
+      "lower": 26.26,
+      "upper": 27.14,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-sea-of-azov",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 14.5,
+      "lower": 14.06,
+      "upper": 14.94,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "black"
+      ]
+    },
+    {
+      "areaId": "iho-sea-of-marmara",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 18.3,
+      "lower": 17.86,
+      "upper": 18.74,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "black"
+      ]
+    },
+    {
+      "areaId": "iho-sea-of-okhotsk",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 7.1,
+      "lower": 6.66,
+      "upper": 7.54,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north",
+        "bering"
+      ]
+    },
+    {
+      "areaId": "iho-seto-naikai-or-inland-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 18.5,
+      "lower": 18.06,
+      "upper": 18.94,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-singapore-strait",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 29.2,
+      "lower": 28.76,
+      "upper": 29.64,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-skagerrak",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 9.6,
+      "lower": 9.16,
+      "upper": 10.04,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "north-sea",
+        "baltic"
+      ]
+    },
+    {
+      "areaId": "iho-solomon-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 28.1,
+      "lower": 27.66,
+      "upper": 28.54,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "coral",
+        "pacific-south"
+      ]
+    },
+    {
+      "areaId": "iho-strait-of-gibraltar",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 19.6,
+      "lower": 19.16,
+      "upper": 20.04,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "atlantic-north"
+      ]
+    },
+    {
+      "areaId": "iho-sulu-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 28.6,
+      "lower": 28.16,
+      "upper": 29.04,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china"
+      ]
+    },
+    {
+      "areaId": "iho-the-coastal-waters-of-southeast-alaska-and-british-columbia",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 5.2,
+      "lower": 4.76,
+      "upper": 5.64,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "pacific-north"
+      ]
+    },
+    {
+      "areaId": "iho-the-northwestern-passages",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": -1.4,
+      "lower": -1.84,
+      "upper": -0.96,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-timor-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 26.4,
+      "lower": 25.96,
+      "upper": 26.84,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "indian"
+      ]
+    },
+    {
+      "areaId": "iho-tyrrhenian-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 19.2,
+      "lower": 18.76,
+      "upper": 19.64,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "med-west",
+        "med-east"
+      ]
+    },
+    {
+      "areaId": "iho-white-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 2.4,
+      "lower": 1.96,
+      "upper": 2.84,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "baltic",
+        "arctic"
+      ]
+    },
+    {
+      "areaId": "iho-yellow-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 18.5,
+      "lower": 18.06,
+      "upper": 18.94,
+      "forecastBasis": "estimated-history",
+      "intervalKind": "donor-derived-range",
+      "estimatedFrom": [
+        "south-china"
+      ]
     },
     {
       "areaId": "indian",
@@ -811,7 +6501,10 @@
       "horizon": 5,
       "celsius": 18.82,
       "lower": 18.38,
-      "upper": 19.26
+      "upper": 19.26,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "med-east",
@@ -819,7 +6512,10 @@
       "horizon": 5,
       "celsius": 22.26,
       "lower": 21.82,
-      "upper": 22.7
+      "upper": 22.7,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "med-west",
@@ -827,7 +6523,10 @@
       "horizon": 5,
       "celsius": 20.24,
       "lower": 19.8,
-      "upper": 20.68
+      "upper": 20.68,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "north-sea",
@@ -835,7 +6534,10 @@
       "horizon": 5,
       "celsius": 11.56,
       "lower": 11.12,
-      "upper": 12.0
+      "upper": 12.0,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "pacific-north",
@@ -843,7 +6545,10 @@
       "horizon": 5,
       "celsius": 23.22,
       "lower": 22.78,
-      "upper": 23.66
+      "upper": 23.66,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "pacific-south",
@@ -851,7 +6556,10 @@
       "horizon": 5,
       "celsius": 20.02,
       "lower": 19.58,
-      "upper": 20.46
+      "upper": 20.46,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "red",
@@ -859,7 +6567,10 @@
       "horizon": 5,
       "celsius": 28.79,
       "lower": 28.35,
-      "upper": 29.23
+      "upper": 29.23,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "south-china",
@@ -867,7 +6578,10 @@
       "horizon": 5,
       "celsius": 28.13,
       "lower": 27.69,
-      "upper": 28.57
+      "upper": 28.57,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "southern",
@@ -875,7 +6589,10 @@
       "horizon": 5,
       "celsius": -0.82,
       "lower": -1.26,
-      "upper": -0.38
+      "upper": -0.38,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     },
     {
       "areaId": "tasman",
@@ -883,7 +6600,10 @@
       "horizon": 5,
       "celsius": 17.11,
       "lower": 16.67,
-      "upper": 17.55
+      "upper": 17.55,
+      "forecastBasis": "noaa-history",
+      "intervalKind": "calibrated",
+      "estimatedFrom": []
     }
   ],
   "testByHorizon": {

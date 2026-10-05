@@ -142,15 +142,23 @@ The published map is at
 
 ## Temperature forecasting · 2026–2030
 
-The temperature view includes **Predicción 2026–2030**, a separately labeled
-statistical experiment for the 22 areas with NOAA-derived histories. Future
-values never replace the historical snapshot or the 80 imputed sea series.
+The temperature view has **one continuous 1982–2030 timeline** for all 102
+regions. The same year slider, regional selection, chart and table show history
+through 2025 and predictions from 2026, marked ↗ and drawn as a dashed line.
+The historical snapshot is preserved.
+
+The 22 NOAA-derived histories receive direct model forecasts. The other 80
+regions keep their existing estimated baseline and receive the mean forecast
+change of their documented NOAA donors. Their provenance is labeled in the
+detail, chart and CSV; they do not enter model training or evaluation.
+Their shaded bands are **donor-derived ranges with no validated local coverage**,
+rather than calibrated 90% prediction intervals.
 
 Eight predeclared candidates compare persistence, local trend, Ridge and
 Gradient Boosting, with and without geographic neighbor features. Selection,
 interval calibration and final evaluation use separate target-year periods.
 **Persistence wins the development comparison**; final-test MAE is **0.220 °C**.
-The nominal 90% interval achieves approximately **87%** pooled final coverage,
+For the 22 evaluated NOAA regions, the nominal 90% interval achieves approximately **87%** pooled final coverage,
 so future coverage is not guaranteed. The website explains the selected
 baseline and exposes error and interval information instead of implying that a
 more complex model won. The point forecast retains the 2025 value at each

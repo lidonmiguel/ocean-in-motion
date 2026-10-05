@@ -1,6 +1,6 @@
 # Annual regional SST forecasting: 2026–2030
 
-Run `d384abb90341f47a`. Selected on development data: **persistence**.
+Run `6054406ac5b140dc`. Selected on development data: **persistence**.
 
 NOAA ERSSTv6 reconstructions, not direct local measurements. Five direct horizon models; learned models predict change from the origin temperature.
 
@@ -37,7 +37,14 @@ Nominal 90% symmetric intervals use a conservative empirical absolute-error orde
 
 See metrics.json for regional errors, provenance and neighbor ablations; backtests.csv for every prediction, actual and split; features.csv and geography.json for input diagnostics.
 
-- Only 22 existing NOAA-derived regional series; estimated zones excluded.
+## Coverage of the published timeline
+
+510 forecasts cover all 102 historical regions. The 22 NOAA-derived regions use the selected model directly. For each of the other 80 regions, the published 2025 estimated value is shifted by the mean forecast change of its existing NOAA donors. This preserves the historical latitude adjustment and baseline; estimated histories never enter training or evaluation.
+
+Bounds for these 80 regions transfer the donors' bounds by the same formula. They are donor-derived ranges, not locally calibrated 90% prediction intervals. Local errors, imputation uncertainty and coverage are unknown. No regional test MAE is assigned to them. The historical/future boundary remains labeled in the single 1982–2030 timeline.
+
+- Only 22 existing NOAA-derived regional series enter training and evaluation.
+- 80 estimated regions receive donor-derived forecasts; local error and range coverage are unvalidated.
 - Intervals pool past errors across correlated regions; nominal 90% is not a guarantee.
 - No climate scenarios or physical transport model; statistical experiment only.
 - Static geographic proximity is a heuristic; Caspian has no marine neighbors.

@@ -10,8 +10,9 @@ water temperature. Caspian is included as a separate inland region.
 
 There are **22 NOAA-derived series × 44 years = 968 source values**. NOAA ERSSTv6
 is a 2° reconstruction, not a collection of direct local measurements. The 80
-neighbor-imputed regions are excluded from labels, features and forecasts. No
-claim of generalization to new regions is made. Inputs are the versioned
+neighbor-imputed regions are excluded from model labels, features and evaluation.
+They receive explicitly derived predictions from their existing NOAA donors,
+with no claim of local validation or generalization to unseen regions. Inputs are the versioned
 `seaTemperatures.json`, `caspianTemperatures.json` and their polygons; input,
 configuration and pipeline SHA-256 hashes identify each run. The historical
 snapshot is the present reconstruction, not archived real-time data vintages.
@@ -89,12 +90,33 @@ sample dates and sizes differ. Report achieved final-test coverage and width,
 not just the nominal level. Upstream reconstruction uncertainty and unexpected
 future climate changes are not fully captured.
 
+## Derived forecasts for the other 80 historical regions
+
+All 102 historical regions appear in the same 1982–2030 timeline. Direct model
+forecasts cover the 22 NOAA histories. For an estimated region `r`, retain its
+published 2025 baseline and its existing `estimatedFrom` donors `D(r)`:
+
+`forecast(r, h) = estimated(r, 2025) + mean(forecast(d, h) − NOAA(d, 2025), d in D(r))`.
+
+This transfers the donors' predicted change while preserving the historical
+latitude adjustment, clipping and stored baseline. With the selected persistence
+model, each derived forecast equals its own 2025 estimated value. No estimated
+series is fitted as though it were measured, and no additional model or parameter
+is selected using the final test.
+
+Lower and upper bounds use the same transfer formula with donor bounds. These
+are **donor-derived ranges**, not calibrated local 90% prediction intervals.
+The mapping error and upstream imputation uncertainty are unknown; neither
+local MAE nor local coverage is assigned to these 80 regions. `forecastBasis`,
+`intervalKind` and donor IDs accompany every prediction. The 22 directly
+evaluated regions keep their existing model and empirical test metrics.
+
 ## Results and deliverables
 
 [REPORT.md](../reports/temperature/REPORT.md) is generated from the experiment,
 with development ranking and horizon-specific final metrics. The selected
 candidate is **persistence**: it beats the tested Ridge and boosting candidates
-on development MAE. Its final MAE is approximately **0.220 °C**; achieved pooled
+on development MAE. For the 22 evaluated NOAA regions, its final MAE is approximately **0.220 °C**; achieved pooled
 coverage is approximately **87%**, below the nominal 90%. This is a negative
 result for the added complexity, not evidence that oceans will stop warming.
 Flat point forecasts in the website intentionally expose this selected baseline.
@@ -109,7 +131,7 @@ Flat point forecasts in the website intentionally expose this selected baseline.
 | `reports/temperature/backtests.csv` | Every development candidate prediction, calibration and selected final test, actual and error |
 | `reports/temperature/features.csv` | Historical feature diagnostics; one-hot region indicators constructed during training |
 | `reports/temperature/geography.json` | Region positions, approximate surface and neighbor definitions |
-| `reports/temperature/forecast.csv` | 110 predictions and interval bounds |
+| `reports/temperature/forecast.csv` | 510 predictions, direct/derived origins, donors and bounds |
 | `src/data/temperatureForecasts.json` | Website contract, model and evaluation context |
 | `notebooks/temperature_forecasting.ipynb` | Executed exploratory analysis and experiment review |
 
@@ -124,12 +146,17 @@ specified by its formula, cutoff and source snapshot; no opaque pickle is needed
 
 ## Website behavior
 
-Historical view remains the default. **Predicción 2026–2030** switches the year
-control and displays only the 22 eligible areas. The future is marked ↗, with a
-dashed line and nominal interval band. The detail panel explains persistence,
-training cutoff, horizon, achieved test coverage and regional MAE. Future CSV
-exports are separate from historical values and include interval bounds, model,
-cutoff and run ID. The 80 imputed zones do not receive invented model forecasts.
+One slider covers **1982–2030**, opening at 2025. All 102 regions remain available
+at every year; selecting an estimated region never resets it when entering the
+future. The complete chart and table always include history and all five forecast
+years, with a boundary at 2025, a dashed future line and a selected-year marker.
+The year, tooltip, detail, chart and table identify future predictions in place.
+
+The detail panel shows calibrated intervals and regional test errors for direct
+NOAA forecasts; derived forecasts show their donors, inherited range and absence
+of local validation. A single CSV export includes every historical and future
+row, with columns for type, source basis, donors, bounds, uncertainty kind,
+model, cutoff and run ID. The nominal-level field is blank for derived ranges.
 
 ## Next evidence needed
 
