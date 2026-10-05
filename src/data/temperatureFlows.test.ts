@@ -65,20 +65,18 @@ describe('temperature-driven illustrative paths', () => {
     expect(coolingChain('caspian', timelineByYear.get(2025)!)).toEqual(['caspian']);
   });
 
-  it('keeps cooler stops strictly decreasing and bounded for every historical and forecast year', () => {
-    for (const [year, temperatures] of timelineByYear) {
-      const flows = temperatureFlows(temperatures);
-      expect(flows, String(year)).toHaveLength(102);
-      for (const flow of flows) {
-        expect(new Set(flow.areas).size).toBe(flow.areas.length);
-        expect(flow.areas.length).toBeLessThanOrEqual(102);
-        for (let i = 1; i < flow.areas.length; i++) {
-          expect(temperatures.get(flow.areas[i])!.celsius).toBeLessThan(temperatures.get(flow.areas[i-1])!.celsius);
-        }
-        expect(flow.times.at(-1)).toBeCloseTo(flow.travelDuration+flow.orbitDuration);
-        expect(flow.path.every(p => p.every(Number.isFinite))).toBe(true);
-        expect(flow.path.every((p, i) => i === 0 || Math.abs(p[0]-flow.path[i-1][0]) < 180)).toBe(true);
+  it.each([...timelineByYear])('keeps cooler stops strictly decreasing and bounded in %i', (year, temperatures) => {
+    const flows = temperatureFlows(temperatures);
+    expect(flows, String(year)).toHaveLength(102);
+    for (const flow of flows) {
+      expect(new Set(flow.areas).size).toBe(flow.areas.length);
+      expect(flow.areas.length).toBeLessThanOrEqual(102);
+      for (let i = 1; i < flow.areas.length; i++) {
+        expect(temperatures.get(flow.areas[i])!.celsius).toBeLessThan(temperatures.get(flow.areas[i-1])!.celsius);
       }
+      expect(flow.times.at(-1)).toBeCloseTo(flow.travelDuration+flow.orbitDuration);
+      expect(flow.path.every(p => p.every(Number.isFinite))).toBe(true);
+      expect(flow.path.every((p, i) => i === 0 || Math.abs(p[0]-flow.path[i-1][0]) < 180)).toBe(true);
     }
   });
 });
