@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "seed": 42,
+  "cutoffYear": 2025,
+  "horizons": [1, 2, 3, 4, 5],
+  "developmentOrigins": [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009],
+  "calibrationOrigins": [2014, 2015, 2016, 2017, 2018],
+  "calibrationLastTarget": 2019,
+  "testOrigin": 2020,
+  "intervalLevel": 0.9,
+  "candidates": [
+    {"id": "persistence", "family": "persistence", "neighbors": false},
+    {"id": "trend5", "family": "trend", "neighbors": false},
+    {"id": "ridge10", "family": "ridge", "alpha": 10, "neighbors": false},
+    {"id": "ridge100", "family": "ridge", "alpha": 100, "neighbors": false},
+    {"id": "ridge10_neighbors", "family": "ridge", "alpha": 10, "neighbors": true},
+    {"id": "ridge100_neighbors", "family": "ridge", "alpha": 100, "neighbors": true},
+    {"id": "boosting", "family": "boosting", "neighbors": false, "maxIter": 120, "maxLeafNodes": 7, "minSamplesLeaf": 20, "l2": 10, "learningRate": 0.05},
+    {"id": "boosting_neighbors", "family": "boosting", "neighbors": true, "maxIter": 120, "maxLeafNodes": 7, "minSamplesLeaf": 20, "l2": 10, "learningRate": 0.05}
+  ]
+}

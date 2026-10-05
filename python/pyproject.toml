@@ -12,6 +12,9 @@ dependencies = []
 [project.optional-dependencies]
 temperature = ["numpy>=1.26", "netCDF4>=1.6", "shapely>=2.0"]
 
+forecast = ["numpy==2.3.5", "scikit-learn==1.8.0", "shapely==2.1.2", "pyproj==3.7.2"]
+analysis = ["matplotlib>=3.9", "pandas>=2.2", "nbformat>=5.10", "nbclient>=0.10", "ipykernel>=6"]
+
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["ocean_pipeline*"]

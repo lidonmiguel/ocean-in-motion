@@ -1,0 +1,865 @@
+{
+  "schemaVersion": 1,
+  "runId": "d384abb90341f47a",
+  "selectedModel": {
+    "id": "persistence",
+    "family": "persistence",
+    "neighbors": false
+  },
+  "trainingThrough": 2025,
+  "historicalYears": [
+    1982,
+    2025
+  ],
+  "trainingAreas": [
+    "arabian",
+    "arctic",
+    "atlantic-north",
+    "atlantic-south",
+    "baltic",
+    "bengal",
+    "bering",
+    "black",
+    "caribbean",
+    "caspian",
+    "coral",
+    "gulf-mexico",
+    "indian",
+    "med-east",
+    "med-west",
+    "north-sea",
+    "pacific-north",
+    "pacific-south",
+    "red",
+    "south-china",
+    "southern",
+    "tasman"
+  ],
+  "excludedEstimatedAreas": [
+    "iho-adriatic-sea",
+    "iho-aegean-sea",
+    "iho-alboran-sea",
+    "iho-andaman-or-burma-sea",
+    "iho-arafura-sea",
+    "iho-baffin-bay",
+    "iho-balearic-iberian-sea",
+    "iho-bali-sea",
+    "iho-banda-sea",
+    "iho-barentsz-sea",
+    "iho-bass-strait",
+    "iho-bay-of-biscay",
+    "iho-bay-of-fundy",
+    "iho-beaufort-sea",
+    "iho-bismarck-sea",
+    "iho-bristol-channel",
+    "iho-celebes-sea",
+    "iho-celtic-sea",
+    "iho-ceram-sea",
+    "iho-chukchi-sea",
+    "iho-davis-strait",
+    "iho-east-siberian-sea",
+    "iho-eastern-china-sea",
+    "iho-english-channel",
+    "iho-flores-sea",
+    "iho-great-australian-bight",
+    "iho-greenland-sea",
+    "iho-gulf-of-aden",
+    "iho-gulf-of-alaska",
+    "iho-gulf-of-aqaba",
+    "iho-gulf-of-boni",
+    "iho-gulf-of-bothnia",
+    "iho-gulf-of-california",
+    "iho-gulf-of-finland",
+    "iho-gulf-of-guinea",
+    "iho-gulf-of-oman",
+    "iho-gulf-of-riga",
+    "iho-gulf-of-st-lawrence",
+    "iho-gulf-of-suez",
+    "iho-gulf-of-thailand",
+    "iho-gulf-of-tomini",
+    "iho-halmahera-sea",
+    "iho-hudson-bay",
+    "iho-hudson-strait",
+    "iho-inner-seas-off-the-west-coast-of-scotland",
+    "iho-ionian-sea",
+    "iho-irish-sea-and-st-george-s-channel",
+    "iho-japan-sea",
+    "iho-java-sea",
+    "iho-kara-sea",
+    "iho-kattegat",
+    "iho-labrador-sea",
+    "iho-laccadive-sea",
+    "iho-laptev-sea",
+    "iho-ligurian-sea",
+    "iho-lincoln-sea",
+    "iho-makassar-strait",
+    "iho-malacca-strait",
+    "iho-molukka-sea",
+    "iho-mozambique-channel",
+    "iho-norwegian-sea",
+    "iho-persian-gulf",
+    "iho-philippine-sea",
+    "iho-rio-de-la-plata",
+    "iho-savu-sea",
+    "iho-sea-of-azov",
+    "iho-sea-of-marmara",
+    "iho-sea-of-okhotsk",
+    "iho-seto-naikai-or-inland-sea",
+    "iho-singapore-strait",
+    "iho-skagerrak",
+    "iho-solomon-sea",
+    "iho-strait-of-gibraltar",
+    "iho-sulu-sea",
+    "iho-the-coastal-waters-of-southeast-alaska-and-british-columbia",
+    "iho-the-northwestern-passages",
+    "iho-timor-sea",
+    "iho-tyrrhenian-sea",
+    "iho-white-sea",
+    "iho-yellow-sea"
+  ],
+  "sourceRows": 968,
+  "intervalLevel": 0.9,
+  "developmentOrigins": [
+    2000,
+    2001,
+    2002,
+    2003,
+    2004,
+    2005,
+    2006,
+    2007,
+    2008,
+    2009
+  ],
+  "calibrationOrigins": [
+    2014,
+    2015,
+    2016,
+    2017,
+    2018
+  ],
+  "calibrationLastTarget": 2019,
+  "testOrigin": 2020,
+  "testYears": [
+    2021,
+    2025
+  ],
+  "developmentRanking": [
+    {
+      "id": "persistence",
+      "mae": 0.203464,
+      "rmse": 0.285018,
+      "bias": -0.024755,
+      "n": 1100,
+      "byHorizon": {
+        "1": {
+          "mae": 0.161,
+          "rmse": 0.234534,
+          "bias": -0.019182,
+          "n": 220
+        },
+        "2": {
+          "mae": 0.202909,
+          "rmse": 0.279831,
+          "bias": -0.019,
+          "n": 220
+        },
+        "3": {
+          "mae": 0.2055,
+          "rmse": 0.283234,
+          "bias": -0.017864,
+          "n": 220
+        },
+        "4": {
+          "mae": 0.214545,
+          "rmse": 0.300693,
+          "bias": -0.017182,
+          "n": 220
+        },
+        "5": {
+          "mae": 0.233364,
+          "rmse": 0.319729,
+          "bias": -0.050545,
+          "n": 220
+        }
+      }
+    },
+    {
+      "id": "boosting",
+      "mae": 0.217681,
+      "rmse": 0.306629,
+      "bias": 0.047924,
+      "n": 1100,
+      "byHorizon": {
+        "1": {
+          "mae": 0.176789,
+          "rmse": 0.250562,
+          "bias": 0.009027,
+          "n": 220
+        },
+        "2": {
+          "mae": 0.212674,
+          "rmse": 0.28939,
+          "bias": 0.018036,
+          "n": 220
+        },
+        "3": {
+          "mae": 0.212646,
+          "rmse": 0.295905,
+          "bias": 0.035036,
+          "n": 220
+        },
+        "4": {
+          "mae": 0.232856,
+          "rmse": 0.33184,
+          "bias": 0.088289,
+          "n": 220
+        },
+        "5": {
+          "mae": 0.253439,
+          "rmse": 0.354827,
+          "bias": 0.089231,
+          "n": 220
+        }
+      }
+    },
+    {
+      "id": "boosting_neighbors",
+      "mae": 0.218165,
+      "rmse": 0.307859,
+      "bias": 0.050377,
+      "n": 1100,
+      "byHorizon": {
+        "1": {
+          "mae": 0.177576,
+          "rmse": 0.250685,
+          "bias": 0.007885,
+          "n": 220
+        },
+        "2": {
+          "mae": 0.223267,
+          "rmse": 0.304929,
+          "bias": 0.026218,
+          "n": 220
+        },
+        "3": {
+          "mae": 0.208491,
+          "rmse": 0.292775,
+          "bias": 0.035069,
+          "n": 220
+        },
+        "4": {
+          "mae": 0.229524,
+          "rmse": 0.329272,
+          "bias": 0.093093,
+          "n": 220
+        },
+        "5": {
+          "mae": 0.25197,
+          "rmse": 0.352027,
+          "bias": 0.089618,
+          "n": 220
+        }
+      }
+    },
+    {
+      "id": "ridge100",
+      "mae": 0.224166,
+      "rmse": 0.31223,
+      "bias": 0.116969,
+      "n": 1100,
+      "byHorizon": {
+        "1": {
+          "mae": 0.1655,
+          "rmse": 0.237296,
+          "bias": 0.018689,
+          "n": 220
+        },
+        "2": {
+          "mae": 0.20141,
+          "rmse": 0.283195,
+          "bias": 0.053617,
+          "n": 220
+        },
+        "3": {
+          "mae": 0.214448,
+          "rmse": 0.297352,
+          "bias": 0.109668,
+          "n": 220
+        },
+        "4": {
+          "mae": 0.248555,
+          "rmse": 0.337939,
+          "bias": 0.177335,
+          "n": 220
+        },
+        "5": {
+          "mae": 0.290918,
+          "rmse": 0.385107,
+          "bias": 0.225535,
+          "n": 220
+        }
+      }
+    },
+    {
+      "id": "ridge100_neighbors",
+      "mae": 0.228888,
+      "rmse": 0.316743,
+      "bias": 0.120009,
+      "n": 1100,
+      "byHorizon": {
+        "1": {
+          "mae": 0.169092,
+          "rmse": 0.240077,
+          "bias": 0.019904,
+          "n": 220
+        },
+        "2": {
+          "mae": 0.208954,
+          "rmse": 0.290129,
+          "bias": 0.05652,
+          "n": 220
+        },
+        "3": {
+          "mae": 0.22002,
+          "rmse": 0.302402,
+          "bias": 0.11285,
+          "n": 220
+        },
+        "4": {
+          "mae": 0.252146,
+          "rmse": 0.341146,
+          "bias": 0.180787,
+          "n": 220
+        },
+        "5": {
+          "mae": 0.294226,
+          "rmse": 0.389858,
+          "bias": 0.229983,
+          "n": 220
+        }
+      }
+    },
+    {
+      "id": "ridge10",
+      "mae": 0.245439,
+      "rmse": 0.334529,
+      "bias": 0.146541,
+      "n": 1100,
+      "byHorizon": {
+        "1": {
+          "mae": 0.171015,
+          "rmse": 0.242481,
+          "bias": 0.024815,
+          "n": 220
+        },
+        "2": {
+          "mae": 0.207131,
+          "rmse": 0.288899,
+          "bias": 0.06535,
+          "n": 220
+        },
+        "3": {
+          "mae": 0.22972,
+          "rmse": 0.309201,
+          "bias": 0.134075,
+          "n": 220
+        },
+        "4": {
+          "mae": 0.279078,
+          "rmse": 0.36416,
+          "bias": 0.218495,
+          "n": 220
+        },
+        "5": {
+          "mae": 0.340252,
+          "rmse": 0.434824,
+          "bias": 0.289969,
+          "n": 220
+        }
+      }
+    },
+    {
+      "id": "ridge10_neighbors",
+      "mae": 0.248052,
+      "rmse": 0.337081,
+      "bias": 0.147271,
+      "n": 1100,
+      "byHorizon": {
+        "1": {
+          "mae": 0.172562,
+          "rmse": 0.24351,
+          "bias": 0.024365,
+          "n": 220
+        },
+        "2": {
+          "mae": 0.212592,
+          "rmse": 0.293921,
+          "bias": 0.06592,
+          "n": 220
+        },
+        "3": {
+          "mae": 0.232949,
+          "rmse": 0.312348,
+          "bias": 0.133972,
+          "n": 220
+        },
+        "4": {
+          "mae": 0.279651,
+          "rmse": 0.365062,
+          "bias": 0.21891,
+          "n": 220
+        },
+        "5": {
+          "mae": 0.342508,
+          "rmse": 0.437722,
+          "bias": 0.293186,
+          "n": 220
+        }
+      }
+    },
+    {
+      "id": "trend5",
+      "mae": 0.302949,
+      "rmse": 0.453025,
+      "bias": 0.014027,
+      "n": 1100,
+      "byHorizon": {
+        "1": {
+          "mae": 0.179645,
+          "rmse": 0.260955,
+          "bias": -0.006255,
+          "n": 220
+        },
+        "2": {
+          "mae": 0.2524,
+          "rmse": 0.360007,
+          "bias": 0.006855,
+          "n": 220
+        },
+        "3": {
+          "mae": 0.295864,
+          "rmse": 0.435603,
+          "bias": 0.020918,
+          "n": 220
+        },
+        "4": {
+          "mae": 0.364382,
+          "rmse": 0.528421,
+          "bias": 0.034527,
+          "n": 220
+        },
+        "5": {
+          "mae": 0.422455,
+          "rmse": 0.599563,
+          "bias": 0.014091,
+          "n": 220
+        }
+      }
+    }
+  ],
+  "holdout": {
+    "mae": 0.219636,
+    "rmse": 0.291788,
+    "bias": -0.018182,
+    "n": 110,
+    "coverage": 0.872727,
+    "meanIntervalWidth": 0.888
+  },
+  "baselineHoldout": {
+    "persistence": {
+      "mae": 0.219636,
+      "rmse": 0.291788,
+      "bias": -0.018182,
+      "n": 110
+    },
+    "trend5": {
+      "mae": 0.262736,
+      "rmse": 0.395476,
+      "bias": 0.049591,
+      "n": 110
+    }
+  },
+  "byHorizon": {
+    "1": {
+      "mae": 0.210455,
+      "rmse": 0.302437,
+      "bias": 0.185,
+      "n": 22,
+      "coverage": 0.863636,
+      "meanIntervalWidth": 0.76,
+      "calibrationN": 110,
+      "radius": 0.38
+    },
+    "2": {
+      "mae": 0.208182,
+      "rmse": 0.291937,
+      "bias": 0.081818,
+      "n": 22,
+      "coverage": 0.863636,
+      "meanIntervalWidth": 0.98,
+      "calibrationN": 88,
+      "radius": 0.49
+    },
+    "3": {
+      "mae": 0.247273,
+      "rmse": 0.308412,
+      "bias": -0.098182,
+      "n": 22,
+      "coverage": 0.863636,
+      "meanIntervalWidth": 0.86,
+      "calibrationN": 66,
+      "radius": 0.43
+    },
+    "4": {
+      "mae": 0.257273,
+      "rmse": 0.316472,
+      "bias": -0.179091,
+      "n": 22,
+      "coverage": 0.818182,
+      "meanIntervalWidth": 0.96,
+      "calibrationN": 44,
+      "radius": 0.48
+    },
+    "5": {
+      "mae": 0.175,
+      "rmse": 0.231801,
+      "bias": -0.080455,
+      "n": 22,
+      "coverage": 0.954545,
+      "meanIntervalWidth": 0.88,
+      "calibrationN": 22,
+      "radius": 0.44
+    }
+  },
+  "byArea": {
+    "arabian": {
+      "name": "Mar Ar\u00e1bigo",
+      "mae": 0.236,
+      "rmse": 0.24972,
+      "bias": 0.1,
+      "n": 5,
+      "coverage": 1.0,
+      "meanIntervalWidth": 0.888
+    },
+    "arctic": {
+      "name": "Oc\u00e9ano \u00c1rtico",
+      "mae": 0.06,
+      "rmse": 0.06603,
+      "bias": 0.056,
+      "n": 5,
+      "coverage": 1.0,
+      "meanIntervalWidth": 0.888
+    },
+    "atlantic-north": {
+      "name": "Atl\u00e1ntico norte",
+      "mae": 0.18,
+      "rmse": 0.25776,
+      "bias": -0.172,
+      "n": 5,
+      "coverage": 1.0,
+      "meanIntervalWidth": 0.888
+    },
+    "atlantic-south": {
+      "name": "Atl\u00e1ntico sur",
+      "mae": 0.126,
+      "rmse": 0.14893,
+      "bias": -0.126,
+      "n": 5,
+      "coverage": 1.0,
+      "meanIntervalWidth": 0.888
+    },
+    "baltic": {
+      "name": "Mar B\u00e1ltico",
+      "mae": 0.622,
+      "rmse": 0.673483,
+      "bias": 0.622,
+      "n": 5,
+      "coverage": 0.4,
+      "meanIntervalWidth": 0.888
+    },
+    "bengal": {
+      "name": "Bah\u00eda de Bengala",
+      "mae": 0.138,
+      "rmse": 0.155885,
+      "bias": 0.05,
+      "n": 5,
+      "coverage": 1.0,
+      "meanIntervalWidth": 0.888
+    },
+    "bering": {
+      "name": "Mar de Bering",
+      "mae": 0.338,
+      "rmse": 0.371026,
+      "bias": 0.338,
+      "n": 5,
+      "coverage": 0.6,
+      "meanIntervalWidth": 0.888
+    },
+    "black": {
+      "name": "Mar Negro",
+      "mae": 0.41,
+      "rmse": 0.508311,
+      "bias": 0.158,
+      "n": 5,
+      "coverage": 0.4,
+      "meanIntervalWidth": 0.888
+    },
+    "caribbean": {
+      "name": "Mar Caribe",
+      "mae": 0.244,
+      "rmse": 0.289344,
+      "bias": -0.124,
+      "n": 5,
+      "coverage": 0.8,
+      "meanIntervalWidth": 0.888
+    },
+    "caspian": {
+      "name": "Mar Caspio",
+      "mae": 0.048,
+      "rmse": 0.051769,
+      "bias": -0.048,
+      "n": 5,
+      "coverage": 1.0,
+      "meanIntervalWidth": 0.888
+    },
+    "coral": {
+      "name": "Mar del Coral",
+      "mae": 0.202,
+      "rmse": 0.234478,
+      "bias": -0.126,
+      "n": 5,
+      "coverage": 1.0,
+      "meanIntervalWidth": 0.888
+    },
+    "gulf-mexico": {
+      "name": "Golfo de M\u00e9xico",
+      "mae": 0.186,
+      "rmse": 0.237192,
+      "bias": -0.07,
+      "n": 5,
+      "coverage": 1.0,
+      "meanIntervalWidth": 0.888
+    },
+    "indian": {
+      "name": "Oc\u00e9ano \u00cdndico",
+      "mae": 0.15,
+      "rmse": 0.189895,
+      "bias": -0.13,
+      "n": 5,
+      "coverage": 1.0,
+      "meanIntervalWidth": 0.888
+    },
+    "med-east": {
+      "name": "Mediterr\u00e1neo oriental",
+      "mae": 0.284,
+      "rmse": 0.366224,
+      "bias": -0.28,
+      "n": 5,
+      "coverage": 0.8,
+      "meanIntervalWidth": 0.888
+    },
+    "med-west": {
+      "name": "Mediterr\u00e1neo occidental",
+      "mae": 0.342,
+      "rmse": 0.357351,
+      "bias": -0.238,
+      "n": 5,
+      "coverage": 0.8,
+      "meanIntervalWidth": 0.888
+    },
+    "north-sea": {
+      "name": "Mar del Norte",
+      "mae": 0.212,
+      "rmse": 0.239666,
+      "bias": -0.108,
+      "n": 5,
+      "coverage": 1.0,
+      "meanIntervalWidth": 0.888
+    },
+    "pacific-north": {
+      "name": "Pac\u00edfico norte",
+      "mae": 0.12,
+      "rmse": 0.136967,
+      "bias": 0.02,
+      "n": 5,
+      "coverage": 1.0,
+      "meanIntervalWidth": 0.888
+    },
+    "pacific-south": {
+      "name": "Pac\u00edfico sur",
+      "mae": 0.166,
+      "rmse": 0.171988,
+      "bias": -0.05,
+      "n": 5,
+      "coverage": 1.0,
+      "meanIntervalWidth": 0.888
+    },
+    "red": {
+      "name": "Mar Rojo",
+      "mae": 0.154,
+      "rmse": 0.189262,
+      "bias": -0.01,
+      "n": 5,
+      "coverage": 1.0,
+      "meanIntervalWidth": 0.888
+    },
+    "south-china": {
+      "name": "Mar de China Meridional",
+      "mae": 0.154,
+      "rmse": 0.172221,
+      "bias": 0.058,
+      "n": 5,
+      "coverage": 1.0,
+      "meanIntervalWidth": 0.888
+    },
+    "southern": {
+      "name": "Oc\u00e9ano Austral",
+      "mae": 0.078,
+      "rmse": 0.088431,
+      "bias": 0.062,
+      "n": 5,
+      "coverage": 1.0,
+      "meanIntervalWidth": 0.888
+    },
+    "tasman": {
+      "name": "Mar de Tasmania",
+      "mae": 0.382,
+      "rmse": 0.411364,
+      "bias": -0.382,
+      "n": 5,
+      "coverage": 0.4,
+      "meanIntervalWidth": 0.888
+    }
+  },
+  "provenance": {
+    "inputs": {
+      "src/data/seaTemperatures.json": "0ffa3a3e7573c4399c404cfca674b534a82a16416aef2bf26347b27eb3969559",
+      "src/data/caspianTemperatures.json": "fe6283c9f63ce987ef299cccb89f241b8abc42045978336c7de6f1befab6d9fe",
+      "src/data/seaAreas.geojson": "89015e2d84934d2e50ba499a28700d7b207e8995c26416b0ba19a496b730a42e",
+      "src/data/caspian.geojson": "3101664640a3f05760e69ea0be1b10b315c1090cbcf86da1a12518c0d3617e06"
+    },
+    "configSha256": "72231c186ea496ae4791088121ca713f4f4222079910c92c78c3cbaa2f29ad5e",
+    "codeSha256": "8bde39cb1447967864f812de34637e9e1cc5205f1606b1965ca63f4e8bfbb7c5"
+  },
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "sklearn": "1.8.0"
+  },
+  "features": [
+    "temperature_t",
+    "temperature_t_minus_1",
+    "temperature_t_minus_2",
+    "mean_5y",
+    "trend_5y_c_per_year",
+    "std_5y",
+    "latitude",
+    "longitude_sin",
+    "longitude_cos",
+    "log_area_km2",
+    "origin_since_1982"
+  ],
+  "neighborFeatures": [
+    "neighbor_temperature_t",
+    "neighbor_trend_5y",
+    "neighbor_available"
+  ],
+  "neighbors": {
+    "arabian": [
+      "bengal",
+      "red",
+      "black"
+    ],
+    "arctic": [
+      "bering",
+      "north-sea",
+      "baltic"
+    ],
+    "atlantic-north": [
+      "caribbean",
+      "north-sea",
+      "med-west"
+    ],
+    "atlantic-south": [],
+    "baltic": [
+      "north-sea",
+      "black",
+      "med-west"
+    ],
+    "bengal": [
+      "arabian",
+      "south-china",
+      "indian"
+    ],
+    "bering": [
+      "arctic",
+      "pacific-north"
+    ],
+    "black": [
+      "med-east",
+      "baltic",
+      "med-west"
+    ],
+    "caribbean": [
+      "gulf-mexico",
+      "atlantic-north"
+    ],
+    "caspian": [],
+    "coral": [
+      "tasman"
+    ],
+    "gulf-mexico": [
+      "caribbean",
+      "atlantic-north"
+    ],
+    "indian": [
+      "bengal",
+      "arabian"
+    ],
+    "med-east": [
+      "black",
+      "med-west",
+      "red"
+    ],
+    "med-west": [
+      "med-east",
+      "north-sea",
+      "baltic"
+    ],
+    "north-sea": [
+      "baltic",
+      "med-west",
+      "black"
+    ],
+    "pacific-north": [
+      "bering"
+    ],
+    "pacific-south": [
+      "southern"
+    ],
+    "red": [
+      "med-east",
+      "black",
+      "arabian"
+    ],
+    "south-china": [
+      "bengal"
+    ],
+    "southern": [
+      "tasman",
+      "pacific-south"
+    ],
+    "tasman": [
+      "coral",
+      "southern"
+    ]
+  },
+  "limitations": [
+    "Only 22 existing NOAA-derived regional series; estimated zones excluded.",
+    "Intervals pool past errors across correlated regions; nominal 90% is not a guarantee.",
+    "No climate scenarios or physical transport model; statistical experiment only.",
+    "Static geographic proximity is a heuristic; Caspian has no marine neighbors.",
+    "A single five-year final test window cannot establish future reliability."
+  ]
+}

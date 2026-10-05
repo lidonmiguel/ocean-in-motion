@@ -1,0 +1,382 @@
+[
+  {
+    "areaId": "arabian",
+    "name": "Mar Ar\u00e1bigo",
+    "lon": 63.219174,
+    "lat": 12.45006,
+    "areaKm2": 4192713.855149,
+    "neighbors": [
+      [
+        "bengal",
+        0.0003891401747945036
+      ],
+      [
+        "red",
+        0.00036090518655548375
+      ],
+      [
+        "black",
+        0.00022452326000759382
+      ]
+    ]
+  },
+  {
+    "areaId": "arctic",
+    "name": "Oc\u00e9ano \u00c1rtico",
+    "lon": -138.449662,
+    "lat": 80.71087,
+    "areaKm2": 5183539.292899,
+    "neighbors": [
+      [
+        "bering",
+        0.00037990916300191416
+      ],
+      [
+        "north-sea",
+        0.00021612680691524873
+      ],
+      [
+        "baltic",
+        0.00021434373866047448
+      ]
+    ]
+  },
+  {
+    "areaId": "atlantic-north",
+    "name": "Atl\u00e1ntico norte",
+    "lon": -42.228662,
+    "lat": 34.248285,
+    "areaKm2": 34297208.228651,
+    "neighbors": [
+      [
+        "caribbean",
+        0.00027149430568754244
+      ],
+      [
+        "north-sea",
+        0.00023978111392741777
+      ],
+      [
+        "med-west",
+        0.00023284081249847995
+      ]
+    ]
+  },
+  {
+    "areaId": "atlantic-south",
+    "name": "Atl\u00e1ntico sur",
+    "lon": -16.486928,
+    "lat": -30.052735,
+    "areaKm2": 40293214.934583,
+    "neighbors": []
+  },
+  {
+    "areaId": "baltic",
+    "name": "Mar B\u00e1ltico",
+    "lon": 18.913886,
+    "lat": 56.751155,
+    "areaKm2": 218765.66181,
+    "neighbors": [
+      [
+        "north-sea",
+        0.0010063100797712292
+      ],
+      [
+        "black",
+        0.0005560793479387857
+      ],
+      [
+        "med-west",
+        0.0004728950019627464
+      ]
+    ]
+  },
+  {
+    "areaId": "bengal",
+    "name": "Bah\u00eda de Bengala",
+    "lon": 86.878472,
+    "lat": 14.952905,
+    "areaKm2": 2191966.653103,
+    "neighbors": [
+      [
+        "arabian",
+        0.0003891401747945036
+      ],
+      [
+        "south-china",
+        0.00033739754405595336
+      ],
+      [
+        "indian",
+        0.00022340163497476274
+      ]
+    ]
+  },
+  {
+    "areaId": "bering",
+    "name": "Mar de Bering",
+    "lon": -170.899386,
+    "lat": 58.967385,
+    "areaKm2": 2353318.322045,
+    "neighbors": [
+      [
+        "arctic",
+        0.00037990916300191416
+      ],
+      [
+        "pacific-north",
+        0.000269823297173751
+      ]
+    ]
+  },
+  {
+    "areaId": "black",
+    "name": "Mar Negro",
+    "lon": 34.073139,
+    "lat": 43.712375,
+    "areaKm2": 422433.257268,
+    "neighbors": [
+      [
+        "med-east",
+        0.0006882221738235019
+      ],
+      [
+        "baltic",
+        0.0005560793479387857
+      ],
+      [
+        "med-west",
+        0.00042632071864233693
+      ]
+    ]
+  },
+  {
+    "areaId": "caribbean",
+    "name": "Mar Caribe",
+    "lon": -72.436137,
+    "lat": 15.28978,
+    "areaKm2": 2825995.066878,
+    "neighbors": [
+      [
+        "gulf-mexico",
+        0.00047099388459454026
+      ],
+      [
+        "atlantic-north",
+        0.00027149430568754244
+      ]
+    ]
+  },
+  {
+    "areaId": "caspian",
+    "name": "Mar Caspio",
+    "lon": 50.519987,
+    "lat": 41.860385,
+    "areaKm2": 397002.37085,
+    "neighbors": []
+  },
+  {
+    "areaId": "coral",
+    "name": "Mar del Coral",
+    "lon": 157.654858,
+    "lat": -18.698505,
+    "areaKm2": 4090335.711881,
+    "neighbors": [
+      [
+        "tasman",
+        0.0004081823660060816
+      ]
+    ]
+  },
+  {
+    "areaId": "gulf-mexico",
+    "name": "Golfo de M\u00e9xico",
+    "lon": -90.381013,
+    "lat": 24.262605,
+    "areaKm2": 1558056.159268,
+    "neighbors": [
+      [
+        "caribbean",
+        0.00047099388459454026
+      ],
+      [
+        "atlantic-north",
+        0.00021024169926568746
+      ]
+    ]
+  },
+  {
+    "areaId": "indian",
+    "name": "Oc\u00e9ano \u00cdndico",
+    "lon": 80.388576,
+    "lat": -24.80201,
+    "areaKm2": 57908721.802344,
+    "neighbors": [
+      [
+        "bengal",
+        0.00022340163497476274
+      ],
+      [
+        "arabian",
+        0.0002201774138094058
+      ]
+    ]
+  },
+  {
+    "areaId": "med-east",
+    "name": "Mediterr\u00e1neo oriental",
+    "lon": 22.841499,
+    "lat": 33.972405,
+    "areaKm2": 1168061.442871,
+    "neighbors": [
+      [
+        "black",
+        0.0006882221738235019
+      ],
+      [
+        "med-west",
+        0.0006229083054900436
+      ],
+      [
+        "red",
+        0.00046140747660507555
+      ]
+    ]
+  },
+  {
+    "areaId": "med-west",
+    "name": "Mediterr\u00e1neo occidental",
+    "lon": 6.218435,
+    "lat": 39.641195,
+    "areaKm2": 475391.661552,
+    "neighbors": [
+      [
+        "med-east",
+        0.0006229083054900436
+      ],
+      [
+        "north-sea",
+        0.0005448636076928942
+      ],
+      [
+        "baltic",
+        0.0004728950019627464
+      ]
+    ]
+  },
+  {
+    "areaId": "north-sea",
+    "name": "Mar del Norte",
+    "lon": 2.797564,
+    "lat": 55.991155,
+    "areaKm2": 529309.054073,
+    "neighbors": [
+      [
+        "baltic",
+        0.0010063100797712292
+      ],
+      [
+        "med-west",
+        0.0005448636076928942
+      ],
+      [
+        "black",
+        0.0003858001345275341
+      ]
+    ]
+  },
+  {
+    "areaId": "pacific-north",
+    "name": "Pac\u00edfico norte",
+    "lon": -149.172611,
+    "lat": 29.13773,
+    "areaKm2": 64608949.698892,
+    "neighbors": [
+      [
+        "bering",
+        0.000269823297173751
+      ]
+    ]
+  },
+  {
+    "areaId": "pacific-south",
+    "name": "Pac\u00edfico sur",
+    "lon": -125.690878,
+    "lat": -29.29769,
+    "areaKm2": 76199539.425775,
+    "neighbors": [
+      [
+        "southern",
+        0.00020530057524011263
+      ]
+    ]
+  },
+  {
+    "areaId": "red",
+    "name": "Mar Rojo",
+    "lon": 38.530238,
+    "lat": 20.302025,
+    "areaKm2": 447957.812668,
+    "neighbors": [
+      [
+        "med-east",
+        0.00046140747660507555
+      ],
+      [
+        "black",
+        0.00037939243831324143
+      ],
+      [
+        "arabian",
+        0.00036090518655548375
+      ]
+    ]
+  },
+  {
+    "areaId": "south-china",
+    "name": "Mar de China Meridional",
+    "lon": 113.981283,
+    "lat": 11.16138,
+    "areaKm2": 3332743.916299,
+    "neighbors": [
+      [
+        "bengal",
+        0.00033739754405595336
+      ]
+    ]
+  },
+  {
+    "areaId": "southern",
+    "name": "Oc\u00e9ano Austral",
+    "lon": -135.686883,
+    "lat": -72.7774,
+    "areaKm2": 21897491.408652,
+    "neighbors": [
+      [
+        "tasman",
+        0.0002060700275843495
+      ],
+      [
+        "pacific-south",
+        0.00020530057524011263
+      ]
+    ]
+  },
+  {
+    "areaId": "tasman",
+    "name": "Mar de Tasmania",
+    "lon": 161.845074,
+    "lat": -40.43461,
+    "areaKm2": 3335741.986081,
+    "neighbors": [
+      [
+        "coral",
+        0.0004081823660060816
+      ],
+      [
+        "southern",
+        0.0002060700275843495
+      ]
+    ]
+  }
+]

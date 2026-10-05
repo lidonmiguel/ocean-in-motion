@@ -44,8 +44,9 @@ function boundsForArea(area: SeaFeature): maplibregl.LngLatBoundsLike {
     [Math.max(...points.map(point => point[0])), north]];
 }
 
-export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea, worldViewKey }: {
+export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea, worldViewKey, values, forecastMode = false }: {
   year: number; selectedAreaId: string | null; onSelectArea: (id: string) => void; worldViewKey: number;
+  values?: Map<string, import('./data/seaTemperatures').TemperatureRecord>; forecastMode?: boolean;
 }) {
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
@@ -54,7 +55,7 @@ export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea, worldVie
   const [fallback, setFallback] = useState(false);
   const [hover, setHover] = useState<{ x: number; y: number; id: string; name: string } | null>(null);
   const previousArea = useRef(selectedAreaId);
-  const records = recordsByYear.get(year)!;
+  const records = values ?? recordsByYear.get(year)!;
 
   useEffect(() => {
     if (!container.current || fallback) return;
@@ -133,7 +134,7 @@ export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea, worldVie
   }, [ready, year, records, selectedAreaId, onSelectArea]);
 
   return <div className="map-wrap">
-    <div ref={container} className="map-canvas" style={fallback ? { display: 'none' } : undefined} role="img" aria-label={`Temperatura media superficial anual en ${year}, por mar y océano. Selecciona una zona para ver su serie histórica.`} />
+    <div ref={container} className="map-canvas" style={fallback ? { display: 'none' } : undefined} role="img" aria-label={`${forecastMode ? 'Predicción experimental de temperatura' : 'Temperatura media'} superficial anual en ${year}, por mar y océano. Selecciona una zona para ver su evolución.`} />
     {fallback && <div className="fallback-map">
       <svg viewBox="0 0 1200 600" role="img" aria-label={`Mapa de temperaturas superficiales por zona en ${year}`}>
         <rect width="1200" height="600" fill="#173746" />
@@ -146,8 +147,8 @@ export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea, worldVie
       </svg>
       <div className="fallback-note">Vista simplificada sin WebGL2 · pulsa una zona o elige su nombre en la lista</div>
     </div>}
-    <div className="map-stamp"><span className="pulse" /> NOAA + ESTIMACIONES · {year}</div>
-    <div className="map-credit">NOAA ERSSTv6 y estimaciones vecinas · Límites marinos: IHO / VLIZ (CC BY 4.0) · Caspio y costa: Natural Earth</div>
-    {hover && records.get(hover.id) && <div className="map-tooltip" style={{ left: hover.x + 14, top: hover.y + 14 }}><strong>{hover.name}</strong><span>{formatTemperature(records.get(hover.id)!)} · {year}</span><span>{records.get(hover.id)!.method === 'estimated' ? 'Estimación de zonas cercanas; sin celdas NOAA locales' : `Media de ${records.get(hover.id)!.cells} celdas NOAA de 2°`}</span></div>}
+    <div className="map-stamp"><span className="pulse" /> {forecastMode ? 'PREDICCIÓN ESTADÍSTICA' : 'NOAA + ESTIMACIONES'} · {year}</div>
+    <div className="map-credit">{forecastMode ? 'Previsión estadística basada en histórico NOAA ERSSTv6' : 'NOAA ERSSTv6 y estimaciones vecinas'} · Límites marinos: IHO / VLIZ (CC BY 4.0) · Caspio y costa: Natural Earth</div>
+    {hover && records.get(hover.id) && <div className="map-tooltip" style={{ left: hover.x + 14, top: hover.y + 14 }}><strong>{hover.name}</strong><span>{formatTemperature(records.get(hover.id)!)} · {year}</span><span>{forecastMode ? 'Predicción experimental; no es un dato NOAA futuro' : records.get(hover.id)!.method === 'estimated' ? 'Estimación de zonas cercanas; sin celdas NOAA locales' : `Media de ${records.get(hover.id)!.cells} celdas NOAA de 2°`}</span></div>}
   </div>;
 }
