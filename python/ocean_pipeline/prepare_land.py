@@ -19,7 +19,7 @@ from shapely.geometry import Point, Polygon, box, mapping
 from shapely.ops import unary_union
 
 ROOT = Path(__file__).resolve().parents[2]
-OUTPUT = ROOT / "src/data/landNoSeams.geojson"
+OUTPUT = ROOT / "src/data/temperatureLand.geojson"
 
 
 def unwrap(ring: list[list[float]]) -> list[tuple[float, float]]:
@@ -41,7 +41,7 @@ def polygons(geometry):
     return []
 
 
-def build(resolution: str = '110m', tolerance: float = 0) -> dict:
+def build(resolution: str = '10m', tolerance: float = 0.01) -> dict:
     command = (
         "import {feature} from 'topojson-client'; "
         f"import world from 'world-atlas/land-{resolution}.json' with {{type:'json'}}; "
@@ -99,8 +99,8 @@ def build(resolution: str = '110m', tolerance: float = 0) -> dict:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--resolution', choices=['110m', '50m', '10m'], default='110m')
-    parser.add_argument('--tolerance', type=float, default=0)
+    parser.add_argument('--resolution', choices=['110m', '50m', '10m'], default='10m')
+    parser.add_argument('--tolerance', type=float, default=0.01)
     parser.add_argument('--output', type=Path, default=OUTPUT)
     args = parser.parse_args()
     args.output.write_text(json.dumps(build(args.resolution, args.tolerance), separators=(",", ":")), encoding="utf-8")

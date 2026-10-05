@@ -4,7 +4,7 @@ The temperature explorer emits lines from several distinct water positions in
 each of its 102 regions: six per sea, or twelve for the largest ocean polygons.
 The selected year's values drive the comparisons, including historical estimates
 and experimental 2026–2030 predictions. This is an illustrative cooling rule,
-not measured animal movement, currents or a physical transport model.
+not measured currents or a physical transport model.
 
 ## Neighbor rule and proximity
 
@@ -36,8 +36,7 @@ No line is emitted from a regional center. Representative interior points are
 used only as conservative routing waypoints if a direct water route is blocked.
 
 IHO polygons supply touching/overlapping neighbor candidates, with a 0.025°
-tolerance for small rounding gaps. Curves use the same sinusoidal bend formula
-as the species lines, shrinking or reversing the bend when needed near land.
+tolerance for small rounding gaps. Curves use the sinusoidal bend formula, shrinking or reversing the bend when needed near land.
 Every connector stays within its two neighboring water polygons and avoids
 the displayed Natural Earth 10m land, including islands. Compact control points are densified to steps of at most 0.2° in the
 renderer; validation checks that reconstructed path to limit projection errors. Local turns stay within their current region.
@@ -56,15 +55,15 @@ positions; this does not establish exact geodesic distances to every point on a
 sea's boundary or exact shortest marine paths. Static polygon limits, coarse 2°
 SST reconstructions and imputed temperatures further limit interpretation.
 
-## Shared animation
+## Animation
 
-Both map views import `flowAnimation.ts`, sharing the 5.6-second cycle, growing
+`flowAnimation.ts` defines the 5.6-second cycle, growing
 and retracting visible-length window, three-step turquoise-to-pink gradient,
 1.8px stroke, and subtle 5px glow. Temperature routes have no extra bright head,
 white/gold palette, or selected-origin color override. The curve formula also
-matches the existing species routes, with detailed coast checks performed offline.
+uses the original visual arc style, with detailed coast checks performed offline.
 Long ocean hops are split into local arcs and visible sections at the same 12°
-scale used by the animal demonstration offsets. Each section follows the same
+visual scale. Each section follows the same
 growth/retraction cycle, keeping trace length bounded instead of stretching a
 line across an entire ocean. The cooling decision is only repeated on arrival
 at the next region, never at these visual section boundaries. Terminal turns add a final
@@ -74,7 +73,7 @@ Year changes reset and recompute routes. Selection does not reset them. Users
 can pause or hide lines; reduced-motion preferences freeze them. WebGL and SVG
 share the same frame/gradient logic and split paths at the antimeridian. Land
 covers the lines in both renderers. Frame updates are throttled to the same
-30ms interval as the species map, without React state updates each frame.
+30ms interval for the original growing-trace style, without React state updates each frame.
 
 ## Reproduce and verify
 

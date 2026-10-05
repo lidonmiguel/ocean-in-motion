@@ -1,6 +1,6 @@
 import geometryRaw from './temperatureRoutes.json?raw';
 import { FLOW_CYCLE_SECONDS, FLOW_SPAN_DEGREES, growingFlowFrame, type FlowSegment } from './flowAnimation';
-import type { DisplayFlow } from './flowData';
+import type { DisplayFlow } from './flowAnimation';
 
 export type Position = [number, number];
 export type CoolingNode = { id: string; areaId: string; position: Position; orbit: Position[] };

@@ -4,7 +4,7 @@
 
 Can historical temperature and geographic features beat simple references when
 forecasting a known region one to five years ahead? This is a retrospective
-statistical experiment for 2026–2030, not a climate scenario or a species model.
+statistical experiment for 2026–2030, not a climate scenario.
 The target is annual regional surface temperature in °C, never anomaly or daily
 water temperature. Caspian is included as a separate inland region.
 
@@ -164,7 +164,7 @@ More monthly/local data, more forecast origins, independent data vintages and
 explicit climate drivers could improve the experiment. They would require a
 new predeclared evaluation protocol and a fresh untouched test period. The
 present five-year forecast should not be used as a verified local climate
-projection or evidence about marine animal movement.
+projection.
 
 Method references: [scikit-learn lagged-feature forecasting](https://scikit-learn.org/stable/auto_examples/applications/plot_time_series_lagged_features.html),
 [rolling-origin evaluation](https://otexts.com/fpp3/tscv.html),

@@ -46,7 +46,7 @@ describe('temperature-driven illustrative paths', () => {
     expect(coolingChain('a:west', values(30, 20, 10, 26), network)).toEqual(['a', 'b', 'c']);
   });
 
-  it('shares species line growth, visible length, color gradient and cycle', () => {
+  it('shares line growth, visible length, color gradient and cycle', () => {
     const flow = temperatureFlows(values(30, 20, 10, 26), network)[0];
     const time = FLOW_CYCLE_SECONDS*.6;
     const frame = coolingFlowFrame(flow, time, false);
@@ -56,7 +56,7 @@ describe('temperature-driven illustrative paths', () => {
     expect(FLOW_STYLE.sourceColor).toEqual([60, 237, 224]);
     expect(FLOW_STYLE.destinationColor).toEqual([255, 107, 180]);
     const late = coolingFlowFrame(flow, FLOW_CYCLE_SECONDS*.95, false);
-    expect(late.path[0]).not.toEqual(flow.legs[0].from); // tail retracts as on the species map
+    expect(late.path[0]).not.toEqual(flow.legs[0].from); // tail retracts with the growing-line window
   });
 
   it('circles locally, fades completely, waits and emits again', () => {
@@ -69,7 +69,7 @@ describe('temperature-driven illustrative paths', () => {
     expect(coolingFlowFrame(flow, flow.duration+1, false).path.length).toBeGreaterThan(1);
   });
 
-  it('keeps long ocean hops at the animal trace scale instead of stretching across the whole route', () => {
+  it('keeps long ocean hops at the bounded trace scale instead of stretching across the whole route', () => {
     const end: Position = [30, 0];
     const long: CoolingNetwork = {
       nodes: [nodes[0], { ...nodes[2], position: end, orbit: [end, [30, .1], end] }],
