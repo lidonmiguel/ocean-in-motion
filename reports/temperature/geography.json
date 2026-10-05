@@ -7,16 +7,16 @@
     "areaKm2": 4192713.855149,
     "neighbors": [
       [
-        "bengal",
-        0.0003891401747945036
+        "iho-laccadive-sea",
+        0.0006541490367047984
       ],
       [
-        "red",
-        0.00036090518655548375
+        "iho-gulf-of-aden",
+        0.0006120795333524647
       ],
       [
-        "black",
-        0.00022452326000759382
+        "iho-persian-gulf",
+        0.0004810458656769582
       ]
     ]
   },
@@ -28,16 +28,16 @@
     "areaKm2": 5183539.292899,
     "neighbors": [
       [
-        "bering",
-        0.00037990916300191416
+        "iho-beaufort-sea",
+        0.0010417144471258843
       ],
       [
-        "north-sea",
-        0.00021612680691524873
+        "iho-baffin-bay",
+        0.0006995594385104179
       ],
       [
-        "baltic",
-        0.00021434373866047448
+        "iho-the-northwestern-passages",
+        0.0006969191399357092
       ]
     ]
   },
@@ -49,16 +49,16 @@
     "areaKm2": 34297208.228651,
     "neighbors": [
       [
-        "caribbean",
-        0.00027149430568754244
+        "iho-gulf-of-st-lawrence",
+        0.0004435504578801773
       ],
       [
-        "north-sea",
-        0.00023978111392741777
+        "iho-labrador-sea",
+        0.0004280264645295266
       ],
       [
-        "med-west",
-        0.00023284081249847995
+        "iho-celtic-sea",
+        0.000309009795866535
       ]
     ]
   },
@@ -68,7 +68,12 @@
     "lon": -16.486928,
     "lat": -30.052735,
     "areaKm2": 40293214.934583,
-    "neighbors": []
+    "neighbors": [
+      [
+        "iho-gulf-of-guinea",
+        0.000236228647902689
+      ]
+    ]
   },
   {
     "areaId": "baltic",
@@ -78,16 +83,16 @@
     "areaKm2": 218765.66181,
     "neighbors": [
       [
-        "north-sea",
-        0.0010063100797712292
+        "iho-skagerrak",
+        0.0017838787150390367
       ],
       [
-        "black",
-        0.0005560793479387857
+        "iho-gulf-of-bothnia",
+        0.0014878069880741012
       ],
       [
-        "med-west",
-        0.0004728950019627464
+        "iho-gulf-of-finland",
+        0.001164175679695184
       ]
     ]
   },
@@ -99,16 +104,16 @@
     "areaKm2": 2191966.653103,
     "neighbors": [
       [
-        "arabian",
-        0.0003891401747945036
+        "iho-andaman-or-burma-sea",
+        0.0009756715015211551
       ],
       [
-        "south-china",
-        0.00033739754405595336
+        "iho-laccadive-sea",
+        0.0006790474377668949
       ],
       [
-        "indian",
-        0.00022340163497476274
+        "iho-gulf-of-thailand",
+        0.000573521376013617
       ]
     ]
   },
@@ -120,12 +125,16 @@
     "areaKm2": 2353318.322045,
     "neighbors": [
       [
-        "arctic",
-        0.00037990916300191416
+        "iho-chukchi-sea",
+        0.0009067609457667026
       ],
       [
-        "pacific-north",
-        0.000269823297173751
+        "iho-gulf-of-alaska",
+        0.0006850787188599829
+      ],
+      [
+        "iho-east-siberian-sea",
+        0.0004999579404783717
       ]
     ]
   },
@@ -137,16 +146,16 @@
     "areaKm2": 422433.257268,
     "neighbors": [
       [
+        "iho-aegean-sea",
+        0.001063310426195063
+      ],
+      [
+        "iho-ionian-sea",
+        0.0007136034595772952
+      ],
+      [
         "med-east",
         0.0006882221738235019
-      ],
-      [
-        "baltic",
-        0.0005560793479387857
-      ],
-      [
-        "med-west",
-        0.00042632071864233693
       ]
     ]
   },
@@ -164,6 +173,10 @@
       [
         "atlantic-north",
         0.00027149430568754244
+      ],
+      [
+        "iho-gulf-of-st-lawrence",
+        0.0002601181001073849
       ]
     ]
   },
@@ -183,8 +196,16 @@
     "areaKm2": 4090335.711881,
     "neighbors": [
       [
-        "tasman",
-        0.0004081823660060816
+        "iho-solomon-sea",
+        0.000794018036047851
+      ],
+      [
+        "iho-bismarck-sea",
+        0.0005013134751718879
+      ],
+      [
+        "iho-arafura-sea",
+        0.00040958817529757627
       ]
     ]
   },
@@ -200,8 +221,1272 @@
         0.00047099388459454026
       ],
       [
-        "atlantic-north",
-        0.00021024169926568746
+        "iho-gulf-of-california",
+        0.0004702434116651999
+      ],
+      [
+        "iho-gulf-of-st-lawrence",
+        0.0002698477017273772
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-adriatic-sea",
+    "name": "Adriatic Sea",
+    "lon": 15.935849,
+    "lat": 42.750975,
+    "areaKm2": 141546.328997,
+    "neighbors": [
+      [
+        "iho-tyrrhenian-sea",
+        0.002509446535765945
+      ],
+      [
+        "iho-ionian-sea",
+        0.0018733005952992815
+      ],
+      [
+        "med-west",
+        0.0011327098239625921
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-aegean-sea",
+    "name": "Aegean Sea",
+    "lon": 25.731543,
+    "lat": 38.064275,
+    "areaKm2": 194593.46,
+    "neighbors": [
+      [
+        "med-east",
+        0.0019086549114465876
+      ],
+      [
+        "iho-ionian-sea",
+        0.0016537740258688043
+      ],
+      [
+        "black",
+        0.001063310426195063
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-alboran-sea",
+    "name": "Alboran Sea",
+    "lon": -3.437914,
+    "lat": 36.00498,
+    "areaKm2": 54393.09071,
+    "neighbors": [
+      [
+        "med-west",
+        0.0010650802282004702
+      ],
+      [
+        "iho-bay-of-biscay",
+        0.0009403186704474503
+      ],
+      [
+        "iho-tyrrhenian-sea",
+        0.0006975709169938622
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-andaman-or-burma-sea",
+    "name": "Andaman or Burma Sea",
+    "lon": 95.591269,
+    "lat": 11.345655,
+    "areaKm2": 611436.190073,
+    "neighbors": [
+      [
+        "iho-gulf-of-thailand",
+        0.0013738927714871314
+      ],
+      [
+        "iho-malacca-strait",
+        0.0011720819249585095
+      ],
+      [
+        "bengal",
+        0.0009756715015211551
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-arafura-sea",
+    "name": "Arafura Sea",
+    "lon": 136.625915,
+    "lat": -10.39485,
+    "areaKm2": 1016299.122857,
+    "neighbors": [
+      [
+        "iho-ceram-sea",
+        0.001032591620121633
+      ],
+      [
+        "iho-timor-sea",
+        0.0009437426965468736
+      ],
+      [
+        "iho-banda-sea",
+        0.0008501682671149339
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-baffin-bay",
+    "name": "Baffin Bay",
+    "lon": -73.851642,
+    "lat": 76.206255,
+    "areaKm2": 533715.659529,
+    "neighbors": [
+      [
+        "iho-the-northwestern-passages",
+        0.001583148305797775
+      ],
+      [
+        "iho-davis-strait",
+        0.0007337907502840143
+      ],
+      [
+        "arctic",
+        0.0006995594385104179
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-banda-sea",
+    "name": "Banda Sea",
+    "lon": 127.52973,
+    "lat": -4.85558,
+    "areaKm2": 689139.843099,
+    "neighbors": [
+      [
+        "iho-ceram-sea",
+        0.002040193988814548
+      ],
+      [
+        "iho-halmahera-sea",
+        0.0016161784124609562
+      ],
+      [
+        "iho-molukka-sea",
+        0.001431866259524215
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-barentsz-sea",
+    "name": "Barentsz Sea",
+    "lon": 37.15658,
+    "lat": 73.955765,
+    "areaKm2": 1428629.77367,
+    "neighbors": [
+      [
+        "iho-white-sea",
+        0.0011461883327049545
+      ],
+      [
+        "iho-kara-sea",
+        0.0009496482100962951
+      ],
+      [
+        "iho-norwegian-sea",
+        0.0007401551167966452
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-bass-strait",
+    "name": "Bass Strait",
+    "lon": 145.999273,
+    "lat": -39.35622,
+    "areaKm2": 113287.71696,
+    "neighbors": [
+      [
+        "iho-great-australian-bight",
+        0.0008591179215992167
+      ],
+      [
+        "tasman",
+        0.0007378505232504713
+      ],
+      [
+        "coral",
+        0.00039125231173879426
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-bay-of-biscay",
+    "name": "Bay of Biscay",
+    "lon": -3.620697,
+    "lat": 45.567995,
+    "areaKm2": 174155.355961,
+    "neighbors": [
+      [
+        "iho-english-channel",
+        0.002095608312024582
+      ],
+      [
+        "iho-celtic-sea",
+        0.001746711034941036
+      ],
+      [
+        "iho-irish-sea-and-st-george-s-channel",
+        0.0011394145075519543
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-beaufort-sea",
+    "name": "Beaufort Sea",
+    "lon": -138.866361,
+    "lat": 72.07828,
+    "areaKm2": 439960.64889,
+    "neighbors": [
+      [
+        "arctic",
+        0.0010417144471258843
+      ],
+      [
+        "iho-chukchi-sea",
+        0.0007739127456150159
+      ],
+      [
+        "iho-the-northwestern-passages",
+        0.0006359471632782234
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-bismarck-sea",
+    "name": "Bismarck Sea",
+    "lon": 147.882894,
+    "lat": -3.51689,
+    "areaKm2": 341747.689977,
+    "neighbors": [
+      [
+        "iho-solomon-sea",
+        0.0012953151358661781
+      ],
+      [
+        "iho-arafura-sea",
+        0.0006857169549882748
+      ],
+      [
+        "iho-ceram-sea",
+        0.0005544511290597211
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-celebes-sea",
+    "name": "Celebes Sea",
+    "lon": 121.833049,
+    "lat": 4.320085,
+    "areaKm2": 454828.608781,
+    "neighbors": [
+      [
+        "iho-sulu-sea",
+        0.0017768019477406546
+      ],
+      [
+        "iho-molukka-sea",
+        0.0016803559339585304
+      ],
+      [
+        "iho-makassar-strait",
+        0.0011812086849666713
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-celtic-sea",
+    "name": "Celtic Sea",
+    "lon": -8.412058,
+    "lat": 49.57831,
+    "areaKm2": 215556.695476,
+    "neighbors": [
+      [
+        "iho-english-channel",
+        0.0023584605586696654
+      ],
+      [
+        "iho-irish-sea-and-st-george-s-channel",
+        0.001983643517518279
+      ],
+      [
+        "iho-bay-of-biscay",
+        0.001746711034941036
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-ceram-sea",
+    "name": "Ceram Sea",
+    "lon": 131.637063,
+    "lat": -3.22909,
+    "areaKm2": 160374.727086,
+    "neighbors": [
+      [
+        "iho-halmahera-sea",
+        0.0020554660754523914
+      ],
+      [
+        "iho-banda-sea",
+        0.002040193988814548
+      ],
+      [
+        "iho-molukka-sea",
+        0.0012792544682098054
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-chukchi-sea",
+    "name": "Chukchi Sea",
+    "lon": -172.801952,
+    "lat": 68.851175,
+    "areaKm2": 349652.246239,
+    "neighbors": [
+      [
+        "iho-east-siberian-sea",
+        0.0009129376793145838
+      ],
+      [
+        "bering",
+        0.0009067609457667026
+      ],
+      [
+        "iho-beaufort-sea",
+        0.0007739127456150159
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-davis-strait",
+    "name": "Davis Strait",
+    "lon": -57.816226,
+    "lat": 65.055565,
+    "areaKm2": 752471.487491,
+    "neighbors": [
+      [
+        "iho-hudson-strait",
+        0.0015043626209339455
+      ],
+      [
+        "iho-labrador-sea",
+        0.000787794397238029
+      ],
+      [
+        "iho-baffin-bay",
+        0.0007337907502840143
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-east-siberian-sea",
+    "name": "East Siberian Sea",
+    "lon": 159.276063,
+    "lat": 72.69595,
+    "areaKm2": 642181.921741,
+    "neighbors": [
+      [
+        "iho-laptev-sea",
+        0.001200212111898686
+      ],
+      [
+        "iho-chukchi-sea",
+        0.0009129376793145838
+      ],
+      [
+        "arctic",
+        0.0005877867678658245
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-eastern-china-sea",
+    "name": "Eastern China Sea",
+    "lon": 125.85559,
+    "lat": 28.689,
+    "areaKm2": 758290.072331,
+    "neighbors": [
+      [
+        "iho-yellow-sea",
+        0.0010606203877040656
+      ],
+      [
+        "iho-philippine-sea",
+        0.0007353460164907583
+      ],
+      [
+        "iho-japan-sea",
+        0.0005835542095191377
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-english-channel",
+    "name": "English Channel",
+    "lon": -2.526165,
+    "lat": 49.79585,
+    "areaKm2": 81641.216242,
+    "neighbors": [
+      [
+        "iho-celtic-sea",
+        0.0023584605586696654
+      ],
+      [
+        "iho-irish-sea-and-st-george-s-channel",
+        0.0023314737527951363
+      ],
+      [
+        "iho-bay-of-biscay",
+        0.002095608312024582
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-flores-sea",
+    "name": "Flores Sea",
+    "lon": 119.430244,
+    "lat": -7.10454,
+    "areaKm2": 102029.963837,
+    "neighbors": [
+      [
+        "iho-makassar-strait",
+        0.001718879442464091
+      ],
+      [
+        "iho-java-sea",
+        0.0012059368159995677
+      ],
+      [
+        "iho-banda-sea",
+        0.0010753737626732621
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-great-australian-bight",
+    "name": "Great Australian Bight",
+    "lon": 132.833948,
+    "lat": -37.505585,
+    "areaKm2": 1321621.5249,
+    "neighbors": [
+      [
+        "iho-bass-strait",
+        0.0008591179215992167
+      ],
+      [
+        "tasman",
+        0.0003971975675771234
+      ],
+      [
+        "iho-timor-sea",
+        0.0003415007807186036
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-greenland-sea",
+    "name": "Greenland Sea",
+    "lon": -8.15563,
+    "lat": 73.913585,
+    "areaKm2": 1196537.604969,
+    "neighbors": [
+      [
+        "iho-norwegian-sea",
+        0.001486485565291222
+      ],
+      [
+        "iho-barentsz-sea",
+        0.0007348314668330954
+      ],
+      [
+        "iho-gulf-of-bothnia",
+        0.0006063974498084703
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-gulf-of-aden",
+    "name": "Gulf of Aden",
+    "lon": 48.164501,
+    "lat": 12.781685,
+    "areaKm2": 260331.460465,
+    "neighbors": [
+      [
+        "red",
+        0.0007555484672754987
+      ],
+      [
+        "arabian",
+        0.0006120795333524647
+      ],
+      [
+        "iho-persian-gulf",
+        0.0006107905899860366
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-gulf-of-alaska",
+    "name": "Gulf of Alaska",
+    "lon": -145.751241,
+    "lat": 57.908245,
+    "areaKm2": 417242.625988,
+    "neighbors": [
+      [
+        "iho-the-coastal-waters-of-southeast-alaska-and-british-columbia",
+        0.0009218949199340863
+      ],
+      [
+        "bering",
+        0.0006850787188599829
+      ],
+      [
+        "iho-beaufort-sea",
+        0.0006226535584718828
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-gulf-of-bothnia",
+    "name": "Gulf of Bothnia",
+    "lon": 19.541012,
+    "lat": 62.78759,
+    "areaKm2": 117851.766632,
+    "neighbors": [
+      [
+        "iho-gulf-of-finland",
+        0.001538360999782792
+      ],
+      [
+        "baltic",
+        0.0014878069880741012
+      ],
+      [
+        "iho-skagerrak",
+        0.001424098632753309
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-gulf-of-california",
+    "name": "Gulf of California",
+    "lon": -111.372399,
+    "lat": 27.3495,
+    "areaKm2": 179917.853282,
+    "neighbors": [
+      [
+        "gulf-mexico",
+        0.0004702434116651999
+      ],
+      [
+        "iho-the-coastal-waters-of-southeast-alaska-and-british-columbia",
+        0.0003050079993964604
+      ],
+      [
+        "pacific-north",
+        0.0002708334196539391
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-gulf-of-finland",
+    "name": "Gulf of Finland",
+    "lon": 31.405133,
+    "lat": 61.031815,
+    "areaKm2": 58532.099245,
+    "neighbors": [
+      [
+        "iho-white-sea",
+        0.0016404093893024737
+      ],
+      [
+        "iho-gulf-of-bothnia",
+        0.001538360999782792
+      ],
+      [
+        "baltic",
+        0.001164175679695184
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-gulf-of-guinea",
+    "name": "Gulf of Guinea",
+    "lon": 3.69226,
+    "lat": 2.77271,
+    "areaKm2": 748061.608639,
+    "neighbors": [
+      [
+        "iho-alboran-sea",
+        0.0002654433853212847
+      ],
+      [
+        "med-east",
+        0.0002501612920474165
+      ],
+      [
+        "med-west",
+        0.00024345596079558958
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-gulf-of-st-lawrence",
+    "name": "Gulf of St. Lawrence",
+    "lon": -61.45866,
+    "lat": 48.66826,
+    "areaKm2": 291184.637105,
+    "neighbors": [
+      [
+        "iho-labrador-sea",
+        0.0011822135763618436
+      ],
+      [
+        "iho-hudson-strait",
+        0.0006713433085053782
+      ],
+      [
+        "iho-davis-strait",
+        0.0005450043665777933
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-gulf-of-thailand",
+    "name": "Gulf of Thailand",
+    "lon": 102.087895,
+    "lat": 9.90349,
+    "areaKm2": 294762.710009,
+    "neighbors": [
+      [
+        "iho-malacca-strait",
+        0.0015141289162718227
+      ],
+      [
+        "iho-andaman-or-burma-sea",
+        0.0013738927714871314
+      ],
+      [
+        "south-china",
+        0.0007647611550416466
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-halmahera-sea",
+    "name": "Halmahera Sea",
+    "lon": 129.248538,
+    "lat": 0.437415,
+    "areaKm2": 75211.653361,
+    "neighbors": [
+      [
+        "iho-molukka-sea",
+        0.002887174130501646
+      ],
+      [
+        "iho-ceram-sea",
+        0.0020554660754523914
+      ],
+      [
+        "iho-banda-sea",
+        0.0016161784124609562
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-hudson-bay",
+    "name": "Hudson Bay",
+    "lon": -85.817308,
+    "lat": 58.60554,
+    "areaKm2": 840580.620938,
+    "neighbors": [
+      [
+        "iho-hudson-strait",
+        0.000989456113199082
+      ],
+      [
+        "iho-the-northwestern-passages",
+        0.0006299275769263605
+      ],
+      [
+        "iho-davis-strait",
+        0.00061831946899038
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-hudson-strait",
+    "name": "Hudson Strait",
+    "lon": -68.47663,
+    "lat": 61.466505,
+    "areaKm2": 201582.418924,
+    "neighbors": [
+      [
+        "iho-davis-strait",
+        0.0015043626209339455
+      ],
+      [
+        "iho-hudson-bay",
+        0.000989456113199082
+      ],
+      [
+        "iho-labrador-sea",
+        0.0007980569452344134
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-inner-seas-off-the-west-coast-of-scotland",
+    "name": "Inner Seas off the West Coast of Scotland",
+    "lon": -6.986036,
+    "lat": 56.46592,
+    "areaKm2": 44758.095466,
+    "neighbors": [
+      [
+        "iho-irish-sea-and-st-george-s-channel",
+        0.0027015602093461255
+      ],
+      [
+        "north-sea",
+        0.0016487590122495595
+      ],
+      [
+        "iho-celtic-sea",
+        0.0012957754920053719
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-ionian-sea",
+    "name": "Ionian Sea",
+    "lon": 18.823415,
+    "lat": 38.47898,
+    "areaKm2": 171692.638071,
+    "neighbors": [
+      [
+        "iho-adriatic-sea",
+        0.0018733005952992815
+      ],
+      [
+        "iho-aegean-sea",
+        0.0016537740258688043
+      ],
+      [
+        "med-east",
+        0.0016204637941006294
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-irish-sea-and-st-george-s-channel",
+    "name": "Irish Sea and St. George's Channel",
+    "lon": -4.581732,
+    "lat": 53.43632,
+    "areaKm2": 45760.867347,
+    "neighbors": [
+      [
+        "iho-inner-seas-off-the-west-coast-of-scotland",
+        0.0027015602093461255
+      ],
+      [
+        "iho-english-channel",
+        0.0023314737527951363
+      ],
+      [
+        "iho-celtic-sea",
+        0.001983643517518279
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-japan-sea",
+    "name": "Japan Sea",
+    "lon": 135.051318,
+    "lat": 42.18206,
+    "areaKm2": 1066238.273221,
+    "neighbors": [
+      [
+        "iho-yellow-sea",
+        0.000946791248897538
+      ],
+      [
+        "iho-sea-of-okhotsk",
+        0.0006181864675628314
+      ],
+      [
+        "iho-eastern-china-sea",
+        0.0005835542095191377
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-java-sea",
+    "name": "Java Sea",
+    "lon": 112.188398,
+    "lat": -5.161905,
+    "areaKm2": 560196.283988,
+    "neighbors": [
+      [
+        "iho-makassar-strait",
+        0.001414424677087822
+      ],
+      [
+        "iho-flores-sea",
+        0.0012059368159995677
+      ],
+      [
+        "iho-celebes-sea",
+        0.0006653252526601027
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-kara-sea",
+    "name": "Kara Sea",
+    "lon": 71.691306,
+    "lat": 73.75758,
+    "areaKm2": 914815.714728,
+    "neighbors": [
+      [
+        "iho-barentsz-sea",
+        0.0009496482100962951
+      ],
+      [
+        "iho-white-sea",
+        0.0006378936809218389
+      ],
+      [
+        "iho-laptev-sea",
+        0.0005192460045160871
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-labrador-sea",
+    "name": "Labrador Sea",
+    "lon": -52.65628,
+    "lat": 53.9349,
+    "areaKm2": 871331.427658,
+    "neighbors": [
+      [
+        "iho-gulf-of-st-lawrence",
+        0.0011822135763618436
+      ],
+      [
+        "iho-hudson-strait",
+        0.0007980569452344134
+      ],
+      [
+        "iho-davis-strait",
+        0.000787794397238029
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-laccadive-sea",
+    "name": "Laccadive Sea",
+    "lon": 76.049157,
+    "lat": 7.04053,
+    "areaKm2": 835673.621219,
+    "neighbors": [
+      [
+        "bengal",
+        0.0006790474377668949
+      ],
+      [
+        "arabian",
+        0.0006541490367047984
+      ],
+      [
+        "iho-andaman-or-burma-sea",
+        0.00045515677176179636
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-laptev-sea",
+    "name": "Laptev Sea",
+    "lon": 134.048852,
+    "lat": 72.49477,
+    "areaKm2": 529237.744526,
+    "neighbors": [
+      [
+        "iho-east-siberian-sea",
+        0.001200212111898686
+      ],
+      [
+        "iho-kara-sea",
+        0.0005192460045160871
+      ],
+      [
+        "iho-chukchi-sea",
+        0.0005185671395031855
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-makassar-strait",
+    "name": "Makassar Strait",
+    "lon": 117.791319,
+    "lat": -2.133915,
+    "areaKm2": 196105.996832,
+    "neighbors": [
+      [
+        "iho-flores-sea",
+        0.001718879442464091
+      ],
+      [
+        "iho-java-sea",
+        0.001414424677087822
+      ],
+      [
+        "iho-celebes-sea",
+        0.0011812086849666713
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-malacca-strait",
+    "name": "Malacca Strait",
+    "lon": 99.336638,
+    "lat": 4.62758,
+    "areaKm2": 194235.030731,
+    "neighbors": [
+      [
+        "iho-gulf-of-thailand",
+        0.0015141289162718227
+      ],
+      [
+        "iho-andaman-or-burma-sea",
+        0.0011720819249585095
+      ],
+      [
+        "south-china",
+        0.0005655696601985194
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-molukka-sea",
+    "name": "Molukka Sea",
+    "lon": 126.253495,
+    "lat": 1.29441,
+    "areaKm2": 220139.093329,
+    "neighbors": [
+      [
+        "iho-halmahera-sea",
+        0.002887174130501646
+      ],
+      [
+        "iho-celebes-sea",
+        0.0016803559339585304
+      ],
+      [
+        "iho-banda-sea",
+        0.001431866259524215
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-mozambique-channel",
+    "name": "Mozambique Channel",
+    "lon": 40.308894,
+    "lat": -18.652675,
+    "areaKm2": 1379096.152839,
+    "neighbors": [
+      [
+        "iho-gulf-of-aden",
+        0.0002777877439294444
+      ],
+      [
+        "indian",
+        0.00023916091282428383
+      ],
+      [
+        "arabian",
+        0.0002339542869262852
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-norwegian-sea",
+    "name": "Norwegian Sea",
+    "lon": 1.934908,
+    "lat": 68.77561,
+    "areaKm2": 1452215.674865,
+    "neighbors": [
+      [
+        "iho-greenland-sea",
+        0.001486485565291222
+      ],
+      [
+        "iho-gulf-of-bothnia",
+        0.0009645680603360792
+      ],
+      [
+        "iho-skagerrak",
+        0.0008267300605154902
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-persian-gulf",
+    "name": "Persian Gulf",
+    "lon": 51.036127,
+    "lat": 27.25814,
+    "areaKm2": 244836.679044,
+    "neighbors": [
+      [
+        "red",
+        0.000672154509194279
+      ],
+      [
+        "iho-gulf-of-aden",
+        0.0006107905899860366
+      ],
+      [
+        "arabian",
+        0.0004810458656769582
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-philippine-sea",
+    "name": "Philippine Sea",
+    "lon": 133.898109,
+    "lat": 18.90921,
+    "areaKm2": 5588999.513215,
+    "neighbors": [
+      [
+        "iho-eastern-china-sea",
+        0.0007353460164907583
+      ],
+      [
+        "iho-sulu-sea",
+        0.0005597011964758717
+      ],
+      [
+        "iho-celebes-sea",
+        0.00047958896529765456
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-sea-of-okhotsk",
+    "name": "Sea of Okhotsk",
+    "lon": 149.638664,
+    "lat": 52.970885,
+    "areaKm2": 1620110.897902,
+    "neighbors": [
+      [
+        "iho-japan-sea",
+        0.0006181864675628314
+      ],
+      [
+        "iho-east-siberian-sea",
+        0.0004463170683447059
+      ],
+      [
+        "iho-laptev-sea",
+        0.0004358014734313968
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-skagerrak",
+    "name": "Skagerrak",
+    "lon": 10.069364,
+    "lat": 58.491525,
+    "areaKm2": 32212.627847,
+    "neighbors": [
+      [
+        "north-sea",
+        0.0019305943296762556
+      ],
+      [
+        "baltic",
+        0.0017838787150390367
+      ],
+      [
+        "iho-gulf-of-bothnia",
+        0.001424098632753309
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-solomon-sea",
+    "name": "Solomon Sea",
+    "lon": 152.883599,
+    "lat": -8.362475,
+    "areaKm2": 738409.674106,
+    "neighbors": [
+      [
+        "iho-bismarck-sea",
+        0.0012953151358661781
+      ],
+      [
+        "coral",
+        0.000794018036047851
+      ],
+      [
+        "iho-arafura-sea",
+        0.0005562948578943755
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-sulu-sea",
+    "name": "Sulu Sea",
+    "lon": 120.64563,
+    "lat": 9.24238,
+    "areaKm2": 334427.169059,
+    "neighbors": [
+      [
+        "iho-celebes-sea",
+        0.0017768019477406546
+      ],
+      [
+        "south-china",
+        0.0013160460396298137
+      ],
+      [
+        "iho-molukka-sea",
+        0.000926094365819343
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-the-coastal-waters-of-southeast-alaska-and-british-columbia",
+    "name": "The Coastal Waters of Southeast Alaska and British Columbia",
+    "lon": -130.648479,
+    "lat": 53.145505,
+    "areaKm2": 126558.494687,
+    "neighbors": [
+      [
+        "iho-gulf-of-alaska",
+        0.0009218949199340863
+      ],
+      [
+        "iho-beaufort-sea",
+        0.00046682501643477355
+      ],
+      [
+        "bering",
+        0.00039384235683040614
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-the-northwestern-passages",
+    "name": "The Northwestern Passages",
+    "lon": -90.837426,
+    "lat": 72.743745,
+    "areaKm2": 1070170.308617,
+    "neighbors": [
+      [
+        "iho-baffin-bay",
+        0.001583148305797775
+      ],
+      [
+        "arctic",
+        0.0006969191399357092
+      ],
+      [
+        "iho-davis-strait",
+        0.0006479469172790469
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-timor-sea",
+    "name": "Timor Sea",
+    "lon": 127.006847,
+    "lat": -11.69447,
+    "areaKm2": 428314.869587,
+    "neighbors": [
+      [
+        "iho-banda-sea",
+        0.0013112678875782313
+      ],
+      [
+        "iho-flores-sea",
+        0.0010254935687211324
+      ],
+      [
+        "iho-arafura-sea",
+        0.0009437426965468736
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-tyrrhenian-sea",
+    "name": "Tyrrhenian Sea",
+    "lon": 11.828518,
+    "lat": 40.88606,
+    "areaKm2": 217295.860693,
+    "neighbors": [
+      [
+        "iho-adriatic-sea",
+        0.002509446535765945
+      ],
+      [
+        "med-west",
+        0.002017628620591409
+      ],
+      [
+        "iho-ionian-sea",
+        0.0015256882311582617
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-white-sea",
+    "name": "White Sea",
+    "lon": 36.019128,
+    "lat": 66.11883,
+    "areaKm2": 91751.548271,
+    "neighbors": [
+      [
+        "iho-gulf-of-finland",
+        0.0016404093893024737
+      ],
+      [
+        "iho-gulf-of-bothnia",
+        0.001150414376667932
+      ],
+      [
+        "iho-barentsz-sea",
+        0.0011461883327049545
+      ]
+    ]
+  },
+  {
+    "areaId": "iho-yellow-sea",
+    "name": "Yellow Sea",
+    "lon": 124.610579,
+    "lat": 37.10378,
+    "areaKm2": 407491.597543,
+    "neighbors": [
+      [
+        "iho-eastern-china-sea",
+        0.0010606203877040656
+      ],
+      [
+        "iho-japan-sea",
+        0.000946791248897538
+      ],
+      [
+        "iho-philippine-sea",
+        0.00045124390092023364
       ]
     ]
   },
@@ -213,12 +1498,16 @@
     "areaKm2": 57908721.802344,
     "neighbors": [
       [
-        "bengal",
-        0.00022340163497476274
+        "iho-laccadive-sea",
+        0.0002799713155695819
       ],
       [
-        "arabian",
-        0.0002201774138094058
+        "iho-malacca-strait",
+        0.00025901113085664043
+      ],
+      [
+        "iho-java-sea",
+        0.0002478702147090272
       ]
     ]
   },
@@ -230,16 +1519,16 @@
     "areaKm2": 1168061.442871,
     "neighbors": [
       [
-        "black",
-        0.0006882221738235019
+        "iho-aegean-sea",
+        0.0019086549114465876
       ],
       [
-        "med-west",
-        0.0006229083054900436
+        "iho-ionian-sea",
+        0.0016204637941006294
       ],
       [
-        "red",
-        0.00046140747660507555
+        "iho-adriatic-sea",
+        0.0008726588345492152
       ]
     ]
   },
@@ -251,16 +1540,16 @@
     "areaKm2": 475391.661552,
     "neighbors": [
       [
-        "med-east",
-        0.0006229083054900436
+        "iho-tyrrhenian-sea",
+        0.002017628620591409
       ],
       [
-        "north-sea",
-        0.0005448636076928942
+        "iho-adriatic-sea",
+        0.0011327098239625921
       ],
       [
-        "baltic",
-        0.0004728950019627464
+        "iho-alboran-sea",
+        0.0010650802282004702
       ]
     ]
   },
@@ -272,16 +1561,16 @@
     "areaKm2": 529309.054073,
     "neighbors": [
       [
-        "baltic",
-        0.0010063100797712292
+        "iho-skagerrak",
+        0.0019305943296762556
       ],
       [
-        "med-west",
-        0.0005448636076928942
+        "iho-irish-sea-and-st-george-s-channel",
+        0.001810987586116599
       ],
       [
-        "black",
-        0.0003858001345275341
+        "iho-inner-seas-off-the-west-coast-of-scotland",
+        0.0016487590122495595
       ]
     ]
   },
@@ -293,8 +1582,16 @@
     "areaKm2": 64608949.698892,
     "neighbors": [
       [
-        "bering",
-        0.000269823297173751
+        "iho-the-coastal-waters-of-southeast-alaska-and-british-columbia",
+        0.0003260519678365352
+      ],
+      [
+        "iho-gulf-of-alaska",
+        0.00031152002790689226
+      ],
+      [
+        "iho-gulf-of-california",
+        0.0002708334196539391
       ]
     ]
   },
@@ -319,16 +1616,16 @@
     "areaKm2": 447957.812668,
     "neighbors": [
       [
+        "iho-gulf-of-aden",
+        0.0007555484672754987
+      ],
+      [
+        "iho-persian-gulf",
+        0.000672154509194279
+      ],
+      [
         "med-east",
         0.00046140747660507555
-      ],
-      [
-        "black",
-        0.00037939243831324143
-      ],
-      [
-        "arabian",
-        0.00036090518655548375
       ]
     ]
   },
@@ -340,8 +1637,16 @@
     "areaKm2": 3332743.916299,
     "neighbors": [
       [
-        "bengal",
-        0.00033739754405595336
+        "iho-sulu-sea",
+        0.0013160460396298137
+      ],
+      [
+        "iho-celebes-sea",
+        0.0008683629737267674
+      ],
+      [
+        "iho-gulf-of-thailand",
+        0.0007647611550416466
       ]
     ]
   },
@@ -370,12 +1675,16 @@
     "areaKm2": 3335741.986081,
     "neighbors": [
       [
+        "iho-bass-strait",
+        0.0007378505232504713
+      ],
+      [
         "coral",
         0.0004081823660060816
       ],
       [
-        "southern",
-        0.0002060700275843495
+        "iho-great-australian-bight",
+        0.0003971975675771234
       ]
     ]
   }

@@ -37,7 +37,7 @@ class ForecastArtifactTests(unittest.TestCase):
         last = {r['areaId']: r for r in historical if r['year'] == 2025}
         lookup = {(r['areaId'], r['year']): r for r in forecast['records']}
         derived = [r for r in forecast['records'] if r['forecastBasis'] == 'estimated-history']
-        self.assertEqual(len(derived), 400)
+        self.assertEqual(len(derived), len({r['areaId'] for r in historical if r.get('method') == 'estimated'})*5)
         for row in derived:
             base = last[row['areaId']]
             self.assertEqual(row['estimatedFrom'], base['estimatedFrom'])

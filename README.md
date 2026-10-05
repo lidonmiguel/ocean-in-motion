@@ -47,29 +47,34 @@ interval calibration and the final test use separate temporal periods.
 
 | Final experiment | Result |
 | --- | --- |
-| Selected model | Persistence: the last known temperature |
-| Evaluated data | 22 NOAA-derived regional histories, 1982–2025 |
-| Held-out final test | Origin 2020 → target years 2021–2025 |
-| Final-test MAE | **0.220 °C** |
-| Nominal 90% interval coverage | Approximately **87%** across the final test |
+| Selected model | Histogram Gradient Boosting, without neighbor features |
+| Evaluated data | 82 NOAA-derived regional histories, 1982–2025 |
+| Fixed final test (re-evaluated) | Origin 2020 → target years 2021–2025 |
+| Final-test MAE | **0.261 °C** |
+| Nominal 90% interval coverage | Approximately **95%** across the final test |
 | Published forecast | 2026–2030 for all 102 regions, with provenance distinguished |
 
-Persistence had the lowest development error and was retained. Its point
-forecasts preserve the 2025 value at every horizon; this does **not** imply that
-warming will stop. The experiment reports the result rather than assuming a
-more complex model is better.
+Gradient Boosting narrowly wins development MAE (**0.2576 °C**, versus
+**0.2580 °C** for persistence). In the fixed 2021–2025 test, persistence performs
+better (**0.249 °C**, versus **0.261 °C** for the selected model). The selected
+model follows the predeclared development rule; the small development advantage
+does not establish reliable superiority. This is a re-evaluation of the same
+published test window after expanding NOAA coverage, not a fresh untouched test.
 
 [Evaluation and backtests](reports/temperature/REPORT.md) ·
 [Methodology, temporal splits and model card](docs/temperature-forecast.md)
 
 ## Data and interpretation
 
-**22 regions** use annual temperatures derived from
+**82 regions** use annual temperatures derived from
 [NOAA ERSSTv6](https://www.ncei.noaa.gov/products/extended-reconstructed-sst),
 a 2° reconstruction rather than direct local measurements. They include the
 Caspian Sea as a separate inland water region.
 
-The other **80 regions** have approximate histories derived from neighboring
+A full NOAA coverage audit replaced **60 previously estimated histories** with
+NOAA-derived series. See the [region-by-region audit](reports/temperature/SOURCE_COVERAGE.md).
+
+The other **20 regions** have approximate histories derived from neighboring
 NOAA regions and latitude adjustments. They are marked **≈**, excluded from
 model training and evaluation, and receive donor-derived forecasts. Their local
 forecast errors and interval coverage are unvalidated.

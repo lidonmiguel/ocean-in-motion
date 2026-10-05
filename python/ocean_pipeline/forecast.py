@@ -276,8 +276,8 @@ def build(root=ROOT):
                'environment': {'python': platform.python_version(), 'numpy': np.__version__, 'sklearn': sklearn.__version__},
                'features': FEATURES, 'neighborFeatures': NEIGHBOR_FEATURES,
                'neighbors': {area: [other for other, _ in panel.neighbors[area]] for area in panel.ids},
-               'limitations': ['Only 22 existing NOAA-derived regional series enter training and evaluation.',
-                              '80 estimated regions receive donor-derived forecasts; local error and range coverage are unvalidated.',
+               'limitations': [f'Only {len(panel.ids)} complete NOAA-derived regional series enter training and evaluation.',
+                              f'{len(panel.excluded)} estimated regions receive donor-derived forecasts; local error and range coverage are unvalidated.',
                               'Intervals pool past errors across correlated regions; nominal 90% is not a guarantee.',
                               'No climate scenarios or physical transport model; statistical experiment only.',
                               'Static geographic proximity is a heuristic; Caspian has no marine neighbors.',
@@ -303,17 +303,18 @@ def build(root=ROOT):
               'NOAA ERSSTv6 reconstructions, not direct local measurements. Five direct horizon models; learned models predict change from the origin temperature.', '',
               '## Development comparison (selection only)', '', '| Model | MAE °C | RMSE °C |', '| --- | ---: | ---: |']
     report += [f"| {r['id']} | {r['mae']:.3f} | {r['rmse']:.3f} |" for r in sorted(rankings, key=lambda r: r['mae'])]
-    report += ['', '## Untouched final test: origin 2020 → 2021–2025', '',
+    report += ['', '## Fixed final test: origin 2020 → 2021–2025', '',
                f"Selected model MAE: **{summary['holdout']['mae']:.3f} °C**. Persistence: **{baselines['persistence']['mae']:.3f} °C**. Trend: **{baselines['trend5']['mae']:.3f} °C**.", '',
                '| Horizon | MAE °C | Bias °C | Interval width °C | Test coverage | Calibration rows |', '| --- | ---: | ---: | ---: | ---: | ---: |']
     report += [f"| {h} | {v['mae']:.3f} | {v['bias']:.3f} | {v['meanIntervalWidth']:.3f} | {v['coverage']:.0%} | {v['calibrationN']} |" for h, v in by_horizon.items()]
     report += ['', '## Protocol and limits', '',
                'Development origins 2000–2009 (latest target 2014); fixed-model interval calibration origins 2014–2018, only targets 2015–2019; final origin 2020. Labels in training must be at or before the forecast origin. All regions share year cutoffs. Final fits use data available through 2025.', '',
-               'Nominal 90% symmetric intervals use a conservative empirical absolute-error order statistic separately by horizon. Correlated regions and years violate exchangeability; test coverage above is empirical, not a guarantee. The 5-year calibration has only one origin (22 regional errors). Intervals do not include all upstream reconstruction uncertainty.', '',
+               f'Nominal 90% symmetric intervals use a conservative empirical absolute-error order statistic separately by horizon. Correlated regions and years violate exchangeability; test coverage above is empirical, not a guarantee. The 5-year calibration has only one origin ({len(panel.ids)} regional errors). Intervals do not include all upstream reconstruction uncertainty.', '',
+               'The regional cohort was expanded after auditing NOAA coverage. The same published temporal protocol and candidates are rerun; the 2021–2025 window is a re-evaluation, not a new untouched holdout.', '',
                'See metrics.json for regional errors, provenance and neighbor ablations; backtests.csv for every prediction, actual and split; features.csv and geography.json for input diagnostics.', '']
     report += ['## Coverage of the published timeline', '',
-               '510 forecasts cover all 102 historical regions. The 22 NOAA-derived regions use the selected model directly. For each of the other 80 regions, the published 2025 estimated value is shifted by the mean forecast change of its existing NOAA donors. This preserves the historical latitude adjustment and baseline; estimated histories never enter training or evaluation.', '',
-               'Bounds for these 80 regions transfer the donors\' bounds by the same formula. They are donor-derived ranges, not locally calibrated 90% prediction intervals. Local errors, imputation uncertainty and coverage are unknown. No regional test MAE is assigned to them. The historical/future boundary remains labeled in the single 1982–2030 timeline.', '']
+               f'{len(forecast)} forecasts cover all {len(panel.geometry)} historical regions. The {len(panel.ids)} NOAA-derived regions use the selected model directly. For each of the other {len(panel.excluded)} regions, the published 2025 estimated value is shifted by the mean forecast change of its existing NOAA donors. This preserves the historical latitude adjustment and baseline; estimated histories never enter training or evaluation.', '',
+               f'Bounds for these {len(panel.excluded)} regions transfer the donors\' bounds by the same formula. They are donor-derived ranges, not locally calibrated 90% prediction intervals. Local errors, imputation uncertainty and coverage are unknown. No regional test MAE is assigned to them. The historical/future boundary remains labeled in the single 1982–2030 timeline.', '']
     report += ['- '+item for item in summary['limitations']]
     artifacts['reports/temperature/REPORT.md'] = '\n'.join(report)+'\n'
     return artifacts

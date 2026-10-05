@@ -22,14 +22,14 @@ name search. History and predictions share the same slider, chart and table;
 the year, marker and line style identify the prediction period.
 
 The checked-in values are **annual sea-surface temperatures in °C**, not
-anomalies or forecasts. The snapshot covers **1982–2025**. Its 21 original
+anomalies or forecasts. The snapshot covers **1982–2025**. All 81 eligible marine
 areas were computed from all twelve monthly [NOAA ERSSTv6](https://www.ncei.noaa.gov/products/extended-reconstructed-sst)
 files per year. Only ocean grid-cell centers within each polygon are used;
 all twelve months must be present. Months are weighted by days and cells by
 cosine of latitude. NOAA's 2° reconstruction smooths local changes. Ice-covered
 areas use NOAA's ice/SST proxy, which matters especially in the Arctic.
 
-The other **80 areas in the checked-in snapshot are estimates**, marked `≈`
+The other **20 areas in the checked-in snapshot are estimates**, marked `≈`
 throughout the map, detail panel, history, and CSV. For each year, the pipeline
 takes the closest one or two areas with NOAA-derived values by IHO polygon
 distance, averages their temperatures after an approximate latitude correction,
@@ -38,6 +38,11 @@ and rounds to 0.1 °C. The correction uses a capped broad latitude curve
 local NOAA grid cells, and their `cells` count is zero. The record lists its
 `estimatedFrom` donors and `method: "estimated"`. They are coarse visual
 approximations; exclude them from model training that requires observations.
+The coverage audit replaces 60 previously estimated histories with NOAA means.
+The [region-by-region audit](../reports/temperature/SOURCE_COVERAGE.md) lists every
+replacement and the 20 areas still below the two-cell threshold.
+`data/geography/marine-temperature.manifest.json` records all 528 input SHA-256
+hashes, complete-cell counts for each region/year, and source/output/code hashes.
 The annual data are in `src/data/seaTemperatures.json`. This is a regional
 overview, not a coastal or harbor reading.
 
@@ -88,14 +93,16 @@ To regenerate the snapshot directly from NOAA for complete years:
 
 ```bash
 python -m pip install -e './python[temperature]'
-python -m ocean_pipeline.temperature --start 1982 --end 2025
+python -m ocean_pipeline.temperature --start 1982 --end 2025 --cache-dir /tmp/ocean-noaa-monthly
 ```
 
 The second script downloads monthly files from NOAA, refuses missing months,
 and computes NOAA-derived means for **all 101 polygons** where at least two
 complete 2° cells are available. Only areas without sufficient NOAA cells are
 estimated from neighboring areas. It replaces the two derived files in
-`src/data/` and needs network access; the website itself works offline.
+`src/data/` and needs network access; the website itself works offline. The optional cache
+reuses the exact downloaded monthly files. Remove it to request a new NOAA
+vintage, and review the resulting hashes before replacing the snapshot.
 
 ## Validation and publication
 

@@ -34,10 +34,10 @@ def render():
     ax.set(xlabel='Year', ylabel='Change from 1982 regional value (°C)', title='Exploratory history · NOAA ERSSTv6 reconstructions')
     ax.legend()
     figures.append(('historical_trends', fig))
-    fig, ax = plt.subplots(figsize=(10, 6), layout='constrained')
     items = sorted(summary['byArea'].items(), key=lambda item: item[1]['mae'])
+    fig, ax = plt.subplots(figsize=(10, max(6, len(items)*.23)), layout='constrained')
     ax.barh([value['name'] for _, value in items], [value['mae'] for _, value in items], color='#348b99')
-    ax.set(xlabel='MAE over five forecast years (°C)', title='Regional errors · untouched 2021–2025 test')
+    ax.set(xlabel='MAE over five forecast years (°C)', title='Regional errors · fixed 2021–2025 test')
     figures.append(('regional_errors', fig))
     for name, fig in figures:
         svg = out/f'{name}.svg'
