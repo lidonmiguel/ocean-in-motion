@@ -12,7 +12,7 @@ const land = JSON.parse(landRaw) as {
   type: 'FeatureCollection';
   features: { type: 'Feature'; properties: object; geometry: SeaFeature['geometry'] }[];
 };
-const blackSeaLabel = { position: [34, 44] as [number, number], name: 'MAR NEGRO' };
+const blackSeaLabel = { position: [34, 44] as [number, number], name: 'BLACK SEA' };
 const svgPosition = (lon: number, lat: number) => [((lon + 180) / 360) * 1200, ((90 - lat) / 180) * 600];
 
 function geometryPath(geometry: SeaFeature['geometry']): string {
@@ -182,9 +182,9 @@ export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea, worldVie
   }, [ready, fallback, year, records, selectedAreaId, onSelectArea, flows, motionPaused]);
 
   return <div className="map-wrap">
-    <div ref={container} className="map-canvas" style={fallback ? { display: 'none' } : undefined} role="img" aria-label={`${forecastMode ? 'Predicción experimental de temperatura' : 'Temperatura media'} superficial anual en ${year}, por mar y océano. Selecciona una zona para ver su evolución.`} />
+    <div ref={container} className="map-canvas" style={fallback ? { display: 'none' } : undefined} role="img" aria-label={`${forecastMode ? 'Experimental temperature forecast' : 'Mean temperature'} · annual surface values for ${year}, by sea and ocean. Select a region to see its history.`} />
     {fallback && <div className="fallback-map">
-      <svg viewBox="0 0 1200 600" role="img" aria-label={`Mapa de temperaturas superficiales por zona en ${year}`}>
+      <svg viewBox="0 0 1200 600" role="img" aria-label={`Map of surface temperatures by region in ${year}`}>
         <rect width="1200" height="600" fill="#173746" />
         {seaAreas.features.filter(item => records.has(item.properties.id)).map(item => <path
           key={item.properties.id} d={geometryPath(item.geometry)} fill={`rgb(${temperatureColor(records.get(item.properties.id)!.celsius).slice(0, 3).join(',')})`}
@@ -198,10 +198,10 @@ export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea, worldVie
         <path d={coast} fill="#bbccc9" fillRule="evenodd" />
         <text x={svgPosition(...blackSeaLabel.position)[0]} y={svgPosition(...blackSeaLabel.position)[1]} textAnchor="middle" fill="#fff" fontSize="10" fontWeight="700" pointerEvents="none">{blackSeaLabel.name}</text>
       </svg>
-      <div className="fallback-note">Vista simplificada sin WebGL2 · pulsa una zona o elige su nombre en la lista</div>
+      <div className="fallback-note">Simplified view without WebGL2 · click a region or select its name in the list</div>
     </div>}
-    <div className="map-stamp"><span className="pulse" /> {forecastMode ? 'PREDICCIÓN ESTADÍSTICA' : 'NOAA + ESTIMACIONES'} · {year}</div>
-    <div className="map-credit">{forecastMode ? 'Previsión estadística basada en histórico NOAA ERSSTv6' : 'NOAA ERSSTv6 y estimaciones vecinas'} · Límites marinos: IHO / VLIZ (CC BY 4.0) · Caspio y costa: Natural Earth</div>
-    {hover && records.get(hover.id) && <div className="map-tooltip" style={{ left: hover.x + 14, top: hover.y + 14 }}><strong>{hover.name}</strong><span>{formatTemperature(records.get(hover.id)!)} · {year}</span><span>{forecastMode ? records.get(hover.id)!.forecastBasis === 'estimated-history' ? 'Predicción sobre histórico estimado; sin validación local' : 'Predicción experimental; no es un dato NOAA futuro' : records.get(hover.id)!.method === 'estimated' ? 'Estimación de zonas cercanas; sin celdas NOAA locales' : `Media de ${records.get(hover.id)!.cells} celdas NOAA de 2°`}</span></div>}
+    <div className="map-stamp"><span className="pulse" /> {forecastMode ? 'STATISTICAL FORECAST' : 'NOAA + ESTIMATES'} · {year}</div>
+    <div className="map-credit">{forecastMode ? 'Statistical forecast based on NOAA ERSSTv6 history' : 'NOAA ERSSTv6 and neighboring-region estimates'} · Marine boundaries: IHO / VLIZ (CC BY 4.0) · Caspian and coastline: Natural Earth</div>
+    {hover && records.get(hover.id) && <div className="map-tooltip" style={{ left: hover.x + 14, top: hover.y + 14 }}><strong>{hover.name}</strong><span>{formatTemperature(records.get(hover.id)!)} · {year}</span><span>{forecastMode ? records.get(hover.id)!.forecastBasis === 'estimated-history' ? 'Forecast based on estimated history; no local validation' : 'Experimental forecast; not future NOAA data' : records.get(hover.id)!.method === 'estimated' ? 'Estimate from nearby regions; no local NOAA cells' : `Mean of ${records.get(hover.id)!.cells} NOAA cells at 2° resolution`}</span></div>}
   </div>;
 }

@@ -1,7 +1,7 @@
-# Océano en Movimiento
+# Ocean in Motion
 
 An interactive sea-surface temperature explorer and reproducible forecasting
-experiment, with a Spanish interface. Explore **102 seas and oceans** in one
+experiment, with a English interface. Explore **102 seas and oceans** in one
 continuous **1982–2030** timeline: historical values through 2025 and explicitly
 marked experimental predictions for 2026–2030.
 
@@ -69,7 +69,7 @@ approximations; exclude them from model training that requires observations.
 The annual data are in `src/data/seaTemperatures.json`. This is a regional
 overview, not a coastal or harbor reading.
 
-The **Mar Caspio** is included as a separate inland water area with
+The **Caspian Sea** is included as a separate inland water area with
 NOAA-derived annual values throughout 1982–2025. Its Natural Earth outline
 is separate from the 101 IHO marine areas. Ten complete 2° NOAA cells are
 used each year, with the same day and cosine-latitude weighting as the

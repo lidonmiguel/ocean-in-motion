@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "runId": "6054406ac5b140dc",
+  "runId": "300dbf37e80af90a",
   "selectedModel": {
     "id": "persistence",
     "family": "persistence",
@@ -617,7 +617,7 @@
   },
   "byArea": {
     "arabian": {
-      "name": "Mar Ar\u00e1bigo",
+      "name": "Arabian Sea",
       "mae": 0.236,
       "rmse": 0.24972,
       "bias": 0.1,
@@ -626,7 +626,7 @@
       "meanIntervalWidth": 0.888
     },
     "arctic": {
-      "name": "Oc\u00e9ano \u00c1rtico",
+      "name": "Arctic Ocean",
       "mae": 0.06,
       "rmse": 0.06603,
       "bias": 0.056,
@@ -635,7 +635,7 @@
       "meanIntervalWidth": 0.888
     },
     "atlantic-north": {
-      "name": "Atl\u00e1ntico norte",
+      "name": "North Atlantic Ocean",
       "mae": 0.18,
       "rmse": 0.25776,
       "bias": -0.172,
@@ -644,7 +644,7 @@
       "meanIntervalWidth": 0.888
     },
     "atlantic-south": {
-      "name": "Atl\u00e1ntico sur",
+      "name": "South Atlantic Ocean",
       "mae": 0.126,
       "rmse": 0.14893,
       "bias": -0.126,
@@ -653,7 +653,7 @@
       "meanIntervalWidth": 0.888
     },
     "baltic": {
-      "name": "Mar B\u00e1ltico",
+      "name": "Baltic Sea",
       "mae": 0.622,
       "rmse": 0.673483,
       "bias": 0.622,
@@ -662,7 +662,7 @@
       "meanIntervalWidth": 0.888
     },
     "bengal": {
-      "name": "Bah\u00eda de Bengala",
+      "name": "Bay of Bengal",
       "mae": 0.138,
       "rmse": 0.155885,
       "bias": 0.05,
@@ -671,7 +671,7 @@
       "meanIntervalWidth": 0.888
     },
     "bering": {
-      "name": "Mar de Bering",
+      "name": "Bering Sea",
       "mae": 0.338,
       "rmse": 0.371026,
       "bias": 0.338,
@@ -680,7 +680,7 @@
       "meanIntervalWidth": 0.888
     },
     "black": {
-      "name": "Mar Negro",
+      "name": "Black Sea",
       "mae": 0.41,
       "rmse": 0.508311,
       "bias": 0.158,
@@ -689,7 +689,7 @@
       "meanIntervalWidth": 0.888
     },
     "caribbean": {
-      "name": "Mar Caribe",
+      "name": "Caribbean Sea",
       "mae": 0.244,
       "rmse": 0.289344,
       "bias": -0.124,
@@ -698,7 +698,7 @@
       "meanIntervalWidth": 0.888
     },
     "caspian": {
-      "name": "Mar Caspio",
+      "name": "Caspian Sea",
       "mae": 0.048,
       "rmse": 0.051769,
       "bias": -0.048,
@@ -707,7 +707,7 @@
       "meanIntervalWidth": 0.888
     },
     "coral": {
-      "name": "Mar del Coral",
+      "name": "Coral Sea",
       "mae": 0.202,
       "rmse": 0.234478,
       "bias": -0.126,
@@ -716,7 +716,7 @@
       "meanIntervalWidth": 0.888
     },
     "gulf-mexico": {
-      "name": "Golfo de M\u00e9xico",
+      "name": "Gulf of Mexico",
       "mae": 0.186,
       "rmse": 0.237192,
       "bias": -0.07,
@@ -725,7 +725,7 @@
       "meanIntervalWidth": 0.888
     },
     "indian": {
-      "name": "Oc\u00e9ano \u00cdndico",
+      "name": "Indian Ocean",
       "mae": 0.15,
       "rmse": 0.189895,
       "bias": -0.13,
@@ -734,7 +734,7 @@
       "meanIntervalWidth": 0.888
     },
     "med-east": {
-      "name": "Mediterr\u00e1neo oriental",
+      "name": "Mediterranean Sea - Eastern Basin",
       "mae": 0.284,
       "rmse": 0.366224,
       "bias": -0.28,
@@ -743,7 +743,7 @@
       "meanIntervalWidth": 0.888
     },
     "med-west": {
-      "name": "Mediterr\u00e1neo occidental",
+      "name": "Mediterranean Sea - Western Basin",
       "mae": 0.342,
       "rmse": 0.357351,
       "bias": -0.238,
@@ -752,7 +752,7 @@
       "meanIntervalWidth": 0.888
     },
     "north-sea": {
-      "name": "Mar del Norte",
+      "name": "North Sea",
       "mae": 0.212,
       "rmse": 0.239666,
       "bias": -0.108,
@@ -761,7 +761,7 @@
       "meanIntervalWidth": 0.888
     },
     "pacific-north": {
-      "name": "Pac\u00edfico norte",
+      "name": "North Pacific Ocean",
       "mae": 0.12,
       "rmse": 0.136967,
       "bias": 0.02,
@@ -770,7 +770,7 @@
       "meanIntervalWidth": 0.888
     },
     "pacific-south": {
-      "name": "Pac\u00edfico sur",
+      "name": "South Pacific Ocean",
       "mae": 0.166,
       "rmse": 0.171988,
       "bias": -0.05,
@@ -779,7 +779,7 @@
       "meanIntervalWidth": 0.888
     },
     "red": {
-      "name": "Mar Rojo",
+      "name": "Red Sea",
       "mae": 0.154,
       "rmse": 0.189262,
       "bias": -0.01,
@@ -788,7 +788,7 @@
       "meanIntervalWidth": 0.888
     },
     "south-china": {
-      "name": "Mar de China Meridional",
+      "name": "South China Sea",
       "mae": 0.154,
       "rmse": 0.172221,
       "bias": 0.058,
@@ -797,7 +797,7 @@
       "meanIntervalWidth": 0.888
     },
     "southern": {
-      "name": "Oc\u00e9ano Austral",
+      "name": "Southern Ocean",
       "mae": 0.078,
       "rmse": 0.088431,
       "bias": 0.062,
@@ -806,7 +806,7 @@
       "meanIntervalWidth": 0.888
     },
     "tasman": {
-      "name": "Mar de Tasmania",
+      "name": "Tasman Sea",
       "mae": 0.382,
       "rmse": 0.411364,
       "bias": -0.382,
@@ -819,8 +819,8 @@
     "inputs": {
       "src/data/seaTemperatures.json": "0ffa3a3e7573c4399c404cfca674b534a82a16416aef2bf26347b27eb3969559",
       "src/data/caspianTemperatures.json": "fe6283c9f63ce987ef299cccb89f241b8abc42045978336c7de6f1befab6d9fe",
-      "src/data/seaAreas.geojson": "89015e2d84934d2e50ba499a28700d7b207e8995c26416b0ba19a496b730a42e",
-      "src/data/caspian.geojson": "3101664640a3f05760e69ea0be1b10b315c1090cbcf86da1a12518c0d3617e06"
+      "src/data/seaAreas.geojson": "606396227da0e3c7efeada87dd7b0c99b570c989eb3f489a3c404408656c9b94",
+      "src/data/caspian.geojson": "fb97f2af302248636d3f04dcde4ee4d8efa00074bdeb0a2f77bad8ca6141c20b"
     },
     "configSha256": "72231c186ea496ae4791088121ca713f4f4222079910c92c78c3cbaa2f29ad5e",
     "codeSha256": "465e1dca3b02d56a29585726a7eb1408c5c7c9776508ae58060cb2e62ecd77de"

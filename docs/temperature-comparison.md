@@ -5,7 +5,7 @@ uses the same reviewed annual series and selected year as the map. No new
 observations, models, geographic aggregation or interpolation are introduced.
 Region colors stay assigned while the region remains selected. Region selection
 is explicit: changing the map selection does not replace a comparison; use
-**Añadir zona del mapa** to add it.
+**Add map region** to add it.
 
 ## Reference and historical change
 
@@ -49,7 +49,7 @@ where applicable, forecast model and run identifier.
 Search is accent-insensitive. Category and source filters affect only the
 region picker, preserving the selected comparison. The ocean filter uses the
 seven published Atlantic/Pacific subdivisions, Indian, Arctic and Southern
-regions. The sea filter includes names beginning with Mar/Mares, the two
+regions. The sea filter includes names containing Sea/Seas, the two
 Mediterranean regions, Kattegat, Skagerrak and the Caspian. Other regions include
 gulfs, bays, channels and straits. These are presentation groups based on the
 published regional labels, not a new scientific classification. They do not
@@ -65,7 +65,8 @@ extend to the left of zero. The expandable table provides the visible series
 as text. The CSV exports only selected regions and the chosen interval, with
 both absolute temperature and anomaly, fixed reference dates and means,
 provenance, cells, donor regions and forecast traceability. UTF-8 BOM and quoted
-fields support spreadsheet imports. Raw numerical values are preserved.
+fields support spreadsheet imports. Raw numerical values are preserved. CSV headers, categories, provenance labels
+and region names are in English; stable regional identifiers are unchanged.
 
 See [source preparation and geographic limitations](../README.md#sea-temperatures-and-provenance)
 and [forecast methodology](temperature-forecast.md).
