@@ -22,6 +22,8 @@ export function TemperaturePage({ onBack, initialYear = lastYear, initialAreaId 
   const forecastMode = year > lastYear;
   const [worldViewKey, setWorldViewKey] = useState(0);
   const [search, setSearch] = useState('');
+  const [showCooling, setShowCooling] = useState(true);
+  const [motionPaused, setMotionPaused] = useState(false);
   const values = timelineByYear.get(year) ?? new Map<string, TemperatureRecord>();
   const areas = seaAreas.features.filter(item => values.has(item.properties.id))
     .sort((a, b) => a.properties.name.localeCompare(b.properties.name, 'es'));
@@ -52,6 +54,9 @@ export function TemperaturePage({ onBack, initialYear = lastYear, initialAreaId 
         <input id="temperature-year" className="year-slider" type="range" min={firstYear} max={rangeEnd} value={year} onChange={event => setYear(Number(event.target.value))} />
         <div className="year-ends"><span>{firstYear}</span><span>{rangeEnd}</span></div>
         <p className="timeline-note">Histórico hasta 2025 · predicción 2026–2030 en las 102 zonas.</p>
+        <label className="cooling-toggle"><input type="checkbox" checked={showCooling} onChange={event => setShowCooling(event.target.checked)} /><span>Mostrar recorridos hacia mares más fríos</span></label>
+        {showCooling && <button type="button" className="view-switch cooling-pause" aria-pressed={motionPaused} onClick={() => setMotionPaused(paused => !paused)}>{motionPaused ? 'Reanudar recorridos' : 'Pausar recorridos'}</button>}
+        <p className="cooling-note">Desde su posición, cada punto busca el mar más cercano que sea más frío y accesible por agua. Al llegar, vuelve a buscar. Sin otro más fresco, gira y se desvanece. Es una animación ilustrativa, no una ruta de animales ni una corriente real.</p>
         <label className="field-label" htmlFor="sea-select">MAR U OCÉANO</label>
         <select id="sea-select" className="temperature-select" value={areaId} onChange={event => setAreaId(event.target.value)}>
           {areas.map(item => <option key={item.properties.id} value={item.properties.id}>{item.properties.name}</option>)}
@@ -66,7 +71,7 @@ export function TemperaturePage({ onBack, initialYear = lastYear, initialAreaId 
       </aside>
       <section className="map-panel" aria-label="Mapa de temperaturas marinas">
         <div className="map-header"><div><div className="section-index">02 / VISUALIZAR</div><h2>Temperatura superficial · {year}</h2></div><button type="button" className="world-view-button" onClick={() => setWorldViewKey(key => key + 1)}>Ver mapa mundial</button></div>
-        <div className="map-stage"><SeaTemperatureMap year={year} selectedAreaId={areaId} onSelectArea={setAreaId} worldViewKey={worldViewKey} values={values} forecastMode={forecastMode} /></div>
+        <div className="map-stage"><SeaTemperatureMap year={year} selectedAreaId={areaId} onSelectArea={setAreaId} worldViewKey={worldViewKey} values={values} forecastMode={forecastMode} showCooling={showCooling} motionPaused={motionPaused} /></div>
         <div className="map-bottom"><div className="temperature-legend"><span>FRÍA</span><i /><span>CÁLIDA</span><small>−2 °C → 32 °C</small><span className="estimate-key"><i /> {forecastMode ? '↗ Predicción' : '≈ Estimada'}</span></div><span className="map-hint">Pulsa una zona · arrastra para mover</span></div>
       </section>
       <aside className="info-panel temperature-info" aria-label="Detalle de la zona marítima">

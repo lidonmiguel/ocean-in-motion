@@ -37,3 +37,5 @@ jobs:
       - run: PYTHONPATH=python python -m ocean_pipeline.forecast --check
       - run: PYTHONPATH=python python -m ocean_pipeline.forecast_analysis
       - run: PYTHONPATH=python python -m ocean_pipeline.execute_notebook
+      - run: PYTHONPATH=python python -m unittest discover -s python/tests -p test_temperature_routes.py -v
+      - run: PYTHONPATH=python python -m ocean_pipeline.temperature_routes --check

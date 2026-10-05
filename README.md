@@ -142,6 +142,15 @@ The published map is at
 
 ## Temperature forecasting · 2026–2030
 
+The temperature map also animates **illustrative paths toward cooler seas**.
+From each point's current water position, it finds the nearest reachable cooler
+sea by geographic distance from its current position, then follows a water
+route, arrives and repeats the search. Without a cooler
+destination it circles locally and fades. Paths use the selected year's values;
+controls pause or hide them, and reduced-motion preferences are respected.
+These are visual traces, not measured animal routes or ocean currents.
+See [distance rules, water geometry and limitations](docs/temperature-cooling-paths.md).
+
 The temperature view has **one continuous 1982–2030 timeline** for all 102
 regions. The same year slider, regional selection, chart and table show history
 through 2025 and predictions from 2026, marked ↗ and drawn as a dashed line.
