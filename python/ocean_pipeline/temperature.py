@@ -42,8 +42,8 @@ def build(areas_path: Path, start: int, end: int, output: Path) -> None:
     for item in source["features"]:
         name = item["properties"]["NAME"]
         if name in AREAS:
-            ident, spanish = AREAS[name]
-            features.append({"type": "Feature", "properties": {"id": ident, "name": spanish}, "geometry": item["geometry"]})
+            ident, display_name = AREAS[name]
+            features.append({"type": "Feature", "properties": {"id": ident, "name": display_name}, "geometry": item["geometry"]})
     if len(features) != len(AREAS):
         raise ValueError("Missing IHO sea area in source GeoJSON")
 

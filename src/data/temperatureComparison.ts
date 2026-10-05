@@ -9,9 +9,9 @@ const oceanIds = new Set(['atlantic-north', 'atlantic-south', 'pacific-north', '
 export const comparisonRegions = seaAreas.features.map(({ properties }) => ({
   ...properties,
   kind: (oceanIds.has(properties.id) ? 'ocean'
-    : /^(Mar\b|Mares\b|Mediterráneo\b)/.test(properties.name) || ['iho-kattegat', 'iho-skagerrak'].includes(properties.id) ? 'sea' : 'other') as RegionKind,
+    : /\bSeas?\b/.test(properties.name) || ['iho-kattegat', 'iho-skagerrak'].includes(properties.id) ? 'sea' : 'other') as RegionKind,
   estimated: seaSeries(properties.id).some(row => row.method === 'estimated'),
-})).sort((a, b) => a.name.localeCompare(b.name, 'es'));
+})).sort((a, b) => a.name.localeCompare(b.name, 'en'));
 export const comparisonRegionById = new Map(comparisonRegions.map(region => [region.id, region]));
 
 // Require one finite historical value for every year: no forecasts or silent partial baselines.
@@ -32,20 +32,20 @@ export function comparisonValue(row: TemperatureRecord, metric: ComparisonMetric
   return metric === 'temperature' ? row.celsius : baseline === undefined ? undefined : row.celsius - baseline;
 }
 export function comparisonProvenance(row: TemperatureRecord) {
-  if (row.method === 'forecast') return row.forecastBasis === 'estimated-history' ? 'Predicción · base estimada' : 'Predicción · base NOAA';
-  return row.method === 'estimated' ? 'Histórico estimado' : 'Histórico NOAA reconstruido';
+  if (row.method === 'forecast') return row.forecastBasis === 'estimated-history' ? 'Forecast · estimated basis' : 'Forecast · NOAA basis';
+  return row.method === 'estimated' ? 'Estimated history' : 'Reconstructed NOAA history';
 }
 export function normalizeRegionName(value: string) {
-  return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('es').trim();
+  return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('en').trim();
 }
 export function buildComparisonCsv(ids: string[], start: number, end: number) {
   const quote = (value: string | number | undefined) => `"${String(value ?? '').replaceAll('"', '""')}"`;
-  const header = ['año', 'zona_id', 'zona', 'categoría', 'temperatura_c', 'anomalia_c', 'referencia_inicio', 'referencia_fin', 'media_referencia_c', 'procedencia', 'numero_celdas', 'zonas_base', 'limite_inferior_c', 'limite_superior_c', 'tipo_intervalo', 'intervalo_nominal', 'modelo', 'historico_hasta', 'run_id'];
+  const header = ['year', 'region_id', 'region', 'category', 'temperature_c', 'anomaly_c', 'reference_start', 'reference_end', 'reference_mean_c', 'provenance', 'cell_count', 'donor_regions', 'lower_bound_c', 'upper_bound_c', 'interval_kind', 'nominal_interval', 'model', 'history_through', 'run_id'];
   const rows = ids.flatMap(id => {
     const region = comparisonRegionById.get(id);
     const { baseline } = comparisonSummary(id);
     return timelineSeries(id).filter(row => row.year >= start && row.year <= end).map(row => [
-      row.year, id, region?.name, region?.kind === 'ocean' ? 'océano' : region?.kind === 'sea' ? 'mar' : 'otra zona',
+      row.year, id, region?.name, region?.kind === 'ocean' ? 'ocean' : region?.kind === 'sea' ? 'sea' : 'other region',
       row.celsius, baseline === undefined ? undefined : row.celsius - baseline, ...referencePeriod, baseline,
       comparisonProvenance(row), row.cells,
       row.estimatedFrom?.map(donor => comparisonRegionById.get(donor)?.name ?? donor).join(' / '),

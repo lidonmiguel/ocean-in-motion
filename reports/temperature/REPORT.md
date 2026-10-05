@@ -1,6 +1,6 @@
 # Annual regional SST forecasting: 2026–2030
 
-Run `6054406ac5b140dc`. Selected on development data: **persistence**.
+Run `300dbf37e80af90a`. Selected on development data: **persistence**.
 
 NOAA ERSSTv6 reconstructions, not direct local measurements. Five direct horizon models; learned models predict change from the origin temperature.
 

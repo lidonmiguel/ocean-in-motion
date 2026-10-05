@@ -28,19 +28,19 @@ describe('reviewed temperature forecasts', () => {
 
   it('shows one continuous timeline and the full history and future without mode controls', () => {
     const html = renderToStaticMarkup(<TemperaturePage />);
-    expect(html).toContain('HISTÓRICO Y PREVISIÓN · 1982–2030');
-    expect(html).toContain('102 ZONAS');
+    expect(html).toContain('HISTORY AND FORECAST · 1982–2030');
+    expect(html).toContain('102 REGIONS');
     expect(html).toContain('min="1982" max="2030"');
-    expect(html).toContain('AÑO · 2025 · HISTÓRICO');
-    expect(html).not.toContain('aria-label="Calidad de la predicción"');
-    expect(html).not.toContain('aria-label="Tipo de temperatura"');
+    expect(html).toContain('YEAR · 2025 · HISTORY');
+    expect(html).not.toContain('aria-label="Forecast quality"');
+    expect(html).not.toContain('aria-label="Temperature type"');
     expect(html).toContain('stroke-dasharray="4 3"');
     expect(html).toContain('1982</td>');
-    expect(html).toContain('2030 · pred.');
-    expect(html).toContain('Mostrar recorridos hacia mares más fríos');
-    expect(html).toContain('Pausar recorridos');
-    expect(html).toContain('vecinos que tocan su zona');
-    expect(html).toContain('Sin otro más fresco, gira y se desvanece');
+    expect(html).toContain('2030 · forecast');
+    expect(html).toContain('Show paths toward cooler seas');
+    expect(html).toContain('Pause paths');
+    expect(html).toContain('neighbors touching its current region');
+    expect(html).toContain('Without a cooler neighbor, it loops locally and fades away');
     expect(timelineYears).toEqual(Array.from({ length: 49 }, (_, i) => 1982+i));
     expect(timelineSeries('iho-adriatic-sea')).toHaveLength(49);
   });
@@ -48,27 +48,27 @@ describe('reviewed temperature forecasts', () => {
   it('identifies the future as an experiment with measured evaluation and uncertainty', () => {
     const html = renderToStaticMarkup(<TemperaturePage initialYear={2030} />);
     expect(html).toContain('min="1982" max="2030"');
-    expect(html).toContain('102 ZONAS');
-    expect(html).toContain('AÑO · 2030 · PREDICCIÓN');
-    expect(html).toContain('Persistencia: última temperatura conocida');
-    expect(html).toContain('Intervalo nominal 90 %');
-    expect(html).toContain('Su cobertura futura no está garantizada');
-    expect(html).toContain('Prueba 2021–2025');
+    expect(html).toContain('102 REGIONS');
+    expect(html).toContain('YEAR · 2030 · FORECAST');
+    expect(html).toContain('Persistence: last known temperature');
+    expect(html).toContain('Nominal 90% interval');
+    expect(html).toContain('Future coverage is not guaranteed');
+    expect(html).toContain('Test 2021–2025');
     expect(html).toContain('stroke-dasharray="4 3"');
     expect(html).toContain('<polygon');
-    expect(html).toContain('2030 · pred.');
-    expect(html).toContain('Descargar histórico y predicciones');
+    expect(html).toContain('2030 · forecast');
+    expect(html).toContain('Download history and forecasts');
     expect(html).not.toContain('NOAA · 2026');
   });
 
   it('keeps an estimated sea selected in the future without claiming local validation', () => {
     const html = renderToStaticMarkup(<TemperaturePage initialYear={2026} initialAreaId="iho-adriatic-sea" />);
-    expect(html).toContain('Mar Adriático');
-    expect(html).toContain('PREDICCIÓN · BASE ESTIMADA');
-    expect(html).toContain('Rango derivado de las zonas base');
-    expect(html).toContain('Sin cobertura local validada');
-    expect(html).not.toContain('Intervalo nominal 90 %:');
-    expect(html).not.toContain('Error de esta zona en los cinco años de prueba');
+    expect(html).toContain('Adriatic Sea');
+    expect(html).toContain('FORECAST · ESTIMATED BASIS');
+    expect(html).toContain('Donor-derived range');
+    expect(html).toContain('No validated local coverage');
+    expect(html).not.toContain('Nominal 90% interval:');
+    expect(html).not.toContain('Error for this region over the five test years');
     expect(timelineByYear.get(2025)!.has('iho-adriatic-sea')).toBe(true);
     expect(timelineByYear.get(2026)!.has('iho-adriatic-sea')).toBe(true);
   });
@@ -76,12 +76,12 @@ describe('reviewed temperature forecasts', () => {
   it('exports one table with origins and uncertainty kinds distinguished per row', () => {
     const lines = buildTemperatureCsv().split('\n');
     expect(lines).toHaveLength(1 + 102*49);
-    expect(lines[0]).toContain('tipo,base');
-    expect(lines.some(line => line.startsWith('2025,"Mar Adriático"') && line.includes(',histórico,estimada,'))).toBe(true);
-    const derived = lines.find(line => line.startsWith('2030,"Mar Adriático"'))!;
-    expect(derived).toContain(',predicción,estimada,');
+    expect(lines[0]).toContain('type,basis');
+    expect(lines.some(line => line.startsWith('2025,"Adriatic Sea"') && line.includes(',history,estimated,'))).toBe(true);
+    const derived = lines.find(line => line.startsWith('2030,"Adriatic Sea"'))!;
+    expect(derived).toContain(',forecast,estimated,');
     expect(derived).toContain(',donor-derived-range,,persistence,2025,');
-    const direct = lines.find(line => line.startsWith('2030,"Mar Caspio"'))!;
+    const direct = lines.find(line => line.startsWith('2030,"Caspian Sea"'))!;
     expect(direct).toContain(',calibrated,0.9,persistence,2025,');
   });
 });

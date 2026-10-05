@@ -1,7 +1,7 @@
 [
   {
     "areaId": "arabian",
-    "name": "Mar Ar\u00e1bigo",
+    "name": "Arabian Sea",
     "lon": 63.219174,
     "lat": 12.45006,
     "areaKm2": 4192713.855149,
@@ -22,7 +22,7 @@
   },
   {
     "areaId": "arctic",
-    "name": "Oc\u00e9ano \u00c1rtico",
+    "name": "Arctic Ocean",
     "lon": -138.449662,
     "lat": 80.71087,
     "areaKm2": 5183539.292899,
@@ -43,7 +43,7 @@
   },
   {
     "areaId": "atlantic-north",
-    "name": "Atl\u00e1ntico norte",
+    "name": "North Atlantic Ocean",
     "lon": -42.228662,
     "lat": 34.248285,
     "areaKm2": 34297208.228651,
@@ -64,7 +64,7 @@
   },
   {
     "areaId": "atlantic-south",
-    "name": "Atl\u00e1ntico sur",
+    "name": "South Atlantic Ocean",
     "lon": -16.486928,
     "lat": -30.052735,
     "areaKm2": 40293214.934583,
@@ -72,7 +72,7 @@
   },
   {
     "areaId": "baltic",
-    "name": "Mar B\u00e1ltico",
+    "name": "Baltic Sea",
     "lon": 18.913886,
     "lat": 56.751155,
     "areaKm2": 218765.66181,
@@ -93,7 +93,7 @@
   },
   {
     "areaId": "bengal",
-    "name": "Bah\u00eda de Bengala",
+    "name": "Bay of Bengal",
     "lon": 86.878472,
     "lat": 14.952905,
     "areaKm2": 2191966.653103,
@@ -114,7 +114,7 @@
   },
   {
     "areaId": "bering",
-    "name": "Mar de Bering",
+    "name": "Bering Sea",
     "lon": -170.899386,
     "lat": 58.967385,
     "areaKm2": 2353318.322045,
@@ -131,7 +131,7 @@
   },
   {
     "areaId": "black",
-    "name": "Mar Negro",
+    "name": "Black Sea",
     "lon": 34.073139,
     "lat": 43.712375,
     "areaKm2": 422433.257268,
@@ -152,7 +152,7 @@
   },
   {
     "areaId": "caribbean",
-    "name": "Mar Caribe",
+    "name": "Caribbean Sea",
     "lon": -72.436137,
     "lat": 15.28978,
     "areaKm2": 2825995.066878,
@@ -169,7 +169,7 @@
   },
   {
     "areaId": "caspian",
-    "name": "Mar Caspio",
+    "name": "Caspian Sea",
     "lon": 50.519987,
     "lat": 41.860385,
     "areaKm2": 397002.37085,
@@ -177,7 +177,7 @@
   },
   {
     "areaId": "coral",
-    "name": "Mar del Coral",
+    "name": "Coral Sea",
     "lon": 157.654858,
     "lat": -18.698505,
     "areaKm2": 4090335.711881,
@@ -190,7 +190,7 @@
   },
   {
     "areaId": "gulf-mexico",
-    "name": "Golfo de M\u00e9xico",
+    "name": "Gulf of Mexico",
     "lon": -90.381013,
     "lat": 24.262605,
     "areaKm2": 1558056.159268,
@@ -207,7 +207,7 @@
   },
   {
     "areaId": "indian",
-    "name": "Oc\u00e9ano \u00cdndico",
+    "name": "Indian Ocean",
     "lon": 80.388576,
     "lat": -24.80201,
     "areaKm2": 57908721.802344,
@@ -224,7 +224,7 @@
   },
   {
     "areaId": "med-east",
-    "name": "Mediterr\u00e1neo oriental",
+    "name": "Mediterranean Sea - Eastern Basin",
     "lon": 22.841499,
     "lat": 33.972405,
     "areaKm2": 1168061.442871,
@@ -245,7 +245,7 @@
   },
   {
     "areaId": "med-west",
-    "name": "Mediterr\u00e1neo occidental",
+    "name": "Mediterranean Sea - Western Basin",
     "lon": 6.218435,
     "lat": 39.641195,
     "areaKm2": 475391.661552,
@@ -266,7 +266,7 @@
   },
   {
     "areaId": "north-sea",
-    "name": "Mar del Norte",
+    "name": "North Sea",
     "lon": 2.797564,
     "lat": 55.991155,
     "areaKm2": 529309.054073,
@@ -287,7 +287,7 @@
   },
   {
     "areaId": "pacific-north",
-    "name": "Pac\u00edfico norte",
+    "name": "North Pacific Ocean",
     "lon": -149.172611,
     "lat": 29.13773,
     "areaKm2": 64608949.698892,
@@ -300,7 +300,7 @@
   },
   {
     "areaId": "pacific-south",
-    "name": "Pac\u00edfico sur",
+    "name": "South Pacific Ocean",
     "lon": -125.690878,
     "lat": -29.29769,
     "areaKm2": 76199539.425775,
@@ -313,7 +313,7 @@
   },
   {
     "areaId": "red",
-    "name": "Mar Rojo",
+    "name": "Red Sea",
     "lon": 38.530238,
     "lat": 20.302025,
     "areaKm2": 447957.812668,
@@ -334,7 +334,7 @@
   },
   {
     "areaId": "south-china",
-    "name": "Mar de China Meridional",
+    "name": "South China Sea",
     "lon": 113.981283,
     "lat": 11.16138,
     "areaKm2": 3332743.916299,
@@ -347,7 +347,7 @@
   },
   {
     "areaId": "southern",
-    "name": "Oc\u00e9ano Austral",
+    "name": "Southern Ocean",
     "lon": -135.686883,
     "lat": -72.7774,
     "areaKm2": 21897491.408652,
@@ -364,7 +364,7 @@
   },
   {
     "areaId": "tasman",
-    "name": "Mar de Tasmania",
+    "name": "Tasman Sea",
     "lon": 161.845074,
     "lat": -40.43461,
     "areaKm2": 3335741.986081,

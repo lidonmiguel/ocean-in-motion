@@ -25,14 +25,14 @@ describe('temperature coast and island cover', () => {
   it('keeps the Black Sea selectable water with complete annual temperatures', () => {
     expect(onLand(34, 43)).toBe(false);
     const black = seaAreas.features.find(area => area.properties.id === 'black');
-    expect(black?.properties.name).toBe('Mar Negro');
+    expect(black?.properties.name).toBe('Black Sea');
     expect(seaSeries('black')).toHaveLength(44);
     for (const records of recordsByYear.values()) expect(records.get('black')?.cells).toBeGreaterThanOrEqual(2);
   });
   it('includes the Caspian as a separate water area with complete NOAA history', () => {
     expect(onLand(51, 41)).toBe(false);
     const caspian = seaAreas.features.find(area => area.properties.id === 'caspian');
-    expect(caspian?.properties.name).toBe('Mar Caspio');
+    expect(caspian?.properties.name).toBe('Caspian Sea');
     expect(seaSeries('caspian')).toHaveLength(44);
     for (const records of recordsByYear.values()) expect(records.get('caspian')?.cells).toBeGreaterThanOrEqual(2);
   });

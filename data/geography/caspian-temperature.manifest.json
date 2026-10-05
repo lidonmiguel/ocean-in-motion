@@ -1,7 +1,7 @@
 {
   "sourceUrlPattern": "https://www.ncei.noaa.gov/data/sea-surface-temperature-extended-reconstructed/v6/access/ersst.v6.YYYYMM.nc",
   "accessed": "2026-10-05",
-  "geometrySha256": "3101664640a3f05760e69ea0be1b10b315c1090cbcf86da1a12518c0d3617e06",
+  "geometrySha256": "fb97f2af302248636d3f04dcde4ee4d8efa00074bdeb0a2f77bad8ca6141c20b",
   "method": "Annual day-weighted monthly SST, cosine-latitude cell weights; at least two cells valid all twelve months",
   "inputs": [
     {

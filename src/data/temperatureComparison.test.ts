@@ -28,9 +28,9 @@ describe('regional comparison definitions and provenance', () => {
     expect(comparisonValue(row(2025, 12), 'temperature', 10)).toBe(12);
     expect(comparisonValue(row(2025, 8), 'anomaly', 10)).toBe(-2);
     expect(comparisonValue(row(2025, 8), 'anomaly')).toBeUndefined();
-    expect(comparisonProvenance(row(2025, 8))).toBe('Histórico NOAA reconstruido');
-    expect(comparisonProvenance(row(2025, 8, 'estimated'))).toBe('Histórico estimado');
-    expect(comparisonProvenance({ ...row(2026, 8, 'forecast'), forecastBasis: 'estimated-history' })).toBe('Predicción · base estimada');
+    expect(comparisonProvenance(row(2025, 8))).toBe('Reconstructed NOAA history');
+    expect(comparisonProvenance(row(2025, 8, 'estimated'))).toBe('Estimated history');
+    expect(comparisonProvenance({ ...row(2026, 8, 'forecast'), forecastBasis: 'estimated-history' })).toBe('Forecast · estimated basis');
   });
   it('classifies all regions without aggregation and preserves actual historical sources', () => {
     expect(comparisonRegions.filter(region => region.kind === 'ocean')).toHaveLength(7);
@@ -39,22 +39,22 @@ describe('regional comparison definitions and provenance', () => {
     expect(comparisonRegions.find(region => region.id === 'caspian')?.kind).toBe('sea');
     expect(comparisonRegions.find(region => region.id === 'med-west')?.kind).toBe('sea');
     expect(comparisonRegions.find(region => region.id === 'gulf-mexico')?.kind).toBe('other');
-    expect(normalizeRegionName('  OCÉANO Ártico ')).toBe('oceano artico');
+    expect(normalizeRegionName('  ÁRCTIC Ocean ')).toBe('arctic ocean');
   });
   it('exports only the selected regions and interval while retaining fixed references and forecast metadata', () => {
     const csv = buildComparisonCsv(['caspian', 'iho-adriatic-sea'], 2025, 2026);
     const rows = csv.split('\n');
     expect(rows).toHaveLength(5);
-    expect(rows[0]).toContain('"anomalia_c","referencia_inicio","referencia_fin"');
-    expect(rows[1]).toContain('"2025","caspian","Mar Caspio"');
+    expect(rows[0]).toContain('"anomaly_c","reference_start","reference_end"');
+    expect(rows[1]).toContain('"2025","caspian","Caspian Sea"');
     expect(rows[1]).toContain('"1982","2010"');
-    expect(rows[2]).toContain('"Predicción · base NOAA"');
+    expect(rows[2]).toContain('"Forecast · NOAA basis"');
     expect(rows[2]).toContain('"calibrated","0.9","persistence","2025"');
-    expect(rows[3]).toContain('"Histórico estimado"');
-    expect(rows[4]).toContain('"Predicción · base estimada"');
+    expect(rows[3]).toContain('"Estimated history"');
+    expect(rows[4]).toContain('"Forecast · estimated basis"');
     expect(rows[4]).toContain('"donor-derived-range","","persistence","2025"');
     expect(csv).not.toContain('"2024"');
-    expect(csv).not.toContain('Atlántico norte');
+    expect(csv).not.toContain('North Atlantic Ocean');
     const full = buildComparisonCsv(['caspian'], 1982, 2030).split('\n');
     expect(full).toHaveLength(50);
     expect(timelineSeries('caspian')).toHaveLength(49);
