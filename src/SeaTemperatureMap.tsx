@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import * as maplibregl from 'maplibre-gl';
 import { MapLibreOverlay } from '@deck.gl/maplibre';
-import { GeoJsonLayer, TextLayer } from '@deck.gl/layers';
+import { GeoJsonLayer, PathLayer, ScatterplotLayer, TextLayer } from '@deck.gl/layers';
 import landRaw from './data/temperatureLand.geojson?raw';
 import { formatTemperature, recordsByYear, seaAreas, temperatureColor, type SeaFeature } from './data/seaTemperatures';
+import { coolingFlowFrame, coolingSvgPath, temperatureFlows, type CoolingFrame } from './data/temperatureFlows';
 
 const land = JSON.parse(landRaw) as {
   type: 'FeatureCollection';
@@ -44,9 +45,10 @@ function boundsForArea(area: SeaFeature): maplibregl.LngLatBoundsLike {
     [Math.max(...points.map(point => point[0])), north]];
 }
 
-export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea, worldViewKey, values, forecastMode = false }: {
+export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea, worldViewKey, values, forecastMode = false, showCooling = true, motionPaused = false }: {
   year: number; selectedAreaId: string | null; onSelectArea: (id: string) => void; worldViewKey: number;
   values?: Map<string, import('./data/seaTemperatures').TemperatureRecord>; forecastMode?: boolean;
+  showCooling?: boolean; motionPaused?: boolean;
 }) {
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
@@ -56,6 +58,9 @@ export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea, worldVie
   const [hover, setHover] = useState<{ x: number; y: number; id: string; name: string } | null>(null);
   const previousArea = useRef(selectedAreaId);
   const records = values ?? recordsByYear.get(year)!;
+  const flows = useMemo(() => showCooling && (ready || fallback) ? temperatureFlows(records) : [], [records, showCooling, ready, fallback]);
+  const svgTrails = useRef(new Map<string, SVGPathElement>());
+  const clock = useRef({ year, seconds: 0 });
 
   useEffect(() => {
     if (!container.current || fallback) return;
@@ -100,10 +105,8 @@ export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea, worldVie
   }, [ready, selectedAreaId]);
 
   useEffect(() => {
-    if (!ready || !overlay.current) return;
-    setHover(null);
-    overlay.current.setProps({ layers: [
-      new GeoJsonLayer<SeaFeature['properties']>({
+    if (!ready && !fallback) return;
+    const seaLayer = new GeoJsonLayer<SeaFeature['properties']>({
         id: 'sea-temperature',
         data: seaAreas.features.filter(item => records.has(item.properties.id)),
         filled: true, stroked: true, pickable: true,
@@ -117,21 +120,66 @@ export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea, worldVie
         lineWidthUnits: 'pixels',
         onHover: info => setHover(info.object ? { x: info.x, y: info.y, id: info.object.properties.id, name: info.object.properties.name } : null),
         onClick: info => { if (info.object) onSelectArea(info.object.properties.id); }
-      }),
-      new GeoJsonLayer({
+      });
+    const landLayer = new GeoJsonLayer({
         id: 'land-cover', data: land, filled: true, stroked: false,
         getFillColor: [187, 204, 201, 255], parameters: { depthTest: false },
         pickable: true, onHover: () => setHover(null)
-      }),
-      new TextLayer({
+      });
+    const labelLayer = new TextLayer({
         id: 'black-sea-label', data: [blackSeaLabel],
         getPosition: item => item.position, getText: item => item.name,
         getSize: 11, sizeUnits: 'pixels', getColor: [255, 255, 255, 245],
         fontWeight: 700, billboard: true, pickable: false,
         parameters: { depthTest: false }
-      })
-    ] });
-  }, [ready, year, records, selectedAreaId, onSelectArea]);
+      });
+    if (clock.current.year !== year) clock.current = { year, seconds: 0 };
+    type Draw = CoolingFrame & { id: string; selected: boolean };
+    const render = (seconds: number) => {
+      const trails: Draw[] = flows.map(flow => ({ ...coolingFlowFrame(flow, seconds),
+        id: flow.id, selected: flow.areas[0] === selectedAreaId })).filter(frame => frame.alpha > 0.01);
+      if (ready) overlay.current?.setProps({ layers: [seaLayer,
+        new PathLayer<Draw>({ id: 'temperature-flow-shadow', data: trails, getPath: d => d.path,
+          getColor: d => [6, 27, 39, Math.round(d.alpha*155)], getWidth: 4.5,
+          widthUnits: 'pixels', wrapLongitude: true, pickable: false }),
+        new PathLayer<Draw>({ id: 'temperature-cooling-trails', data: trails, getPath: d => d.path,
+          getColor: d => d.selected ? [255, 242, 188, Math.round(d.alpha*255)] : [212, 255, 251, Math.round(d.alpha*235)],
+          getWidth: d => d.selected ? 2.4 : 1.6, widthUnits: 'pixels', wrapLongitude: true,
+          capRounded: true, jointRounded: true, pickable: false }),
+        new ScatterplotLayer<Draw>({ id: 'temperature-flow-heads', data: trails,
+          getPosition: d => [((d.head![0]+180)%360+360)%360-180, d.head![1]],
+          getFillColor: d => [248, 255, 247, Math.round(d.alpha*255)], radiusUnits: 'pixels', getRadius: 2,
+          wrapLongitude: true, pickable: false }), landLayer, labelLayer] });
+      if (fallback) {
+        const frames = new Map(trails.map(t => [t.id, t]));
+        svgTrails.current.forEach((element, id) => {
+          const frame = frames.get(id);
+          element.setAttribute('d', frame ? coolingSvgPath(frame.path) : '');
+          element.setAttribute('opacity', String(frame?.alpha ?? 0));
+        });
+      }
+    };
+    const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let frame = 0, lastFrame = -Infinity, epoch = 0;
+    const animate = (time: number) => {
+      if (time-lastFrame >= 40) {
+        lastFrame = time;
+        clock.current.seconds = (time-epoch)/1000;
+        render(clock.current.seconds);
+      }
+      frame = requestAnimationFrame(animate);
+    };
+    const start = () => {
+      cancelAnimationFrame(frame);
+      render(clock.current.seconds);
+      if (motionPaused || preference.matches || !flows.length) return;
+      epoch = performance.now()-clock.current.seconds*1000;
+      frame = requestAnimationFrame(animate);
+    };
+    preference.addEventListener('change', start);
+    start();
+    return () => { cancelAnimationFrame(frame); preference.removeEventListener('change', start); };
+  }, [ready, fallback, year, records, selectedAreaId, onSelectArea, flows, motionPaused]);
 
   return <div className="map-wrap">
     <div ref={container} className="map-canvas" style={fallback ? { display: 'none' } : undefined} role="img" aria-label={`${forecastMode ? 'Predicción experimental de temperatura' : 'Temperatura media'} superficial anual en ${year}, por mar y océano. Selecciona una zona para ver su evolución.`} />
@@ -142,6 +190,8 @@ export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea, worldVie
           key={item.properties.id} d={geometryPath(item.geometry)} fill={`rgb(${temperatureColor(records.get(item.properties.id)!.celsius).slice(0, 3).join(',')})`}
           fillOpacity={records.get(item.properties.id)!.method === 'estimated' || records.get(item.properties.id)!.forecastBasis === 'estimated-history' ? '.55' : '.8'} fillRule="evenodd" stroke={item.properties.id === selectedAreaId ? '#fff' : '#76cfc8'} strokeWidth={item.properties.id === selectedAreaId ? 2 : 0.4}
           onClick={() => onSelectArea(item.properties.id)}><title>{item.properties.name}: {formatTemperature(records.get(item.properties.id)!)}</title></path>)}
+        {flows.map(flow => <path key={flow.id} ref={element => { if (element) svgTrails.current.set(flow.id, element); else svgTrails.current.delete(flow.id); }}
+          d={coolingSvgPath(coolingFlowFrame(flow, 0).path)} fill="none" stroke={flow.areas[0] === selectedAreaId ? '#fff2bc' : '#d4fffb'} strokeWidth="1.8" strokeLinecap="round" pointerEvents="none" />)}
         <path d={coast} fill="#bbccc9" fillRule="evenodd" />
         <text x={svgPosition(...blackSeaLabel.position)[0]} y={svgPosition(...blackSeaLabel.position)[1]} textAnchor="middle" fill="#fff" fontSize="10" fontWeight="700" pointerEvents="none">{blackSeaLabel.name}</text>
       </svg>

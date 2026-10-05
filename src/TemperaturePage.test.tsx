@@ -37,6 +37,9 @@ describe('reviewed temperature forecasts', () => {
     expect(html).toContain('stroke-dasharray="4 3"');
     expect(html).toContain('1982</td>');
     expect(html).toContain('2030 · pred.');
+    expect(html).toContain('Mostrar recorridos hacia mares más fríos');
+    expect(html).toContain('Pausar recorridos');
+    expect(html).toContain('Sin otro más fresco, gira y se desvanece');
     expect(timelineYears).toEqual(Array.from({ length: 49 }, (_, i) => 1982+i));
     expect(timelineSeries('iho-adriatic-sea')).toHaveLength(49);
   });
