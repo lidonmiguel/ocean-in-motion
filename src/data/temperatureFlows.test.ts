@@ -1,7 +1,10 @@
+import geometryRaw from './temperatureRoutes.json?raw';
 import { describe, expect, it } from 'vitest';
-import { coolingChain, coolingFlowFrame, coolingSvgPath, temperatureFlows, temperatureNetwork, type CoolingNetwork, type Position } from './temperatureFlows';
+import { coolingChain, coolingFlowFrame, coolingSvgPath, temperatureFlows, prepareTemperatureNetwork, type CoolingNetwork, type Position } from './temperatureFlows';
 import { timelineByYear } from './temperatureForecasts';
 import { FLOW_CYCLE_SECONDS, FLOW_SPAN_DEGREES, FLOW_STYLE, growingFlowFrame } from './flowAnimation';
+
+const temperatureNetwork = prepareTemperatureNetwork(JSON.parse(geometryRaw));
 
 const nodes = [['a:west', 'a', 0], ['a:east', 'a', 3], ['b:0', 'b', 1], ['c:0', 'c', 4], ['d:0', 'd', 2], ['isolated:0', 'isolated', .01]].map(([id, areaId, x]) => {
   const anchor: Position = [Number(x), 0];
@@ -99,11 +102,11 @@ describe('temperature-driven illustrative paths', () => {
       expect(new Set(origins.map(n => JSON.stringify(n.position))).size).toBe(origins.length);
     }
     const caspian = temperatureNetwork.nodes.find(n => n.areaId === 'caspian')!;
-    expect(coolingChain(caspian.id, timelineByYear.get(2025)!)).toEqual(['caspian']);
+    expect(coolingChain(caspian.id, timelineByYear.get(2025)!, temperatureNetwork)).toEqual(['caspian']);
   });
 
   it.each([...timelineByYear])('only follows cooler adjacent stops, with continuous water endpoints, in %i', (year, temperatures) => {
-    const flows = temperatureFlows(temperatures);
+    const flows = temperatureFlows(temperatures, temperatureNetwork);
     expect(flows, String(year)).toHaveLength(temperatureNetwork.nodes.length);
     const areasByNode = new Map(temperatureNetwork.nodes.map(n => [n.id, n.areaId]));
     const neighborPairs = new Set(temperatureNetwork.links.map(l => [areasByNode.get(l.from), areasByNode.get(l.to)].join('|')));

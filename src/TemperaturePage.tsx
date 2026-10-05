@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { TemperatureComparison } from './TemperatureComparison';
+import { lazy, useState } from 'react';
+import { DeferredContent } from './DeferredContent';
 import { TemperatureHistoryChart } from './TemperatureHistoryChart';
 import {
   buildTemperatureCsv,
@@ -9,13 +9,24 @@ import {
   timelineSeries,
   timelineYears
 } from './data/temperatureForecasts';
-import { SeaTemperatureMap } from './SeaTemperatureMap';
+
 import {
   availableYears,
   formatTemperature,
-  seaAreas,
+  seaRegions,
   type TemperatureRecord
 } from './data/seaTemperatures';
+
+const DeferredMap = lazy(() =>
+  import('./SeaTemperatureMap').then((module) => ({
+    default: module.SeaTemperatureMap
+  }))
+);
+const DeferredComparison = lazy(() =>
+  import('./TemperatureComparison').then((module) => ({
+    default: module.TemperatureComparison
+  }))
+);
 
 const firstYear = availableYears[0];
 const lastYear = availableYears[availableYears.length - 1];
@@ -46,26 +57,22 @@ export function TemperaturePage({
   const [motionPaused, setMotionPaused] = useState(false);
   const values =
     timelineByYear.get(year) ?? new Map<string, TemperatureRecord>();
-  const areas = seaAreas.features
-    .filter((item) => values.has(item.properties.id))
-    .sort((a, b) => a.properties.name.localeCompare(b.properties.name, 'en'));
-  const selected = seaAreas.features.find(
-    (item) => item.properties.id === areaId
-  );
+  const areas = seaRegions
+    .filter((item) => values.has(item.id))
+    .sort((a, b) => a.name.localeCompare(b.name, 'en'));
+  const selected = seaRegions.find((item) => item.id === areaId);
   const normalize = (value: string) =>
     value
       .normalize('NFD')
       .replace(/[\u0300-\u036f]/g, '')
       .toLocaleLowerCase('en');
   const visibleAreas = areas.filter((item) =>
-    normalize(item.properties.name).includes(normalize(search.trim()))
+    normalize(item.name).includes(normalize(search.trim()))
   );
   const record = values.get(areaId);
   const estimated = record?.method === 'estimated';
   const derivedForecast = record?.forecastBasis === 'estimated-history';
-  const areaNames = new Map(
-    seaAreas.features.map((item) => [item.properties.id, item.properties.name])
-  );
+  const areaNames = new Map(seaRegions.map((item) => [item.id, item.name]));
   const donorNames = record?.estimatedFrom
     ?.map((id) => areaNames.get(id))
     .filter(Boolean)
@@ -169,8 +176,8 @@ export function TemperaturePage({
             onChange={(event) => setAreaId(event.target.value)}
           >
             {areas.map((item) => (
-              <option key={item.properties.id} value={item.properties.id}>
-                {item.properties.name}
+              <option key={item.id} value={item.id}>
+                {item.name}
               </option>
             ))}
           </select>
@@ -193,14 +200,12 @@ export function TemperaturePage({
             {visibleAreas.map((item) => (
               <button
                 type="button"
-                key={item.properties.id}
-                className={`temperature-region ${areaId === item.properties.id ? 'active' : ''}`}
-                onClick={() => setAreaId(item.properties.id)}
+                key={item.id}
+                className={`temperature-region ${areaId === item.id ? 'active' : ''}`}
+                onClick={() => setAreaId(item.id)}
               >
-                <span>{item.properties.name}</span>
-                <strong>
-                  {formatTemperature(values.get(item.properties.id)!)}
-                </strong>
+                <span>{item.name}</span>
+                <strong>{formatTemperature(values.get(item.id)!)}</strong>
               </button>
             ))}
             {visibleAreas.length === 0 && (
@@ -233,15 +238,19 @@ export function TemperaturePage({
             </button>
           </div>
           <div className="map-stage">
-            <SeaTemperatureMap
-              year={year}
-              selectedAreaId={areaId}
-              onSelectArea={setAreaId}
-              worldViewKey={worldViewKey}
-              values={values}
-              forecastMode={forecastMode}
-              showCooling={showCooling}
-              motionPaused={motionPaused}
+            <DeferredContent
+              component={DeferredMap}
+              label="Loading interactive map…"
+              componentProps={{
+                year,
+                selectedAreaId: areaId,
+                onSelectArea: setAreaId,
+                worldViewKey,
+                values,
+                forecastMode,
+                showCooling,
+                motionPaused
+              }}
             />
           </div>
           <div className="map-bottom">
@@ -272,7 +281,7 @@ export function TemperaturePage({
                 ? 'ANNUAL ESTIMATE'
                 : 'ANNUAL NOAA MEAN'}
           </div>
-          <h2>{selected?.properties.name ?? 'Select a region'}</h2>
+          <h2>{selected?.name ?? 'Select a region'}</h2>
           <p className="latin">Sea surface · {year}</p>
           <div className="cyan-rule" />
           <p className="temperature-value">
@@ -415,10 +424,11 @@ export function TemperaturePage({
           </p>
         </aside>
       </main>
-      <TemperatureComparison
-        areaId={areaId}
-        year={year}
-        onYearChange={setYear}
+      <DeferredContent
+        component={DeferredComparison}
+        whenVisible
+        label="Regional comparison loads as you scroll."
+        componentProps={{ areaId, year, onYearChange: setYear }}
       />
       <footer className="site-footer">
         <span>OCEAN IN MOTION © PROTOTYPE</span>

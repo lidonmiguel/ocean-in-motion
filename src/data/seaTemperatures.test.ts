@@ -1,17 +1,17 @@
 import { describe, expect, it } from 'vitest';
-import { availableYears, formatTemperature, recordsByYear, seaAreas, seaSeries, temperatureColor } from './seaTemperatures';
+import { availableYears, formatTemperature, recordsByYear, seaRegions, seaSeries, temperatureColor } from './seaTemperatures';
 
 describe('annual sea surface temperature snapshot', () => {
   it('has complete annual values with observed and estimated origins identified', () => {
     expect(availableYears[0]).toBe(1982);
     expect(availableYears.at(-1)).toBe(2025);
-    expect(seaAreas.features).toHaveLength(102);
+    expect(seaRegions).toHaveLength(102);
     for (const year of availableYears) {
       let observed = 0;
       let estimated = 0;
-      for (const area of seaAreas.features) {
-        const row = recordsByYear.get(year)?.get(area.properties.id);
-        expect(row, `${year} ${area.properties.name}`).toBeDefined();
+      for (const area of seaRegions) {
+        const row = recordsByYear.get(year)?.get(area.id);
+        expect(row, `${year} ${area.name}`).toBeDefined();
         expect(row!.celsius).toBeGreaterThan(-5);
         expect(row!.celsius).toBeLessThan(45);
         if (row!.method === 'estimated') {
