@@ -110,7 +110,7 @@ export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea, worldVie
         getFillColor: item => {
           const record = records.get(item.properties.id)!;
           const [red, green, blue] = temperatureColor(record.celsius);
-          return [red, green, blue, record.method === 'estimated' ? 120 : 195];
+          return [red, green, blue, record.method === 'estimated' || record.forecastBasis === 'estimated-history' ? 120 : 195];
         },
         getLineColor: item => item.properties.id === selectedAreaId ? [255, 255, 255, 245] : [126, 220, 218, 90],
         getLineWidth: item => item.properties.id === selectedAreaId ? 2 : 0.5,
@@ -140,7 +140,7 @@ export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea, worldVie
         <rect width="1200" height="600" fill="#173746" />
         {seaAreas.features.filter(item => records.has(item.properties.id)).map(item => <path
           key={item.properties.id} d={geometryPath(item.geometry)} fill={`rgb(${temperatureColor(records.get(item.properties.id)!.celsius).slice(0, 3).join(',')})`}
-          fillOpacity={records.get(item.properties.id)!.method === 'estimated' ? '.55' : '.8'} fillRule="evenodd" stroke={item.properties.id === selectedAreaId ? '#fff' : '#76cfc8'} strokeWidth={item.properties.id === selectedAreaId ? 2 : 0.4}
+          fillOpacity={records.get(item.properties.id)!.method === 'estimated' || records.get(item.properties.id)!.forecastBasis === 'estimated-history' ? '.55' : '.8'} fillRule="evenodd" stroke={item.properties.id === selectedAreaId ? '#fff' : '#76cfc8'} strokeWidth={item.properties.id === selectedAreaId ? 2 : 0.4}
           onClick={() => onSelectArea(item.properties.id)}><title>{item.properties.name}: {formatTemperature(records.get(item.properties.id)!)}</title></path>)}
         <path d={coast} fill="#bbccc9" fillRule="evenodd" />
         <text x={svgPosition(...blackSeaLabel.position)[0]} y={svgPosition(...blackSeaLabel.position)[1]} textAnchor="middle" fill="#fff" fontSize="10" fontWeight="700" pointerEvents="none">{blackSeaLabel.name}</text>
@@ -149,6 +149,6 @@ export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea, worldVie
     </div>}
     <div className="map-stamp"><span className="pulse" /> {forecastMode ? 'PREDICCIÓN ESTADÍSTICA' : 'NOAA + ESTIMACIONES'} · {year}</div>
     <div className="map-credit">{forecastMode ? 'Previsión estadística basada en histórico NOAA ERSSTv6' : 'NOAA ERSSTv6 y estimaciones vecinas'} · Límites marinos: IHO / VLIZ (CC BY 4.0) · Caspio y costa: Natural Earth</div>
-    {hover && records.get(hover.id) && <div className="map-tooltip" style={{ left: hover.x + 14, top: hover.y + 14 }}><strong>{hover.name}</strong><span>{formatTemperature(records.get(hover.id)!)} · {year}</span><span>{forecastMode ? 'Predicción experimental; no es un dato NOAA futuro' : records.get(hover.id)!.method === 'estimated' ? 'Estimación de zonas cercanas; sin celdas NOAA locales' : `Media de ${records.get(hover.id)!.cells} celdas NOAA de 2°`}</span></div>}
+    {hover && records.get(hover.id) && <div className="map-tooltip" style={{ left: hover.x + 14, top: hover.y + 14 }}><strong>{hover.name}</strong><span>{formatTemperature(records.get(hover.id)!)} · {year}</span><span>{forecastMode ? records.get(hover.id)!.forecastBasis === 'estimated-history' ? 'Predicción sobre histórico estimado; sin validación local' : 'Predicción experimental; no es un dato NOAA futuro' : records.get(hover.id)!.method === 'estimated' ? 'Estimación de zonas cercanas; sin celdas NOAA locales' : `Media de ${records.get(hover.id)!.cells} celdas NOAA de 2°`}</span></div>}
   </div>;
 }

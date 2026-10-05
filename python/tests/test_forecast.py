@@ -11,20 +11,40 @@ ML_AVAILABLE = all(importlib.util.find_spec(name) for name in ('sklearn', 'pypro
 
 
 class ForecastArtifactTests(unittest.TestCase):
-    def test_forecasts_only_cover_noaa_zones_and_future_years(self):
+    def test_forecasts_cover_all_zones_with_direct_and_derived_origins(self):
         forecast = json.loads((ROOT/'src/data/temperatureForecasts.json').read_text())
         report = json.loads((ROOT/'reports/temperature/metrics.json').read_text())
         self.assertEqual(forecast['runId'], report['runId'])
         self.assertEqual(forecast['model'], report['selectedModel']['id'])
-        expected = {(area, year) for area in report['trainingAreas'] for year in range(2026, 2031)}
+        expected = {(area, year) for area in report['trainingAreas']+report['derivedForecastAreas'] for year in range(2026, 2031)}
         self.assertEqual({(r['areaId'], r['year']) for r in forecast['records']}, expected)
         self.assertEqual(len(forecast['records']), len(expected))
         self.assertTrue(set(report['trainingAreas']).isdisjoint(report['excludedEstimatedAreas']))
+        self.assertEqual(len(forecast['records']), 510)
         for row in forecast['records']:
+            direct = row['areaId'] in report['trainingAreas']
+            self.assertEqual(row['forecastBasis'], 'noaa-history' if direct else 'estimated-history')
+            self.assertEqual(row['intervalKind'], 'calibrated' if direct else 'donor-derived-range')
+            self.assertEqual(row['areaId'] in report['byArea'], direct)
             self.assertLessEqual(row['lower'], row['celsius'])
             self.assertLessEqual(row['celsius'], row['upper'])
             self.assertTrue(all(math.isfinite(row[k]) for k in ('lower', 'upper', 'celsius')))
             self.assertEqual(row['horizon'], row['year']-forecast['trainedThrough'])
+
+    def test_derived_forecasts_transfer_donor_changes_without_claiming_local_calibration(self):
+        forecast = json.loads((ROOT/'src/data/temperatureForecasts.json').read_text())
+        historical = json.loads((ROOT/'src/data/seaTemperatures.json').read_text())['records']
+        last = {r['areaId']: r for r in historical if r['year'] == 2025}
+        lookup = {(r['areaId'], r['year']): r for r in forecast['records']}
+        derived = [r for r in forecast['records'] if r['forecastBasis'] == 'estimated-history']
+        self.assertEqual(len(derived), 400)
+        for row in derived:
+            base = last[row['areaId']]
+            self.assertEqual(row['estimatedFrom'], base['estimatedFrom'])
+            for field in ('celsius', 'lower', 'upper'):
+                expected = base['celsius'] + sum(lookup[(d, row['year'])][field]-last[d]['celsius']
+                           for d in base['estimatedFrom']) / len(base['estimatedFrom'])
+                self.assertAlmostEqual(row[field], expected, places=5)
 
     def test_selection_calibration_and_test_targets_do_not_overlap(self):
         with (ROOT/'reports/temperature/backtests.csv').open() as stream:

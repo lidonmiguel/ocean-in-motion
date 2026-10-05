@@ -12,6 +12,8 @@ export type TemperatureRecord = {
   year: number; areaId: string; celsius: number; cells: number;
   method?: 'estimated' | 'forecast'; estimatedFrom?: string[];
   lower?: number; upper?: number; horizon?: number;
+  forecastBasis?: 'noaa-history' | 'estimated-history';
+  intervalKind?: 'calibrated' | 'donor-derived-range';
 };
 
 const ihoAreas = JSON.parse(areas) as { type: 'FeatureCollection'; features: SeaFeature[] };
