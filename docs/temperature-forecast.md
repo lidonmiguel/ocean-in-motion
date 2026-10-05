@@ -8,8 +8,8 @@ statistical experiment for 2026–2030, not a climate scenario.
 The target is annual regional surface temperature in °C, never anomaly or daily
 water temperature. Caspian is included as a separate inland region.
 
-There are **22 NOAA-derived series × 44 years = 968 source values**. NOAA ERSSTv6
-is a 2° reconstruction, not a collection of direct local measurements. The 80
+There are **82 NOAA-derived series × 44 years = 3,608 source values**. NOAA ERSSTv6
+is a 2° reconstruction, not a collection of direct local measurements. The 20
 neighbor-imputed regions are excluded from model labels, features and evaluation.
 They receive explicitly derived predictions from their existing NOAA donors,
 with no claim of local validation or generalization to unseen regions. Inputs are the versioned
@@ -59,7 +59,7 @@ without neighbors. Feature correlations do not establish causal climate effects.
 
 Ridge uses scaling fitted on training data only; boosting uses no scaling.
 Learned models estimate change from the origin temperature. Five horizon-specific
-models share data across the 22 regions. Persistence repeats the origin value;
+models share data across the 82 regions. Persistence repeats the origin value;
 trend extrapolates the latest five-year slope. No future temperatures, including
 neighbor temperatures, are available to any forecast. Features and labels for
 training are retained only when `origin + horizon <= training cutoff`.
@@ -83,43 +83,46 @@ holdout candidates.
 
 The nominal 90% symmetric interval is computed separately for each horizon
 from absolute calibration errors using a conservative finite-sample order
-statistic. Calibration has 110/88/66/44/22 regional errors at horizons 1…5; the
+statistic. Calibration has 410/328/246/164/82 regional errors at horizons 1…5; the
 five-year interval has **one forecast origin only**. Temporal and spatial
 dependence prevent a coverage guarantee. Widths can be non-monotonic because
 sample dates and sizes differ. Report achieved final-test coverage and width,
 not just the nominal level. Upstream reconstruction uncertainty and unexpected
 future climate changes are not fully captured.
 
-## Derived forecasts for the other 80 historical regions
+## Derived forecasts for the other 20 historical regions
 
 All 102 historical regions appear in the same 1982–2030 timeline. Direct model
-forecasts cover the 22 NOAA histories. For an estimated region `r`, retain its
+forecasts cover the 82 NOAA histories. For an estimated region `r`, retain its
 published 2025 baseline and its existing `estimatedFrom` donors `D(r)`:
 
 `forecast(r, h) = estimated(r, 2025) + mean(forecast(d, h) − NOAA(d, 2025), d in D(r))`.
 
 This transfers the donors' predicted change while preserving the historical
-latitude adjustment, clipping and stored baseline. With the selected persistence
-model, each derived forecast equals its own 2025 estimated value. No estimated
+latitude adjustment, clipping and stored baseline. With the selected Gradient
+Boosting model, each derived forecast transfers the donors’ predicted change. No estimated
 series is fitted as though it were measured, and no additional model or parameter
 is selected using the final test.
 
 Lower and upper bounds use the same transfer formula with donor bounds. These
 are **donor-derived ranges**, not calibrated local 90% prediction intervals.
 The mapping error and upstream imputation uncertainty are unknown; neither
-local MAE nor local coverage is assigned to these 80 regions. `forecastBasis`,
-`intervalKind` and donor IDs accompany every prediction. The 22 directly
+local MAE nor local coverage is assigned to these 20 regions. `forecastBasis`,
+`intervalKind` and donor IDs accompany every prediction. The 82 directly
 evaluated regions keep their existing model and empirical test metrics.
 
 ## Results and deliverables
 
 [REPORT.md](../reports/temperature/REPORT.md) is generated from the experiment,
 with development ranking and horizon-specific final metrics. The selected
-candidate is **persistence**: it beats the tested Ridge and boosting candidates
-on development MAE. For the 22 evaluated NOAA regions, its final MAE is approximately **0.220 °C**; achieved pooled
-coverage is approximately **87%**, below the nominal 90%. This is a negative
-result for the added complexity, not evidence that oceans will stop warming.
-Flat point forecasts in the website intentionally expose this selected baseline.
+candidate is **Histogram Gradient Boosting without neighbors**. It narrowly
+beats persistence on development MAE (0.2576 versus 0.2580 °C). For the 82 evaluated
+NOAA regions, its final MAE is approximately **0.261 °C** and achieved pooled
+coverage is approximately **95%**. Persistence has a lower final-test MAE of
+**0.249 °C**. The model remains selected by development data; this tiny
+development advantage does not demonstrate reliable superiority. The expanded
+NOAA cohort is evaluated with the same fixed candidates and temporal protocol;
+the published 2021–2025 window is reused, not a new untouched holdout.
 
 ![Development model comparison and final-test errors by horizon](../reports/temperature/model_comparison.svg)
 
@@ -141,8 +144,8 @@ notebook from the repository root with
 `PYTHONPATH=python python -m ocean_pipeline.execute_notebook` (IPython execution
 without Jupyter sockets), or open it in Jupyter and run all cells. CI executes
 the notebook and fails on cell errors. Python models run offline; the browser only
-loads the reviewed prediction artifact. The selected persistence model is fully
-specified by its formula, cutoff and source snapshot; no opaque pickle is needed.
+loads the reviewed prediction artifact. The selected model is reproduced from its pinned implementation,
+configuration, seed, cutoff and source snapshot; no opaque pickle is needed.
 
 ## Website behavior
 

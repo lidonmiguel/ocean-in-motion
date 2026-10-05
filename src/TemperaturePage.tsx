@@ -84,7 +84,7 @@ export function TemperaturePage({ initialYear = lastYear, initialAreaId = 'med-w
         {forecastMode && record && <section className="forecast-evidence" aria-label="Forecast quality">
           <p><strong>{forecastModelLabel}</strong></p>
           <p>History through 2025 · horizon {year-lastYear} {year-lastYear === 1 ? 'year' : 'years'}.</p>
-          {forecastMetadata.model === 'persistence' && <p>Preserves the 2025 value: this baseline had the lowest error across the 22 evaluated NOAA regions.</p>}
+          {forecastMetadata.model === 'persistence' && <p>Preserves the 2025 value: this baseline had the lowest development error across the {Object.keys(forecastMetadata.testByArea).length} evaluated NOAA regions.</p>}
           {derivedForecast ? <>
             <p>Starts from this region’s estimated history and applies the forecast change from {donorNames}.</p>
             <p>Donor-derived range: <strong>{record.lower?.toFixed(1)} to {record.upper?.toFixed(1)} °C</strong>. No validated local coverage; the range does not capture all historical estimation uncertainty.</p>

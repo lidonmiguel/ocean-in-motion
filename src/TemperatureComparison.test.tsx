@@ -20,7 +20,7 @@ describe('ocean comparison presentation', () => {
     expect(html).not.toContain('NaN');
   });
   it('retains estimated and predicted provenance in the same comparison', () => {
-    const html = renderToStaticMarkup(<TemperatureComparison areaId="iho-adriatic-sea" year={2030} onYearChange={() => {}} />);
+    const html = renderToStaticMarkup(<TemperatureComparison areaId="iho-gulf-of-oman" year={2030} onYearChange={() => {}} />);
     expect(html).toContain('≈ Estimated history');
     expect(html).toContain('Forecast · estimated basis');
     expect(html).toContain('Forecast · NOAA basis');

@@ -26,8 +26,8 @@ describe('annual sea surface temperature snapshot', () => {
           expect(row!.cells).toBeGreaterThanOrEqual(2);
         }
       }
-      expect(observed).toBe(22);
-      expect(estimated).toBe(80);
+      expect(observed).toBe(82);
+      expect(estimated).toBe(20);
     }
     expect(seaSeries('med-west').length).toBe(availableYears.length);
   });

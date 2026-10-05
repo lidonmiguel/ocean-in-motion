@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { TemperaturePage } from './TemperaturePage';
-import { buildTemperatureCsv, forecastsByYear, forecastMetadata, forecastSeries, forecastYears, timelineByYear, timelineSeries, timelineYears } from './data/temperatureForecasts';
+import { buildTemperatureCsv, forecastsByYear, forecastMetadata, forecastModelLabel, forecastSeries, forecastYears, timelineByYear, timelineSeries, timelineYears } from './data/temperatureForecasts';
 import { recordsByYear } from './data/seaTemperatures';
 
 describe('reviewed temperature forecasts', () => {
@@ -42,7 +42,7 @@ describe('reviewed temperature forecasts', () => {
     expect(html).toContain('neighbors touching its current region');
     expect(html).toContain('Without a cooler neighbor, it loops locally and fades away');
     expect(timelineYears).toEqual(Array.from({ length: 49 }, (_, i) => 1982+i));
-    expect(timelineSeries('iho-adriatic-sea')).toHaveLength(49);
+    expect(timelineSeries('iho-gulf-of-oman')).toHaveLength(49);
   });
 
   it('identifies the future as an experiment with measured evaluation and uncertainty', () => {
@@ -50,7 +50,7 @@ describe('reviewed temperature forecasts', () => {
     expect(html).toContain('min="1982" max="2030"');
     expect(html).toContain('102 REGIONS');
     expect(html).toContain('YEAR · 2030 · FORECAST');
-    expect(html).toContain('Persistence: last known temperature');
+    expect(html).toContain(forecastModelLabel);
     expect(html).toContain('Nominal 90% interval');
     expect(html).toContain('Future coverage is not guaranteed');
     expect(html).toContain('Test 2021–2025');
@@ -62,26 +62,26 @@ describe('reviewed temperature forecasts', () => {
   });
 
   it('keeps an estimated sea selected in the future without claiming local validation', () => {
-    const html = renderToStaticMarkup(<TemperaturePage initialYear={2026} initialAreaId="iho-adriatic-sea" />);
-    expect(html).toContain('Adriatic Sea');
+    const html = renderToStaticMarkup(<TemperaturePage initialYear={2026} initialAreaId="iho-gulf-of-oman" />);
+    expect(html).toContain('Gulf of Oman');
     expect(html).toContain('FORECAST · ESTIMATED BASIS');
     expect(html).toContain('Donor-derived range');
     expect(html).toContain('No validated local coverage');
     expect(html).not.toContain('Nominal 90% interval:');
     expect(html).not.toContain('Error for this region over the five test years');
-    expect(timelineByYear.get(2025)!.has('iho-adriatic-sea')).toBe(true);
-    expect(timelineByYear.get(2026)!.has('iho-adriatic-sea')).toBe(true);
+    expect(timelineByYear.get(2025)!.has('iho-gulf-of-oman')).toBe(true);
+    expect(timelineByYear.get(2026)!.has('iho-gulf-of-oman')).toBe(true);
   });
 
   it('exports one table with origins and uncertainty kinds distinguished per row', () => {
     const lines = buildTemperatureCsv().split('\n');
     expect(lines).toHaveLength(1 + 102*49);
     expect(lines[0]).toContain('type,basis');
-    expect(lines.some(line => line.startsWith('2025,"Adriatic Sea"') && line.includes(',history,estimated,'))).toBe(true);
-    const derived = lines.find(line => line.startsWith('2030,"Adriatic Sea"'))!;
+    expect(lines.some(line => line.startsWith('2025,"Gulf of Oman"') && line.includes(',history,estimated,'))).toBe(true);
+    const derived = lines.find(line => line.startsWith('2030,"Gulf of Oman"'))!;
     expect(derived).toContain(',forecast,estimated,');
-    expect(derived).toContain(',donor-derived-range,,persistence,2025,');
+    expect(derived).toContain(`,donor-derived-range,,${forecastMetadata.model},2025,`);
     const direct = lines.find(line => line.startsWith('2030,"Caspian Sea"'))!;
-    expect(direct).toContain(',calibrated,0.9,persistence,2025,');
+    expect(direct).toContain(`,calibrated,0.9,${forecastMetadata.model},2025,`);
   });
 });

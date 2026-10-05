@@ -25,8 +25,8 @@ existing precision; displayed statistics are rounded to two decimals.
 
 ## Provenance and prediction
 
-The **22 NOAA-derived histories are reconstructed regional SST**, rather than
-direct station measurements. The **80 estimated histories** use neighboring
+The **82 NOAA-derived histories are reconstructed regional SST**, rather than
+direct station measurements. The **20 estimated histories** use neighboring
 NOAA regions and a latitude adjustment. Estimated anomaly and historical change
 are also estimates, not independently observed warming. A donor and its derived
 sea are not independent evidence. The Caspian Sea remains an inland water region.
@@ -34,9 +34,9 @@ sea are not independent evidence. The Caspian Sea remains an inland water region
 Historical lines are continuous, forecasts from 2026 are dashed in the same
 regional color, and the forecast area is highlighted. Each inspected value and
 CSV row identifies reconstructed history, estimated history, a forecast with a
-NOAA basis, or a forecast with an estimated basis. Persistence was selected by
-the existing experiment, so point forecasts preserve the 2025 value. Flat lines
-are model behavior, not a claim that warming will stop.
+NOAA basis, or a forecast with an estimated basis. Gradient Boosting was selected by
+the refreshed experiment’s fixed development rule. These statistical predictions
+are not verified climate projections.
 
 The comparison omits uncertainty bands to avoid stacking up to five different
 ranges. The original regional detail chart retains them and explains the
