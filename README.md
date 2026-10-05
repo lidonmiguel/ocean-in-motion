@@ -30,12 +30,9 @@ paused or hidden.
 
 ### Regional comparison
 
-> **SCREENSHOT 2 — Replace this block with the comparison screenshot.**
-> Compare **Mediterranean Sea - Western Basin**, **North Atlantic Ocean** and
-> **Caspian Sea**. Select **Anomaly · °C**, **Full period** and year **2025**.
-> Capture the selected-region legend, the **1982–2030** line chart with its
-> forecast boundary, and the year-comparison bars. Use a wide desktop viewport;
-> keep labels and axes readable and crop out browser chrome.
+<img width="1824" height="827" alt="image" src="https://github.com/user-attachments/assets/c6fb5be9-4db0-4dcd-a3ca-fda929f4de63" />
+
+
 
 ## The Data Science result
 
