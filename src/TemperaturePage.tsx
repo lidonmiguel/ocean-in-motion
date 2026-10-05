@@ -56,7 +56,7 @@ export function TemperaturePage({ onBack, initialYear = lastYear, initialAreaId 
         <p className="timeline-note">Histórico hasta 2025 · predicción 2026–2030 en las 102 zonas.</p>
         <label className="cooling-toggle"><input type="checkbox" checked={showCooling} onChange={event => setShowCooling(event.target.checked)} /><span>Mostrar recorridos hacia mares más fríos</span></label>
         {showCooling && <button type="button" className="view-switch cooling-pause" aria-pressed={motionPaused} onClick={() => setMotionPaused(paused => !paused)}>{motionPaused ? 'Reanudar recorridos' : 'Pausar recorridos'}</button>}
-        <p className="cooling-note">Desde su posición, cada punto busca el mar más cercano que sea más frío y accesible por agua. Al llegar, vuelve a buscar. Sin otro más fresco, gira y se desvanece. Es una animación ilustrativa, no una ruta de animales ni una corriente real.</p>
+        <p className="cooling-note">Las líneas salen de distintas partes de cada zona. Desde su posición, cada una busca el mar más cercano entre los vecinos que tocan su zona y son más fríos. Al llegar, vuelve a comparar solo los vecinos de la nueva zona. Sin otro más fresco, gira y se desvanece. Es una animación ilustrativa, no una ruta de animales ni una corriente real.</p>
         <label className="field-label" htmlFor="sea-select">MAR U OCÉANO</label>
         <select id="sea-select" className="temperature-select" value={areaId} onChange={event => setAreaId(event.target.value)}>
           {areas.map(item => <option key={item.properties.id} value={item.properties.id}>{item.properties.name}</option>)}
