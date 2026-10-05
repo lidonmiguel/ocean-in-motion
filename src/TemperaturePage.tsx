@@ -24,10 +24,13 @@ export function TemperaturePage({ onBack }: { onBack: () => void }) {
   const [year, setYear] = useState(lastYear);
   const [areaId, setAreaId] = useState('med-west');
   const [worldViewKey, setWorldViewKey] = useState(0);
+  const [search, setSearch] = useState('');
   const values = recordsByYear.get(year) ?? new Map<string, TemperatureRecord>();
   const areas = seaAreas.features.filter(item => values.has(item.properties.id))
     .sort((a, b) => a.properties.name.localeCompare(b.properties.name, 'es'));
   const selected = seaAreas.features.find(item => item.properties.id === areaId);
+  const normalize = (value: string) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('es');
+  const visibleAreas = areas.filter(item => normalize(item.properties.name).includes(normalize(search.trim())));
   const record = values.get(areaId);
   const estimated = record?.method === 'estimated';
   const areaNames = new Map(seaAreas.features.map(item => [item.properties.id, item.properties.name]));
@@ -53,8 +56,11 @@ export function TemperaturePage({ onBack }: { onBack: () => void }) {
         <select id="sea-select" className="temperature-select" value={areaId} onChange={event => setAreaId(event.target.value)}>
           {areas.map(item => <option key={item.properties.id} value={item.properties.id}>{item.properties.name}</option>)}
         </select>
+        <label className="field-label" htmlFor="sea-search">BUSCAR MAR U OCÉANO</label>
+        <input id="sea-search" className="temperature-select" type="search" placeholder="Ej. Mar Negro" value={search} onChange={event => setSearch(event.target.value)} />
         <div className="temperature-region-list" role="region" aria-label="Temperaturas por zona en el año seleccionado">
-          {areas.map(item => <button type="button" key={item.properties.id} className={`temperature-region ${areaId === item.properties.id ? 'active' : ''}`} onClick={() => setAreaId(item.properties.id)}><span>{item.properties.name}</span><strong>{formatTemperature(values.get(item.properties.id)!)}</strong></button>)}
+          {visibleAreas.map(item => <button type="button" key={item.properties.id} className={`temperature-region ${areaId === item.properties.id ? 'active' : ''}`} onClick={() => setAreaId(item.properties.id)}><span>{item.properties.name}</span><strong>{formatTemperature(values.get(item.properties.id)!)}</strong></button>)}
+          {visibleAreas.length === 0 && <p className="source-note" role="status">No hay zonas con ese nombre.</p>}
         </div>
         <div className="sidebar-bottom"><span className="asterisk">✳</span><p><strong>NOAA o estimación.</strong> Las zonas sin datos NOAA locales muestran una media aproximada de zonas cercanas, ajustada por latitud.</p></div>
       </aside>

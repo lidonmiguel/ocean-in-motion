@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import * as maplibregl from 'maplibre-gl';
 import { MapLibreOverlay } from '@deck.gl/maplibre';
 import { GeoJsonLayer } from '@deck.gl/layers';
-import landRaw from './data/landNoSeams.geojson?raw';
+import landRaw from './data/temperatureLand.geojson?raw';
 import { formatTemperature, recordsByYear, seaAreas, temperatureColor, type SeaFeature } from './data/seaTemperatures';
 
 const land = JSON.parse(landRaw) as {

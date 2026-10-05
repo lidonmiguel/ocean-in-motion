@@ -68,6 +68,20 @@ approximations; exclude them from model training that requires observations.
 The annual data are in `src/data/seaTemperatures.json`. This is a regional
 overview, not a coastal or harbor reading.
 
+The **Mar Negro** is included as its own selectable area with NOAA-derived
+annual values throughout 1982–2025. Use the sea-name search to find it or any
+other area; accents are optional. The temperature map uses a separate,
+more detailed Natural Earth 1:10m land cover so small islands receive the
+same gray fill as continents in both WebGL and SVG views. Its topology-preserving
+0.01° simplification is for display, not local shoreline analysis. Regenerate it with:
+
+```bash
+python python/ocean_pipeline/prepare_land.py --resolution 10m --tolerance 0.01 --output src/data/temperatureLand.geojson
+```
+
+This requires the temperature Python extra and `npm ci`. The land cover remains
+split at the map seams to prevent the North Atlantic fill artifact.
+
 The boundaries are a simplified copy of **Flanders Marine Institute (2018),
 IHO Sea Areas v3**, [doi:10.14284/323](https://doi.org/10.14284/323),
 licensed CC BY 4.0 and distributed as GeoJSON by
