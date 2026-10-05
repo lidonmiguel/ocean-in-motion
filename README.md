@@ -26,11 +26,7 @@ paused or hidden.
 
 ### Temperature map
 
-> **SCREENSHOT 1 — Replace this block with the map screenshot.**
-> Open the live demo on desktop, select **2025** and
-> **Mediterranean Sea - Western Basin**, then click **View world map**.
-> Capture the year controls, world map, temperature legend and regional detail
-> panel together. Keep the interface readable and crop out browser chrome.
+<img width="1899" height="934" alt="image" src="https://github.com/user-attachments/assets/983ae9a3-a1ed-4b65-9ca5-62436072bfc9" />
 
 ### Regional comparison
 
