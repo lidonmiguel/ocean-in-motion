@@ -221,8 +221,7 @@ button {
   overflow: hidden;
   background: #07141d;
 }
-.map-wrap,
-.map-canvas {
+.map-wrap {
   position: absolute;
   inset: 0;
 }

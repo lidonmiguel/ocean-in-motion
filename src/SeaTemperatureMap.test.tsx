@@ -9,6 +9,13 @@ import {
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { MapGeometry } from './data/mapAssets';
 import { SeaTemperatureMap } from './SeaTemperatureMap';
+import { readFileSync } from 'node:fs';
+
+const appStyles = readFileSync('src/styles.css', 'utf8');
+const mapLibreStyles = readFileSync(
+  'node_modules/maplibre-gl/dist/maplibre-gl.css',
+  'utf8'
+);
 
 const { geometryLoader, networkLoader } = vi.hoisted(() => ({
   geometryLoader: vi.fn(),
@@ -20,7 +27,8 @@ vi.mock('./data/mapAssets', () => ({
 }));
 vi.mock('maplibre-gl', () => ({
   Map: class {
-    constructor() {
+    constructor({ container }: { container: HTMLElement }) {
+      container.classList.add('maplibregl-map');
       throw new Error('No WebGL in test');
     }
   }
@@ -73,10 +81,31 @@ beforeEach(() => {
 });
 afterEach(() => {
   cleanup();
+  document.head.querySelectorAll('style').forEach((style) => style.remove());
   vi.unstubAllGlobals();
 });
 
 describe('asynchronous map data', () => {
+  it.each([
+    ['MapLibre CSS arrives last', [appStyles, mapLibreStyles]],
+    ['application CSS arrives last', [mapLibreStyles, appStyles]]
+  ] as const)('fills its wrapper when %s', async (_order, styles) => {
+    for (const css of styles) {
+      const style = document.createElement('style');
+      style.textContent = css;
+      document.head.append(style);
+    }
+    render(<SeaTemperatureMap {...props} showCooling={false} />);
+    await screen.findByRole('img', {
+      name: 'Map of surface temperatures by region in 2025'
+    });
+    const canvas = document.querySelector('.map-canvas')!;
+    expect(canvas.classList.contains('maplibregl-map')).toBe(true);
+    expect(getComputedStyle(canvas).position).toBe('absolute');
+    expect(getComputedStyle(canvas).inset).toBe('0');
+    expect(getComputedStyle(canvas.parentElement!).position).toBe('absolute');
+  });
+
   it('keeps the SVG fallback selectable without requesting disabled paths', async () => {
     render(<SeaTemperatureMap {...props} showCooling={false} />);
     await screen.findByRole('img', {
