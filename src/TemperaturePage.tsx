@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { TemperatureComparison } from './TemperatureComparison';
 import { TemperatureHistoryChart } from './TemperatureHistoryChart';
 import { buildTemperatureCsv, forecastMetadata, forecastModelLabel, timelineByYear, timelineSeries, timelineYears } from './data/temperatureForecasts';
 import { SeaTemperatureMap } from './SeaTemperatureMap';
@@ -104,6 +105,7 @@ export function TemperaturePage({ initialYear = lastYear, initialAreaId = 'med-w
         <p className="source-note">Datos observados: <a href="https://www.ncei.noaa.gov/products/extended-reconstructed-sst" target="_blank" rel="noreferrer">NOAA ERSSTv6</a>. Zonas: <a href="https://www.marineregions.org/" target="_blank" rel="noreferrer">VLIZ / IHO Sea Areas v3</a>; contorno del Caspio: Natural Earth. ≈ indica una estimación por zonas vecinas y latitud, no una medición local ni una predicción.</p>
       </aside>
     </main>
+    <TemperatureComparison areaId={areaId} year={year} onYearChange={setYear} />
     <footer className="site-footer"><span>OCÉANO EN MOVIMIENTO © PROTOTIPO</span><span>HISTÓRICO 1982–2025 · PREVISIÓN EXPERIMENTAL 2026–2030</span><span>{areas.length} ZONAS</span></footer>
   </div>;
 }
