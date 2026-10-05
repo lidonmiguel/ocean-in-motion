@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import * as maplibregl from 'maplibre-gl';
 import { MapLibreOverlay } from '@deck.gl/maplibre';
-import { GeoJsonLayer } from '@deck.gl/layers';
+import { GeoJsonLayer, TextLayer } from '@deck.gl/layers';
 import landRaw from './data/temperatureLand.geojson?raw';
 import { formatTemperature, recordsByYear, seaAreas, temperatureColor, type SeaFeature } from './data/seaTemperatures';
 
@@ -9,6 +9,7 @@ const land = JSON.parse(landRaw) as {
   type: 'FeatureCollection';
   features: { type: 'Feature'; properties: object; geometry: SeaFeature['geometry'] }[];
 };
+const blackSeaLabel = { position: [34, 44] as [number, number], name: 'MAR NEGRO' };
 const svgPosition = (lon: number, lat: number) => [((lon + 180) / 360) * 1200, ((90 - lat) / 180) * 600];
 
 function geometryPath(geometry: SeaFeature['geometry']): string {
@@ -120,6 +121,13 @@ export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea, worldVie
         id: 'land-cover', data: land, filled: true, stroked: false,
         getFillColor: [187, 204, 201, 255], parameters: { depthTest: false },
         pickable: true, onHover: () => setHover(null)
+      }),
+      new TextLayer({
+        id: 'black-sea-label', data: [blackSeaLabel],
+        getPosition: item => item.position, getText: item => item.name,
+        getSize: 11, sizeUnits: 'pixels', getColor: [255, 255, 255, 245],
+        fontWeight: 700, billboard: true, pickable: false,
+        parameters: { depthTest: false }
       })
     ] });
   }, [ready, year, records, selectedAreaId, onSelectArea]);
@@ -134,6 +142,7 @@ export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea, worldVie
           fillOpacity={records.get(item.properties.id)!.method === 'estimated' ? '.55' : '.8'} fillRule="evenodd" stroke={item.properties.id === selectedAreaId ? '#fff' : '#76cfc8'} strokeWidth={item.properties.id === selectedAreaId ? 2 : 0.4}
           onClick={() => onSelectArea(item.properties.id)}><title>{item.properties.name}: {formatTemperature(records.get(item.properties.id)!)}</title></path>)}
         <path d={coast} fill="#bbccc9" fillRule="evenodd" />
+        <text x={svgPosition(...blackSeaLabel.position)[0]} y={svgPosition(...blackSeaLabel.position)[1]} textAnchor="middle" fill="#fff" fontSize="10" fontWeight="700" pointerEvents="none">{blackSeaLabel.name}</text>
       </svg>
       <div className="fallback-note">Vista simplificada sin WebGL2 · pulsa una zona o elige su nombre en la lista</div>
     </div>}
