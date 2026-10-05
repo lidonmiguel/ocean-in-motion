@@ -6,7 +6,7 @@ continuous **1982–2030** timeline: historical values through 2025 and explicit
 marked experimental predictions for 2026–2030.
 
 The map opens directly on temperatures. Select a region, inspect its full series,
-compare years, and download history and forecasts together as CSV. Curved visual
+compare regions and years, and download history and forecasts together as CSV. Curved visual
 traces move between touching cooler regions using the selected year's values.
 Observed/reconstructed values, regional estimates and predictions retain their
 own provenance and labels throughout the map, chart, detail and download.
@@ -125,6 +125,18 @@ complete 2° cells are available. Only areas without sufficient NOAA cells are
 estimated from neighboring areas. It replaces the two derived files in
 `src/data/` and needs network access; the website itself works offline.
 
+## Compare regions below the map
+
+Compare two to five regions with stable colors, an annual line chart and sorted
+bars for the map’s selected year. Toggle absolute temperature or anomalies
+relative to each region’s own **1982–2010** mean. Narrow the visible interval,
+filter the picker by region type and NOAA/estimated history, inspect values,
+open the accessible table and export the chosen series as CSV with provenance.
+Historical change compares **2016–2025** with **1982–1991** (ten-year means).
+Forecasts stay in the same series, distinguished by dashed lines from 2026.
+No ocean-wide aggregate or independent local measurements are inferred from
+estimated seas. See [comparison definitions and limitations](docs/temperature-comparison.md).
+
 ## Temperature forecasting · 2026–2030
 
 The temperature map also animates **illustrative paths toward cooler seas**.
@@ -177,6 +189,7 @@ scenarios.
 ## Repository guide
 
 - `src/TemperaturePage.tsx`, `SeaTemperatureMap.tsx` and `TemperatureHistoryChart.tsx`: explorer, map and unified series.
+- `src/TemperatureComparison.tsx` and `src/data/temperatureComparison.ts`: interactive regional charts, fixed-reference anomalies and comparison export.
 - `src/data/seaTemperatures.json` and `caspianTemperatures.json`: historical snapshots; `temperatureForecasts.json`: forecasts and evaluation metadata.
 - `src/data/seaAreas.geojson`, `caspian.geojson` and `temperatureLand.geojson`: regional boundaries and detailed land/islands.
 - `src/data/temperatureRoutes.json`, `temperatureFlows.ts` and `flowAnimation.ts`: water geometry, neighboring-region selection and animated traces.
