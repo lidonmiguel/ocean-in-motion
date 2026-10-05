@@ -442,7 +442,13 @@ export function SeaTemperatureMap({
       <div
         ref={container}
         className="map-canvas"
-        style={fallback ? { display: 'none' } : undefined}
+        // Own this layout inline: MapLibre's lazy CSS sets position: relative,
+        // which otherwise collapses this empty container to zero height.
+        style={{
+          position: 'absolute',
+          inset: 0,
+          display: fallback ? 'none' : undefined
+        }}
         role="img"
         aria-label={`${forecastMode ? 'Experimental temperature forecast' : 'Mean temperature'} · annual surface values for ${year}, by sea and ocean. Select a region to see its history.`}
       />
