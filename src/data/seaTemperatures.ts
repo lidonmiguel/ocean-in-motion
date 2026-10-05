@@ -10,7 +10,8 @@ export type SeaFeature = {
 };
 export type TemperatureRecord = {
   year: number; areaId: string; celsius: number; cells: number;
-  method?: 'estimated'; estimatedFrom?: string[];
+  method?: 'estimated' | 'forecast'; estimatedFrom?: string[];
+  lower?: number; upper?: number; horizon?: number;
 };
 
 const ihoAreas = JSON.parse(areas) as { type: 'FeatureCollection'; features: SeaFeature[] };
@@ -27,6 +28,7 @@ export function seaSeries(areaId: string): TemperatureRecord[] {
 }
 
 export function formatTemperature(row: TemperatureRecord): string {
+  if (row.method === 'forecast') return `↗ ${row.celsius.toFixed(1)} °C`;
   return `${row.method === 'estimated' ? '≈ ' : ''}${row.celsius.toFixed(row.method === 'estimated' ? 1 : 2)} °C`;
 }
 

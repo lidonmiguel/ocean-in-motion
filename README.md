@@ -140,6 +140,37 @@ Pages**, choose **GitHub Actions** as the build source, then merge to `main`.
 The published map is at
 <https://lidonmiguel.github.io/ocean-in-motion/> after deployment completes.
 
+## Temperature forecasting · 2026–2030
+
+The temperature view includes **Predicción 2026–2030**, a separately labeled
+statistical experiment for the 22 areas with NOAA-derived histories. Future
+values never replace the historical snapshot or the 80 imputed sea series.
+
+Eight predeclared candidates compare persistence, local trend, Ridge and
+Gradient Boosting, with and without geographic neighbor features. Selection,
+interval calibration and final evaluation use separate target-year periods.
+**Persistence wins the development comparison**; final-test MAE is **0.220 °C**.
+The nominal 90% interval achieves approximately **87%** pooled final coverage,
+so future coverage is not guaranteed. The website explains the selected
+baseline and exposes error and interval information instead of implying that a
+more complex model won. The point forecast retains the 2025 value at each
+horizon; this is not a claim that warming will stop.
+
+[Experiment report](reports/temperature/REPORT.md) ·
+[Data Science methodology and model card](docs/temperature-forecast.md) ·
+[Executed analysis notebook](notebooks/temperature_forecasting.ipynb)
+
+```bash
+python -m pip install -e './python[forecast]'
+PYTHONPATH=python python -m ocean_pipeline.forecast
+PYTHONPATH=python python -m ocean_pipeline.forecast --check
+```
+
+The complete pipeline runs offline from reviewed snapshots and records input,
+configuration and code hashes. CI verifies temporal leakage tests and artifact
+reproducibility. Forecasts are experimental regional statistics, not climate
+scenarios or predictions of animal movement.
+
 ## Displayed occurrence datasets
 
 All taxa are exact WoRMS AphiaIDs; all extracts use OBIS v3 occurrence queries

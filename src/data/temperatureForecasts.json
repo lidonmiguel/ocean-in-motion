@@ -1,0 +1,1141 @@
+{
+  "schemaVersion": 1,
+  "runId": "d384abb90341f47a",
+  "model": "persistence",
+  "trainedThrough": 2025,
+  "intervalLevel": 0.9,
+  "records": [
+    {
+      "areaId": "arabian",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 28.16,
+      "lower": 27.78,
+      "upper": 28.54
+    },
+    {
+      "areaId": "arctic",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": -1.44,
+      "lower": -1.82,
+      "upper": -1.06
+    },
+    {
+      "areaId": "atlantic-north",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 21.9,
+      "lower": 21.52,
+      "upper": 22.28
+    },
+    {
+      "areaId": "atlantic-south",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 17.2,
+      "lower": 16.82,
+      "upper": 17.58
+    },
+    {
+      "areaId": "baltic",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 10.39,
+      "lower": 10.01,
+      "upper": 10.77
+    },
+    {
+      "areaId": "bengal",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 29.05,
+      "lower": 28.67,
+      "upper": 29.43
+    },
+    {
+      "areaId": "bering",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 5.12,
+      "lower": 4.74,
+      "upper": 5.5
+    },
+    {
+      "areaId": "black",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 16.55,
+      "lower": 16.17,
+      "upper": 16.93
+    },
+    {
+      "areaId": "caribbean",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 28.58,
+      "lower": 28.2,
+      "upper": 28.96
+    },
+    {
+      "areaId": "caspian",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 16.04,
+      "lower": 15.66,
+      "upper": 16.42
+    },
+    {
+      "areaId": "coral",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 27.32,
+      "lower": 26.94,
+      "upper": 27.7
+    },
+    {
+      "areaId": "gulf-mexico",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 26.81,
+      "lower": 26.43,
+      "upper": 27.19
+    },
+    {
+      "areaId": "indian",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 18.82,
+      "lower": 18.44,
+      "upper": 19.2
+    },
+    {
+      "areaId": "med-east",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 22.26,
+      "lower": 21.88,
+      "upper": 22.64
+    },
+    {
+      "areaId": "med-west",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 20.24,
+      "lower": 19.86,
+      "upper": 20.62
+    },
+    {
+      "areaId": "north-sea",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 11.56,
+      "lower": 11.18,
+      "upper": 11.94
+    },
+    {
+      "areaId": "pacific-north",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 23.22,
+      "lower": 22.84,
+      "upper": 23.6
+    },
+    {
+      "areaId": "pacific-south",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 20.02,
+      "lower": 19.64,
+      "upper": 20.4
+    },
+    {
+      "areaId": "red",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 28.79,
+      "lower": 28.41,
+      "upper": 29.17
+    },
+    {
+      "areaId": "south-china",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 28.13,
+      "lower": 27.75,
+      "upper": 28.51
+    },
+    {
+      "areaId": "southern",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": -0.82,
+      "lower": -1.2,
+      "upper": -0.44
+    },
+    {
+      "areaId": "tasman",
+      "year": 2026,
+      "horizon": 1,
+      "celsius": 17.11,
+      "lower": 16.73,
+      "upper": 17.49
+    },
+    {
+      "areaId": "arabian",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 28.16,
+      "lower": 27.67,
+      "upper": 28.65
+    },
+    {
+      "areaId": "arctic",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": -1.44,
+      "lower": -1.93,
+      "upper": -0.95
+    },
+    {
+      "areaId": "atlantic-north",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 21.9,
+      "lower": 21.41,
+      "upper": 22.39
+    },
+    {
+      "areaId": "atlantic-south",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 17.2,
+      "lower": 16.71,
+      "upper": 17.69
+    },
+    {
+      "areaId": "baltic",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 10.39,
+      "lower": 9.9,
+      "upper": 10.88
+    },
+    {
+      "areaId": "bengal",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 29.05,
+      "lower": 28.56,
+      "upper": 29.54
+    },
+    {
+      "areaId": "bering",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 5.12,
+      "lower": 4.63,
+      "upper": 5.61
+    },
+    {
+      "areaId": "black",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 16.55,
+      "lower": 16.06,
+      "upper": 17.04
+    },
+    {
+      "areaId": "caribbean",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 28.58,
+      "lower": 28.09,
+      "upper": 29.07
+    },
+    {
+      "areaId": "caspian",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 16.04,
+      "lower": 15.55,
+      "upper": 16.53
+    },
+    {
+      "areaId": "coral",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 27.32,
+      "lower": 26.83,
+      "upper": 27.81
+    },
+    {
+      "areaId": "gulf-mexico",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 26.81,
+      "lower": 26.32,
+      "upper": 27.3
+    },
+    {
+      "areaId": "indian",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 18.82,
+      "lower": 18.33,
+      "upper": 19.31
+    },
+    {
+      "areaId": "med-east",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 22.26,
+      "lower": 21.77,
+      "upper": 22.75
+    },
+    {
+      "areaId": "med-west",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 20.24,
+      "lower": 19.75,
+      "upper": 20.73
+    },
+    {
+      "areaId": "north-sea",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 11.56,
+      "lower": 11.07,
+      "upper": 12.05
+    },
+    {
+      "areaId": "pacific-north",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 23.22,
+      "lower": 22.73,
+      "upper": 23.71
+    },
+    {
+      "areaId": "pacific-south",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 20.02,
+      "lower": 19.53,
+      "upper": 20.51
+    },
+    {
+      "areaId": "red",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 28.79,
+      "lower": 28.3,
+      "upper": 29.28
+    },
+    {
+      "areaId": "south-china",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 28.13,
+      "lower": 27.64,
+      "upper": 28.62
+    },
+    {
+      "areaId": "southern",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": -0.82,
+      "lower": -1.31,
+      "upper": -0.33
+    },
+    {
+      "areaId": "tasman",
+      "year": 2027,
+      "horizon": 2,
+      "celsius": 17.11,
+      "lower": 16.62,
+      "upper": 17.6
+    },
+    {
+      "areaId": "arabian",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 28.16,
+      "lower": 27.73,
+      "upper": 28.59
+    },
+    {
+      "areaId": "arctic",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": -1.44,
+      "lower": -1.87,
+      "upper": -1.01
+    },
+    {
+      "areaId": "atlantic-north",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 21.9,
+      "lower": 21.47,
+      "upper": 22.33
+    },
+    {
+      "areaId": "atlantic-south",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 17.2,
+      "lower": 16.77,
+      "upper": 17.63
+    },
+    {
+      "areaId": "baltic",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 10.39,
+      "lower": 9.96,
+      "upper": 10.82
+    },
+    {
+      "areaId": "bengal",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 29.05,
+      "lower": 28.62,
+      "upper": 29.48
+    },
+    {
+      "areaId": "bering",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 5.12,
+      "lower": 4.69,
+      "upper": 5.55
+    },
+    {
+      "areaId": "black",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 16.55,
+      "lower": 16.12,
+      "upper": 16.98
+    },
+    {
+      "areaId": "caribbean",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 28.58,
+      "lower": 28.15,
+      "upper": 29.01
+    },
+    {
+      "areaId": "caspian",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 16.04,
+      "lower": 15.61,
+      "upper": 16.47
+    },
+    {
+      "areaId": "coral",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 27.32,
+      "lower": 26.89,
+      "upper": 27.75
+    },
+    {
+      "areaId": "gulf-mexico",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 26.81,
+      "lower": 26.38,
+      "upper": 27.24
+    },
+    {
+      "areaId": "indian",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 18.82,
+      "lower": 18.39,
+      "upper": 19.25
+    },
+    {
+      "areaId": "med-east",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 22.26,
+      "lower": 21.83,
+      "upper": 22.69
+    },
+    {
+      "areaId": "med-west",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 20.24,
+      "lower": 19.81,
+      "upper": 20.67
+    },
+    {
+      "areaId": "north-sea",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 11.56,
+      "lower": 11.13,
+      "upper": 11.99
+    },
+    {
+      "areaId": "pacific-north",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 23.22,
+      "lower": 22.79,
+      "upper": 23.65
+    },
+    {
+      "areaId": "pacific-south",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 20.02,
+      "lower": 19.59,
+      "upper": 20.45
+    },
+    {
+      "areaId": "red",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 28.79,
+      "lower": 28.36,
+      "upper": 29.22
+    },
+    {
+      "areaId": "south-china",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 28.13,
+      "lower": 27.7,
+      "upper": 28.56
+    },
+    {
+      "areaId": "southern",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": -0.82,
+      "lower": -1.25,
+      "upper": -0.39
+    },
+    {
+      "areaId": "tasman",
+      "year": 2028,
+      "horizon": 3,
+      "celsius": 17.11,
+      "lower": 16.68,
+      "upper": 17.54
+    },
+    {
+      "areaId": "arabian",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 28.16,
+      "lower": 27.68,
+      "upper": 28.64
+    },
+    {
+      "areaId": "arctic",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": -1.44,
+      "lower": -1.92,
+      "upper": -0.96
+    },
+    {
+      "areaId": "atlantic-north",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 21.9,
+      "lower": 21.42,
+      "upper": 22.38
+    },
+    {
+      "areaId": "atlantic-south",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 17.2,
+      "lower": 16.72,
+      "upper": 17.68
+    },
+    {
+      "areaId": "baltic",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 10.39,
+      "lower": 9.91,
+      "upper": 10.87
+    },
+    {
+      "areaId": "bengal",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 29.05,
+      "lower": 28.57,
+      "upper": 29.53
+    },
+    {
+      "areaId": "bering",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 5.12,
+      "lower": 4.64,
+      "upper": 5.6
+    },
+    {
+      "areaId": "black",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 16.55,
+      "lower": 16.07,
+      "upper": 17.03
+    },
+    {
+      "areaId": "caribbean",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 28.58,
+      "lower": 28.1,
+      "upper": 29.06
+    },
+    {
+      "areaId": "caspian",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 16.04,
+      "lower": 15.56,
+      "upper": 16.52
+    },
+    {
+      "areaId": "coral",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 27.32,
+      "lower": 26.84,
+      "upper": 27.8
+    },
+    {
+      "areaId": "gulf-mexico",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 26.81,
+      "lower": 26.33,
+      "upper": 27.29
+    },
+    {
+      "areaId": "indian",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 18.82,
+      "lower": 18.34,
+      "upper": 19.3
+    },
+    {
+      "areaId": "med-east",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 22.26,
+      "lower": 21.78,
+      "upper": 22.74
+    },
+    {
+      "areaId": "med-west",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 20.24,
+      "lower": 19.76,
+      "upper": 20.72
+    },
+    {
+      "areaId": "north-sea",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 11.56,
+      "lower": 11.08,
+      "upper": 12.04
+    },
+    {
+      "areaId": "pacific-north",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 23.22,
+      "lower": 22.74,
+      "upper": 23.7
+    },
+    {
+      "areaId": "pacific-south",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 20.02,
+      "lower": 19.54,
+      "upper": 20.5
+    },
+    {
+      "areaId": "red",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 28.79,
+      "lower": 28.31,
+      "upper": 29.27
+    },
+    {
+      "areaId": "south-china",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 28.13,
+      "lower": 27.65,
+      "upper": 28.61
+    },
+    {
+      "areaId": "southern",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": -0.82,
+      "lower": -1.3,
+      "upper": -0.34
+    },
+    {
+      "areaId": "tasman",
+      "year": 2029,
+      "horizon": 4,
+      "celsius": 17.11,
+      "lower": 16.63,
+      "upper": 17.59
+    },
+    {
+      "areaId": "arabian",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 28.16,
+      "lower": 27.72,
+      "upper": 28.6
+    },
+    {
+      "areaId": "arctic",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": -1.44,
+      "lower": -1.88,
+      "upper": -1.0
+    },
+    {
+      "areaId": "atlantic-north",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 21.9,
+      "lower": 21.46,
+      "upper": 22.34
+    },
+    {
+      "areaId": "atlantic-south",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 17.2,
+      "lower": 16.76,
+      "upper": 17.64
+    },
+    {
+      "areaId": "baltic",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 10.39,
+      "lower": 9.95,
+      "upper": 10.83
+    },
+    {
+      "areaId": "bengal",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 29.05,
+      "lower": 28.61,
+      "upper": 29.49
+    },
+    {
+      "areaId": "bering",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 5.12,
+      "lower": 4.68,
+      "upper": 5.56
+    },
+    {
+      "areaId": "black",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 16.55,
+      "lower": 16.11,
+      "upper": 16.99
+    },
+    {
+      "areaId": "caribbean",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 28.58,
+      "lower": 28.14,
+      "upper": 29.02
+    },
+    {
+      "areaId": "caspian",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 16.04,
+      "lower": 15.6,
+      "upper": 16.48
+    },
+    {
+      "areaId": "coral",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 27.32,
+      "lower": 26.88,
+      "upper": 27.76
+    },
+    {
+      "areaId": "gulf-mexico",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 26.81,
+      "lower": 26.37,
+      "upper": 27.25
+    },
+    {
+      "areaId": "indian",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 18.82,
+      "lower": 18.38,
+      "upper": 19.26
+    },
+    {
+      "areaId": "med-east",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 22.26,
+      "lower": 21.82,
+      "upper": 22.7
+    },
+    {
+      "areaId": "med-west",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 20.24,
+      "lower": 19.8,
+      "upper": 20.68
+    },
+    {
+      "areaId": "north-sea",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 11.56,
+      "lower": 11.12,
+      "upper": 12.0
+    },
+    {
+      "areaId": "pacific-north",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 23.22,
+      "lower": 22.78,
+      "upper": 23.66
+    },
+    {
+      "areaId": "pacific-south",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 20.02,
+      "lower": 19.58,
+      "upper": 20.46
+    },
+    {
+      "areaId": "red",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 28.79,
+      "lower": 28.35,
+      "upper": 29.23
+    },
+    {
+      "areaId": "south-china",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 28.13,
+      "lower": 27.69,
+      "upper": 28.57
+    },
+    {
+      "areaId": "southern",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": -0.82,
+      "lower": -1.26,
+      "upper": -0.38
+    },
+    {
+      "areaId": "tasman",
+      "year": 2030,
+      "horizon": 5,
+      "celsius": 17.11,
+      "lower": 16.67,
+      "upper": 17.55
+    }
+  ],
+  "testByHorizon": {
+    "1": {
+      "mae": 0.210455,
+      "rmse": 0.302437,
+      "bias": 0.185,
+      "n": 22,
+      "coverage": 0.863636,
+      "meanIntervalWidth": 0.76,
+      "calibrationN": 110,
+      "radius": 0.38
+    },
+    "2": {
+      "mae": 0.208182,
+      "rmse": 0.291937,
+      "bias": 0.081818,
+      "n": 22,
+      "coverage": 0.863636,
+      "meanIntervalWidth": 0.98,
+      "calibrationN": 88,
+      "radius": 0.49
+    },
+    "3": {
+      "mae": 0.247273,
+      "rmse": 0.308412,
+      "bias": -0.098182,
+      "n": 22,
+      "coverage": 0.863636,
+      "meanIntervalWidth": 0.86,
+      "calibrationN": 66,
+      "radius": 0.43
+    },
+    "4": {
+      "mae": 0.257273,
+      "rmse": 0.316472,
+      "bias": -0.179091,
+      "n": 22,
+      "coverage": 0.818182,
+      "meanIntervalWidth": 0.96,
+      "calibrationN": 44,
+      "radius": 0.48
+    },
+    "5": {
+      "mae": 0.175,
+      "rmse": 0.231801,
+      "bias": -0.080455,
+      "n": 22,
+      "coverage": 0.954545,
+      "meanIntervalWidth": 0.88,
+      "calibrationN": 22,
+      "radius": 0.44
+    }
+  },
+  "testByArea": {
+    "arabian": {
+      "name": "Mar Ar\u00e1bigo",
+      "mae": 0.236,
+      "rmse": 0.24972,
+      "bias": 0.1,
+      "n": 5,
+      "coverage": 1.0,
+      "meanIntervalWidth": 0.888
+    },
+    "arctic": {
+      "name": "Oc\u00e9ano \u00c1rtico",
+      "mae": 0.06,
+      "rmse": 0.06603,
+      "bias": 0.056,
+      "n": 5,
+      "coverage": 1.0,
+      "meanIntervalWidth": 0.888
+    },
+    "atlantic-north": {
+      "name": "Atl\u00e1ntico norte",
+      "mae": 0.18,
+      "rmse": 0.25776,
+      "bias": -0.172,
+      "n": 5,
+      "coverage": 1.0,
+      "meanIntervalWidth": 0.888
+    },
+    "atlantic-south": {
+      "name": "Atl\u00e1ntico sur",
+      "mae": 0.126,
+      "rmse": 0.14893,
+      "bias": -0.126,
+      "n": 5,
+      "coverage": 1.0,
+      "meanIntervalWidth": 0.888
+    },
+    "baltic": {
+      "name": "Mar B\u00e1ltico",
+      "mae": 0.622,
+      "rmse": 0.673483,
+      "bias": 0.622,
+      "n": 5,
+      "coverage": 0.4,
+      "meanIntervalWidth": 0.888
+    },
+    "bengal": {
+      "name": "Bah\u00eda de Bengala",
+      "mae": 0.138,
+      "rmse": 0.155885,
+      "bias": 0.05,
+      "n": 5,
+      "coverage": 1.0,
+      "meanIntervalWidth": 0.888
+    },
+    "bering": {
+      "name": "Mar de Bering",
+      "mae": 0.338,
+      "rmse": 0.371026,
+      "bias": 0.338,
+      "n": 5,
+      "coverage": 0.6,
+      "meanIntervalWidth": 0.888
+    },
+    "black": {
+      "name": "Mar Negro",
+      "mae": 0.41,
+      "rmse": 0.508311,
+      "bias": 0.158,
+      "n": 5,
+      "coverage": 0.4,
+      "meanIntervalWidth": 0.888
+    },
+    "caribbean": {
+      "name": "Mar Caribe",
+      "mae": 0.244,
+      "rmse": 0.289344,
+      "bias": -0.124,
+      "n": 5,
+      "coverage": 0.8,
+      "meanIntervalWidth": 0.888
+    },
+    "caspian": {
+      "name": "Mar Caspio",
+      "mae": 0.048,
+      "rmse": 0.051769,
+      "bias": -0.048,
+      "n": 5,
+      "coverage": 1.0,
+      "meanIntervalWidth": 0.888
+    },
+    "coral": {
+      "name": "Mar del Coral",
+      "mae": 0.202,
+      "rmse": 0.234478,
+      "bias": -0.126,
+      "n": 5,
+      "coverage": 1.0,
+      "meanIntervalWidth": 0.888
+    },
+    "gulf-mexico": {
+      "name": "Golfo de M\u00e9xico",
+      "mae": 0.186,
+      "rmse": 0.237192,
+      "bias": -0.07,
+      "n": 5,
+      "coverage": 1.0,
+      "meanIntervalWidth": 0.888
+    },
+    "indian": {
+      "name": "Oc\u00e9ano \u00cdndico",
+      "mae": 0.15,
+      "rmse": 0.189895,
+      "bias": -0.13,
+      "n": 5,
+      "coverage": 1.0,
+      "meanIntervalWidth": 0.888
+    },
+    "med-east": {
+      "name": "Mediterr\u00e1neo oriental",
+      "mae": 0.284,
+      "rmse": 0.366224,
+      "bias": -0.28,
+      "n": 5,
+      "coverage": 0.8,
+      "meanIntervalWidth": 0.888
+    },
+    "med-west": {
+      "name": "Mediterr\u00e1neo occidental",
+      "mae": 0.342,
+      "rmse": 0.357351,
+      "bias": -0.238,
+      "n": 5,
+      "coverage": 0.8,
+      "meanIntervalWidth": 0.888
+    },
+    "north-sea": {
+      "name": "Mar del Norte",
+      "mae": 0.212,
+      "rmse": 0.239666,
+      "bias": -0.108,
+      "n": 5,
+      "coverage": 1.0,
+      "meanIntervalWidth": 0.888
+    },
+    "pacific-north": {
+      "name": "Pac\u00edfico norte",
+      "mae": 0.12,
+      "rmse": 0.136967,
+      "bias": 0.02,
+      "n": 5,
+      "coverage": 1.0,
+      "meanIntervalWidth": 0.888
+    },
+    "pacific-south": {
+      "name": "Pac\u00edfico sur",
+      "mae": 0.166,
+      "rmse": 0.171988,
+      "bias": -0.05,
+      "n": 5,
+      "coverage": 1.0,
+      "meanIntervalWidth": 0.888
+    },
+    "red": {
+      "name": "Mar Rojo",
+      "mae": 0.154,
+      "rmse": 0.189262,
+      "bias": -0.01,
+      "n": 5,
+      "coverage": 1.0,
+      "meanIntervalWidth": 0.888
+    },
+    "south-china": {
+      "name": "Mar de China Meridional",
+      "mae": 0.154,
+      "rmse": 0.172221,
+      "bias": 0.058,
+      "n": 5,
+      "coverage": 1.0,
+      "meanIntervalWidth": 0.888
+    },
+    "southern": {
+      "name": "Oc\u00e9ano Austral",
+      "mae": 0.078,
+      "rmse": 0.088431,
+      "bias": 0.062,
+      "n": 5,
+      "coverage": 1.0,
+      "meanIntervalWidth": 0.888
+    },
+    "tasman": {
+      "name": "Mar de Tasmania",
+      "mae": 0.382,
+      "rmse": 0.411364,
+      "bias": -0.382,
+      "n": 5,
+      "coverage": 0.4,
+      "meanIntervalWidth": 0.888
+    }
+  }
+}
