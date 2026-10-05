@@ -38,6 +38,8 @@ class TemperatureCoverageTests(unittest.TestCase):
         snapshot_path = ROOT/'src/data/seaTemperatures.json'
         snapshot = json.loads(snapshot_path.read_text())
         self.assertEqual(manifest['snapshotSha256'], hashlib.sha256(snapshot_path.read_bytes()).hexdigest())
+        generator = ROOT/'python/ocean_pipeline/temperature.py'
+        self.assertEqual(manifest['codeSha256'], hashlib.sha256(generator.read_bytes()).hexdigest())
         geometry = ROOT/'data/geography/iho-sea-areas-simplified.geojson'
         self.assertEqual(manifest['geometrySha256'], hashlib.sha256(geometry.read_bytes()).hexdigest())
         years = list(range(snapshot['startYear'], snapshot['endYear']+1))

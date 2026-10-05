@@ -1365,3 +1365,26 @@ button {
     font-size: 12px;
   }
 }
+
+.deferred-note {
+  padding: 24px;
+  color: #bde6e2;
+  font-size: 13px;
+}
+.deferred-section {
+  min-height: 160px;
+}
+.map-load-note {
+  position: absolute;
+  z-index: 10;
+  top: 70px;
+  left: 20px;
+  right: 20px;
+  background: #071f2deb;
+  color: #bde6e2;
+  padding: 12px;
+  font-size: 12px;
+}
+.map-load-note button {
+  margin-left: 12px;
+}

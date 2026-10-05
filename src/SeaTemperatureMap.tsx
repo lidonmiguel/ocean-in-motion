@@ -3,11 +3,14 @@ import * as maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { MapLibreOverlay } from '@deck.gl/maplibre';
 import { GeoJsonLayer, PathLayer, TextLayer } from '@deck.gl/layers';
-import landRaw from './data/temperatureLand.geojson?raw';
+import {
+  loadMapGeometry,
+  loadTemperatureNetwork,
+  type MapGeometry
+} from './data/mapAssets';
 import {
   formatTemperature,
   recordsByYear,
-  seaAreas,
   temperatureColor,
   type SeaFeature
 } from './data/seaTemperatures';
@@ -16,16 +19,13 @@ import {
   coolingFlowFrame,
   coolingSvgPath,
   temperatureFlows,
+  type CoolingNetwork,
   type CoolingFrame
 } from './data/temperatureFlows';
 
-const land = JSON.parse(landRaw) as {
-  type: 'FeatureCollection';
-  features: {
-    type: 'Feature';
-    properties: object;
-    geometry: SeaFeature['geometry'];
-  }[];
+const emptyAreas: MapGeometry['seaAreas'] = {
+  type: 'FeatureCollection',
+  features: []
 };
 const blackSeaLabel = {
   position: [34, 44] as [number, number],
@@ -55,12 +55,6 @@ function geometryPath(geometry: SeaFeature['geometry']): string {
     )
     .join('');
 }
-
-function landPath(): string {
-  return land.features.map((item) => geometryPath(item.geometry)).join('');
-}
-
-const coast = landPath();
 
 function boundsForArea(area: SeaFeature): maplibregl.LngLatBoundsLike {
   const polygons =
@@ -107,6 +101,13 @@ export function SeaTemperatureMap({
   showCooling?: boolean;
   motionPaused?: boolean;
 }) {
+  const [geometry, setGeometry] = useState<MapGeometry>();
+  const [network, setNetwork] = useState<CoolingNetwork>();
+  const [geometryError, setGeometryError] = useState(false);
+  const [routeError, setRouteError] = useState(false);
+  const [retry, setRetry] = useState(0);
+  const seaAreas = geometry?.seaAreas ?? emptyAreas;
+  const land = geometry?.land ?? emptyAreas;
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
   const overlay = useRef<MapLibreOverlay | null>(null);
@@ -121,14 +122,62 @@ export function SeaTemperatureMap({
   const previousArea = useRef(selectedAreaId);
   const records = values ?? recordsByYear.get(year)!;
   const flows = useMemo(
-    () => (showCooling && (ready || fallback) ? temperatureFlows(records) : []),
-    [records, showCooling, ready, fallback]
+    () =>
+      showCooling && (ready || fallback)
+        ? network
+          ? temperatureFlows(records, network)
+          : []
+        : [],
+    [records, showCooling, ready, fallback, network]
   );
   const svgTrails = useRef(new Map<string, SVGPathElement>());
   const clock = useRef({ year, seconds: 0 });
 
+  const coast = useMemo(
+    () =>
+      fallback
+        ? land.features.map((item) => geometryPath(item.geometry)).join('')
+        : '',
+    [fallback, land]
+  );
+
   useEffect(() => {
-    if (!container.current || fallback) return;
+    let active = true;
+    loadMapGeometry()
+      .then((value) => {
+        if (active) {
+          setGeometry(value);
+          setGeometryError(false);
+        }
+      })
+      .catch(() => {
+        if (active) setGeometryError(true);
+      });
+    return () => {
+      active = false;
+    };
+  }, [retry]);
+
+  useEffect(() => {
+    if (!showCooling || (!ready && !fallback)) return;
+    let active = true;
+    loadTemperatureNetwork()
+      .then((value) => {
+        if (active) {
+          setNetwork(value);
+          setRouteError(false);
+        }
+      })
+      .catch(() => {
+        if (active) setRouteError(true);
+      });
+    return () => {
+      active = false;
+    };
+  }, [showCooling, ready, fallback, retry]);
+
+  useEffect(() => {
+    if (!container.current || fallback || !geometry) return;
     let instance: maplibregl.Map;
     try {
       instance = new maplibregl.Map({
@@ -170,7 +219,7 @@ export function SeaTemperatureMap({
       map.current = null;
       overlay.current = null;
     };
-  }, [fallback]);
+  }, [fallback, geometry]);
 
   useEffect(() => {
     if (!ready || !map.current) return;
@@ -196,7 +245,7 @@ export function SeaTemperatureMap({
       maxZoom: 3.8,
       duration: 550
     });
-  }, [ready, selectedAreaId]);
+  }, [ready, selectedAreaId, seaAreas]);
 
   useEffect(() => {
     if (!ready && !fallback) return;
@@ -359,11 +408,37 @@ export function SeaTemperatureMap({
     selectedAreaId,
     onSelectArea,
     flows,
-    motionPaused
+    motionPaused,
+    seaAreas,
+    land
   ]);
 
   return (
     <div className="map-wrap">
+      {!geometry && (
+        <div
+          className="map-load-note"
+          role={geometryError ? 'alert' : 'status'}
+        >
+          {geometryError ? 'Map data could not be loaded.' : 'Loading map…'}
+          {geometryError && (
+            <button
+              type="button"
+              onClick={() => setRetry((value) => value + 1)}
+            >
+              Retry map
+            </button>
+          )}
+        </div>
+      )}
+      {routeError && showCooling && (
+        <div className="map-load-note" role="alert">
+          Paths could not be loaded. The temperature map remains available.
+          <button type="button" onClick={() => setRetry((value) => value + 1)}>
+            Retry paths
+          </button>
+        </div>
+      )}
       <div
         ref={container}
         className="map-canvas"

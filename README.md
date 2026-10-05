@@ -114,7 +114,7 @@ PYTHONPATH=python python -m unittest discover -s python/tests -v
 PYTHONPATH=python python -m ocean_pipeline.forecast --check
 ```
 
-The application runs from bundled snapshots without data API credentials.
+The application serves reviewed snapshots and separate geographic assets without data API credentials.
 Input, configuration and pipeline hashes identify the experiment. GitHub Actions
 checks the application, experiment and route geometry, and deploys `main` to
 GitHub Pages. See the [data and maintenance guide](docs/temperature-data.md)
@@ -131,3 +131,10 @@ for source refreshes, geometry validation and notebook regeneration.
 | `reports/temperature/` | Evaluation metrics, backtests, feature diagnostics and figures |
 | `notebooks/temperature_forecasting.ipynb` | Executed exploratory analysis and experiment walkthrough |
 | `docs/` | Data sources, methods, comparison definitions and limitations |
+
+## License
+
+Original code is licensed under [MIT](LICENSE). Third-party data retain their
+own terms and attribution: marine boundaries are CC BY 4.0, Natural Earth
+geography is public domain, and NOAA ERSSTv6 remains credited. See
+[code and data attribution](docs/data-attribution.md), including both input manifests.

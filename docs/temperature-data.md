@@ -100,7 +100,7 @@ The second script downloads monthly files from NOAA, refuses missing months,
 and computes NOAA-derived means for **all 101 polygons** where at least two
 complete 2° cells are available. Only areas without sufficient NOAA cells are
 estimated from neighboring areas. It replaces the two derived files in
-`src/data/` and needs network access; the website itself works offline. The optional cache
+`src/data/` and needs network access; the deployed website uses reviewed local assets. The optional cache
 reuses the exact downloaded monthly files. Remove it to request a new NOAA
 vintage, and review the resulting hashes before replacing the snapshot.
 
@@ -132,7 +132,14 @@ PYTHONPATH=python python -m ocean_pipeline.execute_notebook
 PYTHONPATH=python python -m ocean_pipeline.temperature_routes
 ```
 
-The application bundles reviewed snapshots and geography. It needs no map-tile
+The application serves reviewed snapshots and geography from its own deployment.
+Geometries and cooling routes are emitted as separate, fingerprinted files;
+the initial JavaScript contains only regional names and temperature values.
+The map code is loaded separately; its routes are fetched only once the map is
+ready and paths are enabled. The comparison component loads when its section
+approaches the viewport. Successful data requests are cached for the session;
+failed requests can be retried. Serve the deployment over HTTP rather than
+opening index.html through file://. It needs no map-tile
 account or data API at runtime. NOAA refreshes require network access; forecast
 reproduction and route validation run offline from the checked-in inputs.
 
@@ -140,3 +147,25 @@ GitHub Actions checks the application, Python tests, forecast reproducibility,
 executed analysis and ocean route geometry. Pushes to `main` publish the same
 application to GitHub Pages. Configure **Settings → Pages → GitHub Actions** as
 the build source.
+
+## Licensing and input manifests
+
+The original code is MIT licensed. [Code and data attribution](data-attribution.md)
+keeps upstream licenses separate and links both marine and Caspian manifests.
+The marine generator revision is pinned there so its code, catalog and
+imputation helpers can be inspected together. The existing NOAA input hashes,
+scientific snapshots and geographic attribution are preserved when changing
+browser asset loading.
+
+## Browser loading budget
+
+The initial JavaScript is approximately **670 KB / 124 KB gzip**, compared with
+**10.15 MB / 3.19 MB gzip** before separating data. These are production-build
+measurements, not a claim about measured network transfer on every host. The
+map library chunk is still approximately 1.81 MB / 494 KB gzip; it loads separately.
+The geographic data still have their original sizes and precision.
+
+`npm run build` also checks that the initial script stays below 800 KB and
+160 KB gzip, that all four geographic/route files are emitted separately with
+bytes identical to the reviewed source files, and that deferred sections are
+not preloaded by the HTML. This runs for the GitHub Pages base path too.
