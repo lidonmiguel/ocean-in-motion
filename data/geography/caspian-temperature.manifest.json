@@ -1,0 +1,2648 @@
+{
+  "sourceUrlPattern": "https://www.ncei.noaa.gov/data/sea-surface-temperature-extended-reconstructed/v6/access/ersst.v6.YYYYMM.nc",
+  "accessed": "2026-10-05",
+  "geometrySha256": "3101664640a3f05760e69ea0be1b10b315c1090cbcf86da1a12518c0d3617e06",
+  "method": "Annual day-weighted monthly SST, cosine-latitude cell weights; at least two cells valid all twelve months",
+  "inputs": [
+    {
+      "year": 1982,
+      "month": 1,
+      "sha256": "7e4a56393392b34f0c4d10327cf5e395baa4b7b5b59984a99e0f21d9ca8fba83"
+    },
+    {
+      "year": 1982,
+      "month": 2,
+      "sha256": "4cb719541b8c03689002b2a1a129d8262eb28a28a6ae7d739347439118f843b8"
+    },
+    {
+      "year": 1982,
+      "month": 3,
+      "sha256": "c9f2be84465a8939b89e6066ff179a8b232a77f8258c68a035aa1c0d19056df1"
+    },
+    {
+      "year": 1982,
+      "month": 4,
+      "sha256": "83a27711cf470eb94f68079eb13e2f9d61bfab60b691636fa317306a7d8e1cb8"
+    },
+    {
+      "year": 1982,
+      "month": 5,
+      "sha256": "569f4a91f6743371f5a7a7f87c53714ad9d33cfcbd7fdba7463f1a7755f8e80c"
+    },
+    {
+      "year": 1982,
+      "month": 6,
+      "sha256": "b67e93b10dbc7b807af73d74c6a5c379c7f7c5b72410b999debd68f54e3373ca"
+    },
+    {
+      "year": 1982,
+      "month": 7,
+      "sha256": "40d8061717d9be395ff2639fe06be1da0a90b991e94a155a1450b4ce9a3ab58b"
+    },
+    {
+      "year": 1982,
+      "month": 8,
+      "sha256": "13516861fe717cce2d33ddda255b59fdd56fb85dc091c601b00b12d484870e12"
+    },
+    {
+      "year": 1982,
+      "month": 9,
+      "sha256": "93fc59e17deb3209688424363bf2fecdfd336bd93f6e38003fdf3da6039b6fea"
+    },
+    {
+      "year": 1982,
+      "month": 10,
+      "sha256": "45cc82c6d6b33ad2c2adceab7492c86461e927022532d31a74664506c163ee35"
+    },
+    {
+      "year": 1982,
+      "month": 11,
+      "sha256": "03b37b0394e9c22da46aa3ee54c7863bd55a2df64526a62ba4db2abba11a6999"
+    },
+    {
+      "year": 1982,
+      "month": 12,
+      "sha256": "293a2de7fb5bc9a69b8c39dc26c7c45d51c4991bff29cc4056ec3cf257221e88"
+    },
+    {
+      "year": 1983,
+      "month": 1,
+      "sha256": "5f54ee86161cade0f2dbf97cd94ba46d20fa636245fde5d8f2faf227a81c72b2"
+    },
+    {
+      "year": 1983,
+      "month": 2,
+      "sha256": "c5ce283bb2fba17ed8527cd399a7ac16c09e947c015eebce53d247733823bb5f"
+    },
+    {
+      "year": 1983,
+      "month": 3,
+      "sha256": "ba4f8d870bcfedca70211cc362f47833a7cabd6874c356e56b05f2250dea60ce"
+    },
+    {
+      "year": 1983,
+      "month": 4,
+      "sha256": "4b88e707d23816c64011fb584bb402a46a497080f8b4e1b13bf092b2b472e156"
+    },
+    {
+      "year": 1983,
+      "month": 5,
+      "sha256": "746a2c063e3c885c8cd715486053eb15af4d914cc93347b13b46b64afb05115d"
+    },
+    {
+      "year": 1983,
+      "month": 6,
+      "sha256": "d53fefcfac3275319fdcfa30c195c72c32764aed7e0ecc9c02a8aa380b4d6b37"
+    },
+    {
+      "year": 1983,
+      "month": 7,
+      "sha256": "fe4f8a7fca739ad5d4aed0f86226513d442b1bfb938d6d27f6e5170c1f566bea"
+    },
+    {
+      "year": 1983,
+      "month": 8,
+      "sha256": "aa7485e5f5ab92ef65b0992ef2eed9ec64c2bfed334f4327001486c7d9d1b1e9"
+    },
+    {
+      "year": 1983,
+      "month": 9,
+      "sha256": "699b9d0dee36f9dae8737e06b624aab742789873303989e0508463e100e090d9"
+    },
+    {
+      "year": 1983,
+      "month": 10,
+      "sha256": "aa528e6a2e1708762d5de2a79894c8b95703095764a98b405b53198f4658cc94"
+    },
+    {
+      "year": 1983,
+      "month": 11,
+      "sha256": "63c93956abb85a7a82159ddadab9736623a257091c408ab26d9eb1ace5f10859"
+    },
+    {
+      "year": 1983,
+      "month": 12,
+      "sha256": "0783ab1ca78c01bc68f95922c1321ff0f6c5fda90d00eb226dfed12da6ada9a9"
+    },
+    {
+      "year": 1984,
+      "month": 1,
+      "sha256": "6b792b39f5dd89aabd56330f4e822225226bb68ef7375304aa1430bd19851d33"
+    },
+    {
+      "year": 1984,
+      "month": 2,
+      "sha256": "ba2d35f47f38477acb9f08e0f34d610ea1b6d1bbfc1b2900b10846b252e6405e"
+    },
+    {
+      "year": 1984,
+      "month": 3,
+      "sha256": "06b868e3796279b25fd1af73b0bae0bc05f4d715a9333d22f37ae6e494a71b22"
+    },
+    {
+      "year": 1984,
+      "month": 4,
+      "sha256": "b44d2da42e1be8007cf56eaeb681d9482e024ec3598a1a2bda99bf8438f05a82"
+    },
+    {
+      "year": 1984,
+      "month": 5,
+      "sha256": "14889a3f6a379433f567b3c385be1f449cd564b99dd8d8956ce5f29762f0524f"
+    },
+    {
+      "year": 1984,
+      "month": 6,
+      "sha256": "6bc887dc390de651d25d928a7b2ffc425113a84d3f3addf042b6b8b283e07acf"
+    },
+    {
+      "year": 1984,
+      "month": 7,
+      "sha256": "35b3572dd659a4d26a44f7bc760a770cb492a58a4b1816297a73b3fa58c8a10e"
+    },
+    {
+      "year": 1984,
+      "month": 8,
+      "sha256": "e94aa64fe8f382736df8b4fb9747c1afe32dd154cae53ab97e1709339391c213"
+    },
+    {
+      "year": 1984,
+      "month": 9,
+      "sha256": "c5aa729f31d0725a539808b66298aaf2be7aa0b802a049b6891b562afbc48a28"
+    },
+    {
+      "year": 1984,
+      "month": 10,
+      "sha256": "34e8a15fb65db1ad388ab1cbd4557178afd2e2f2bad2ccaf7b3ea9ffbcb02864"
+    },
+    {
+      "year": 1984,
+      "month": 11,
+      "sha256": "2a89661be9c489e62d9622cf45489016518a7bc9651b1b8c9cf1cc1fc6d98166"
+    },
+    {
+      "year": 1984,
+      "month": 12,
+      "sha256": "10564c838909cba990f45dae4f2f698529bc71b8161bc16d97af9fbae3c7663a"
+    },
+    {
+      "year": 1985,
+      "month": 1,
+      "sha256": "e67c4d7a288eb771d1dd7921ee1bea2f6971d6056bbc5e4a207de6ed3c313ec1"
+    },
+    {
+      "year": 1985,
+      "month": 2,
+      "sha256": "83d8d4f4382703b934598b6eb6bc12dd03f5f7e455a99fd39ac112742facbd17"
+    },
+    {
+      "year": 1985,
+      "month": 3,
+      "sha256": "9ce929c705c5e215818e65bb92850cc3415f4da36daf7fcce98afeeaf16fddc3"
+    },
+    {
+      "year": 1985,
+      "month": 4,
+      "sha256": "064f45db43a971a2266aa05be94ffadf2d260786ad2b36c00758f9678df05bb3"
+    },
+    {
+      "year": 1985,
+      "month": 5,
+      "sha256": "a1240a2769284412165153f6f939a6a71addadefe5a77370607099fc7fdd3098"
+    },
+    {
+      "year": 1985,
+      "month": 6,
+      "sha256": "a4bc1cbbb66747ef772388415821833725c5092330ade6e170c4f75e3930589b"
+    },
+    {
+      "year": 1985,
+      "month": 7,
+      "sha256": "c1bb43c0f9755ddb9813bfaaf42c4e684aacafd0276eb099525ac4a5acf7be63"
+    },
+    {
+      "year": 1985,
+      "month": 8,
+      "sha256": "e05a98ebcd70d994eaa5b299d03ed119f8aa7ffd67c127ca190590a37be1b172"
+    },
+    {
+      "year": 1985,
+      "month": 9,
+      "sha256": "ae35deea04e93bff257212ef60eb18dc69d1793e4956de6e7ec852c59525f3d0"
+    },
+    {
+      "year": 1985,
+      "month": 10,
+      "sha256": "b5be45eccd05acdf451b57a884ee627b7c89cb1f5297767b9024ec21b85661f8"
+    },
+    {
+      "year": 1985,
+      "month": 11,
+      "sha256": "00d3a6c3cbb3e5736d270d6059317c8d710da2ff412454a7d569543277eb9b24"
+    },
+    {
+      "year": 1985,
+      "month": 12,
+      "sha256": "7877962e168a148fab16f6adabae38908cb82fb149dfda5c424deceeea2e60a3"
+    },
+    {
+      "year": 1986,
+      "month": 1,
+      "sha256": "277ba32de8e05869a35a17c62d0c5a2ac1874465463cda4a8feab4749a434c98"
+    },
+    {
+      "year": 1986,
+      "month": 2,
+      "sha256": "b12eb1843ca6c10c98464bfccc9d62d9bedf5551172b2cd6ce3e31e2e3586dcb"
+    },
+    {
+      "year": 1986,
+      "month": 3,
+      "sha256": "82bc99afb3b41731751667340f45d13777ee06a151810771aabe78d92d9ce26d"
+    },
+    {
+      "year": 1986,
+      "month": 4,
+      "sha256": "07cedfc0ce0b47d91fea4e7729ec4d2df4c7e4cd7dc80dd3239b27b0fbd8ed89"
+    },
+    {
+      "year": 1986,
+      "month": 5,
+      "sha256": "5a59a8ff7a3c8359453da82400a9a90610ccfa800c655b22d86ee704dff7c56c"
+    },
+    {
+      "year": 1986,
+      "month": 6,
+      "sha256": "9f738300167aef0f7dfce80ea9ca093f902888df8f3dbc1259b02c5455541e7b"
+    },
+    {
+      "year": 1986,
+      "month": 7,
+      "sha256": "4075a6ca93c890e26a5ede00ed8818384116fc859a3d6b4522e286ce7b29a612"
+    },
+    {
+      "year": 1986,
+      "month": 8,
+      "sha256": "700612f312de14916da50e63573c8d6571f8b4bed129aeed6aa2fcbed2505475"
+    },
+    {
+      "year": 1986,
+      "month": 9,
+      "sha256": "2c1a68809b98a0cafa0d9fd4ea8e5e96aab7f320b10246559d1f2d5a4af4dad6"
+    },
+    {
+      "year": 1986,
+      "month": 10,
+      "sha256": "59243d47bfda815a88443784919ebbac49a9546be36130833fc1c880ebcb79c7"
+    },
+    {
+      "year": 1986,
+      "month": 11,
+      "sha256": "076f824e271312cf16b0aa9886c55578b1a43db4ff76e5f74051e68fb18c524d"
+    },
+    {
+      "year": 1986,
+      "month": 12,
+      "sha256": "3d203542173c9532561a2b58f3591a45d325a54af36fc35673db063c3fa51ee5"
+    },
+    {
+      "year": 1987,
+      "month": 1,
+      "sha256": "49220277aa174e2989c6cec220b904d3e58229fbd9e5cf5cce631949810c1f26"
+    },
+    {
+      "year": 1987,
+      "month": 2,
+      "sha256": "f6660703d5271f44df7fe4644e5962e504ae1bfc840133c225665ce15be0def4"
+    },
+    {
+      "year": 1987,
+      "month": 3,
+      "sha256": "ecf522168124a68f0942740120491f156b65f5f15d83896a0e19161b6acca14d"
+    },
+    {
+      "year": 1987,
+      "month": 4,
+      "sha256": "e0cd560dff8348b129a8bffc093e9b3fb7b05963f476a98fe4b85a044da46c9e"
+    },
+    {
+      "year": 1987,
+      "month": 5,
+      "sha256": "e4b6bf13678900ebc4db97e6d6de41d317950923e693cedd934ae80810c69cd6"
+    },
+    {
+      "year": 1987,
+      "month": 6,
+      "sha256": "2e7da6c2423634e297c6d9d90f17bca9677463f400db0343aef49fcf5503312e"
+    },
+    {
+      "year": 1987,
+      "month": 7,
+      "sha256": "02f3fa773fb53cac6dfe1d5ca7c9dfc853072efd2ec58330f5f7e074db196bed"
+    },
+    {
+      "year": 1987,
+      "month": 8,
+      "sha256": "9541d9dffb12f69b069d7b1292c92af6e03d762d0d451717810b78588c040e8e"
+    },
+    {
+      "year": 1987,
+      "month": 9,
+      "sha256": "6ab334610950aa8438cfc3ac9bc38704d26c224b2326816620f5a201052e2d77"
+    },
+    {
+      "year": 1987,
+      "month": 10,
+      "sha256": "a1745f84511fe9581a9dcb56b287778b3c73b3afddfb1ae678356cbfc11be8b0"
+    },
+    {
+      "year": 1987,
+      "month": 11,
+      "sha256": "dbb49e88d49f1faeb9f7db734d826d67cc3476a08326c520122b1ca14cde6b15"
+    },
+    {
+      "year": 1987,
+      "month": 12,
+      "sha256": "6490edce6bc0d11f5e3a24d6a096adf3929147ada0d8979eaf21c171343aa8e9"
+    },
+    {
+      "year": 1988,
+      "month": 1,
+      "sha256": "a83e2c4b7e33f0dded0460748b17752edb016f81968b2008a746709968d959bb"
+    },
+    {
+      "year": 1988,
+      "month": 2,
+      "sha256": "18e1efb968ca0f1e71b308c0d48d0d841158122828a0a6d4ada0f88c08bff2f3"
+    },
+    {
+      "year": 1988,
+      "month": 3,
+      "sha256": "dff902856b497aa7b6dfb8701a7a7114db9300020929f8be657d915227edc4e5"
+    },
+    {
+      "year": 1988,
+      "month": 4,
+      "sha256": "919fbd45ea547ee4519ba9b4bc8ef341bd571b2963cebcf9f836cd6bfd99b340"
+    },
+    {
+      "year": 1988,
+      "month": 5,
+      "sha256": "9f9551b651773cbf610e926cf5c97d8fc5605811eaf1db1a891532152172e7a3"
+    },
+    {
+      "year": 1988,
+      "month": 6,
+      "sha256": "d8da01e9b8f9801906e30b64bd4e87fc046d4ba47941c77f280fe91bcffaa78d"
+    },
+    {
+      "year": 1988,
+      "month": 7,
+      "sha256": "0b1f1f13d9c6f9bb651d8cb40fcdbdb0255d1b82955d3aca5435ac3de8e35545"
+    },
+    {
+      "year": 1988,
+      "month": 8,
+      "sha256": "1835caa80b686dcb69c8550cbd0a4c5119b04e8a85eeb6a545355c10be18ddd5"
+    },
+    {
+      "year": 1988,
+      "month": 9,
+      "sha256": "d94ffa30c82ce80767f0199070152e09db03202a7440d05ca003af1429518092"
+    },
+    {
+      "year": 1988,
+      "month": 10,
+      "sha256": "7101b54fcc36e9fde58b58fc6c5bd3d227d421015cf13a8ed5604153b5b3c78f"
+    },
+    {
+      "year": 1988,
+      "month": 11,
+      "sha256": "581839e40d6c3977ebc534925996dd84efa254f805bcd3a2896702859e6cf5a3"
+    },
+    {
+      "year": 1988,
+      "month": 12,
+      "sha256": "24dfbc20e277dfeeaa8d64435979377e72a0949a6e1955d45032dc702d679c1e"
+    },
+    {
+      "year": 1989,
+      "month": 1,
+      "sha256": "e93d3d300d9d10922f66f604612bb6166a541d19999bc3eb0d6ce667839ca0c6"
+    },
+    {
+      "year": 1989,
+      "month": 2,
+      "sha256": "6ffc45fce086a7dcb17b4fd5b9cc643b1824c8f2dfc5c77460be1bdbd55dfbad"
+    },
+    {
+      "year": 1989,
+      "month": 3,
+      "sha256": "703d5cc469e0fdd89c11a7def7da03184667a9775d1d8499a38261545c650967"
+    },
+    {
+      "year": 1989,
+      "month": 4,
+      "sha256": "d0e8e9e60f97c833b259245280db1d7900488c5a1aeee8decfc66cfea55e1782"
+    },
+    {
+      "year": 1989,
+      "month": 5,
+      "sha256": "984b5154f95be694660a57ab3405e30a225e012cc2864192a27a743189f22784"
+    },
+    {
+      "year": 1989,
+      "month": 6,
+      "sha256": "2048dc781ce150edf7f602290f91310bac25022f547e688b16580b99ff49b1fa"
+    },
+    {
+      "year": 1989,
+      "month": 7,
+      "sha256": "95d3b08160b99823c6986b88cbbaefd7f8a9e310b1409591cbbd75ad88716767"
+    },
+    {
+      "year": 1989,
+      "month": 8,
+      "sha256": "31dda1abee1b750882f3b937dc882494b3c29fc3e805ca7d540c2b4b6720e995"
+    },
+    {
+      "year": 1989,
+      "month": 9,
+      "sha256": "9c05e83a173a3eb36cf67fb780a4ceb2a9701ffb6c9c773b2b719e630fff1dc7"
+    },
+    {
+      "year": 1989,
+      "month": 10,
+      "sha256": "1d844e9635a3cb5bfb15948cc97e5a3073fa606242664136ac51aca14a7de027"
+    },
+    {
+      "year": 1989,
+      "month": 11,
+      "sha256": "3a67e42254a4409032149d8169d805e6afdb3cec552410bb2d256b2e62f84cbd"
+    },
+    {
+      "year": 1989,
+      "month": 12,
+      "sha256": "c383759e20db17f7528701f002fa5b41552496596fc26b000542c087a568fd64"
+    },
+    {
+      "year": 1990,
+      "month": 1,
+      "sha256": "7216d39ee79fef72065285652abd53951d8641d30d96009fc14812c84120d0cb"
+    },
+    {
+      "year": 1990,
+      "month": 2,
+      "sha256": "deed5b8f42e2e4fe81b72e3c0941b71dc37da732e99b70e10f9868a73e4f5f41"
+    },
+    {
+      "year": 1990,
+      "month": 3,
+      "sha256": "09f61634abd5ad2fee00a9b95ce489dee34b5872a9dea7571d1001fbd7b432d6"
+    },
+    {
+      "year": 1990,
+      "month": 4,
+      "sha256": "078abe189dc4aa260c33c8ea0cc9bc209c2cb75d38a76923163d08fbf3fccfe9"
+    },
+    {
+      "year": 1990,
+      "month": 5,
+      "sha256": "9605bc189eaebce96d2ed0f279143bdd708ff715ffd19cd8126860dd4c5b98ff"
+    },
+    {
+      "year": 1990,
+      "month": 6,
+      "sha256": "94c6fdb9bd3b4ee5a491ea3f63a17a13a0b70c1d705866c8fa9e77ef6215d771"
+    },
+    {
+      "year": 1990,
+      "month": 7,
+      "sha256": "a5b0afcb92a454978931fc607b6c0076835f49a395d56c7bc3764d7508d3bb73"
+    },
+    {
+      "year": 1990,
+      "month": 8,
+      "sha256": "a206f679b26cae8881503cd1bb6b23b84919eb24ce29badf23b2eddb41b8a486"
+    },
+    {
+      "year": 1990,
+      "month": 9,
+      "sha256": "f67035a356b7f0199d08e35df743836e62c6f19e1b2a3d8c142710833eca6bb8"
+    },
+    {
+      "year": 1990,
+      "month": 10,
+      "sha256": "7a20223a6e7c4f3381bdd5ac8715e3aa41ba86ccccfb23c56fee08efde5e2772"
+    },
+    {
+      "year": 1990,
+      "month": 11,
+      "sha256": "5bd3eb15fa6d0230968f8b117ec47e3f877fc11570afbc957be79abd6323be6b"
+    },
+    {
+      "year": 1990,
+      "month": 12,
+      "sha256": "a3498a5f8d5e63141db0d7b54077ebcf89c4651ee2be7a18343088d487dd93da"
+    },
+    {
+      "year": 1991,
+      "month": 1,
+      "sha256": "6adfea688c27489c2863cd8e1f968ddf56b8e350410642156b1332a7d3921ac6"
+    },
+    {
+      "year": 1991,
+      "month": 2,
+      "sha256": "df8e54d62b95fde3e6e7c5ff76acbf2a6bbfe40d00c7eac7a0b06a2c7ebe5474"
+    },
+    {
+      "year": 1991,
+      "month": 3,
+      "sha256": "73239b0e9ed82bf2b05c7bce6ae1c41a734918e8beba162c370ceca05853c77d"
+    },
+    {
+      "year": 1991,
+      "month": 4,
+      "sha256": "c82012f103d847744a8b10b5c528112ada1b00876b7131c1f5163b92392f7d48"
+    },
+    {
+      "year": 1991,
+      "month": 5,
+      "sha256": "99263c2e92d5a752cc7509cfaa6986fc75f286218dcbd889d22513ab4a8acd93"
+    },
+    {
+      "year": 1991,
+      "month": 6,
+      "sha256": "d191afa8fa50578b3da84507d0a232591a7f4db3046c6443e1b7c92864ac6a33"
+    },
+    {
+      "year": 1991,
+      "month": 7,
+      "sha256": "74f33a5ea99802765a3dd0df4f4d0925222f112bea049e5aff2dec56f11cc5b5"
+    },
+    {
+      "year": 1991,
+      "month": 8,
+      "sha256": "9dc586be98878e081de402d7f397cd14ff5975a85746fa5373628b30dfca1f78"
+    },
+    {
+      "year": 1991,
+      "month": 9,
+      "sha256": "477e717f77d8a2d92e30aca90aa78b2e66d2f6f5249c52282472bdc6e78810b5"
+    },
+    {
+      "year": 1991,
+      "month": 10,
+      "sha256": "3a8c306d9b28980580315a1a5a17c978f2712caa2aa70308aca5add2a800ed80"
+    },
+    {
+      "year": 1991,
+      "month": 11,
+      "sha256": "2bc893997ca2d17e13a3ceed83fe1bad8fd2cfe37451b9657784ee6da66b805a"
+    },
+    {
+      "year": 1991,
+      "month": 12,
+      "sha256": "0bf0b418b772194b39ca596bd022029592f5fcd339a3f2aef4ded210caea3cd5"
+    },
+    {
+      "year": 1992,
+      "month": 1,
+      "sha256": "8a8729b1cc3b095de17eb3e8086e9163c1572633b9d94293eb630a3c4d5888ac"
+    },
+    {
+      "year": 1992,
+      "month": 2,
+      "sha256": "07c1f9a1d02d93c1f6514371f47744fa71f76fc3ca3489b55b053995617415d8"
+    },
+    {
+      "year": 1992,
+      "month": 3,
+      "sha256": "4f5abb608c8b90c6df894010c3c1082bb0ea4dbe1f407b998267153613ddd26b"
+    },
+    {
+      "year": 1992,
+      "month": 4,
+      "sha256": "7bfad28d546f8b731544959258dcb15a809ced1c14d747ada72b50972cf7229b"
+    },
+    {
+      "year": 1992,
+      "month": 5,
+      "sha256": "dfafb0b5ba1533e9557325e1c8b3cafddb01d9a471ed1a9440521407ca009071"
+    },
+    {
+      "year": 1992,
+      "month": 6,
+      "sha256": "8d15ab051ee7e8bc44d9f9072d481df369b357542774fe3a75925612e7cd563a"
+    },
+    {
+      "year": 1992,
+      "month": 7,
+      "sha256": "d2a42bb569d7af268d58d50db472316bef9ad9694a83de71b51dae5bd180be4e"
+    },
+    {
+      "year": 1992,
+      "month": 8,
+      "sha256": "f429db90e31e77db2e59722818ccafea041b7228b781d046ea60b54b9f5ec71d"
+    },
+    {
+      "year": 1992,
+      "month": 9,
+      "sha256": "05d03a7712cc08736e8502a30cf1f4594b42d2a46cd1dc6032641ebfc572453c"
+    },
+    {
+      "year": 1992,
+      "month": 10,
+      "sha256": "2711e60dd3463978622f437e4de92f1eb78c0f5c928b37673337d0188616bda2"
+    },
+    {
+      "year": 1992,
+      "month": 11,
+      "sha256": "4d0a4ffb1d9f6c1fb34938fe95a430449bbd577095d00e470136bf1524e443b7"
+    },
+    {
+      "year": 1992,
+      "month": 12,
+      "sha256": "1fbb6d6051e62e383db145dee231be36fdc37973aaf9666516ecc7119c7d6fa6"
+    },
+    {
+      "year": 1993,
+      "month": 1,
+      "sha256": "90297fe517bc449453655b90e2ff133ce656381eb7787bb350c82705ca1e2dbf"
+    },
+    {
+      "year": 1993,
+      "month": 2,
+      "sha256": "fd1c95202a89b7653afcfb8709d5c3a28f0d97770f11fe3d52a75e0282db1b91"
+    },
+    {
+      "year": 1993,
+      "month": 3,
+      "sha256": "71a9099a78e742cc1f21b231db62caad42369af24a71f2eb44d2e709fe6c9a17"
+    },
+    {
+      "year": 1993,
+      "month": 4,
+      "sha256": "2f1c3286570b680027bf15e133384bd84845b4d3ce109df43921727634bb1d83"
+    },
+    {
+      "year": 1993,
+      "month": 5,
+      "sha256": "541425c355eee3b27cbd7b7850cf44f7b55cce6efe9dcf99130c91802eb39631"
+    },
+    {
+      "year": 1993,
+      "month": 6,
+      "sha256": "6d2a1cda28340d3ce66c9be76ebf92af8b13b74c22e3194aaea61cd111fa703e"
+    },
+    {
+      "year": 1993,
+      "month": 7,
+      "sha256": "054a9f076512d9e40f0468b234c969a189cebb6b176140b32dd3f4477ce0a98d"
+    },
+    {
+      "year": 1993,
+      "month": 8,
+      "sha256": "78c58acb59f4e67ece81520706020a36d2bee70fbd65d984cbb4c4f0c9d88152"
+    },
+    {
+      "year": 1993,
+      "month": 9,
+      "sha256": "cd1d73fcdcef2f8e70423322cad72178d6bf91becc1607fe3eea145a38840640"
+    },
+    {
+      "year": 1993,
+      "month": 10,
+      "sha256": "834ae4ebfd70f436dd95efabf748fcd8553219459e73e2aa52ff57b22dd37683"
+    },
+    {
+      "year": 1993,
+      "month": 11,
+      "sha256": "b0dc441552b62c322ce367c4d32d0ac97cfd888e89894371fe53497f7660d9c4"
+    },
+    {
+      "year": 1993,
+      "month": 12,
+      "sha256": "1760837ed9d57c8bf463eca52395b5aedf11c9c6875a39f0c32af55c0bc60e00"
+    },
+    {
+      "year": 1994,
+      "month": 1,
+      "sha256": "9b0087403bca999136b5aa0dc5371fe2af750e3f1991d4d1ba82783b192a969f"
+    },
+    {
+      "year": 1994,
+      "month": 2,
+      "sha256": "094ef704c01d2bad6dc859ab298027a06191673fa25c3b9a96a9d2094e7b50d3"
+    },
+    {
+      "year": 1994,
+      "month": 3,
+      "sha256": "8d2c29a456da8350f3ef5304efe03cde97c3bf132a794f1f44e4109dbbd87222"
+    },
+    {
+      "year": 1994,
+      "month": 4,
+      "sha256": "13ad2b8dca4492a681e951e6c7df6e2797b81825f84d83744e073c3517e478ec"
+    },
+    {
+      "year": 1994,
+      "month": 5,
+      "sha256": "43b203a0a2eb5e91512439f6c46c7b6270955433664ed3f7bfe54cb7640509c2"
+    },
+    {
+      "year": 1994,
+      "month": 6,
+      "sha256": "9596437b3259afd0c41d75269282c38e38edb16b3859aec38b70c6b853d2de1a"
+    },
+    {
+      "year": 1994,
+      "month": 7,
+      "sha256": "b921c19f1b5ef4c328c814522412b3b5dee664d811b1aa380d6918dc7b2ae4da"
+    },
+    {
+      "year": 1994,
+      "month": 8,
+      "sha256": "a0e21e388f445dba4f295274259c9194b68bd14486c72cfa99e8bbad4d293e0c"
+    },
+    {
+      "year": 1994,
+      "month": 9,
+      "sha256": "8bee2d4ab1455905554366e4114142151e245f7ed658a9615154e26f8cb4901d"
+    },
+    {
+      "year": 1994,
+      "month": 10,
+      "sha256": "9ccc1b2f00e2a586d779131feb08f6e18d067d8ea0f38c25b914ae9f410a7c09"
+    },
+    {
+      "year": 1994,
+      "month": 11,
+      "sha256": "f50ab10eb377b64869f96521cf6da21b70348fca9f76b34927a9a71220be2007"
+    },
+    {
+      "year": 1994,
+      "month": 12,
+      "sha256": "fa2c7d3920a98c40b0bcad74f1777016f5aea8429bc3a707552cc1b387d8fe7e"
+    },
+    {
+      "year": 1995,
+      "month": 1,
+      "sha256": "0a30847d56e39d1985d5cc6cb1e0b0bfeaa6dd3729fdac6b756b0657e40170fe"
+    },
+    {
+      "year": 1995,
+      "month": 2,
+      "sha256": "3e0f37b724bd9c244d8496b31d02a5233e93ac78dbee24fcfa584aec598702c3"
+    },
+    {
+      "year": 1995,
+      "month": 3,
+      "sha256": "be0d45ae40b3adb803c1106561d2d7ac47e15c954d7e2b2b137b708118fff366"
+    },
+    {
+      "year": 1995,
+      "month": 4,
+      "sha256": "5cf5e65ba989e811c6ba5630e87cb7d382f4727adc60abe4af60308d61717dc3"
+    },
+    {
+      "year": 1995,
+      "month": 5,
+      "sha256": "4d04e630c51a08f524633ffeeb51be09a1dbc850df4459d166612ee367b55c31"
+    },
+    {
+      "year": 1995,
+      "month": 6,
+      "sha256": "46803c7ff763c647f9ba3cb1ca9f0286d4568fe4ef4e55ca41aff0c735f9e6d1"
+    },
+    {
+      "year": 1995,
+      "month": 7,
+      "sha256": "144b5c3e7226f9bb70df37c12aa38e65155365d58bf768cca2661bdea55e2741"
+    },
+    {
+      "year": 1995,
+      "month": 8,
+      "sha256": "2116b46bc77f08052990f0ed1714219154f9e76dfd791a13f8ae2c3b89aef219"
+    },
+    {
+      "year": 1995,
+      "month": 9,
+      "sha256": "a513b5e26586187c66f1e3e0a1b8716a77d77d5235d9fadcb3284a87d99a7ab4"
+    },
+    {
+      "year": 1995,
+      "month": 10,
+      "sha256": "0100f4fda0f6cdfc4d9b13793586a7bf0a190011ef46b7a241117ff191e3e4c9"
+    },
+    {
+      "year": 1995,
+      "month": 11,
+      "sha256": "90a594c6e73a449bdf138bc220c2daff43a646e1e0c53cc2e4cae547756c4555"
+    },
+    {
+      "year": 1995,
+      "month": 12,
+      "sha256": "226d0f1ee2d4de98eb9a2ef5482a9ef56503e394ccc599af7621f0807973afb9"
+    },
+    {
+      "year": 1996,
+      "month": 1,
+      "sha256": "97a791ff5f148c46bda331d897af07697f47a99ea7728a94a20aa902698e2761"
+    },
+    {
+      "year": 1996,
+      "month": 2,
+      "sha256": "4de2ab2ca17b79baf3dd8aa6672785d02fe1d922064e842fc77cd156b9e3e777"
+    },
+    {
+      "year": 1996,
+      "month": 3,
+      "sha256": "1890d5524ec7fcc137ca137b9354826e5a1da12d2cac73c1e025189ce5f2c282"
+    },
+    {
+      "year": 1996,
+      "month": 4,
+      "sha256": "c588d3311080a0b142788fedf1e5dd39443b6d7ad95169ffd1f11326e1ee7d88"
+    },
+    {
+      "year": 1996,
+      "month": 5,
+      "sha256": "090d3ccd8fe47b74f636bc4d5173818c137351c8c2911f632033c68ed9fcdc5c"
+    },
+    {
+      "year": 1996,
+      "month": 6,
+      "sha256": "ee333e05c39ce039e758e26a22de6321a4f9ed5170c7c2bb425f4f9f3605326f"
+    },
+    {
+      "year": 1996,
+      "month": 7,
+      "sha256": "07ed84997cfb0c8cd43fc1fb781771cef67ce991892c3977386ab8f9137371c7"
+    },
+    {
+      "year": 1996,
+      "month": 8,
+      "sha256": "251459bdfbe0ca8a73b0b3e3913ca33cb97a49169574ec3941cd4bf17c0534a5"
+    },
+    {
+      "year": 1996,
+      "month": 9,
+      "sha256": "014a44b5b8a2f326950ea91c049365839754f11d16ee46e1cb460c5e915cad4b"
+    },
+    {
+      "year": 1996,
+      "month": 10,
+      "sha256": "64007b89545ed6ce9fa2d83a71d3c073114bb1152d0f5c44807e47511678883d"
+    },
+    {
+      "year": 1996,
+      "month": 11,
+      "sha256": "8c29295203a5f0ff5cbc994d03235b162ac0230b1f2365b78c3484c02316c89c"
+    },
+    {
+      "year": 1996,
+      "month": 12,
+      "sha256": "964121311bef950566058a2e5755f8f3c31adc6c544aa2c2c915f36fb051c447"
+    },
+    {
+      "year": 1997,
+      "month": 1,
+      "sha256": "4605b0131c3c21c7308a2b3dd2504d0781d99c4b7b528ffb0e2b3c766280d4bd"
+    },
+    {
+      "year": 1997,
+      "month": 2,
+      "sha256": "4b77757c67783d6bf21b0917e08873bbf59b3b53c50806fbd01de9e13f916e98"
+    },
+    {
+      "year": 1997,
+      "month": 3,
+      "sha256": "8b4309e92121a963d48dbe144e7063fafd6855494755442d7828b512ce4b123d"
+    },
+    {
+      "year": 1997,
+      "month": 4,
+      "sha256": "d07d2a4002db095ada66b4b5394979bc8037d537de4514c346a4d65171cad2d3"
+    },
+    {
+      "year": 1997,
+      "month": 5,
+      "sha256": "d293d48e47c6efe3574d3f37938ad3b630fc11da9242a7f5b5cab01592785dd8"
+    },
+    {
+      "year": 1997,
+      "month": 6,
+      "sha256": "01ccad0f78c69f25fc090b0d39a39951dd5e48088611d442ebc651b9315bb244"
+    },
+    {
+      "year": 1997,
+      "month": 7,
+      "sha256": "a3f94c31c5adefdbe770bf41c58f48ce82b7ba0054ce298e459ead69cfbb511c"
+    },
+    {
+      "year": 1997,
+      "month": 8,
+      "sha256": "291f0605d819457df983ccdc334e3ba73a5012cd78c94e1647c63ec32475113a"
+    },
+    {
+      "year": 1997,
+      "month": 9,
+      "sha256": "ae66dfa9642e09f77b98d8abbc951795d782b236afd3bd6556e72ebb6de24a55"
+    },
+    {
+      "year": 1997,
+      "month": 10,
+      "sha256": "e104d0da893eb6e97e0659f6f5279cdf44cb84d45d579af5bc2c2385368e585a"
+    },
+    {
+      "year": 1997,
+      "month": 11,
+      "sha256": "128c1d0876e895574509f7cca016a1fa05f644e48648684ee8b00b732a0f6c45"
+    },
+    {
+      "year": 1997,
+      "month": 12,
+      "sha256": "fb0dd88e24aab33678050d0428b908e160482ce5b63d737a033b0c56e02f807d"
+    },
+    {
+      "year": 1998,
+      "month": 1,
+      "sha256": "f532def8ac6c7dfdc5bb132d8f12ddbe9bd319a7fe11592466001ce1318b1a68"
+    },
+    {
+      "year": 1998,
+      "month": 2,
+      "sha256": "9c178e6dcb2e2a32a3774efceac7dd1f54070bf78dc0333894b00840ef9b6871"
+    },
+    {
+      "year": 1998,
+      "month": 3,
+      "sha256": "d2bd4c9a14a6cb6a84de8422369b692479a2ed2c1abe24ec7b3de669a3149860"
+    },
+    {
+      "year": 1998,
+      "month": 4,
+      "sha256": "7b42dd1df6a2ac43870d4b5db8b1c2c17626b46d888274f7dbfd1354bcaba10b"
+    },
+    {
+      "year": 1998,
+      "month": 5,
+      "sha256": "8722903843ea7ae993dd1a2da787d3856a829baca44396c22131cd4ae6127fb6"
+    },
+    {
+      "year": 1998,
+      "month": 6,
+      "sha256": "0878eb60fbbb6eb2ed3aff1c854de814074eb635024f6e723202ed39aa88521d"
+    },
+    {
+      "year": 1998,
+      "month": 7,
+      "sha256": "c3dc0d5ee786f35f94133957169f33bfce515c2acac14cd4e8f0cbe5d45749f6"
+    },
+    {
+      "year": 1998,
+      "month": 8,
+      "sha256": "91b345f2938df050259699282e9500103f05f9e1cc209db163764a982e3faad5"
+    },
+    {
+      "year": 1998,
+      "month": 9,
+      "sha256": "97d3837e28892e30857437bc61e30d16cccd5ebfa453be3a0e6e7c1dc4c5cc4a"
+    },
+    {
+      "year": 1998,
+      "month": 10,
+      "sha256": "11a66b00a4a9c4dec7a8522fc98109d0b325038eef89b8eb40a20481110e0bba"
+    },
+    {
+      "year": 1998,
+      "month": 11,
+      "sha256": "a4e052e544785bbcec83b3e95fee2cbfc55486c81c1159a2cbab6b07a293aebf"
+    },
+    {
+      "year": 1998,
+      "month": 12,
+      "sha256": "ddf1841d3912c80ac08b5e39fb1d1a2e2ebcd14f977a0c2bafb1561b0eb006cf"
+    },
+    {
+      "year": 1999,
+      "month": 1,
+      "sha256": "513f5860f07c870c3d9ad51723ee5b6d4c1ff9518882dbb95ca05e09d76f7c8b"
+    },
+    {
+      "year": 1999,
+      "month": 2,
+      "sha256": "afe1db4f646eef0b26f9e22ba16b0bbeac3167557f1bca3f3bfb27f9afc3a0a7"
+    },
+    {
+      "year": 1999,
+      "month": 3,
+      "sha256": "1eb2092e373fe26da9c3b1fc847d9311d6cf2facc3f58ec4b1d6cf0a27caf502"
+    },
+    {
+      "year": 1999,
+      "month": 4,
+      "sha256": "a414009eae96b72b5cb87202d2ca5e131a41e070b06d2518bf3d67511ca8a2eb"
+    },
+    {
+      "year": 1999,
+      "month": 5,
+      "sha256": "0b544da7c254fa3afd44f7ccb8ec48bb3be30f371fd59c1c7f5d07753e512d6c"
+    },
+    {
+      "year": 1999,
+      "month": 6,
+      "sha256": "1e0daa20ae8a6333387e16fbff74e27ea402723782ee6a734c3c88ad828c2f27"
+    },
+    {
+      "year": 1999,
+      "month": 7,
+      "sha256": "cdfa0136a2f34a70fdba3fd92b4029bd9d456e0580a9a10deb2bd3614992c1f5"
+    },
+    {
+      "year": 1999,
+      "month": 8,
+      "sha256": "2b5f8de864c580a7fa4fbb3e731f4582d6f558111c425049d9dc7a34c7685a0c"
+    },
+    {
+      "year": 1999,
+      "month": 9,
+      "sha256": "a958e938e1132ead8ac7e56229ddaee58bc5c1e74e0b5092bd5d4af1ab79cb5a"
+    },
+    {
+      "year": 1999,
+      "month": 10,
+      "sha256": "92ed8e36bb15296414052e43ea483447c7d4a476583319e7b6a148a1f29237f7"
+    },
+    {
+      "year": 1999,
+      "month": 11,
+      "sha256": "337f1dece1e24fda09e3a0f7431142e48023f73dec905f814260a58183cfbc35"
+    },
+    {
+      "year": 1999,
+      "month": 12,
+      "sha256": "e13177b5459815b36c2b1f76bde813c4c964a3eda2fe5f393ad3c127c41f0fa7"
+    },
+    {
+      "year": 2000,
+      "month": 1,
+      "sha256": "62827d1b67c8824e8bbb9fb0c42b26535f5f6b260d376b27c789eecbc559d6a8"
+    },
+    {
+      "year": 2000,
+      "month": 2,
+      "sha256": "dca070a8a10919848aeb98508fba957c2f5a7be118705d1c9276daf92757f401"
+    },
+    {
+      "year": 2000,
+      "month": 3,
+      "sha256": "b2b8411e273ae4780c426f81ed2becdea73eebfaa2327b35d9690ac429311749"
+    },
+    {
+      "year": 2000,
+      "month": 4,
+      "sha256": "368126411c76c7853cd76144dfdc16ef13cffffc38663de0ad42fdf181f634ac"
+    },
+    {
+      "year": 2000,
+      "month": 5,
+      "sha256": "ea562fa7c30b99072fc0c27f5c3c97aa7bf7ef3da3739a3f941831c4d05ab866"
+    },
+    {
+      "year": 2000,
+      "month": 6,
+      "sha256": "ac3d1f3dfb66503838b459350dc753db969ff5caec0e9b8ae7b14c338ac184e9"
+    },
+    {
+      "year": 2000,
+      "month": 7,
+      "sha256": "f44bc8989e39f94b7f924139d86f391bf83bf965f4e6b793f0c6a05b70ee3fde"
+    },
+    {
+      "year": 2000,
+      "month": 8,
+      "sha256": "c661f73f0a3982315e91d56fea48630915eb753ef01dfb12e40b71d7fdacf1d2"
+    },
+    {
+      "year": 2000,
+      "month": 9,
+      "sha256": "738b0154c7b561ba5d911505b5d5425e8fe9bda17effcae28395e8f70816b740"
+    },
+    {
+      "year": 2000,
+      "month": 10,
+      "sha256": "31b151dd8525bd2db4f10a27ca4f697ef00afa3a5702ea92582a437d93e362b9"
+    },
+    {
+      "year": 2000,
+      "month": 11,
+      "sha256": "860cb4f2967b1c4298c8f713ad96b07dfc71fe062f3329c7702f000cd33e8539"
+    },
+    {
+      "year": 2000,
+      "month": 12,
+      "sha256": "39a0effe6353be2318c2d02aadb3949a052a1179981c4742ddce5ac2b8134a40"
+    },
+    {
+      "year": 2001,
+      "month": 1,
+      "sha256": "dd02075a497385856f106dcb9959acbbe2efed923bd6485fc82e4716cbe9661a"
+    },
+    {
+      "year": 2001,
+      "month": 2,
+      "sha256": "c2abd9ce6fdb6ec9a3d491b0514759afda7d388db86f1593946d35186dc22020"
+    },
+    {
+      "year": 2001,
+      "month": 3,
+      "sha256": "11cc2bc84a4d0a19209e346d9dd88b3f85223766b0ec206192c3081f52bb6197"
+    },
+    {
+      "year": 2001,
+      "month": 4,
+      "sha256": "fa7948f51c5b9b19e724756a807fee6d64674f68de0b7438e6fb4ca4f0354f99"
+    },
+    {
+      "year": 2001,
+      "month": 5,
+      "sha256": "4eb34f3786448a422887e2b8533a5883ba211d22631ff87e37b37519aedbc9da"
+    },
+    {
+      "year": 2001,
+      "month": 6,
+      "sha256": "b6a087d52d44c080f53ccaaf15c220f04c4175d0c54bb737d0f48bee0c9ddf5f"
+    },
+    {
+      "year": 2001,
+      "month": 7,
+      "sha256": "60ab4910231a06f2d235183b19a95180be9700dc84d00478d2be1544d602bb61"
+    },
+    {
+      "year": 2001,
+      "month": 8,
+      "sha256": "fd3ece1f1fd77786931681d189c5aef267e1ff7ec3fe325811b8a9d2dce1476e"
+    },
+    {
+      "year": 2001,
+      "month": 9,
+      "sha256": "b946f495a8143fa8c8ca61c446d26117340ccb27a5267cbbbff1500f6c1dcc03"
+    },
+    {
+      "year": 2001,
+      "month": 10,
+      "sha256": "cbcf2610472bd4b67237e4aca58c8fe08624251f7a0a83eb69bc83ae2d028b08"
+    },
+    {
+      "year": 2001,
+      "month": 11,
+      "sha256": "1a2bf2860042dffcc87b23b9338b4b94fa31880d4d9eecc20db8f047de0cc440"
+    },
+    {
+      "year": 2001,
+      "month": 12,
+      "sha256": "604a80a3946d82381ab83168876f580fac7fb2c4f387e90f63062e58c9c91acd"
+    },
+    {
+      "year": 2002,
+      "month": 1,
+      "sha256": "1313cd905b5c5ad94309d438755b377b97279e2ede25f4341aa7dcfa573981d8"
+    },
+    {
+      "year": 2002,
+      "month": 2,
+      "sha256": "172c266ba9e40ff4a3ac8bee02c915ed210ebe9b39a15b5dbcca02551bf8a67a"
+    },
+    {
+      "year": 2002,
+      "month": 3,
+      "sha256": "92c60a456dd571a86dfba6c2bb478e83057f648490aa5b94839b5c4318d3904c"
+    },
+    {
+      "year": 2002,
+      "month": 4,
+      "sha256": "4231569a6a024ef7f89b2e58c506004d0cda0490c02448fcf7a6a82251d4f903"
+    },
+    {
+      "year": 2002,
+      "month": 5,
+      "sha256": "17a73fedb677f8713a9e9d6c5eb28c538f98e6efe3023117dc825fb4f9a2c8af"
+    },
+    {
+      "year": 2002,
+      "month": 6,
+      "sha256": "b87999f8168cc468d18b79338370351e1e5b0aa4b394d2a7e514ce108c6342d0"
+    },
+    {
+      "year": 2002,
+      "month": 7,
+      "sha256": "9020dae7c404188662ae5fe83c434d7919dd7ca65cadca2912c0b0bf55671e5d"
+    },
+    {
+      "year": 2002,
+      "month": 8,
+      "sha256": "a86c3ba1c0a07f9e0887e88282eae9d6757294410fa48f6018f610c013924988"
+    },
+    {
+      "year": 2002,
+      "month": 9,
+      "sha256": "3b0d5012872b866456d845647743adb6fa3fe9183df74dd7c0d6f7751d1e5671"
+    },
+    {
+      "year": 2002,
+      "month": 10,
+      "sha256": "05220dac5401d2dd252ed9ac7f2368c1219937c5c2e9200881169d0561ce71de"
+    },
+    {
+      "year": 2002,
+      "month": 11,
+      "sha256": "bd0306e21fe0e0199886e97bfdd80ad5a7af9bf999cd236b455d51f4db71c4d7"
+    },
+    {
+      "year": 2002,
+      "month": 12,
+      "sha256": "5e9a581f476cccb15ac4dbddae6830cf7e397bb8fa7d54fedc3fdb32aca94a5f"
+    },
+    {
+      "year": 2003,
+      "month": 1,
+      "sha256": "3036648475ffae661e4a887a3f7d62dfe39ae868e0cbd3a3c82b125ad95ad9ca"
+    },
+    {
+      "year": 2003,
+      "month": 2,
+      "sha256": "cf5f0e3b92ec177d4d5194d17b51e46dbbe193e76d57192854297cf297baa90e"
+    },
+    {
+      "year": 2003,
+      "month": 3,
+      "sha256": "c03b7462e9b2994ba0a23af8f64d7dbf9faaef74a932d3b4641819bcf1095aa6"
+    },
+    {
+      "year": 2003,
+      "month": 4,
+      "sha256": "139d2fc4cff55eeb1d81b2b3c75ec767525c2e664478ab83807e2c9237fc94f3"
+    },
+    {
+      "year": 2003,
+      "month": 5,
+      "sha256": "df3ff074fb1b7d1b41382cd8a7dccad8d44a26490a6ceacd7329f8da7b59546f"
+    },
+    {
+      "year": 2003,
+      "month": 6,
+      "sha256": "8b653ef3df763ecab722f06471b18cbf319054da39a30ec2e12444398e4a4bb3"
+    },
+    {
+      "year": 2003,
+      "month": 7,
+      "sha256": "16e5a96adf68c2895459fa897139fc30fdb508caf2bf4671d113cb0d71b16955"
+    },
+    {
+      "year": 2003,
+      "month": 8,
+      "sha256": "a31f57d923366f7b3bca526bcec974de7133fb55d572491b535115cf435724d8"
+    },
+    {
+      "year": 2003,
+      "month": 9,
+      "sha256": "97cef9d931b46a1a001774da468eafd07f26a63629b99b6f008ef4a5d00f0413"
+    },
+    {
+      "year": 2003,
+      "month": 10,
+      "sha256": "a0d0591b47ee1bab459efc1ffe3056d2e13d734220de7f20c7946b5619dc63af"
+    },
+    {
+      "year": 2003,
+      "month": 11,
+      "sha256": "6cabb54be71d3afeeafd445ea5e74e804734974fcaf613f1f7d258e4816362bf"
+    },
+    {
+      "year": 2003,
+      "month": 12,
+      "sha256": "b52ae1fb3e84caff20e284c6e03500263a56c29d9a56d63cd6dd86fba3740098"
+    },
+    {
+      "year": 2004,
+      "month": 1,
+      "sha256": "6ddb2228b03ea5b62afa15c644a82925778a31483433a2e9534a7bf874e09f5e"
+    },
+    {
+      "year": 2004,
+      "month": 2,
+      "sha256": "0e7fb222e45d2711cdaa5aa45513a5c0cc3a4b1d715a4099a4f9efe1cced6f1b"
+    },
+    {
+      "year": 2004,
+      "month": 3,
+      "sha256": "1e2821f58b613bb9f0f5397c09c20af0dfeda8513782934506885bd04efac3b2"
+    },
+    {
+      "year": 2004,
+      "month": 4,
+      "sha256": "5bd38b48c105e2e70db253b1b3db58dac2e23ef39c36e538e8b3527db877850e"
+    },
+    {
+      "year": 2004,
+      "month": 5,
+      "sha256": "a8a146dadef63ed2c7f6c2dd199e0b6ee9178d357658a158fab360bf505b232e"
+    },
+    {
+      "year": 2004,
+      "month": 6,
+      "sha256": "ba6d2daa7d6f12ee1fcf060f48ae18305fae6621f591a329d76b2da10d67cc5c"
+    },
+    {
+      "year": 2004,
+      "month": 7,
+      "sha256": "0126adc1ceae3107d17f8395c9b9e25af60548e89a24b7dc5ed25a8c59ba6e2c"
+    },
+    {
+      "year": 2004,
+      "month": 8,
+      "sha256": "4ed30445605729063961560e41ae79cb5381adb797f312986b93500fd166362e"
+    },
+    {
+      "year": 2004,
+      "month": 9,
+      "sha256": "ed101ededd0e14700edc23131004826faa7eee58864d94afbbb97b26fa0f5084"
+    },
+    {
+      "year": 2004,
+      "month": 10,
+      "sha256": "96fbe33996a829b7279bee2dd56b9fefea64fd0e5442f1d61b881da14743a25b"
+    },
+    {
+      "year": 2004,
+      "month": 11,
+      "sha256": "4319c67d8db730802e2b30e2d55298db62d7966ba11d06fe553a6aab81eaa9db"
+    },
+    {
+      "year": 2004,
+      "month": 12,
+      "sha256": "87bd49b8fb3efc392c2ff6ad126b7d9db84b23722e95a4b4316003a29b9c8274"
+    },
+    {
+      "year": 2005,
+      "month": 1,
+      "sha256": "810f29e8f7bc59b793379e546dfd255c266348a2ea094ff74c7b55c629564321"
+    },
+    {
+      "year": 2005,
+      "month": 2,
+      "sha256": "6b0f42337c296cb6e17b661ee78bf70b31fd12e728c1f088f305de6a05b618e6"
+    },
+    {
+      "year": 2005,
+      "month": 3,
+      "sha256": "4e28bf6d5d1961e2fd121850a866ed289c088ecaa53533049143a59515d38f91"
+    },
+    {
+      "year": 2005,
+      "month": 4,
+      "sha256": "79b786a908901c0fe2e5612e58daf776e009b9849b70c21309c16ca92d8c1c6f"
+    },
+    {
+      "year": 2005,
+      "month": 5,
+      "sha256": "53fdf3ab8687fad94e2a62d5ad81e64cc831bcfc42407ac87c62223dabed715b"
+    },
+    {
+      "year": 2005,
+      "month": 6,
+      "sha256": "f38cdec1dac97b2e52c20890c4b7a89b155541b7981d8e1f667751eefe1b38c0"
+    },
+    {
+      "year": 2005,
+      "month": 7,
+      "sha256": "aa05c56a38d32f7f71f286769eec5c292bb46306e44a051409738090ae6777ef"
+    },
+    {
+      "year": 2005,
+      "month": 8,
+      "sha256": "3c83ace465584f0513b0fcf3709f4237ef8ad04b61646c7980f09eef0b96960f"
+    },
+    {
+      "year": 2005,
+      "month": 9,
+      "sha256": "669711e03358df33f8874a1673a90a046d9e2fe5f7754b6928bb66c191794f50"
+    },
+    {
+      "year": 2005,
+      "month": 10,
+      "sha256": "182b92af1203989f1ccc884beab6cf6433776fb7077368ff840adb1dbbe331ee"
+    },
+    {
+      "year": 2005,
+      "month": 11,
+      "sha256": "2f88e4ba84f8b39c404ec730c83020e3f6037095b0e052c8380215eeb909a1b0"
+    },
+    {
+      "year": 2005,
+      "month": 12,
+      "sha256": "d63ce8a1df0e1c3e04195adb64029cafbb3b9db922660fafebfafd584b68abc6"
+    },
+    {
+      "year": 2006,
+      "month": 1,
+      "sha256": "8f3fca9374a1673afaeeadcce3cf3759deb875370c4b3810f6a67bfd26f0fa26"
+    },
+    {
+      "year": 2006,
+      "month": 2,
+      "sha256": "00c613cf10c4e206c0bc17464f9539a7523bb779a0c757c5b173d68e7822a17d"
+    },
+    {
+      "year": 2006,
+      "month": 3,
+      "sha256": "581aee5a726e2fa7d30eee35c2953c914ea2838d5d639d9cb8a4cb2c0aa38a4e"
+    },
+    {
+      "year": 2006,
+      "month": 4,
+      "sha256": "0b242b03997fb0a6f021613841fbff7a3b2beeb6eaa7ec0914eb49de2788b639"
+    },
+    {
+      "year": 2006,
+      "month": 5,
+      "sha256": "ee8511f73b5d6b2ca3aaef2c318ffbfbf59ef3dcf79965364581612bc594ac5a"
+    },
+    {
+      "year": 2006,
+      "month": 6,
+      "sha256": "f4b774dc9a0a4407393c8226ab8375252e059b204d89fdaecc00e22b52208dfd"
+    },
+    {
+      "year": 2006,
+      "month": 7,
+      "sha256": "2166ee6700cf9355cc716a052aaf83667b65bc135abfb40fda10ac7d5812d57a"
+    },
+    {
+      "year": 2006,
+      "month": 8,
+      "sha256": "68e5ed74a095c5af35cc3f04d888780abf40c54f695af195d41040165933d9ab"
+    },
+    {
+      "year": 2006,
+      "month": 9,
+      "sha256": "9ce9a58c92d48cc5a626948671da58e3af6e30588f2def103a702b15bf9db124"
+    },
+    {
+      "year": 2006,
+      "month": 10,
+      "sha256": "801593fb0f3d4f527478fc8d85c9a54a06391b7b37da6fba6a5ccf17e0ad0f39"
+    },
+    {
+      "year": 2006,
+      "month": 11,
+      "sha256": "7aed49750dcf9945d9b03c99217915f6a715b6569be615e9d8192d186fb324b8"
+    },
+    {
+      "year": 2006,
+      "month": 12,
+      "sha256": "062f9d2a70e1bee4f97d7dc4690539be400d4e46d47a98ea70bcf7dae45701f1"
+    },
+    {
+      "year": 2007,
+      "month": 1,
+      "sha256": "b621ff09034f8fd44d05e07f7977badeb8585faeb209fe88f7bef01d441783f8"
+    },
+    {
+      "year": 2007,
+      "month": 2,
+      "sha256": "57939394653bbf268df79d579ee4e75d4bd278b6d940fa4789a1f61000292651"
+    },
+    {
+      "year": 2007,
+      "month": 3,
+      "sha256": "abf918f58a596788e22f17896e3e5c3b3974d942b9fecbd90bc5258c2a17cc80"
+    },
+    {
+      "year": 2007,
+      "month": 4,
+      "sha256": "f39f77e8cdccbc83642a2f33845b144a99cf41bfa502af329bd172cd7a2b9450"
+    },
+    {
+      "year": 2007,
+      "month": 5,
+      "sha256": "cb9c51ebf2b05a14dc506e9e28626ae43b0fe41efbc9184cfd5d8ce3e6e016c5"
+    },
+    {
+      "year": 2007,
+      "month": 6,
+      "sha256": "01a5aff3dcae2463c7d0591dfc12198f33e775e29bf9bc97b4e78ef21bfa5b7e"
+    },
+    {
+      "year": 2007,
+      "month": 7,
+      "sha256": "93db6561bb7d64dacfeeb48d528c9bc307e2b361061a262d3ddef241bb0067a9"
+    },
+    {
+      "year": 2007,
+      "month": 8,
+      "sha256": "8527627a30ebafbff1b6dd67f14dd39be2f736cf66fef9c19dc67371df75b563"
+    },
+    {
+      "year": 2007,
+      "month": 9,
+      "sha256": "ee86f1574ceb2eef29f976c72f35d7d898ef81208995159661b3d6f8fe642936"
+    },
+    {
+      "year": 2007,
+      "month": 10,
+      "sha256": "2c03724b92a75eb9d8cd002d53099b0bd3050a0842a6a3d2f796b9fad279a259"
+    },
+    {
+      "year": 2007,
+      "month": 11,
+      "sha256": "df581888dea44ad99fa93245047a237e230a6fdc5662a649d822ee68f1be72ea"
+    },
+    {
+      "year": 2007,
+      "month": 12,
+      "sha256": "792e2702b878a7b12721487c1f518de8e782e7cdbead06ec7a1f72a5af0ed7fb"
+    },
+    {
+      "year": 2008,
+      "month": 1,
+      "sha256": "b8fe57b5f26be6f0e2054709bad167ef3f4789ce8cfd6d29d7c36c07697550b7"
+    },
+    {
+      "year": 2008,
+      "month": 2,
+      "sha256": "814e4fcabfe25ad2557bd187dec7b87ed520985d08d22267f312ad39db44cc5e"
+    },
+    {
+      "year": 2008,
+      "month": 3,
+      "sha256": "c0b5426dd0f4673235963272f50ccaf8773e9588a3558126d3642d6b1807ce0d"
+    },
+    {
+      "year": 2008,
+      "month": 4,
+      "sha256": "f456c846a4931a675a4e9ca7dc54ec447f9998ec3efaefe760233e6dabd4651a"
+    },
+    {
+      "year": 2008,
+      "month": 5,
+      "sha256": "cd0df2f96d9ef138355453b4292a773861856735b254a8731c856aa7e55cbded"
+    },
+    {
+      "year": 2008,
+      "month": 6,
+      "sha256": "32f3f62372fb208f2373c3bf9ee9f4383ff02cc98d2e8cc2073ff895616467d3"
+    },
+    {
+      "year": 2008,
+      "month": 7,
+      "sha256": "ac86ac0722ab81569edb5ef801e881ad45050f43998311f5a3ae0e4520796d41"
+    },
+    {
+      "year": 2008,
+      "month": 8,
+      "sha256": "0c71e22e0ef5b238604766f15763c733601f4601b936a0357e87ec5792d54ae8"
+    },
+    {
+      "year": 2008,
+      "month": 9,
+      "sha256": "7e7737d677f3313bc3fc9958d136a29abce67df536709a95df6c25a7093f0e26"
+    },
+    {
+      "year": 2008,
+      "month": 10,
+      "sha256": "0607679c6d6ac5c429c2d5d76c79c1b27c90091bc8a205c705a7a19a2e4b2093"
+    },
+    {
+      "year": 2008,
+      "month": 11,
+      "sha256": "688048ad321d3ffaf533ef04d63a755c3f994033a0fabd46a747ce2a4af896e2"
+    },
+    {
+      "year": 2008,
+      "month": 12,
+      "sha256": "fb0293cab12990d5118a9fb0c42034ab28567de98dfbef75121c835b77f1d40e"
+    },
+    {
+      "year": 2009,
+      "month": 1,
+      "sha256": "271c792604e2cc5951704b5ee970ede0e70ca950d1416b066ba417bd0b7e2fa0"
+    },
+    {
+      "year": 2009,
+      "month": 2,
+      "sha256": "a9e1b81f5167d33fdd1b9826cb3bb484d0d20c2c5a84ed27c3b7aad918f829ad"
+    },
+    {
+      "year": 2009,
+      "month": 3,
+      "sha256": "0e1eebf26ba364f2d151e6aa7697c908cf2d95b3101dfe53628baf9977ee94d1"
+    },
+    {
+      "year": 2009,
+      "month": 4,
+      "sha256": "e6f19f1e847a3da7e88acb0e4a854c8232cc0f660043292b0ab7ec36f0431704"
+    },
+    {
+      "year": 2009,
+      "month": 5,
+      "sha256": "31d02767593a90fcbe7f8a152a4c131c94e1c52274ba228c6eb4b41c0607b3b5"
+    },
+    {
+      "year": 2009,
+      "month": 6,
+      "sha256": "5580a2580b18ac7ebae1abdc4b166d9b411bf10acf1f4ae3a5d5353473afafe4"
+    },
+    {
+      "year": 2009,
+      "month": 7,
+      "sha256": "e4525e2db4a6bb8e454c85e48fd8c86e5481abaff3b292f195ac7a0a8435cc91"
+    },
+    {
+      "year": 2009,
+      "month": 8,
+      "sha256": "8086913b0b54b93c710fcffc64449ddffd9fffaf526e8b3f1e139b71c38b53c6"
+    },
+    {
+      "year": 2009,
+      "month": 9,
+      "sha256": "d099ddf12fe744272df2d13b40387682d79406d2809392d7f234ed0f0f94bfd9"
+    },
+    {
+      "year": 2009,
+      "month": 10,
+      "sha256": "365ef4e5a78e5ade5694b922e2ec6a5f323614ccc189312eaab10149f0de7022"
+    },
+    {
+      "year": 2009,
+      "month": 11,
+      "sha256": "6646d87cb502a558f219cbfc740545886ea9e1785b45c8f527c44a5be053c001"
+    },
+    {
+      "year": 2009,
+      "month": 12,
+      "sha256": "d1e27526ef02e97ac09e3a761fd150f16419db934588c5e2bffa0acfccb2bb70"
+    },
+    {
+      "year": 2010,
+      "month": 1,
+      "sha256": "33985750c19e5e1322abb647700931eef326fc808cda4e7ce541d9151f436b81"
+    },
+    {
+      "year": 2010,
+      "month": 2,
+      "sha256": "01b7ee25b80258a66901d80c3105047f82f57c47f3923fd24b8ad1331e6ac50d"
+    },
+    {
+      "year": 2010,
+      "month": 3,
+      "sha256": "70d784afdc5f851da13605bcfc75749e37ce7b9329f24c369d39042b3cbc572b"
+    },
+    {
+      "year": 2010,
+      "month": 4,
+      "sha256": "b6a19a31b6a685273d4a7a0b28025d31cccd1c044bf594b9b8b9be2e70b4b8e3"
+    },
+    {
+      "year": 2010,
+      "month": 5,
+      "sha256": "464485d338021a88cfee978af7333d211e4fb21a9ec1f10f98221e71d944c5fa"
+    },
+    {
+      "year": 2010,
+      "month": 6,
+      "sha256": "6980adef95151f89d60c7daf26328280c1888fbd0971891414ecf1668dfaeac8"
+    },
+    {
+      "year": 2010,
+      "month": 7,
+      "sha256": "6fdfcaef3a56f18d0b5340e6b4d491168f7be0036cc5daf0e1f1e63f4845bffc"
+    },
+    {
+      "year": 2010,
+      "month": 8,
+      "sha256": "13bca2a5d835f7b4ee231807a8680f133aec8255adf71c69381ae62797b025a3"
+    },
+    {
+      "year": 2010,
+      "month": 9,
+      "sha256": "bb69d1866e5eb29eb5642e66c238e82630242fea2fee4f079a7643870ffef154"
+    },
+    {
+      "year": 2010,
+      "month": 10,
+      "sha256": "869fb3c231e3adfdbe96bdaeb8507797255d83971c272047f652b1638d156572"
+    },
+    {
+      "year": 2010,
+      "month": 11,
+      "sha256": "a154dc350f65b0b545a0b8cfaa3be1de76569c7236497442aa5ae5c3b177d201"
+    },
+    {
+      "year": 2010,
+      "month": 12,
+      "sha256": "446457481dd839be70a9482fc6b85e962592e1ce5d0e9ea480c18ce530ffab17"
+    },
+    {
+      "year": 2011,
+      "month": 1,
+      "sha256": "59fb0f47a9305eb334ecafb0a0225d6783a8208c968c44be3d71aa63f02c6f97"
+    },
+    {
+      "year": 2011,
+      "month": 2,
+      "sha256": "fe637896e146f7dac9a23bd1d9fe4e577e5e728370747215d7e0d23b801e2049"
+    },
+    {
+      "year": 2011,
+      "month": 3,
+      "sha256": "cfb207e796af2d995db418daf41c8fafb0d870b79ce220c80ce6c70698f97ba3"
+    },
+    {
+      "year": 2011,
+      "month": 4,
+      "sha256": "ce96b059846d89c110e375af7504e08d1d9bade815dd5f68ce88fd8f9ecd5fdf"
+    },
+    {
+      "year": 2011,
+      "month": 5,
+      "sha256": "f1dead8277dd7436b8a3bddc304a404712b19035c99299bb51c98e8e5c13782f"
+    },
+    {
+      "year": 2011,
+      "month": 6,
+      "sha256": "c4b6ff10b1cc9a3ca589e083d994f7f4be24d0b3166ea1aee677d3dfd8fbe361"
+    },
+    {
+      "year": 2011,
+      "month": 7,
+      "sha256": "5d7ce1321c3fc37eb94d4cd1d3004407db3f7bc92272bfa1958c33b7d31181a6"
+    },
+    {
+      "year": 2011,
+      "month": 8,
+      "sha256": "8d2b70235bc51d01af0508f5326a7447741f0544563c310574e9754fb3b563bd"
+    },
+    {
+      "year": 2011,
+      "month": 9,
+      "sha256": "0f1bed489cc128b54db62ee66cc5bbd431679e17e2120fa59d95b179da1c0e1d"
+    },
+    {
+      "year": 2011,
+      "month": 10,
+      "sha256": "6930a18eee078ddb4980f501f3e491490c442e515a6c5eebb2f188f02507a33c"
+    },
+    {
+      "year": 2011,
+      "month": 11,
+      "sha256": "d4bccbdb8bede4c11866dc058b62044836140d0fcd00f9a7ced05c1905d52819"
+    },
+    {
+      "year": 2011,
+      "month": 12,
+      "sha256": "00d70de26756e187ba07727eb21578af97630d81417404bf036fb1e248241d59"
+    },
+    {
+      "year": 2012,
+      "month": 1,
+      "sha256": "0c2091c589a79b0c17ab5e18426e590e6d4c8512ee81c6c03e8c0e3d4cc7c971"
+    },
+    {
+      "year": 2012,
+      "month": 2,
+      "sha256": "2712c1e9b198f08596f934a198c4c3002881edd5216f495beb09194c6d55195f"
+    },
+    {
+      "year": 2012,
+      "month": 3,
+      "sha256": "92fe2c050a890d3ae93b850c14cffe49244a508e81800deb51722bd4cae75aa5"
+    },
+    {
+      "year": 2012,
+      "month": 4,
+      "sha256": "e6e342ee7dfd7245e6905c4624212b777c5c92c3ab78512ee246c2bb86a6b369"
+    },
+    {
+      "year": 2012,
+      "month": 5,
+      "sha256": "14fee655bdd1af2d27184f0e622229338b37354b8bfe05e7789a0cab23f25334"
+    },
+    {
+      "year": 2012,
+      "month": 6,
+      "sha256": "db7377e3d6c08009c80f814979383bd746a7b817cad22ae8f7eb8e8c8569e9e0"
+    },
+    {
+      "year": 2012,
+      "month": 7,
+      "sha256": "682ae899ff5925f831477737c415014871e21197c451c86a7fda7646a73f7b69"
+    },
+    {
+      "year": 2012,
+      "month": 8,
+      "sha256": "20477fad8c5c126a589da7b4411f6ff1b3889bcc8ed26e603daf8a13b62b1174"
+    },
+    {
+      "year": 2012,
+      "month": 9,
+      "sha256": "e9b392aca4aa12f38229abe5ad445300c8a8eb4de7d777d861af0cb61630e33b"
+    },
+    {
+      "year": 2012,
+      "month": 10,
+      "sha256": "79d340fe16b632a755b6b6752ed2514366724e80a1463fc86fbca8527903e3fc"
+    },
+    {
+      "year": 2012,
+      "month": 11,
+      "sha256": "ac8f07b114900dd504b96c6e592680faf32437751865b7ad8445277a087dde3d"
+    },
+    {
+      "year": 2012,
+      "month": 12,
+      "sha256": "a0215ccecf0eb70b885da0df6acde875a29a7dbeacf32d3bffc102c07a2fee3d"
+    },
+    {
+      "year": 2013,
+      "month": 1,
+      "sha256": "76c8069ab9f05f94e6a90616852e3d7ddd7fdc50290b4a99c22a3b196e8811e5"
+    },
+    {
+      "year": 2013,
+      "month": 2,
+      "sha256": "72105f196f5aa480ed4f89912a7dd32a2d212553d8303f4b38cd25177f91b201"
+    },
+    {
+      "year": 2013,
+      "month": 3,
+      "sha256": "604ea0557d5b57a1fa95ca46d60bff31b88249347f779ec3f65af327cd851825"
+    },
+    {
+      "year": 2013,
+      "month": 4,
+      "sha256": "c6c5e408b57a9423aece6898c834311781f9568edb696452147aa4b76f743caf"
+    },
+    {
+      "year": 2013,
+      "month": 5,
+      "sha256": "179497c7b9e43093d9bfaa23d5f314b795afca910b8dba6a3d22cd37f79fbb78"
+    },
+    {
+      "year": 2013,
+      "month": 6,
+      "sha256": "8b8991e6f237cde46d61f42542960692fceccda5a7fa95ced12ee5f869827dd6"
+    },
+    {
+      "year": 2013,
+      "month": 7,
+      "sha256": "eea1e4033ec0b949b078df9417d464b7177d384ba98edb5f631e51d1d3970b9b"
+    },
+    {
+      "year": 2013,
+      "month": 8,
+      "sha256": "e76c584e32dd1a769f957ff0a7f296f5ddff391a33d8ad69f8041c54f31490cb"
+    },
+    {
+      "year": 2013,
+      "month": 9,
+      "sha256": "ad36fa2a263aa7f68d440dbad76365899105011189ef2439eb6ff6af5c5e0b79"
+    },
+    {
+      "year": 2013,
+      "month": 10,
+      "sha256": "f23db39a762e7792c8fec82e5e3922b98832bf1756ffc33baef15f68a32e826d"
+    },
+    {
+      "year": 2013,
+      "month": 11,
+      "sha256": "9a8712644196329ad6531a48d2930b164875e3cef50a000f4c44daa4f0a57a9b"
+    },
+    {
+      "year": 2013,
+      "month": 12,
+      "sha256": "82a6e11d4e5371a17101debfe09db5c0ce32741f208f2d8447bd971ae4cf4e00"
+    },
+    {
+      "year": 2014,
+      "month": 1,
+      "sha256": "c83e3768dd2ae60391d2f57b91a31aa2f398d39c7041e8ee9cee318b644ca022"
+    },
+    {
+      "year": 2014,
+      "month": 2,
+      "sha256": "6a63fc3cd252d1dfb0445f4bffe138b9f65b0cced1ce9b05dbebcb73fc32f5f6"
+    },
+    {
+      "year": 2014,
+      "month": 3,
+      "sha256": "a3fef953127275543f6251d8faf2ffa58cf4fe827ef0b6d4e95d26ab4329848f"
+    },
+    {
+      "year": 2014,
+      "month": 4,
+      "sha256": "3065cbc37238fee4cc98134b4cef35d72e7b96eac31977462a8431824a36cb19"
+    },
+    {
+      "year": 2014,
+      "month": 5,
+      "sha256": "30c1fed9caa92eb9dcf813360d666373fc5616ef27df94d5b9f2c77809e17bea"
+    },
+    {
+      "year": 2014,
+      "month": 6,
+      "sha256": "ab972c375f077871f833dfca982a9531fc7e7a8672023a90bab6bb86938cc18d"
+    },
+    {
+      "year": 2014,
+      "month": 7,
+      "sha256": "07d9b41b6a1fe5879a63d44bde450dfcff775d4c2d1ffade01facf0d07117eb5"
+    },
+    {
+      "year": 2014,
+      "month": 8,
+      "sha256": "8ab50fc002141bf68d04a9801f7bc9bc7a41fd39e7575a61be673ba7dd006a1d"
+    },
+    {
+      "year": 2014,
+      "month": 9,
+      "sha256": "8d7ec8f563a51193dcd4e10a6365f1ebf3c053900212431b9fb6c30f93225381"
+    },
+    {
+      "year": 2014,
+      "month": 10,
+      "sha256": "aa8344f6454bbabc1072f931d29e8cd7054038b975a17064670f246184eb6da9"
+    },
+    {
+      "year": 2014,
+      "month": 11,
+      "sha256": "cc8c709f421c37069cd9f436d8e6ef5507ee79172e2760bacc15f8c08bce345f"
+    },
+    {
+      "year": 2014,
+      "month": 12,
+      "sha256": "5c3ce89fa7622b0907c92e8d3c9cf1741558f68baad641db7431b15766967f6a"
+    },
+    {
+      "year": 2015,
+      "month": 1,
+      "sha256": "dc6ee3ad744273488b240253326a650ade4898991116c350ec5ca1adb77e1213"
+    },
+    {
+      "year": 2015,
+      "month": 2,
+      "sha256": "6e627a08874c57337c5e0d95bb7ca00c7e2fe9abbd75ab020612161b4311cd31"
+    },
+    {
+      "year": 2015,
+      "month": 3,
+      "sha256": "e22c8fce32c14b6a5a7b42c92c48b8c18bfd152a7d4da4fe5ac4b147f830af1f"
+    },
+    {
+      "year": 2015,
+      "month": 4,
+      "sha256": "7c431f8dc84f0ba471ce005888ea926993d1b83645a58c49a9f7d72ab362421a"
+    },
+    {
+      "year": 2015,
+      "month": 5,
+      "sha256": "d9ad6845036a08b2fff356eeed61bc94eec7ff3e69ef5bc62d7821baded470c7"
+    },
+    {
+      "year": 2015,
+      "month": 6,
+      "sha256": "b6a48dea01c4741c671b62f2a6b8a26243bc141fd759d067f86cc171b0771e6d"
+    },
+    {
+      "year": 2015,
+      "month": 7,
+      "sha256": "55051e66d74f49961c27d5abb9f931c0495c5f7852407eb2160fb7165df118e8"
+    },
+    {
+      "year": 2015,
+      "month": 8,
+      "sha256": "901d998d589026e5ecfd92d37b4c7c02cf5d62f3fd9b23c6867500d263f7e3be"
+    },
+    {
+      "year": 2015,
+      "month": 9,
+      "sha256": "ee7f4ce8a8c717f1ad7f5223cb9f0ef5f776cdda9e51456f3edc0eebbe7c612d"
+    },
+    {
+      "year": 2015,
+      "month": 10,
+      "sha256": "8eaa23351a99fb4137f09bba93f42c00c1a06fa2d4f7c1d8de6ed3bce30fc7c5"
+    },
+    {
+      "year": 2015,
+      "month": 11,
+      "sha256": "409e5202b9b8bf1b17190c3511f10bee4afcc3e16e529adc0612df5dad27e0b8"
+    },
+    {
+      "year": 2015,
+      "month": 12,
+      "sha256": "28fe1e520ab948ed1985eb1779c68cc583d849d5cf9aad41b97e93d2b911aec8"
+    },
+    {
+      "year": 2016,
+      "month": 1,
+      "sha256": "8e03558b9d45728568d979e0b64809e8526c62d91ef9cc81e4f23ab8dec0a636"
+    },
+    {
+      "year": 2016,
+      "month": 2,
+      "sha256": "ba1b9abefd222829afeee7c9ab51edafa1692ad90a1a42821374341e217fd171"
+    },
+    {
+      "year": 2016,
+      "month": 3,
+      "sha256": "2699654f14be2b5f4febbe2cb2aaff5d9a01e470ce11d9a1cf9308065a29722a"
+    },
+    {
+      "year": 2016,
+      "month": 4,
+      "sha256": "6d7afead31bb7119d4e07bff0fe2bb428ae02bd65f7f3a843b1a421c64ecb7ae"
+    },
+    {
+      "year": 2016,
+      "month": 5,
+      "sha256": "ca6bef63308943b93146b0287a06c39f97a5f90807fc71898614157d485eb1bb"
+    },
+    {
+      "year": 2016,
+      "month": 6,
+      "sha256": "b21949ecf8e44d6a0bd27fd78c52074964b1f37db084f82898ffb09675839eaf"
+    },
+    {
+      "year": 2016,
+      "month": 7,
+      "sha256": "b72f207069bb629f5575a92d08aefbc16f803deb9e8cf108da0300615ad44c8e"
+    },
+    {
+      "year": 2016,
+      "month": 8,
+      "sha256": "7094cbdbc2ecdee9fe3efc2ade8cd318dc06dca02b3622cba806a0fb6d06b4b2"
+    },
+    {
+      "year": 2016,
+      "month": 9,
+      "sha256": "9d153afd94bee9a5195e90de1fe9ecdf6a3505e124c557d4a9a61b4781c869b7"
+    },
+    {
+      "year": 2016,
+      "month": 10,
+      "sha256": "23295f4584e598c01104166259e719bc773efb08b6bd8fea2fef1ff58a08ebde"
+    },
+    {
+      "year": 2016,
+      "month": 11,
+      "sha256": "08504ae24cf8ad2d94ce8c1474111a6035ef94f3edc20f3bfd75cd5ea13ea23d"
+    },
+    {
+      "year": 2016,
+      "month": 12,
+      "sha256": "47fd1e466e59c800a5cec5f6e8ef616d26a2126c7ca1749d53dc8f8d14264e7b"
+    },
+    {
+      "year": 2017,
+      "month": 1,
+      "sha256": "84d8b0dde3460a0188e9049ab8bd01e37ef35332ef5d14a6172a32976ee56c1d"
+    },
+    {
+      "year": 2017,
+      "month": 2,
+      "sha256": "3dcbc15e6f49ac395063aceb82a3ae567c8789c05154589e17d5b58b628d201a"
+    },
+    {
+      "year": 2017,
+      "month": 3,
+      "sha256": "010360549177456ab83c13cbc905dbb0901c2308915019820457f17b0d3ca33d"
+    },
+    {
+      "year": 2017,
+      "month": 4,
+      "sha256": "a38388cc39b095e47e84290da7dff468654f83ae5894d4b7735ccf910d15875a"
+    },
+    {
+      "year": 2017,
+      "month": 5,
+      "sha256": "658029044426d0258e094576173f30c608f9a08a99c14e4328182cd81553432c"
+    },
+    {
+      "year": 2017,
+      "month": 6,
+      "sha256": "7bd126f028f07b19732ed560507aee23d6bd9bc928cc49b204d3a082f551bbf9"
+    },
+    {
+      "year": 2017,
+      "month": 7,
+      "sha256": "d608bf89cfcb32d2079c22dfadae8364c512281bcf5773cf602c7bb8ea188239"
+    },
+    {
+      "year": 2017,
+      "month": 8,
+      "sha256": "ab71ecb92bb184414231a730e965b84a469028fabbdfa5d8da6e7779a8cce040"
+    },
+    {
+      "year": 2017,
+      "month": 9,
+      "sha256": "752306998185432721f51500b5ac60f00d1c78dd3aeebc84a382ef162f3bd787"
+    },
+    {
+      "year": 2017,
+      "month": 10,
+      "sha256": "da7b6eb0bf00e7832b25b29d2599001de8d9b36faf26577a8d621d1e2f574dd2"
+    },
+    {
+      "year": 2017,
+      "month": 11,
+      "sha256": "75fff7f88c4b05671fe8f805f85e012a578dfccef5f512ea99fdf805ec66f4f2"
+    },
+    {
+      "year": 2017,
+      "month": 12,
+      "sha256": "a2864b9dff4e25c449f37cc1225e78ee0c5eaa7cdecf38f361c8f840bd4090e6"
+    },
+    {
+      "year": 2018,
+      "month": 1,
+      "sha256": "718bcc523efc3778deba5cf5655e8c598469eb4dcefbebd33326800222f748a9"
+    },
+    {
+      "year": 2018,
+      "month": 2,
+      "sha256": "a27d750cf143b4897ba33cc6af234ba8d7c5162f476db16101f77d8adee7eb28"
+    },
+    {
+      "year": 2018,
+      "month": 3,
+      "sha256": "91522cb0d286d9c0d15d5660f6f22501389a0e72569c389ea8de7a1c180c2628"
+    },
+    {
+      "year": 2018,
+      "month": 4,
+      "sha256": "02647f0686f3c34b0b38d8ec0232fb229c9e585f41f9806f486bd49583d6cae5"
+    },
+    {
+      "year": 2018,
+      "month": 5,
+      "sha256": "9e29a4f20bb475311f53d8aeea01bac042b9acfa779f1577566e70fc7998e00e"
+    },
+    {
+      "year": 2018,
+      "month": 6,
+      "sha256": "776c2cf7e5b982736bd9b5040df5ade7993db3996009b4ee1a32690815d530ee"
+    },
+    {
+      "year": 2018,
+      "month": 7,
+      "sha256": "5870455fdd07e06deb143c72007ed8d0c53227fa4363633cc3973eec4d6a3dd5"
+    },
+    {
+      "year": 2018,
+      "month": 8,
+      "sha256": "2811ac9c537f3979a1120f35fbea402701532de1feae3b7dd3934ca8669d4865"
+    },
+    {
+      "year": 2018,
+      "month": 9,
+      "sha256": "b55f66ae44e31a1e5cd46ad2fc53063265f5c1adbb34f300ef8f1feb3c91b988"
+    },
+    {
+      "year": 2018,
+      "month": 10,
+      "sha256": "c55f8f1457627f2f647340d58adc6f56c3beb5eedd073ea531adce6624890c60"
+    },
+    {
+      "year": 2018,
+      "month": 11,
+      "sha256": "b3dd623cb6b97953054288283fc539c402921b0d066c6647917cd73cbbcd3eb3"
+    },
+    {
+      "year": 2018,
+      "month": 12,
+      "sha256": "b35c2aa0d1bb7c02fedf6da5dd1f9f35a820f3cc37f9b9b5c0b3992822181b40"
+    },
+    {
+      "year": 2019,
+      "month": 1,
+      "sha256": "4e7c68abc4a28c2c0b8d8d239a26122a56fa59f395331ced344e4145503154b2"
+    },
+    {
+      "year": 2019,
+      "month": 2,
+      "sha256": "9ec3e0bd51b18a031be9a09213af36e42f6e845be121ec16bb13bdbabb3ad4a7"
+    },
+    {
+      "year": 2019,
+      "month": 3,
+      "sha256": "da5fa0c20899a12457b4824e9cc6b258c821143eff6a29742f09b2ee8edf3c51"
+    },
+    {
+      "year": 2019,
+      "month": 4,
+      "sha256": "0a4f1b59b952f8369b3b338b3080d3df1e4905bdf2072a0ca2957f9732143619"
+    },
+    {
+      "year": 2019,
+      "month": 5,
+      "sha256": "e9381f8cb0fbb95da7b14c3915f73d326869b25051f278a7c9c398d8bfd19448"
+    },
+    {
+      "year": 2019,
+      "month": 6,
+      "sha256": "5c4d629c14244e170413e5a5feb7dc625bc5637e88b33e7e1d8b1d3f11d10196"
+    },
+    {
+      "year": 2019,
+      "month": 7,
+      "sha256": "05ddaa558b85f621095438e9bd12a31ec27a699e6ce73f84ba8c141a4cbd86bb"
+    },
+    {
+      "year": 2019,
+      "month": 8,
+      "sha256": "3bc41e18a23236b08a031e76985b738e9635bf94221cf3ffdee0fc689e6eb2ab"
+    },
+    {
+      "year": 2019,
+      "month": 9,
+      "sha256": "fa7b10e03f01a3a519094f9da6223a84d16c88397602bcbdffdefbb059323a96"
+    },
+    {
+      "year": 2019,
+      "month": 10,
+      "sha256": "0a3900bb02fac06788c877c131182940e84c921b87ab2728bdd93392caaee3d9"
+    },
+    {
+      "year": 2019,
+      "month": 11,
+      "sha256": "dcf8d43d4b84c07bd72449f10b1e63ac7d8f0d3d40f93fe10aca7a47b0dd37f3"
+    },
+    {
+      "year": 2019,
+      "month": 12,
+      "sha256": "90deb983e269273341f494f03c7eabd1901d8419603579e3f491621de00da0b7"
+    },
+    {
+      "year": 2020,
+      "month": 1,
+      "sha256": "0bf5bf67bfe9a2824f890152ccb665d63f14830df85b8719e5fe61253e487c7d"
+    },
+    {
+      "year": 2020,
+      "month": 2,
+      "sha256": "70f31f8070e33a64b495d54d46627197feb988ae205f03bf9b4365ba49aae2e0"
+    },
+    {
+      "year": 2020,
+      "month": 3,
+      "sha256": "2c8e0cc8d0931409e4e40174b51ace546043e55094336e89f1e7b04e5eed11c5"
+    },
+    {
+      "year": 2020,
+      "month": 4,
+      "sha256": "780e5aaac7e75d356c79ec99b809c6885349e7d0ecdd4b5c35f6381ed1835d99"
+    },
+    {
+      "year": 2020,
+      "month": 5,
+      "sha256": "e8a7c1265d764e0a3dd1a170ee4bbebb96c525012084c99f4602cd202f38f403"
+    },
+    {
+      "year": 2020,
+      "month": 6,
+      "sha256": "646fa1844229987269f2eec8d41ad40a3c5051341e78a95a4815e319920b9b82"
+    },
+    {
+      "year": 2020,
+      "month": 7,
+      "sha256": "f163203cdf673efc9ae2f5dee82dff49d203de612dee978c809a3f1a4e5e8202"
+    },
+    {
+      "year": 2020,
+      "month": 8,
+      "sha256": "71ea764a9a1b862f23dc2ee1d281a90b5bca49d3b6130a781574eea275d68c4c"
+    },
+    {
+      "year": 2020,
+      "month": 9,
+      "sha256": "4dfece475d33ba2589601c7f93f1324c5cb75655eb70da5cbe8eeb07396ab79b"
+    },
+    {
+      "year": 2020,
+      "month": 10,
+      "sha256": "f539458f5ef4ce07d86d66a052c9af1e826e4010fefd740b2b69230d21ca3cce"
+    },
+    {
+      "year": 2020,
+      "month": 11,
+      "sha256": "c95eff58b36ef916c026b9255bf1bb3cd592444e33763bd9d8e5108c15533c76"
+    },
+    {
+      "year": 2020,
+      "month": 12,
+      "sha256": "4d3d327e830463d811996b83a4f501135ceef9f0cdba95cf4f4a43ec1c4961da"
+    },
+    {
+      "year": 2021,
+      "month": 1,
+      "sha256": "7ef676a51bef5bd8be94062bbca0119b772cdec96cbf492b8d9f27f6c3028c7c"
+    },
+    {
+      "year": 2021,
+      "month": 2,
+      "sha256": "74236fc8b5feea38a13de293831a9869f3296ac1585324ebaf39fc1d60afd25c"
+    },
+    {
+      "year": 2021,
+      "month": 3,
+      "sha256": "25e1b753e75cf916798c05bbac41646f61100b5af91890b75091e0815d644b5c"
+    },
+    {
+      "year": 2021,
+      "month": 4,
+      "sha256": "b3a31eace0f4bcc1da666132131c5922f945626b6d749408cea3f13b5ae443b8"
+    },
+    {
+      "year": 2021,
+      "month": 5,
+      "sha256": "236b9e931279a2caaba8f798245d2f3aa0b01665f60463b37d19213c6d97f375"
+    },
+    {
+      "year": 2021,
+      "month": 6,
+      "sha256": "93511b23adb59e8d11142167fc803e01a0c6fd67a86c178a89eee989db646665"
+    },
+    {
+      "year": 2021,
+      "month": 7,
+      "sha256": "c9f57efd22a9e60b09332f4dd175cd8a559b6988b41dfdd32b3abdfa3f2e3af2"
+    },
+    {
+      "year": 2021,
+      "month": 8,
+      "sha256": "c80643a48f31d69020d0900c06dcea09fbebe13ceaaf56a85768247b7ffbfcdb"
+    },
+    {
+      "year": 2021,
+      "month": 9,
+      "sha256": "2d1ed51306e53ec73ef284b3f0505a88b2a785fc465e5e076fb620dba24c350e"
+    },
+    {
+      "year": 2021,
+      "month": 10,
+      "sha256": "f91847ebfcd4a0673800854f2f053b039d72c2c4e250134201af4fd1e3cea99a"
+    },
+    {
+      "year": 2021,
+      "month": 11,
+      "sha256": "cc39469b375e2036c23a620c80f98f47e962c9cd0d4efb82d294547119350672"
+    },
+    {
+      "year": 2021,
+      "month": 12,
+      "sha256": "69d0831e2725c37dae5ddc3f4670bef543199e09c56c7e372a14b85f2dd81bed"
+    },
+    {
+      "year": 2022,
+      "month": 1,
+      "sha256": "d1642747caac507b04bbccbb319c94a053d42b368ce349b426a95aaad115e022"
+    },
+    {
+      "year": 2022,
+      "month": 2,
+      "sha256": "67638c9a87a495d4a1f892ed3719bf20d94515c0970ca97d33fbac677264dcf6"
+    },
+    {
+      "year": 2022,
+      "month": 3,
+      "sha256": "b5209991bfceb9541d25dc40fe628ed2256009e0af32107e0dd87f614e707455"
+    },
+    {
+      "year": 2022,
+      "month": 4,
+      "sha256": "fc7730805980ae84fedc2119294215b3b822d12d83830b9305a0cf921e1900e0"
+    },
+    {
+      "year": 2022,
+      "month": 5,
+      "sha256": "bbea9594916c5ec7618c6dec4f91247099bd413c626bd7b177d2ad8c0331c51a"
+    },
+    {
+      "year": 2022,
+      "month": 6,
+      "sha256": "9d7527d09936f4470fedf99b802f2ffb84b47838a49055483468d2bbc225ee65"
+    },
+    {
+      "year": 2022,
+      "month": 7,
+      "sha256": "fe4c941891a0f56e12dc8fc03b476df86fcca5242c6e8095fcef30c426c42ddd"
+    },
+    {
+      "year": 2022,
+      "month": 8,
+      "sha256": "a4aef6bbaaaeb40270c3ccb94fe8d70d5fe060dd8c87a17dc21c23fb32f961f2"
+    },
+    {
+      "year": 2022,
+      "month": 9,
+      "sha256": "77d2080f617888668dca5fa4a476a5dba3b04acea0b0a10c90fe8509317e5778"
+    },
+    {
+      "year": 2022,
+      "month": 10,
+      "sha256": "6f7e5a4c7dbee778821fe2aa7b227375c748e6d3d8d1474c99efcf7021ff4f1f"
+    },
+    {
+      "year": 2022,
+      "month": 11,
+      "sha256": "3236806f44a66b8b7bb4cc830e08fbe58670c9870b2eb0a82f17a5d4e5a702e3"
+    },
+    {
+      "year": 2022,
+      "month": 12,
+      "sha256": "3969a84ec7845b27b17680d9e640ea3d391c5584bc978e15b1efae8794667880"
+    },
+    {
+      "year": 2023,
+      "month": 1,
+      "sha256": "382119ca0d4825641a9bed06d4fe43132b7e367ca6c76b7bdc3583e0d932723d"
+    },
+    {
+      "year": 2023,
+      "month": 2,
+      "sha256": "2041c68f6868471e482deb1f3ba5aaaeb1d30282ae83b7487d0f107a00e89550"
+    },
+    {
+      "year": 2023,
+      "month": 3,
+      "sha256": "09dcc618fcd2794aa844ede7ee97ae736c47dcca4ddd099feef39bfcb019abd5"
+    },
+    {
+      "year": 2023,
+      "month": 4,
+      "sha256": "f5e52b05ee014174696cb554230f302bf09982752a05b5de155b391b6da7533f"
+    },
+    {
+      "year": 2023,
+      "month": 5,
+      "sha256": "566173472c26ea2b31ee2aa6a2e8d513045048fef83bdfa38ffeea80d92a20f6"
+    },
+    {
+      "year": 2023,
+      "month": 6,
+      "sha256": "d857cc891ba44614f0f8ab0735e14b94d38dda63ed85fe4cc99b1365b64073b3"
+    },
+    {
+      "year": 2023,
+      "month": 7,
+      "sha256": "b4e4487672ae2443b607052885818fc8298ea0676757a29eddb0c8a9dec38d36"
+    },
+    {
+      "year": 2023,
+      "month": 8,
+      "sha256": "51b4b2a4193ceb8510815f773e8c294410ef19ee4ed39fbe7e3b611d3213fe4f"
+    },
+    {
+      "year": 2023,
+      "month": 9,
+      "sha256": "6da19b3c41dd68944dc2830362565c505fee8338c1b947e7ea72553d72f567a2"
+    },
+    {
+      "year": 2023,
+      "month": 10,
+      "sha256": "249d6c2361d8610c4a1d41c018712cb53c4686b7905676846f72b5857a030f1d"
+    },
+    {
+      "year": 2023,
+      "month": 11,
+      "sha256": "749fc5ecfe14438b91e292ec854a6cceccf44890e2aaa2751b31ca4881e32872"
+    },
+    {
+      "year": 2023,
+      "month": 12,
+      "sha256": "7a5a6c35b2ee1419f93c0b50b6ed3a83e2d7aecf255c82bea309cc6884337fd7"
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "sha256": "6005cb52d0562d8496f6fbf32697b28794c770232124a457aebb5954a49e97a1"
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "sha256": "898c8d905a6aaeb97fd07e3bbb42aa47357a4c92aff3176a4c6e3eda6dfaaf98"
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "sha256": "5dcc5b4ff811383eb311fddd9e07d9c015ec518b21f79c4b91daf4df489a91b4"
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "sha256": "dcfbd48f498f21c014455724e563c6a7aea95b0ccd90ff9f3342de00fc8b07d3"
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "sha256": "f4ab72447a4ad2d63674e30c7f1ff9daaf2899dafd808dedf67a7c9a1696d774"
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "sha256": "5a17e518a1464c64880d2128f1dc92e4b0d5cca2939737f85f039d0f827a52b1"
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "sha256": "f8fb507d6dd71729b08384ea7dfcdef2a14062b41fa8fe3dfe3bd84f5c36d55e"
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "sha256": "e7e58e554bdc0d0cf07e96622987d90ba37ce9222816e7a3c16dacf55d62a344"
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "sha256": "337fbfe0a1f1d4a469c65960240cd63222c921c8d6cd4f8e071aadd41ba3352c"
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "sha256": "00c1cfc0c9fd3c8b60f3a618bb465bda0e1596c9968b6e68755b7e7bc6a997bc"
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "sha256": "e7d87468b40e60b30a534273fe2b1e6197471c86163127ddb697e812c16abb71"
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "sha256": "f9a28c8531882ce0952b08e7fd5f154526009de83af5395b565fcda7cffe2ce2"
+    },
+    {
+      "year": 2025,
+      "month": 1,
+      "sha256": "85daed2c6ac2978519ecf93be03514321fe93ce2c45669b067d92f571502ef90"
+    },
+    {
+      "year": 2025,
+      "month": 2,
+      "sha256": "9ac05c1e18a161d4118fe9ad20a08b486460f16e0713547cd1291a953070c78e"
+    },
+    {
+      "year": 2025,
+      "month": 3,
+      "sha256": "c9b5763290ed65b8877eab8c3abbe4aceb988eb47df15685d5f663392ada82dc"
+    },
+    {
+      "year": 2025,
+      "month": 4,
+      "sha256": "f9af8d405863e0af3de602f4bdd07e79fe4c4486b5054ff183ef38ac5b6514fa"
+    },
+    {
+      "year": 2025,
+      "month": 5,
+      "sha256": "c87db80a39bc3c65bff1c54b9dfbe73a642c9ca6dacd8aae7ebc1c30d7899bfc"
+    },
+    {
+      "year": 2025,
+      "month": 6,
+      "sha256": "8657b9109a164383bfdf6d5496a6348356741d0dd721f0a3ecf8f8fdd0f24b74"
+    },
+    {
+      "year": 2025,
+      "month": 7,
+      "sha256": "bc1f6293a77ba1e4596bae82eba75c91e30c9af502cab4dfdee328ba957fff11"
+    },
+    {
+      "year": 2025,
+      "month": 8,
+      "sha256": "cd1b4b1aae1d9549d8a8ae32272c7f7b16fcc32b707f34cd76443a33a208b1aa"
+    },
+    {
+      "year": 2025,
+      "month": 9,
+      "sha256": "7cecab08c3b8e1601de24d28ce7fb77ff0775c290184424cd085b9f8416a7d1b"
+    },
+    {
+      "year": 2025,
+      "month": 10,
+      "sha256": "13f93a827f5f12161b0ccad089f7f39f3b635cdb87b71e83ffc8757704aed7f2"
+    },
+    {
+      "year": 2025,
+      "month": 11,
+      "sha256": "277b07c32d65d1e17aae9aac9379751a9a54b02897ea355405e32aaa759e090b"
+    },
+    {
+      "year": 2025,
+      "month": 12,
+      "sha256": "d4c728a1c3b818112a9bc6d73d35e48dbe8eba360e00588d996ef6f033f6b71f"
+    }
+  ]
+}

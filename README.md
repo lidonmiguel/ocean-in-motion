@@ -43,7 +43,7 @@ geometry and may omit strands for which no marine path is found.
 ## Sea temperatures
 
 Select **Ver mares y temperaturas** to switch to an independent temperature
-view. Choose a complete calendar year, select one of 101 named sea and ocean
+view. Choose a complete calendar year, select one of 102 named sea and ocean
 areas on the map or in the list, inspect its annual history, or download the
 full CSV (with origin and donor columns). The species map and its illustrative
 flows remain separate.
@@ -68,12 +68,25 @@ approximations; exclude them from model training that requires observations.
 The annual data are in `src/data/seaTemperatures.json`. This is a regional
 overview, not a coastal or harbor reading.
 
-The **Mar Negro** is included as its own selectable area with NOAA-derived
-annual values throughout 1982–2025. Use the sea-name search to find it or any
-other area; accents are optional. The temperature map uses a separate,
-more detailed Natural Earth 1:10m land cover so small islands receive the
-same gray fill as continents in both WebGL and SVG views. Its topology-preserving
-0.01° simplification is for display, not local shoreline analysis. Regenerate it with:
+The **Mar Caspio** is included as a separate inland water area with
+NOAA-derived annual values throughout 1982–2025. Its Natural Earth outline
+is separate from the 101 IHO marine areas. Ten complete 2° NOAA cells are
+used each year, with the same day and cosine-latitude weighting as the
+marine means. These are reconstructed regional values, not direct local
+measurements. Its 44 annual values are in `src/data/caspianTemperatures.json`;
+`data/geography/caspian-temperature.manifest.json` records the SHA-256 of all
+528 monthly inputs and the outline. The CSV includes the Caspian series.
+Use the sea-name search to find it or any other area; accents are optional.
+Regenerate the additional series without replacing the IHO snapshot:
+
+```bash
+python -m ocean_pipeline.caspian_temperature
+```
+
+The temperature map uses a separate, more detailed Natural Earth 1:10m land
+cover so small islands receive the same gray fill as continents in both
+WebGL and SVG views. Its topology-preserving 0.01° simplification is for
+display, not local shoreline analysis. Regenerate it with:
 
 ```bash
 python python/ocean_pipeline/prepare_land.py --resolution 10m --tolerance 0.01 --output src/data/temperatureLand.geojson

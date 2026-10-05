@@ -57,7 +57,7 @@ export function TemperaturePage({ onBack }: { onBack: () => void }) {
           {areas.map(item => <option key={item.properties.id} value={item.properties.id}>{item.properties.name}</option>)}
         </select>
         <label className="field-label" htmlFor="sea-search">BUSCAR MAR U OCÉANO</label>
-        <input id="sea-search" className="temperature-select" type="search" placeholder="Ej. Mar Negro" value={search} onChange={event => setSearch(event.target.value)} />
+        <input id="sea-search" className="temperature-select" type="search" placeholder="Ej. Mar Caspio" value={search} onChange={event => setSearch(event.target.value)} />
         <div className="temperature-region-list" role="region" aria-label="Temperaturas por zona en el año seleccionado">
           {visibleAreas.map(item => <button type="button" key={item.properties.id} className={`temperature-region ${areaId === item.properties.id ? 'active' : ''}`} onClick={() => setAreaId(item.properties.id)}><span>{item.properties.name}</span><strong>{formatTemperature(values.get(item.properties.id)!)}</strong></button>)}
           {visibleAreas.length === 0 && <p className="source-note" role="status">No hay zonas con ese nombre.</p>}
@@ -82,7 +82,7 @@ export function TemperaturePage({ onBack }: { onBack: () => void }) {
         {series.length > 1 && <><div className="field-label">EVOLUCIÓN · {firstYear}–{lastYear}{estimated ? ' · ESTIMADA' : ''}</div><svg className="temperature-chart" viewBox="0 0 260 80" role="img" aria-label={`Evolución anual ${estimated ? 'estimada' : 'NOAA'} de ${selected?.properties.name}: de ${formatTemperature(series[0])} a ${formatTemperature(series[series.length - 1])}`}><line x1="0" y1="67" x2="260" y2="67" stroke="#4a737a" /><polyline points={points} fill="none" stroke="#88e5db" strokeWidth="2.5" /></svg><div className="year-ends"><span>{firstYear}</span><span>{lastYear}</span></div></>}
         <div className="temperature-history" role="region" aria-label="Tabla de temperatura anual de la zona seleccionada"><table><thead><tr><th>Año</th><th>Temperatura</th></tr></thead><tbody>{series.map(row => <tr key={row.year} className={row.year === year ? 'selected' : ''}><td>{row.year}</td><td>{formatTemperature(row)}</td></tr>)}</tbody></table></div>
         <button type="button" className="view-switch export-button" onClick={downloadCsv}>Descargar tabla completa (CSV) ↓</button>
-        <p className="source-note">Datos observados: <a href="https://www.ncei.noaa.gov/products/extended-reconstructed-sst" target="_blank" rel="noreferrer">NOAA ERSSTv6</a>. Zonas: <a href="https://www.marineregions.org/" target="_blank" rel="noreferrer">VLIZ / IHO Sea Areas v3</a>. ≈ indica una estimación por zonas vecinas y latitud, no una medición local ni una predicción.</p>
+        <p className="source-note">Datos observados: <a href="https://www.ncei.noaa.gov/products/extended-reconstructed-sst" target="_blank" rel="noreferrer">NOAA ERSSTv6</a>. Zonas: <a href="https://www.marineregions.org/" target="_blank" rel="noreferrer">VLIZ / IHO Sea Areas v3</a>; contorno del Caspio: Natural Earth. ≈ indica una estimación por zonas vecinas y latitud, no una medición local ni una predicción.</p>
       </aside>
     </main>
     <footer className="site-footer"><span>OCÉANO EN MOVIMIENTO © PROTOTIPO</span><span>NOAA ERSSTv6 · IHO / VLIZ CC BY 4.0</span><span>{areas.length} ZONAS</span></footer>

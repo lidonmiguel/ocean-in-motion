@@ -1,5 +1,7 @@
 import areas from './seaAreas.geojson?raw';
 import temperatures from './seaTemperatures.json';
+import caspianArea from './caspian.geojson?raw';
+import caspianTemperatures from './caspianTemperatures.json';
 
 export type SeaFeature = {
   type: 'Feature';
@@ -11,9 +13,10 @@ export type TemperatureRecord = {
   method?: 'estimated'; estimatedFrom?: string[];
 };
 
-export const seaAreas = JSON.parse(areas) as { type: 'FeatureCollection'; features: SeaFeature[] };
-export const temperatureMetadata = temperatures;
-const temperatureRows = temperatures.records as TemperatureRecord[];
+const ihoAreas = JSON.parse(areas) as { type: 'FeatureCollection'; features: SeaFeature[] };
+export const seaAreas = { ...ihoAreas, features: [...ihoAreas.features, JSON.parse(caspianArea) as SeaFeature] };
+export const temperatureMetadata = { ...temperatures, records: [...temperatures.records, ...caspianTemperatures.records] as TemperatureRecord[] };
+const temperatureRows = temperatureMetadata.records;
 export const availableYears = Array.from(new Set(temperatureRows.map(row => row.year))).sort((a, b) => a - b);
 export const recordsByYear = new Map<number, Map<string, TemperatureRecord>>(
   availableYears.map(year => [year, new Map(temperatureRows.filter(row => row.year === year).map(row => [row.areaId, row]))])

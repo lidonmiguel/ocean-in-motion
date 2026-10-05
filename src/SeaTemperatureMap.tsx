@@ -138,7 +138,7 @@ export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea, worldVie
       <div className="fallback-note">Vista simplificada sin WebGL2 · pulsa una zona o elige su nombre en la lista</div>
     </div>}
     <div className="map-stamp"><span className="pulse" /> NOAA + ESTIMACIONES · {year}</div>
-    <div className="map-credit">NOAA ERSSTv6 y estimaciones vecinas · Límites: IHO / VLIZ (CC BY 4.0) · Costa: Natural Earth</div>
+    <div className="map-credit">NOAA ERSSTv6 y estimaciones vecinas · Límites marinos: IHO / VLIZ (CC BY 4.0) · Caspio y costa: Natural Earth</div>
     {hover && records.get(hover.id) && <div className="map-tooltip" style={{ left: hover.x + 14, top: hover.y + 14 }}><strong>{hover.name}</strong><span>{formatTemperature(records.get(hover.id)!)} · {year}</span><span>{records.get(hover.id)!.method === 'estimated' ? 'Estimación de zonas cercanas; sin celdas NOAA locales' : `Media de ${records.get(hover.id)!.cells} celdas NOAA de 2°`}</span></div>}
   </div>;
 }
