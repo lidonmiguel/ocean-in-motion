@@ -2,17 +2,13 @@ import { useEffect, useRef, useState } from 'react';
 import * as maplibregl from 'maplibre-gl';
 import { MapLibreOverlay } from '@deck.gl/maplibre';
 import { GeoJsonLayer, TextLayer } from '@deck.gl/layers';
-import landRaw from './data/landNoSeams.geojson?raw';
-import islandsRaw from './data/islands50m.geojson?raw';
+import landRaw from './data/temperatureLand.geojson?raw';
 import { formatTemperature, recordsByYear, seaAreas, temperatureColor, type SeaFeature } from './data/seaTemperatures';
 
 const land = JSON.parse(landRaw) as {
   type: 'FeatureCollection';
   features: { type: 'Feature'; properties: object; geometry: SeaFeature['geometry'] }[];
 };
-// The 110m coast omits small islands. Natural Earth 50m land polygons fill
-// those gaps without changing the antimeridian-safe continental geometry.
-land.features.push(...(JSON.parse(islandsRaw) as typeof land).features);
 const blackSeaLabel = { position: [34, 44] as [number, number], name: 'MAR NEGRO' };
 const svgPosition = (lon: number, lat: number) => [((lon + 180) / 360) * 1200, ((90 - lat) / 180) * 600];
 
@@ -151,7 +147,7 @@ export function SeaTemperatureMap({ year, selectedAreaId, onSelectArea, worldVie
       <div className="fallback-note">Vista simplificada sin WebGL2 · pulsa una zona o elige su nombre en la lista</div>
     </div>}
     <div className="map-stamp"><span className="pulse" /> NOAA + ESTIMACIONES · {year}</div>
-    <div className="map-credit">NOAA ERSSTv6 y estimaciones vecinas · Límites: IHO / VLIZ (CC BY 4.0) · Costa: Natural Earth</div>
+    <div className="map-credit">NOAA ERSSTv6 y estimaciones vecinas · Límites marinos: IHO / VLIZ (CC BY 4.0) · Caspio y costa: Natural Earth</div>
     {hover && records.get(hover.id) && <div className="map-tooltip" style={{ left: hover.x + 14, top: hover.y + 14 }}><strong>{hover.name}</strong><span>{formatTemperature(records.get(hover.id)!)} · {year}</span><span>{records.get(hover.id)!.method === 'estimated' ? 'Estimación de zonas cercanas; sin celdas NOAA locales' : `Media de ${records.get(hover.id)!.cells} celdas NOAA de 2°`}</span></div>}
   </div>;
 }

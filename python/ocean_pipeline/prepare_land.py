@@ -9,6 +9,7 @@ the North Atlantic. This creates ordinary polygons with no edge longer than
 from __future__ import annotations
 
 import json
+import argparse
 import subprocess
 from pathlib import Path
 
@@ -40,10 +41,10 @@ def polygons(geometry):
     return []
 
 
-def build() -> dict:
+def build(resolution: str = '110m', tolerance: float = 0) -> dict:
     command = (
         "import {feature} from 'topojson-client'; "
-        "import world from 'world-atlas/land-110m.json' with {type:'json'}; "
+        f"import world from 'world-atlas/land-{resolution}.json' with {{type:'json'}}; "
         "process.stdout.write(JSON.stringify(feature(world,world.objects.land)));"
     )
     raw = json.loads(subprocess.check_output(
@@ -63,6 +64,8 @@ def build() -> dict:
         land = Polygon(shell, holes)
         if not land.is_valid:
             land = make_valid(land)
+        if tolerance:
+            land = land.simplify(tolerance, preserve_topology=True)
 
         # Clip into two 180° halves, including shifted copies at the date line.
         # The internal fill seams are not stroked in the UI.
@@ -82,12 +85,23 @@ def build() -> dict:
             assert all(abs(a[0] - b[0]) <= 180 for a, b in
                        zip(ring.coords, list(ring.coords)[1:]))
 
+    def rounded(value):
+        if isinstance(value, (list, tuple)):
+            return [rounded(item) for item in value]
+        return round(value, 5)
+
     return {"type": "FeatureCollection", "features": [
-        {"type": "Feature", "properties": {}, "geometry": mapping(part)}
+        {"type": "Feature", "properties": {}, "geometry": {
+            **mapping(part), 'coordinates': rounded(mapping(part)['coordinates'])}}
         for part in result
     ]}
 
 
 if __name__ == "__main__":
-    OUTPUT.write_text(json.dumps(build(), separators=(",", ":")), encoding="utf-8")
-    print(f"Wrote seam-free land to {OUTPUT}")
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--resolution', choices=['110m', '50m', '10m'], default='110m')
+    parser.add_argument('--tolerance', type=float, default=0)
+    parser.add_argument('--output', type=Path, default=OUTPUT)
+    args = parser.parse_args()
+    args.output.write_text(json.dumps(build(args.resolution, args.tolerance), separators=(",", ":")), encoding="utf-8")
+    print(f"Wrote seam-free land to {args.output}")

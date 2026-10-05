@@ -5,7 +5,7 @@ describe('annual sea surface temperature snapshot', () => {
   it('has complete annual values with observed and estimated origins identified', () => {
     expect(availableYears[0]).toBe(1982);
     expect(availableYears.at(-1)).toBe(2025);
-    expect(seaAreas.features).toHaveLength(101);
+    expect(seaAreas.features).toHaveLength(102);
     for (const year of availableYears) {
       let observed = 0;
       let estimated = 0;
@@ -26,7 +26,7 @@ describe('annual sea surface temperature snapshot', () => {
           expect(row!.cells).toBeGreaterThanOrEqual(2);
         }
       }
-      expect(observed).toBe(21);
+      expect(observed).toBe(22);
       expect(estimated).toBe(80);
     }
     expect(seaSeries('med-west').length).toBe(availableYears.length);
