@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import * as maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { MapLibreOverlay } from '@deck.gl/maplibre';
-import { GeoJsonLayer, PathLayer, TextLayer } from '@deck.gl/layers';
+import { GeoJsonLayer, PathLayer } from '@deck.gl/layers';
 import {
   loadMapGeometry,
   loadTemperatureNetwork,
@@ -26,10 +26,6 @@ import {
 const emptyAreas: MapGeometry['seaAreas'] = {
   type: 'FeatureCollection',
   features: []
-};
-const blackSeaLabel = {
-  position: [34, 44] as [number, number],
-  name: 'BLACK SEA'
 };
 const svgPosition = (lon: number, lat: number) => [
   ((lon + 180) / 360) * 1200,
@@ -299,19 +295,6 @@ export function SeaTemperatureMap({
       pickable: true,
       onHover: () => setHover(null)
     });
-    const labelLayer = new TextLayer({
-      id: 'black-sea-label',
-      data: [blackSeaLabel],
-      getPosition: (item) => item.position,
-      getText: (item) => item.name,
-      getSize: 11,
-      sizeUnits: 'pixels',
-      getColor: [255, 255, 255, 245],
-      fontWeight: 700,
-      billboard: true,
-      pickable: false,
-      parameters: { depthTest: false }
-    });
     if (clock.current.year !== year) clock.current = { year, seconds: 0 };
     type Draw = CoolingFrame & { id: string };
     const render = (seconds: number) => {
@@ -346,8 +329,7 @@ export function SeaTemperatureMap({
               wrapLongitude: true,
               pickable: false
             }),
-            landLayer,
-            labelLayer
+            landLayer
           ]
         });
       if (fallback) {
@@ -511,17 +493,6 @@ export function SeaTemperatureMap({
               ))
             )}
             <path d={coast} fill="#bbccc9" fillRule="evenodd" />
-            <text
-              x={svgPosition(...blackSeaLabel.position)[0]}
-              y={svgPosition(...blackSeaLabel.position)[1]}
-              textAnchor="middle"
-              fill="#fff"
-              fontSize="10"
-              fontWeight="700"
-              pointerEvents="none"
-            >
-              {blackSeaLabel.name}
-            </text>
           </svg>
           <div className="fallback-note">
             Simplified view without WebGL2 · click a region or select its name
