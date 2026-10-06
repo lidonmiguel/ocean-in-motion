@@ -6,4 +6,5 @@ dist/
 .deps/
 __pycache__/
 *.pyc
+*.egg-info/
 .DS_Store
