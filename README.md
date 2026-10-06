@@ -26,15 +26,15 @@ paused or hidden.
 
 ### Temperature map
 
-<img width="1901" height="939" alt="image" src="https://github.com/user-attachments/assets/7daf8fdf-c8e0-4cf5-925b-2c8c43aae03f" />
+<img width="1901" height="939" alt="2025 sea-surface temperature map centered on Europe and the North Atlantic, with the western Mediterranean selected" src="https://github.com/user-attachments/assets/7daf8fdf-c8e0-4cf5-925b-2c8c43aae03f" />
 
 ### Regional comparison
 
-<img width="1824" height="827" alt="image" src="https://github.com/user-attachments/assets/c6fb5be9-4db0-4dcd-a3ca-fda929f4de63" />
+<img width="1824" height="827" alt="1982–2030 surface temperature comparison for the western Mediterranean, North Atlantic and Caspian Sea, with forecasts shown as dashed lines from 2026" src="https://github.com/user-attachments/assets/c6fb5be9-4db0-4dcd-a3ca-fda929f4de63" />
 
-<img width="1828" height="820" alt="image" src="https://github.com/user-attachments/assets/44fcf501-93c8-4370-ba8b-edfc06c757ff" />
+<img width="1828" height="820" alt="Temperature anomalies relative to each region’s 1982–2010 mean for the western Mediterranean, North Atlantic and Caspian Sea" src="https://github.com/user-attachments/assets/44fcf501-93c8-4370-ba8b-edfc06c757ff" />
 
-<img width="1811" height="634" alt="image" src="https://github.com/user-attachments/assets/9207a9d5-a0d1-4c19-ab55-3851a471073d" />
+<img width="1811" height="634" alt="2025 regional temperature anomalies and historical changes between the 1982–1991 and 2016–2025 means" src="https://github.com/user-attachments/assets/9207a9d5-a0d1-4c19-ab55-3851a471073d" />
 
 ## The Data Science result
 
