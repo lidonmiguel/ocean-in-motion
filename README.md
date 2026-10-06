@@ -26,7 +26,7 @@ paused or hidden.
 
 ### Temperature map
 
-<img width="1899" height="934" alt="image" src="https://github.com/user-attachments/assets/983ae9a3-a1ed-4b65-9ca5-62436072bfc9" />
+<img width="1903" height="741" alt="image" src="https://github.com/user-attachments/assets/ec191a21-f703-4560-b199-acd460a5ddae" />
 
 ### Regional comparison
 
